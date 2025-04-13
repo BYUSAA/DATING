@@ -1,312 +1,222 @@
-// Main JavaScript for the website
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all animations and effects
-    
-    // Vanishing button effect
-    const buttons = document.querySelectorAll('.vanishing-btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create QR dissolve effect
-            const qrEffect = document.createElement('div');
-            qrEffect.className = 'page-transition active';
-            qrEffect.innerHTML = '<div class="qr-disolve"></div>';
-            document.body.appendChild(qrEffect);
-            
-            // Navigate after animation
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 1500);
-        });
-    });
-    
-    // Holographic hover effects
-    const featureCards = document.querySelectorAll('.feature-card');
-    featureCards.forEach(card => {
-        card.addEventListener('mousemove', function(e) {
-            const x = e.clientX - this.getBoundingClientRect().left;
-            const y = e.clientY - this.getBoundingClientRect().top;
-            
-            this.style.setProperty('--x', `${x}px`);
-            this.style.setProperty('--y', `${y}px`);
-            
-            const glow = this.querySelector('.holographic-icon');
-            if (glow) {
-                glow.style.transform = `translate(${(x - this.offsetWidth/2) * 0.1}px, ${(y - this.offsetHeight/2) * 0.1}px)`;
-            }
-        });
-    });
-    
-    // Binary rain effect for header
-    const header = document.querySelector('.cyber-header');
-    if (header) {
-        header.addEventListener('mousemove', function(e) {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            this.style.setProperty('--mouse-x', x);
-            this.style.setProperty('--mouse-y', y);
-        });
+// Loader
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.cyber-loader');
+    setTimeout(() => {
+        loader.classList.add('hidden');
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 1500);
+});
+
+// Theme Toggle
+const themeToggle = document.querySelector('.theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const body = document.body;
+
+// Check for saved theme preference
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    body.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
     }
-    
-    // Initialize media upload functionality for registration page
-    if (document.querySelector('.registration-container')) {
-        initMediaUpload();
+}
+
+themeToggle.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
     }
 });
 
-// Media upload functionality
-function initMediaUpload() {
-    const imageUploads = document.querySelectorAll('.upload-box input[type="file"]');
-    const videoUpload = document.querySelector('.video-upload-box input[type="file"]');
-    
-    // Image upload handling
-    imageUploads.forEach((upload, index) => {
-        upload.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const uploadBox = upload.closest('.upload-box');
-                    uploadBox.innerHTML = `
-                        <div class="preview-container">
-                            <img src="${event.target.result}" class="preview-image" alt="Preview">
-                            <button class="remove-btn" data-index="${index}">×</button>
-                        </div>
-                    `;
-                    
-                    // Add remove functionality
-                    uploadBox.querySelector('.remove-btn').addEventListener('click', function() {
-                        upload.value = '';
-                        resetUploadBox(uploadBox, index);
-                    });
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
     });
-    
-    // Video upload handling
-    if (videoUpload) {
-        videoUpload.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const url = URL.createObjectURL(file);
-                const uploadBox = videoUpload.closest('.upload-box');
-                uploadBox.innerHTML = `
-                    <div class="preview-container">
-                        <video controls class="preview-image">
-                            <source src="${url}" type="${file.type}">
-                        </video>
-                        <button class="remove-btn video-remove">×</button>
-                    </div>
-                `;
+});
+
+// Button Animation
+document.querySelectorAll('.cyber-button').forEach(button => {
+    button.addEventListener('click', function(e) {
+        // Create ripple effect
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple-effect');
+        
+        // Get click position relative to button
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Position the ripple
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        this.appendChild(ripple);
+        
+        // Remove ripple after animation
+        setTimeout(() => {
+            ripple.remove();
+        }, 1000);
+    });
+});
+
+// Form Validation
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        let isValid = true;
+        
+        // Check required fields
+        this.querySelectorAll('[required]').forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('error');
                 
-                // Add remove functionality
-                uploadBox.querySelector('.video-remove').addEventListener('click', function() {
-                    videoUpload.value = '';
-                    resetUploadBox(uploadBox, 'video');
-                });
+                // Remove error class after showing
+                setTimeout(() => {
+                    field.classList.remove('error');
+                }, 3000);
             }
         });
-    }
+        
+        if (!isValid) {
+            e.preventDefault();
+            
+            // Show error message
+            const errorMsg = document.createElement('div');
+            errorMsg.classList.add('cyber-alert', 'error');
+            errorMsg.textContent = 'Please fill in all required fields';
+            
+            this.prepend(errorMsg);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => {
+                errorMsg.remove();
+            }, 3000);
+        }
+    });
+});
+
+// Testimonial Slider Auto-scroll
+const testimonialSlider = document.querySelector('.testimonial-slider');
+if (testimonialSlider) {
+    let scrollAmount = 0;
+    const scrollStep = 380; // Width of testimonial card + gap
     
-    // Reset upload box to initial state
-    function resetUploadBox(box, type) {
-        if (typeof type === 'number') {
-            box.innerHTML = `
-                <i class="fas fa-camera"></i>
-                <span>Upload Photo ${type + 1}</span>
-                <input type="file" accept="image/*" required>
-            `;
-        } else {
-            box.innerHTML = `
-                <i class="fas fa-video"></i>
-                <span>Upload Video (Optional)</span>
-                <input type="file" accept="video/*">
-            `;
+    function autoScrollTestimonials() {
+        scrollAmount += scrollStep;
+        
+        // If we've scrolled to the end, reset to start
+        if (scrollAmount >= testimonialSlider.scrollWidth - testimonialSlider.clientWidth) {
+            scrollAmount = 0;
+            testimonialSlider.scrollTo({
+                left: 0,
+                behavior: 'instant'
+            });
+            setTimeout(autoScrollTestimonials, 3000);
+            return;
         }
         
-        // Reinitialize the event listener
-        const input = box.querySelector('input');
-        input.addEventListener('change', initMediaUpload);
+        testimonialSlider.scrollTo({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+        
+        setTimeout(autoScrollTestimonials, 5000);
     }
     
-    // Form submission with animation
-    const registrationForm = document.querySelector('.registration-form');
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Check if all required images are uploaded
-            const imageInputs = document.querySelectorAll('.upload-box:not(.video-upload-box) input[type="file"]');
-            let allImagesUploaded = true;
-            
-            imageInputs.forEach(input => {
-                if (!input.files || input.files.length === 0) {
-                    allImagesUploaded = false;
-                    input.closest('.upload-box').style.borderColor = 'var(--secondary)';
-                }
-            });
-            
-            if (!allImagesUploaded) {
-                alert('Please upload all required photos before submitting.');
-                return;
-            }
-            
-            // Show loading animation
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<div class="loading-spinner"></div> Processing...';
-            
-            // Simulate upload progress
-            const progressBar = document.querySelector('.progress');
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 10;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    
-                    // Show success animation
-                    setTimeout(() => {
-                        const qrEffect = document.createElement('div');
-                        qrEffect.className = 'page-transition active';
-                        qrEffect.innerHTML = '<div class="qr-disolve success"></div>';
-                        document.body.appendChild(qrEffect);
-                        
-                        // Redirect after animation
-                        setTimeout(() => {
-                            window.location.href = 'profile.html';
-                        }, 1500);
-                    }, 500);
-                }
-                progressBar.style.width = `${progress}%`;
-            }, 300);
-        });
-    }
+    // Start auto-scroll after 5 seconds
+    setTimeout(autoScrollTestimonials, 5000);
 }
 
-// Page transition handling
-window.addEventListener('load', function() {
-    const pageTransition = document.querySelector('.page-transition');
-    if (pageTransition) {
-        setTimeout(() => {
-            pageTransition.classList.remove('active');
-            setTimeout(() => {
-                pageTransition.remove();
-            }, 500);
-        }, 500);
-    }
-});
-
-// Load members for category pages
-function loadCategoryMembers(category) {
-    const membersContainer = document.querySelector('.members-container');
-    if (!membersContainer) return;
-
-    // Clear existing members
-    membersContainer.innerHTML = '';
-
-    // Sample data - in a real app, this would come from an API
-    const sampleMembers = [
-        { 
-            name: 'QuantumExplorer', 
-            avatar: 'avatar1.jpg', 
-            location: 'Digital Dimension', 
-            bio: 'Adventurer of virtual realms seeking meaningful connections across dimensions',
-            compatibility: '98%'
-        },
-        { 
-            name: 'NeuralNova', 
-            avatar: 'avatar2.jpg', 
-            location: 'Quantum Cloud', 
-            bio: 'AI enthusiast exploring the intersection of technology and human connection',
-            compatibility: '95%'
-        },
-        { 
-            name: 'CyberSage', 
-            avatar: 'avatar3.jpg', 
-            location: 'Neural Network', 
-            bio: 'Wisdom seeker in the age of digital consciousness',
-            compatibility: '93%'
-        },
-        { 
-            name: 'HoloHacker', 
-            avatar: 'avatar4.jpg', 
-            location: 'VR Space', 
-            bio: 'Creating immersive experiences one line of code at a time',
-            compatibility: '91%'
-        },
-        { 
-            name: 'DataDruid', 
-            avatar: 'avatar5.jpg', 
-            location: 'The Cloud', 
-            bio: 'Harnessing the power of data to forge genuine connections',
-            compatibility: '89%'
-        },
-        { 
-            name: 'ByteBard', 
-            avatar: 'avatar6.jpg', 
-            location: 'Silicon Valley', 
-            bio: 'Poet of the digital age, composing connections in binary and beyond',
-            compatibility: '87%'
-        }
-    ];
-
-    // Add members to the container
-    sampleMembers.forEach(member => {
-        const memberCard = document.createElement('div');
-        memberCard.className = 'member-card';
-        memberCard.innerHTML = `
-            <div class="member-avatar" style="background: url('./assets/images/${member.avatar}') center/cover no-repeat;"></div>
-            <div class="member-info">
-                <h3 class="member-name">${member.name}</h3>
-                <div class="member-location">${member.location}</div>
-                <p class="member-bio">${member.bio}</p>
-                <div class="member-compatibility">${member.compatibility} match</div>
-            </div>
-            <div class="member-actions">
-                <button class="member-action"><i class="fas fa-comment"></i></button>
-                <button class="member-action"><i class="fas fa-heart"></i></button>
-            </div>
-        `;
-        membersContainer.appendChild(memberCard);
+// Hover effects for category cards
+document.querySelectorAll('.category-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+        this.style.boxShadow = '0 10px 30px rgba(0, 247, 255, 0.2)';
+        this.style.borderColor = 'var(--cyber-blue)';
     });
-
-    // Add click event to load more button
-    const loadMoreBtn = document.querySelector('.load-more');
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
-            // In a real app, this would load more members
-            alert(`Loading more ${category} members...`);
-        });
-    }
-}
-
-// Initialize all category pages
-function initCategoryPages() {
-    const categoryHero = document.querySelector('.category-hero');
-    if (categoryHero) {
-        // Add parallax effect to category hero
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.pageYOffset;
-            categoryHero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
-        });
-    }
-}
-
-// Initialize all pages when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initCategoryPages();
     
-    // Add any other page-specific initializations here
-    if (document.querySelector('.profile-page')) {
-        initProfilePage();
-    }
-    
-    if (document.querySelector('.subscription-plans')) {
-        initSubscriptionPage();
-    }
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+        this.style.boxShadow = '';
+        this.style.borderColor = 'var(--cyber-grid)';
+    });
 });
+
+// Add floating particles effect
+function createParticles() {
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'cyber-particles';
+    document.body.appendChild(particlesContainer);
+    
+    const particleCount = window.innerWidth < 768 ? 30 : 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'cyber-particle';
+        
+        // Random properties
+        const size = Math.random() * 5 + 1;
+        const posX = Math.random() * window.innerWidth;
+        const posY = Math.random() * window.innerHeight;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+        const color = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}px`;
+        particle.style.top = `${posY}px`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.backgroundColor = color;
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Initialize particles
+createParticles();
+
+// Check authentication state
+function checkAuth() {
+    const protectedPages = [
+        'profile.html',
+        'categories/dating.html',
+        'categories/marriage.html',
+        // Add all other protected pages
+    ];
+    
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (protectedPages.includes(currentPage)) {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+            window.location.href = 'auth/login.html';
+        }
+    }
+}
+
+// Run auth check when page loads
+document.addEventListener('DOMContentLoaded', checkAuth);

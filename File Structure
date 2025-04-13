@@ -1,0 +1,30 @@
+metadatez/
+├── index.html
+├── style.css
+├── script.js
+├── auth.js
+├── assets/
+│   ├── fonts/
+│   ├── images/
+│   ├── sounds/
+│   └── videos/
+├── categories/
+│   ├── dating.html
+│   ├── marriage.html
+│   ├── religious.html
+│   ├── polygamy.html
+│   ├── friendship.html
+│   ├── fantasy.html
+│   ├── international.html
+│   ├── business.html
+│   ├── specialneeds.html
+│   └── penpal.html
+├── auth/
+│   ├── login.html
+│   └── signup.html
+├── profile.html
+├── subscription.html
+├── about.html
+├── privacy.html
+├── terms.html
+└── contact.html

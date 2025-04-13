@@ -1,0 +1,22 @@
+metadatez/
+├── index.html
+├── style.css
+├── script.js
+├── auth.js
+├── assets/
+│   ├── fonts/
+│   ├── gifs/
+│   │   ├── holographic-grid.gif
+│   │   ├── neon-pulse.gif
+│   │   ├── binary-rain.gif
+│   │   └── cyber-circuit.gif
+│   ├── images/
+│   │   ├── cyber-ui.png
+│   │   ├── neon-borders.png
+│   │   └── hologram-overlay.png
+│   ├── sounds/
+│   └── videos/
+├── auth/
+│   ├── login.html
+│   └── signup.html
+└── (other files as per your structure)

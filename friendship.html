@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship | MetaDatez</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="holographic-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header class="cyber-header">
+        <div class="logo" data-text="MetaDatez">MetaDatez</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="nav-link" data-hover="Home">Home</a></li>
+                <li><a href="../categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
+                <li><a href="../auth/login.html" class="nav-link" data-hover="Login">Login</a></li>
+                <li><a href="../auth/signup.html" class="nav-link glow-button" data-hover="Sign Up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cyber-main">
+        <section class="category-hero" style="background: linear-gradient(rgba(5, 10, 14, 0.7), rgba(5, 10, 14, 0.9)), url('../assets/images/friendship-bg.jpg') center/cover no-repeat;">
+            <h1 class="neon-text">QUANTUM <span class="cyberpunk">FRIENDSHIPS</span></h1>
+            <p class="subtitle">Build meaningful platonic connections across the digital universe</p>
+        </section>
+
+        <section class="category-content">
+            <div class="category-info">
+                <h2 class="section-title neon-underline">PLATONIC CONNECTION MATRIX</h2>
+                <p>Not looking for romance? Our friendship algorithm connects you with compatible individuals for meaningful platonic relationships based on shared interests, values, and personalities.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="holographic-icon pulse"></div>
+                        <h3>Interest Matching</h3>
+                        <p>Connect over shared hobbies, activities, and passions</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon rotate"></div>
+                        <h3>Group Holograms</h3>
+                        <p>Join virtual friend groups in immersive environments</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon glow"></div>
+                        <h3>Activity Partners</h3>
+                        <p>Find companions for specific activities and events</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interest-filters">
+                <h3>Filter by Interest:</h3>
+                <div class="filter-tags">
+                    <span class="interest-tag active">All</span>
+                    <span class="interest-tag">Gaming</span>
+                    <span class="interest-tag">Fitness</span>
+                    <span class="interest-tag">Travel</span>
+                    <span class="interest-tag">Arts</span>
+                    <span class="interest-tag">Music</span>
+                    <span class="interest-tag">Sports</span>
+                    <span class="interest-tag">Tech</span>
+                </div>
+            </div>
+
+            <div class="members-grid">
+                <h2 class="section-title neon-underline">POTENTIAL FRIENDS</h2>
+                <div class="members-container">
+                    <!-- Members will be loaded via JavaScript -->
+                </div>
+                <button class="cyber-button vanishing-btn load-more">LOAD MORE CONNECTIONS</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <!-- Same footer as dating.html -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategoryMembers('friendship');
+            
+            // Interest filter functionality
+            const interestTags = document.querySelectorAll('.interest-tag');
+            interestTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    interestTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    const interest = this.textContent.toLowerCase();
+                    filterMembersByInterest(interest);
+                });
+            });
+            
+            function filterMembersByInterest(interest) {
+                console.log(`Filtering by interest: ${interest}`);
+                // Filtering logic would go here
+            }
+        });
+    </script>
+</body>
+</html>

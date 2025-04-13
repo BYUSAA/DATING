@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Needs | MetaDatez</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="holographic-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header class="cyber-header">
+        <div class="logo" data-text="MetaDatez">MetaDatez</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="nav-link" data-hover="Home">Home</a></li>
+                <li><a href="../categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
+                <li><a href="../auth/login.html" class="nav-link" data-hover="Login">Login</a></li>
+                <li><a href="../auth/signup.html" class="nav-link glow-button" data-hover="Sign Up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cyber-main">
+        <section class="category-hero" style="background: linear-gradient(rgba(5, 10, 14, 0.7), rgba(5, 10, 14, 0.9)), url('../assets/images/specialneeds-bg.jpg') center/cover no-repeat;">
+            <h1 class="neon-text">INCLUSIVE <span class="cyberpunk">CONNECTIONS</span></h1>
+            <p class="subtitle">A welcoming space for individuals with special needs to find meaningful relationships</p>
+        </section>
+
+        <section class="category-content">
+            <div class="accessibility-panel">
+                <button class="accessibility-btn">
+                    <i class="fas fa-universal-access"></i> Accessibility Options
+                </button>
+                <div class="accessibility-menu">
+                    <div class="accessibility-option">
+                        <label for="text-size">Text Size:</label>
+                        <select id="text-size">
+                            <option value="normal">Normal</option>
+                            <option value="large">Large</option>
+                            <option value="xlarge">Extra Large</option>
+                        </select>
+                    </div>
+                    <div class="accessibility-option">
+                        <label for="contrast">Contrast:</label>
+                        <select id="contrast">
+                            <option value="default">Default</option>
+                            <option value="high">High Contrast</option>
+                            <option value="dark">Dark Mode</option>
+                        </select>
+                    </div>
+                    <div class="accessibility-option">
+                        <button class="cyber-button-outline read-aloud">Read Aloud</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-info">
+                <h2 class="section-title neon-underline">ACCESSIBLE DATING</h2>
+                <p>Our platform is specially designed to be accessible to all individuals, regardless of physical, cognitive, or developmental differences. We provide tools to make online dating comfortable and enjoyable for everyone.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="holographic-icon pulse"></div>
+                        <h3>Custom Interfaces</h3>
+                        <p>Adjustable interfaces for various needs and preferences</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon rotate"></div>
+                        <h3>Caregiver Support</h3>
+                        <p>Tools for caregivers to assist with profile management</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon glow"></div>
+                        <h3>Sensory Options</h3>
+                        <p>Customizable sensory settings for comfort</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="needs-filters">
+                <h3>Filter by Accessibility Needs:</h3>
+                <div class="needs-tags">
+                    <span class="needs-tag active">All</span>
+                    <span class="needs-tag">Visual</span>
+                    <span class="needs-tag">Hearing</span>
+                    <span class="needs-tag">Mobility</span>
+                    <span class="needs-tag">Cognitive</span>
+                    <span class="needs-tag">Autism Spectrum</span>
+                </div>
+            </div>
+
+            <div class="members-grid">
+                <h2 class="section-title neon-underline">INCLUSIVE COMMUNITY</h2>
+                <div class="members-container">
+                    <!-- Members will be loaded via JavaScript -->
+                </div>
+                <button class="cyber-button vanishing-btn load-more">LOAD MORE CONNECTIONS</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <!-- Same footer as dating.html -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategoryMembers('specialneeds');
+            
+            // Accessibility functionality
+            const accessibilityBtn = document.querySelector('.accessibility-btn');
+            const accessibilityMenu = document.querySelector('.accessibility-menu');
+            
+            accessibilityBtn.addEventListener('click', function() {
+                accessibilityMenu.style.display = accessibilityMenu.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Text size adjustment
+            document.getElementById('text-size').addEventListener('change', function() {
+                const size = this.value;
+                document.body.style.fontSize = size === 'large' ? '18px' : size === 'xlarge' ? '22px' : '16px';
+            });
+            
+            // Contrast adjustment
+            document.getElementById('contrast').addEventListener('change', function() {
+                const contrast = this.value;
+                if (contrast === 'high') {
+                    document.documentElement.style.setProperty('--primary', '#00ff00');
+                    document.documentElement.style.setProperty('--light', '#ffffff');
+                    document.documentElement.style.setProperty('--dark', '#000000');
+                } else if (contrast === 'dark') {
+                    document.documentElement.style.setProperty('--primary', '#0ff0fc');
+                    document.documentElement.style.setProperty('--light', '#e0e0e0');
+                    document.documentElement.style.setProperty('--dark', '#121212');
+                } else {
+                    // Reset to default
+                    document.documentElement.style.setProperty('--primary', '#0ff0fc');
+                    document.documentElement.style.setProperty('--light', '#d1f7ff');
+                    document.documentElement.style.setProperty('--dark', '#050a0e');
+                }
+            });
+            
+            // Needs filter functionality
+            const needsTags = document.querySelectorAll('.needs-tag');
+            needsTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    needsTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    const need = this.textContent.toLowerCase();
+                    filterMembersByNeed(need);
+                });
+            });
+            
+            function filterMembersByNeed(need) {
+                console.log(`Filtering by need: ${need}`);
+                // Filtering logic would go here
+            }
+        });
+    </script>
+</body>
+</html>

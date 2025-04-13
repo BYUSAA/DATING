@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MetaDatez</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="holographic-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header class="cyber-header">
+        <div class="logo" data-text="MetaDatez">MetaDatez</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="nav-link" data-hover="Home">Home</a></li>
+                <li><a href="../categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
+                <li><a href="signup.html" class="nav-link glow-button" data-hover="Sign Up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cyber-main">
+        <section class="auth-container">
+            <div class="auth-hero">
+                <h1 class="neon-text">QUANTUM <span class="cyberpunk">LOGIN</span></h1>
+                <p class="subtitle">Access your holographic dating profile</p>
+                <div class="holographic-avatar pulse"></div>
+            </div>
+            
+            <div class="auth-form">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Quantum Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" name="email" required class="cyber-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Neural Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" name="password" required class="cyber-input">
+                            <button type="button" class="show-password" aria-label="Show password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="cyber-checkbox">
+                            <input type="checkbox" name="remember">
+                            <span class="checkmark"></span>
+                            Remember my quantum signature
+                        </label>
+                        <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="cyber-button vanishing-btn full-width">
+                        <span class="btn-text">ACTIVATE PROFILE</span>
+                        <span class="btn-loader"><div class="loading-spinner"></div></span>
+                    </button>
+                    
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-btn cyber-button-outline">
+                            <i class="fab fa-google"></i> Continue with Google
+                        </button>
+                        <button type="button" class="social-btn cyber-button-outline">
+                            <i class="fab fa-apple"></i> Continue with Apple
+                        </button>
+                        <button type="button" class="social-btn cyber-button-outline">
+                            <i class="fab fa-facebook-f"></i> Continue with Facebook
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        New to the quantum network? <a href="signup.html" class="neon-link">Create holographic ID</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <div class="footer-grid">
+            <div class="footer-logo">MetaDatez</div>
+            <div class="footer-links">
+                <a href="../terms.html" class="footer-link">Terms</a>
+                <a href="../privacy.html" class="footer-link">Privacy</a>
+                <a href="../safety.html" class="footer-link">Safety</a>
+                <a href="../contact.html" class="footer-link">Contact</a>
+            </div>
+            <div class="social-holograms">
+                <div class="social-icon pulse"></div>
+                <div class="social-icon pulse"></div>
+                <div class="social-icon pulse"></div>
+            </div>
+        </div>
+        <div class="copyright">© 2023 MetaDatez. All rights reserved.</div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="../auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show password toggle
+            const showPasswordBtn = document.querySelector('.show-password');
+            const passwordInput = document.getElementById('loginPassword');
+            
+            showPasswordBtn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+            
+            // Form submission
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnLoader = submitBtn.querySelector('.btn-loader');
+                
+                btnText.style.display = 'none';
+                btnLoader.style.display = 'flex';
+                
+                // Simulate login process
+                setTimeout(() => {
+                    // In a real app, this would be an actual login request
+                    window.location.href = '../profile.html';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

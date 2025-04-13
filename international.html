@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International | MetaDatez</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="holographic-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header class="cyber-header">
+        <div class="logo" data-text="MetaDatez">MetaDatez</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="nav-link" data-hover="Home">Home</a></li>
+                <li><a href="../categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
+                <li><a href="../auth/login.html" class="nav-link" data-hover="Login">Login</a></li>
+                <li><a href="../auth/signup.html" class="nav-link glow-button" data-hover="Sign Up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cyber-main">
+        <section class="category-hero" style="background: linear-gradient(rgba(5, 10, 14, 0.7), rgba(5, 10, 14, 0.9)), url('../assets/images/international-bg.jpg') center/cover no-repeat;">
+            <h1 class="neon-text">GLOBAL <span class="cyberpunk">CONNECTIONS</span></h1>
+            <p class="subtitle">Find love across borders with our quantum translation network</p>
+        </section>
+
+        <section class="category-content">
+            <div class="category-info">
+                <h2 class="section-title neon-underline">WORLDWIDE DATING NETWORK</h2>
+                <p>Break through language and cultural barriers with our real-time neural translation system. Connect with fascinating people from every corner of the globe.</p>
+                
+                <div class="world-map">
+                    <img src="../assets/images/world-map-hologram.png" alt="World Map" class="hologram-map">
+                    <div class="connection-dots">
+                        <!-- Connection dots will be added dynamically -->
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="holographic-icon pulse"></div>
+                        <h3>Neural Translation</h3>
+                        <p>Real-time translation for seamless cross-cultural communication</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon rotate"></div>
+                        <h3>Cultural Guides</h3>
+                        <p>Learn about your match's culture and traditions</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon glow"></div>
+                        <h3>Time Zone Sync</h3>
+                        <p>Smart scheduling across different time zones</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="country-filters">
+                <h3>Filter by Region:</h3>
+                <select class="cyber-select" id="region-select">
+                    <option value="all">All Regions</option>
+                    <option value="north-america">North America</option>
+                    <option value="south-america">South America</option>
+                    <option value="europe">Europe</option>
+                    <option value="asia">Asia</option>
+                    <option value="africa">Africa</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+            </div>
+
+            <div class="members-grid">
+                <h2 class="section-title neon-underline">GLOBAL MATCHES</h2>
+                <div class="members-container">
+                    <!-- Members will be loaded via JavaScript -->
+                </div>
+                <button class="cyber-button vanishing-btn load-more">LOAD MORE CONNECTIONS</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <!-- Same footer as dating.html -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategoryMembers('international');
+            
+            // Region filter functionality
+            const regionSelect = document.getElementById('region-select');
+            regionSelect.addEventListener('change', function() {
+                const region = this.value;
+                filterMembersByRegion(region);
+            });
+            
+            function filterMembersByRegion(region) {
+                console.log(`Filtering by region: ${region}`);
+                // Filtering logic would go here
+            }
+            
+            // Add connection dots to world map
+            const connectionDots = document.querySelector('.connection-dots');
+            for (let i = 0; i < 20; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'connection-dot pulse';
+                dot.style.left = `${Math.random() * 90 + 5}%`;
+                dot.style.top = `${Math.random() * 90 + 5}%`;
+                connectionDots.appendChild(dot);
+            }
+        });
+    </script>
+</body>
+</html>

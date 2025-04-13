@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating | Metadatez</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+    
+    <header class="futuristic-header">
+        <div class="holographic-logo">
+            <img src="assets/images/logo-hologram.png" alt="Metadatez Logo">
+            <div class="holographic-effect"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html" class="active">Dating</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.html" id="profileLink" style="display: none;">
+                    <img src="assets/images/default-avatar.jpg" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%;">
+                </a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+                <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="category-page">
+        <h1 class="section-title">Dating Connections</h1>
+        <p class="category-description">Find romantic connections with like-minded individuals who share your interests and values.</p>
+        
+        <div class="profile-grid">
+            <!-- Profile cards will be dynamically loaded here -->
+            <div class="profile-card">
+                <img src="assets/images/dating1.jpg" alt="Profile" class="profile-image">
+                <div class="profile-info">
+                    <h3 class="profile-name">Sarah K. <span class="verified-badge"><i class="fas fa-check"></i> Verified</span></h3>
+                    <p class="profile-age-location">28 • Los Angeles, CA</p>
+                    <p class="profile-bio">Adventure seeker and tech enthusiast. Looking for someone to share life's journey with.</p>
+                    <div class="profile-actions">
+                        <button class="action-btn like-btn"><i class="fas fa-heart"></i> Like</button>
+                        <button class="action-btn message-btn"><i class="fas fa-comment"></i> Message</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-card">
+                <img src="assets/images/dating2.jpg" alt="Profile" class="profile-image">
+                <div class="profile-info">
+                    <h3 class="profile-name">Michael T.</h3>
+                    <p class="profile-age-location">32 • New York, NY</p>
+                    <p class="profile-bio">Music lover and foodie. Let's explore the city together and make memories.</p>
+                    <div class="profile-actions">
+                        <button class="action-btn like-btn"><i class="fas fa-heart"></i> Like</button>
+                        <button class="action-btn message-btn"><i class="fas fa-comment"></i> Message</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More profile cards -->
+        </div>
+    </main>
+
+    <footer class="futuristic-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/logo-hologram.png" alt="Metadatez Logo">
+                <p>Connecting futures today</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Metadatez. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

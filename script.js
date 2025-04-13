@@ -200,3 +200,113 @@ window.addEventListener('load', function() {
         }, 500);
     }
 });
+
+// Load members for category pages
+function loadCategoryMembers(category) {
+    const membersContainer = document.querySelector('.members-container');
+    if (!membersContainer) return;
+
+    // Clear existing members
+    membersContainer.innerHTML = '';
+
+    // Sample data - in a real app, this would come from an API
+    const sampleMembers = [
+        { 
+            name: 'QuantumExplorer', 
+            avatar: 'avatar1.jpg', 
+            location: 'Digital Dimension', 
+            bio: 'Adventurer of virtual realms seeking meaningful connections across dimensions',
+            compatibility: '98%'
+        },
+        { 
+            name: 'NeuralNova', 
+            avatar: 'avatar2.jpg', 
+            location: 'Quantum Cloud', 
+            bio: 'AI enthusiast exploring the intersection of technology and human connection',
+            compatibility: '95%'
+        },
+        { 
+            name: 'CyberSage', 
+            avatar: 'avatar3.jpg', 
+            location: 'Neural Network', 
+            bio: 'Wisdom seeker in the age of digital consciousness',
+            compatibility: '93%'
+        },
+        { 
+            name: 'HoloHacker', 
+            avatar: 'avatar4.jpg', 
+            location: 'VR Space', 
+            bio: 'Creating immersive experiences one line of code at a time',
+            compatibility: '91%'
+        },
+        { 
+            name: 'DataDruid', 
+            avatar: 'avatar5.jpg', 
+            location: 'The Cloud', 
+            bio: 'Harnessing the power of data to forge genuine connections',
+            compatibility: '89%'
+        },
+        { 
+            name: 'ByteBard', 
+            avatar: 'avatar6.jpg', 
+            location: 'Silicon Valley', 
+            bio: 'Poet of the digital age, composing connections in binary and beyond',
+            compatibility: '87%'
+        }
+    ];
+
+    // Add members to the container
+    sampleMembers.forEach(member => {
+        const memberCard = document.createElement('div');
+        memberCard.className = 'member-card';
+        memberCard.innerHTML = `
+            <div class="member-avatar" style="background: url('./assets/images/${member.avatar}') center/cover no-repeat;"></div>
+            <div class="member-info">
+                <h3 class="member-name">${member.name}</h3>
+                <div class="member-location">${member.location}</div>
+                <p class="member-bio">${member.bio}</p>
+                <div class="member-compatibility">${member.compatibility} match</div>
+            </div>
+            <div class="member-actions">
+                <button class="member-action"><i class="fas fa-comment"></i></button>
+                <button class="member-action"><i class="fas fa-heart"></i></button>
+            </div>
+        `;
+        membersContainer.appendChild(memberCard);
+    });
+
+    // Add click event to load more button
+    const loadMoreBtn = document.querySelector('.load-more');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            // In a real app, this would load more members
+            alert(`Loading more ${category} members...`);
+        });
+    }
+}
+
+// Initialize all category pages
+function initCategoryPages() {
+    const categoryHero = document.querySelector('.category-hero');
+    if (categoryHero) {
+        // Add parallax effect to category hero
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            categoryHero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+        });
+    }
+}
+
+// Initialize all pages when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initCategoryPages();
+    
+    // Add any other page-specific initializations here
+    if (document.querySelector('.profile-page')) {
+        initProfilePage();
+    }
+    
+    if (document.querySelector('.subscription-plans')) {
+        initSubscriptionPage();
+    }
+});

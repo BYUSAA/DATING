@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage | MetaDatez</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Similar structure to dating.html with marriage-specific content -->
+    <div class="holographic-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header class="cyber-header">
+        <div class="logo" data-text="MetaDatez">MetaDatez</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="nav-link" data-hover="Home">Home</a></li>
+                <li><a href="../categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
+                <li><a href="../auth/login.html" class="nav-link" data-hover="Login">Login</a></li>
+                <li><a href="../auth/signup.html" class="nav-link glow-button" data-hover="Sign Up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cyber-main">
+        <section class="category-hero" style="background: linear-gradient(rgba(5, 10, 14, 0.7), rgba(5, 10, 14, 0.9)), url('../assets/images/marriage-bg.jpg') center/cover no-repeat;">
+            <h1 class="neon-text">QUANTUM <span class="cyberpunk">MARRIAGE</span></h1>
+            <p class="subtitle">Find your lifelong partner through advanced compatibility matching</p>
+        </section>
+
+        <section class="category-content">
+            <div class="category-info">
+                <h2 class="section-title neon-underline">ETERNAL BOND TECHNOLOGY</h2>
+                <p>Our marriage-focused algorithm evaluates long-term compatibility factors including values, life goals, and emotional intelligence to connect you with potential life partners.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="holographic-icon pulse"></div>
+                        <h3>Commitment Analysis</h3>
+                        <p>Advanced algorithms assess long-term compatibility and commitment readiness</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon rotate"></div>
+                        <h3>Family Planning</h3>
+                        <p>Match with partners who share your vision for family and future</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="holographic-icon glow"></div>
+                        <h3>Values Alignment</h3>
+                        <p>Deep compatibility matching based on core values and beliefs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="members-grid">
+                <h2 class="section-title neon-underline">POTENTIAL LIFE PARTNERS</h2>
+                <div class="members-container">
+                    <!-- Members will be loaded via JavaScript -->
+                </div>
+                <button class="cyber-button vanishing-btn load-more">LOAD MORE CONNECTIONS</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <!-- Same footer as dating.html -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategoryMembers('marriage');
+        });
+    </script>
+</body>
+</html>

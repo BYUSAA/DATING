@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Metadatez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="theme-switcher"><i class="fas fa-moon"></i></button>
+    </div>
+    
+    <header class="futuristic-header">
+        <div class="logo-container">
+            <div class="logo-particle" id="particle-1"></div>
+            <div class="logo-particle" id="particle-2"></div>
+            <div class="logo-particle" id="particle-3"></div>
+            <h1>METADATEZ</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="signup-container">
+        <div class="signup-form-container">
+            <div class="form-header">
+                <h2>Create Your Account</h2>
+                <p>Join our community and find your perfect connection</p>
+            </div>
+            
+            <form id="signup-form">
+                <div class="form-step active" id="step-1">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Birthdate</label>
+                        <input type="date" id="birthdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="non-binary">Non-binary</option>
+                            <option value="other">Other</option>
+                            <option value="prefer-not-to-say">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="form-navigation">
+                        <button type="button" class="next-button vanish" data-next="step-2">Next</button>
+                    </div>
+                </div>
+                
+                <div class="form-step" id="step-2">
+                    <div class="form-group">
+                        <label>Choose Your Main Category</label>
+                        <div class="category-options">
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-dating" value="dating" checked>
+                                <label for="category-dating">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Dating</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-marriage" value="marriage">
+                                <label for="category-marriage">
+                                    <i class="fas fa-ring"></i>
+                                    <span>Marriage</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-religious" value="religious">
+                                <label for="category-religious">
+                                    <i class="fas fa-pray"></i>
+                                    <span>Religious</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-polygamy" value="polygamy">
+                                <label for="category-polygamy">
+                                    <i class="fas fa-users"></i>
+                                    <span>Polygamy</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-friendship" value="friendship">
+                                <label for="category-friendship">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <span>Friendship</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-fantasy" value="fantasy">
+                                <label for="category-fantasy">
+                                    <i class="fas fa-magic"></i>
+                                    <span>Fantasy</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-international" value="international">
+                                <label for="category-international">
+                                    <i class="fas fa-globe"></i>
+                                    <span>International</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-business" value="business">
+                                <label for="category-business">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span>Business</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-specialneeds" value="specialneeds">
+                                <label for="category-specialneeds">
+                                    <i class="fas fa-wheelchair"></i>
+                                    <span>Special Needs</span>
+                                </label>
+                            </div>
+                            <div class="category-option">
+                                <input type="radio" name="category" id="category-penpal" value="penpal">
+                                <label for="category-penpal">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Pen Pal</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subcategories">Subcategories (Select up to 3)</label>
+                        <div class="subcategory-options" id="subcategory-container">
+                            <!-- Dynamic subcategories will be loaded here based on main category selection -->
+                            <p class="subcategory-notice">Select a main category first to see relevant subcategories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" data-prev="step-1">Back</button>
+                        <button type="button" class="next-button vanish" data-next="step-3">Next</button>
+                    </div>
+                </div>
+                
+                <div class="form-step" id="step-3">
+                    <div class="form-group">
+                        <label>Upload Your Photos (3 required)</label>
+                        <div class="photo-upload-container">
+                            <div class="photo-upload-box" id="photo-1">
+                                <input type="file" id="upload-1" accept="image/*" class="photo-input">
+                                <label for="upload-1" class="upload-label">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Photo 1</span>
+                                </label>
+                                <div class="photo-preview"></div>
+                                <button type="button" class="remove-photo"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="photo-upload-box" id="photo-2">
+                                <input type="file" id="upload-2" accept="image/*" class="photo-input">
+                                <label for="upload-2" class="upload-label">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Photo 2</span>
+                                </label>
+                                <div class="photo-preview"></div>
+                                <button type="button" class="remove-photo"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="photo-upload-box" id="photo-3">
+                                <input type="file" id="upload-3" accept="image/*" class="photo-input">
+                                <label for="upload-3" class="upload-label">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Photo 3</span>
+                                </label>
+                                <div class="photo-preview"></div>
+                                <button type="button" class="remove-photo"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="video">Upload Introduction Video (Optional)</label>
+                        <div class="video-upload-container">
+                            <input type="file" id="video" accept="video/*" class="video-input">
+                            <label for="video" class="video-upload-label">
+                                <i class="fas fa-video"></i>
+                                <span>Upload Video</span>
+                            </label>
+                            <div class="video-preview"></div>
+                            <button type="button" class="remove-video"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" data-prev="step-2">Back</button>
+                        <button type="button" class="next-button vanish" data-next="step-4">Next</button>
+                    </div>
+                </div>
+                
+                <div class="form-step" id="step-4">
+                    <div class="subscription-options">
+                        <h3>Choose Your Subscription Plan</h3>
+                        <p>Select the plan that fits your needs</p>
+                        
+                        <div class="subscription-cards">
+                            <div class="subscription-card">
+                                <input type="radio" name="subscription" id="subscription-free" value="free" checked>
+                                <label for="subscription-free">
+                                    <h4>Free</h4>
+                                    <div class="price">$0<span>/month</span></div>
+                                    <ul class="features">
+                                        <li><i class="fas fa-check"></i> Basic matching</li>
+                                        <li><i class="fas fa-check"></i> 3 photo uploads</li>
+                                        <li><i class="fas fa-check"></i> Limited messages</li>
+                                        <li><i class="fas fa-check"></i> 1 subcategory</li>
+                                        <li><i class="fas fa-times"></i> No video upload</li>
+                                    </ul>
+                                </label>
+                            </div>
+                            
+                            <div class="subscription-card">
+                                <input type="radio" name="subscription" id="subscription-classic" value="classic">
+                                <label for="subscription-classic">
+                                    <h4>Classic</h4>
+                                    <div class="price">$9.99<span>/month</span></div>
+                                    <ul class="features">
+                                        <li><i class="fas fa-check"></i> Advanced matching</li>
+                                        <li><i class="fas fa-check"></i> 10 photo uploads</li>
+                                        <li><i class="fas fa-check"></i> Unlimited messages</li>
+                                        <li><i class="fas fa-check"></i> 3 subcategories</li>
+                                        <li><i class="fas fa-check"></i> Video upload</li>
+                                    </ul>
+                                    <div class="popular-badge">Most Popular</div>
+                                </label>
+                            </div>
+                            
+                            <div class="subscription-card">
+                                <input type="radio" name="subscription" id="subscription-premium" value="premium">
+                                <label for="subscription-premium">
+                                    <h4>Premium</h4>
+                                    <div class="price">$19.99<span>/month</span></div>
+                                    <ul class="features">
+                                        <li><i class="fas fa-check"></i> Priority matching</li>
+                                        <li><i class="fas fa-check"></i> Unlimited photos</li>
+                                        <li><i class="fas fa-check"></i> Message read receipts</li>
+                                        <li><i class="fas fa-check"></i> All subcategories</li>
+                                        <li><i class="fas fa-check"></i> HD video upload</li>
+                                    </ul>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></label>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" data-prev="step-3">Back</button>
+                        <button type="submit" class="submit-button vanish">Complete Sign Up</button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="form-footer">
+                <p>Already have an account? <a href="login.html">Log in here</a></p>
+            </div>
+        </div>
+        
+        <div class="signup-graphics">
+            <div class="floating-orb" id="orb-1"></div>
+            <div class="floating-orb" id="orb-2"></div>
+            <div class="connection-line"></div>
+            <div class="success-message">
+                <h3>Welcome to Metadatez</h3>
+                <p>Your journey to meaningful connections starts here</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Subcategory data
+        const subcategories = {
+            dating: ["Casual Dating", "Serious Relationship", "Long Distance", "Same City", "New Experiences"],
+            marriage: ["Ready to Marry", "Engaged", "Divorced", "Widowed", "Traditional", "Modern"],
+            religious: ["Christian", "Muslim", "Jewish", "Hindu", "Buddhist", "Spiritual", "Atheist"],
+            polygamy: ["Polyamorous", "Open Relationship", "Swingers", "Polygyny", "Polyandry"],
+            friendship: ["Activity Partners", "Travel Buddies", "Supportive Friends", "Online Friends", "Local Friends"],
+            fantasy: ["Roleplay", "BDSM", "Fetish", "Cosplay", "Fantasy Worlds"],
+            international: ["Language Exchange", "Cultural Exchange", "Travel Romance", "Global Networking"],
+            business: ["Entrepreneurs", "Investors", "Professionals", "Mentors", "Startups"],
+            specialneeds: ["Physical Disabilities", "Mental Health", "Autism Spectrum", "Chronic Illness"],
+            penpal: ["Inmates", "Military", "International", "Seniors", "Students"]
+        };
+        
+        // Form navigation
+        document.querySelectorAll('.next-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const currentStep = this.closest('.form-step');
+                const nextStepId = this.getAttribute('data-next');
+                const nextStep = document.getElementById(nextStepId);
+                
+                // Validate current step before proceeding
+                if (currentStep.id === 'step-1') {
+                    if (!validateStep1()) return;
+                } else if (currentStep.id === 'step-2') {
+                    if (!validateStep2()) return;
+                } else if (currentStep.id === 'step-3') {
+                    if (!validateStep3()) return;
+                }
+                
+                currentStep.classList.remove('active');
+                nextStep.classList.add('active');
+                
+                // Update subcategories when category changes
+                if (currentStep.id === 'step-2' && nextStep.id === 'step-3') {
+                    updateSubcategories();
+                }
+                
+                // Scroll to top of form
+                document.querySelector('.signup-form-container').scrollTop = 0;
+            });
+        });
+        
+        document.querySelectorAll('.prev-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const currentStep = this.closest('.form-step');
+                const prevStepId = this.getAttribute('data-prev');
+                const prevStep = document.getElementById(prevStepId);
+                
+                currentStep.classList.remove('active');
+                prevStep.classList.add('active');
+                
+                // Scroll to top of form
+                document.querySelector('.signup-form-container').scrollTop = 0;
+            });
+        });
+        
+        // Category selection
+        document.querySelectorAll('input[name="category"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                updateSubcategories();
+            });
+        });
+        
+        function updateSubcategories() {
+            const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+            const subcategoryContainer = document.getElementById('subcategory-container');
+            
+            subcategoryContainer.innerHTML = '';
+            
+            subcategories[selectedCategory].forEach(subcat => {
+                const optionId = `subcat-${subcat.toLowerCase().replace(/\s+/g, '-')}`;
+                
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'subcategory-option';
+                
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.name = 'subcategories';
+                input.id = optionId;
+                input.value = subcat;
+                
+                const label = document.createElement('label');
+                label.htmlFor = optionId;
+                label.textContent = subcat;
+                
+                optionDiv.appendChild(input);
+                optionDiv.appendChild(label);
+                subcategoryContainer.appendChild(optionDiv);
+            });
+        }
+        
+        // Photo upload functionality
+        document.querySelectorAll('.photo-input').forEach(input => {
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const photoBox = e.target.closest('.photo-upload-box');
+                    const preview = photoBox.querySelector('.photo-preview');
+                    
+                    preview.style.backgroundImage = `url(${event.target.result})`;
+                    photoBox.classList.add('has-photo');
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+        
+        document.querySelectorAll('.remove-photo').forEach(button => {
+            button.addEventListener('click', function() {
+                const photoBox = this.closest('.photo-upload-box');
+                const preview = photoBox.querySelector('.photo-preview');
+                const input = photoBox.querySelector('.photo-input');
+                
+                preview.style.backgroundImage = '';
+                photoBox.classList.remove('has-photo');
+                input.value = '';
+            });
+        });
+        
+        // Video upload functionality
+        document.querySelector('.video-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const videoContainer = e.target.closest('.video-upload-container');
+                const preview = videoContainer.querySelector('.video-preview');
+                
+                const video = document.createElement('video');
+                video.src = event.target.result;
+                video.controls = true;
+                
+                preview.innerHTML = '';
+                preview.appendChild(video);
+                videoContainer.classList.add('has-video');
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        document.querySelector('.remove-video').addEventListener('click', function() {
+            const videoContainer = this.closest('.video-upload-container');
+            const preview = videoContainer.querySelector('.video-preview');
+            const input = videoContainer.querySelector('.video-input');
+            
+            preview.innerHTML = '';
+            videoContainer.classList.remove('has-video');
+            input.value = '';
+        });
+        
+        // Form validation functions
+        function validateStep1() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const gender = document.getElementById('gender').value;
+            
+            if (!name || !email || !password || !confirmPassword || !birthdate || !gender) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return false;
+            }
+            
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters');
+                return false;
+            }
+            
+            // Basic email validation
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+            
+            // Age verification (18+)
+            const birthDate = new Date(birthdate);
+            const ageDiff = Date.now() - birthDate.getTime();
+            const ageDate = new Date(ageDiff);
+            const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+            
+            if (age < 18) {
+                alert('You must be at least 18 years old to register');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function validateStep2() {
+            const selectedCategory = document.querySelector('input[name="category"]:checked');
+            if (!selectedCategory) {
+                alert('Please select a main category');
+                return false;
+            }
+            
+            const selectedSubcategories = document.querySelectorAll('input[name="subcategories"]:checked');
+            if (selectedSubcategories.length === 0) {
+                alert('Please select at least one subcategory');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function validateStep3() {
+            const photoInputs = document.querySelectorAll('.photo-input');
+            let photoCount = 0;
+            
+            photoInputs.forEach(input => {
+                if (input.files.length > 0) photoCount++;
+            });
+            
+            if (photoCount < 3) {
+                alert('Please upload at least 3 photos');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!document.getElementById('terms').checked) {
+                alert('You must agree to the Terms of Service and Privacy Policy');
+                return;
+            }
+            
+            // Gather form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value,
+                birthdate: document.getElementById('birthdate').value,
+                gender: document.getElementById('gender').value,
+                category: document.querySelector('input[name="category"]:checked').value,
+                subcategories: Array.from(document.querySelectorAll('input[name="subcategories"]:checked')).map(el => el.value),
+                subscription: document.querySelector('input[name="subscription"]:checked').value,
+                photos: [],
+                video: null
+            };
+            
+            // Process photos
+            const photoInputs = document.querySelectorAll('.photo-input');
+            photoInputs.forEach(input => {
+                if (input.files.length > 0) {
+                    // In a real app, you would upload to a server here
+                    // For demo, we'll just store the file names
+                    formData.photos.push(input.files[0].name);
+                }
+            });
+            
+            // Process video
+            const videoInput = document.querySelector('.video-input');
+            if (videoInput.files.length > 0) {
+                formData.video = videoInput.files[0].name;
+            }
+            
+            // Register user
+            const result = auth.signUp(formData);
+            if (result.success) {
+                // Show success message
+                document.querySelector('.signup-form-container').style.display = 'none';
+                document.querySelector('.success-message').style.display = 'block';
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = 'profile.html';
+                }, 3000);
+            } else {
+                alert(result.message);
+            }
+        });
+    </script>
+</body>
+</html>

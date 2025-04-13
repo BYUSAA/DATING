@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metadatez - Next-Gen Dating & Pen Pal Platform</title>
+    <title>Marriage | Metadatez</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reuse styles from index.html with additions for category page */
         :root {
             --primary: #6e48aa;
             --secondary: #9d50bb;
@@ -172,37 +173,37 @@
             margin-left: 15px;
         }
 
-        .hero {
+        .category-hero {
             position: relative;
-            height: 80vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1529636458391-75c8fd4e1e1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
             color: white;
             overflow: hidden;
         }
 
-        [data-theme="dark"] .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
+        [data-theme="dark"] .category-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1529636458391-75c8fd4e1e1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
         }
 
-        .hero-content {
+        .category-hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
             padding: 0 20px;
         }
 
-        .hero h1 {
+        .category-hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
             animation: fadeIn 1.5s ease;
         }
 
-        .hero p {
+        .category-hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             animation: fadeIn 2s ease;
@@ -211,18 +212,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            animation: fadeIn 2.5s ease;
-        }
-
-        .hero .btn {
-            padding: 12px 30px;
-            font-size: 1.1rem;
         }
 
         .floating-elements {
@@ -248,9 +237,31 @@
             100% { transform: translateY(0) rotate(360deg); }
         }
 
-        .categories {
-            padding: 80px 0;
+        .category-description {
+            padding: 60px 0;
             background-color: var(--light);
+        }
+
+        .category-description .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .category-description h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .category-description p {
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .profiles {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(110, 72, 170, 0.05), rgba(157, 80, 187, 0.05));
         }
 
         .section-title {
@@ -277,247 +288,121 @@
             background: linear-gradient(to right, var(--primary), var(--secondary));
         }
 
-        .categories-grid {
+        .profiles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .category-card {
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+        .profile-card {
+            background-color: var(--light);
             border-radius: 15px;
             overflow: hidden;
-            transition: var(--transition);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
             position: relative;
-            border: 1px solid rgba(110, 72, 170, 0.2);
         }
 
-        .category-card:hover {
+        .profile-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), var(--futuristic-glow);
         }
 
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.3), rgba(157, 80, 187, 0.3));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .category-card:hover::before {
-            opacity: 1;
-        }
-
-        .category-icon {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            padding-top: 20px;
-        }
-
-        .category-content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .category-content h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .category-content p {
-            color: var(--dark);
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .category-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
+        .profile-image {
+            height: 300px;
             position: relative;
             overflow: hidden;
         }
 
-        .category-btn:hover {
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .profile-card:hover .profile-image img {
+            transform: scale(1.05);
+        }
+
+        .profile-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .profile-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-info h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .profile-info p {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .profile-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.8rem;
+        }
+
+        .profile-btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .profile-btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
         }
 
-        .category-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .category-btn:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
-        }
-
-        .features {
-            padding: 80px 0;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.05), rgba(157, 80, 187, 0.05));
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: var(--light);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border: 1px solid rgba(110, 72, 170, 0.1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), var(--futuristic-glow);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
+        .profile-btn-outline {
+            background-color: transparent;
             color: var(--primary);
-            margin-bottom: 20px;
+            border: 1px solid var(--primary);
         }
 
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
+        .profile-btn-outline:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+            transform: translateY(-3px);
         }
 
-        .feature-card p {
-            color: var(--dark);
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .testimonials {
+        .category-cta {
             padding: 80px 0;
-            background-color: var(--light);
-        }
-
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .testimonial {
-            background-color: var(--light);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 20px;
             text-align: center;
-            border: 1px solid rgba(110, 72, 170, 0.1);
-        }
-
-        .testimonial-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            border: 3px solid var(--primary);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .testimonial-role {
-            color: var(--dark);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        .slick-dots {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .slick-dots li {
-            margin: 0 5px;
-        }
-
-        .slick-dots button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.3);
-            border: none;
-            font-size: 0;
-            padding: 0;
-            transition: var(--transition);
-        }
-
-        .slick-dots .slick-active button {
-            background-color: var(--primary);
-            transform: scale(1.2);
-        }
-
-        .cta {
-            padding: 100px 0;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            text-align: center;
         }
 
-        .cta h2 {
+        .category-cta h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .cta p {
+        .category-cta p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             max-width: 700px;
@@ -852,106 +737,9 @@
             color: white;
         }
 
-        /* Subscription Plans */
-        .plans {
-            padding: 80px 0;
-            background-color: var(--light);
-        }
-
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .plan-card {
-            background-color: var(--light);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border: 1px solid rgba(110, 72, 170, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .plan-card.popular {
-            border: 2px solid var(--primary);
-            transform: translateY(-10px);
-        }
-
-        .plan-card.popular::before {
-            content: 'Most Popular';
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background-color: var(--primary);
-            color: white;
-            padding: 5px 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transform: rotate(45deg);
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), var(--futuristic-glow);
-        }
-
-        .plan-name {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .plan-price {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-
-        .plan-price span {
-            font-size: 1rem;
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        .plan-features {
-            margin-bottom: 30px;
-        }
-
-        .plan-features li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--dark);
-        }
-
-        .plan-features i {
-            color: var(--success);
-        }
-
-        .plan-btn {
-            display: block;
-            text-align: center;
-            padding: 12px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .plan-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
-        }
-
         /* Responsive */
         @media (max-width: 992px) {
-            .hero h1 {
+            .category-hero h1 {
                 font-size: 2.8rem;
             }
         }
@@ -967,24 +755,19 @@
                 justify-content: center;
             }
 
-            .hero h1 {
+            .category-hero h1 {
                 font-size: 2.2rem;
             }
 
-            .hero p {
+            .category-hero p {
                 font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 10px;
             }
 
             .section-title h2 {
                 font-size: 2rem;
             }
 
-            .cta h2 {
+            .category-cta h2 {
                 font-size: 2rem;
             }
 
@@ -995,11 +778,11 @@
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
+            .category-hero h1 {
                 font-size: 1.8rem;
             }
 
-            .categories-grid {
+            .profiles-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1037,293 +820,143 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Category Hero Section -->
+    <section class="category-hero">
         <div class="floating-elements">
             <div class="floating-element" style="width: 50px; height: 50px; top: 20%; left: 10%;"></div>
             <div class="floating-element" style="width: 30px; height: 30px; top: 60%; left: 80%;"></div>
             <div class="floating-element" style="width: 40px; height: 40px; top: 80%; left: 20%;"></div>
             <div class="floating-element" style="width: 60px; height: 60px; top: 30%; left: 70%;"></div>
         </div>
-        <div class="hero-content">
-            <h1>Find Your Perfect Match Beyond Boundaries</h1>
-            <p>Metadatez connects you with like-minded individuals across various categories including dating, marriage, friendship, and more. Our AI-powered platform ensures meaningful connections.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" id="hero-signup-btn"><i class="fas fa-rocket"></i> Get Started</button>
-                <button class="btn btn-outline"><i class="fas fa-play"></i> Watch Demo</button>
-            </div>
+        <div class="category-hero-content">
+            <h1>Marriage</h1>
+            <p>Find your life partner and build a lasting relationship through our marriage-focused matching system.</p>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
+    <!-- Category Description -->
+    <section class="category-description">
+        <div class="container">
+            <h2>Serious Relationships for Marriage</h2>
+            <p>Our marriage category is designed for individuals who are ready to commit to a lifelong partnership. Whether you're looking for traditional marriage, companionship, or a life partner, our platform connects you with like-minded individuals who share your values and goals for the future.</p>
+            <p>With advanced matching algorithms and verification processes, we ensure that you meet genuine people who are equally serious about finding a life partner.</p>
+        </div>
+    </section>
+
+    <!-- Profiles Section -->
+    <section class="profiles">
         <div class="container">
             <div class="section-title">
-                <h2>Explore Our Categories</h2>
+                <h2>Featured Profiles</h2>
             </div>
-            <div class="categories-grid">
-                <!-- Dating -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-heart"></i>
+            <div class="profiles-grid">
+                <!-- Profile 1 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Profile">
+                        <div class="profile-badge">Verified</div>
                     </div>
-                    <div class="category-content">
-                        <h3>Dating</h3>
-                        <p>Find romantic connections with people who share your interests and values.</p>
-                        <a href="dating.html" class="category-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Marriage -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-ring"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Marriage</h3>
-                        <p>Connect with individuals looking for serious, long-term commitments.</p>
-                        <a href="marriage.html" class="category-btn">Explore</a>
+                    <div class="profile-info">
+                        <h3>Sarah Johnson</h3>
+                        <p>32 • New York, USA</p>
+                        <div class="profile-actions">
+                            <button class="profile-btn profile-btn-primary">View Profile</button>
+                            <button class="profile-btn profile-btn-outline">Message</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Religious -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-pray"></i>
+                <!-- Profile 2 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                        <div class="profile-badge">Verified</div>
                     </div>
-                    <div class="category-content">
-                        <h3>Religious</h3>
-                        <p>Meet partners who share your faith and spiritual values.</p>
-                        <a href="religious.html" class="category-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Polygamy -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Polygamy</h3>
-                        <p>Explore consensual non-monogamous relationships with like-minded people.</p>
-                        <a href="polygamy.html" class="category-btn">Explore</a>
+                    <div class="profile-info">
+                        <h3>Michael Chen</h3>
+                        <p>35 • Toronto, Canada</p>
+                        <div class="profile-actions">
+                            <button class="profile-btn profile-btn-primary">View Profile</button>
+                            <button class="profile-btn profile-btn-outline">Message</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Friendship -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-handshake"></i>
+                <!-- Profile 3 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile">
+                        <div class="profile-badge">Verified</div>
                     </div>
-                    <div class="category-content">
-                        <h3>Friendship</h3>
-                        <p>Build meaningful platonic connections without romantic expectations.</p>
-                        <a href="friendship.html" class="category-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Fantasy -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Fantasy</h3>
-                        <p>Explore unique and imaginative relationship dynamics.</p>
-                        <a href="fantasy.html" class="category-btn">Explore</a>
+                    <div class="profile-info">
+                        <h3>Emily Rodriguez</h3>
+                        <p>29 • London, UK</p>
+                        <div class="profile-actions">
+                            <button class="profile-btn profile-btn-primary">View Profile</button>
+                            <button class="profile-btn profile-btn-outline">Message</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- International -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-globe"></i>
+                <!-- Profile 4 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profile">
+                        <div class="profile-badge">Verified</div>
                     </div>
-                    <div class="category-content">
-                        <h3>International</h3>
-                        <p>Connect with people from different countries and cultures.</p>
-                        <a href="international.html" class="category-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Business Elites -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>Business Elites</h3>
-                        <p>Network with professionals and like-minded entrepreneurs.</p>
-                        <a href="business.html" class="category-btn">Explore</a>
+                    <div class="profile-info">
+                        <h3>David Wilson</h3>
+                        <p>40 • Sydney, Australia</p>
+                        <div class="profile-actions">
+                            <button class="profile-btn profile-btn-primary">View Profile</button>
+                            <button class="profile-btn profile-btn-outline">Message</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Special Needs -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-wheelchair"></i>
+                <!-- Profile 5 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Profile">
+                        <div class="profile-badge">Verified</div>
                     </div>
-                    <div class="category-content">
-                        <h3>Special Needs</h3>
-                        <p>Find understanding partners who appreciate your unique circumstances.</p>
-                        <a href="specialneeds.html" class="category-btn">Explore</a>
+                    <div class="profile-info">
+                        <h3>Jessica Lee</h3>
+                        <p>31 • Singapore</p>
+                        <div class="profile-actions">
+                            <button class="profile-btn profile-btn-primary">View Profile</button>
+                            <button class="profile-btn profile-btn-outline">Message</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Pen Pal -->
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-envelope"></i>
+                <!-- Profile 6 -->
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <img src="https://randomuser.me/api/portraits/men/88.jpg" alt="Profile">
+                        <div class="profile-badge">Verified</div>
                     </div>
-                    <div class="category-content">
-                        <h3>Pen Pal</h3>
-                        <p>Connect with inmates for meaningful correspondence and friendship.</p>
-                        <a href="penpal.html" class="category-btn">Explore</a>
+                    <div class="profile-info">
+                        <h3>Robert Taylor</h3>
+                        <p>37 • Berlin, Germany</p>
+                        <div class="profile-actions">
+                            <button class="profile-btn profile-btn-primary">View Profile</button>
+                            <button class="profile-btn profile-btn-outline">Message</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Category CTA -->
+    <section class="category-cta">
         <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Metadatez</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI-Powered Matching</h3>
-                    <p>Our advanced algorithm analyzes your preferences to suggest the most compatible matches across all categories.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Verified Profiles</h3>
-                    <p>We verify all profiles to ensure authenticity and create a safe environment for our users.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile-First Design</h3>
-                    <p>Access Metadatez seamlessly on any device with our responsive, mobile-optimized platform.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Flexible Credit System</h3>
-                    <p>Pay only for the interactions you want with our transparent credit-based system.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3>Photo Sharing API</h3>
-                    <p>Send pictures directly to inmates through our integrated printing and mailing service.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>24/7 Support</h3>
-                    <p>Our dedicated support team is always available to assist you with any questions or concerns.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Success Stories</h2>
-            </div>
-            <div class="testimonial-slider">
-                <div class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="testimonial-avatar">
-                    <p class="testimonial-text">"Metadatez helped me find my soulmate when I had almost given up hope. The religious category connected me with someone who shares my values and faith."</p>
-                    <p class="testimonial-author">Sarah J.</p>
-                    <p class="testimonial-role">Found love in Religious category</p>
-                </div>
-                <div class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="testimonial-avatar">
-                    <p class="testimonial-text">"As a business professional, I never had time to meet people. The Business Elites category introduced me to amazing people who understand my lifestyle."</p>
-                    <p class="testimonial-author">Michael T.</p>
-                    <p class="testimonial-role">Connected in Business Elites</p>
-                </div>
-                <div class="testimonial">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="testimonial-avatar">
-                    <p class="testimonial-text">"The Pen Pal feature allowed me to make a real difference in someone's life. I've developed a meaningful friendship with my inmate pen pal."</p>
-                    <p class="testimonial-author">Emily R.</p>
-                    <p class="testimonial-role">Active in Pen Pal category</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Subscription Plans -->
-    <section class="plans">
-        <div class="container">
-            <div class="section-title">
-                <h2>Choose Your Plan</h2>
-            </div>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <h3 class="plan-name">Free</h3>
-                    <div class="plan-price">$0 <span>/month</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Basic profile</li>
-                        <li><i class="fas fa-check"></i> 3 matches per day</li>
-                        <li><i class="fas fa-check"></i> Limited messaging</li>
-                        <li><i class="fas fa-check"></i> 2 photo uploads</li>
-                        <li><i class="fas fa-times"></i> No video uploads</li>
-                    </ul>
-                    <a href="#" class="plan-btn">Get Started</a>
-                </div>
-                <div class="plan-card popular">
-                    <h3 class="plan-name">Premium</h3>
-                    <div class="plan-price">$19.99 <span>/month</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> All Free features</li>
-                        <li><i class="fas fa-check"></i> Unlimited matches</li>
-                        <li><i class="fas fa-check"></i> Unlimited messaging</li>
-                        <li><i class="fas fa-check"></i> 10 photo uploads</li>
-                        <li><i class="fas fa-check"></i> 1 video upload</li>
-                        <li><i class="fas fa-check"></i> Priority customer support</li>
-                    </ul>
-                    <a href="#" class="plan-btn">Upgrade Now</a>
-                </div>
-                <div class="plan-card">
-                    <h3 class="plan-name">VIP</h3>
-                    <div class="plan-price">$49.99 <span>/month</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> All Premium features</li>
-                        <li><i class="fas fa-check"></i> Profile highlighting</li>
-                        <li><i class="fas fa-check"></i> Unlimited photo uploads</li>
-                        <li><i class="fas fa-check"></i> 5 video uploads</li>
-                        <li><i class="fas fa-check"></i> Exclusive matching events</li>
-                        <li><i class="fas fa-check"></i> 24/7 VIP support</li>
-                    </ul>
-                    <a href="#" class="plan-btn">Go VIP</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Find Your Perfect Match?</h2>
-            <p>Join thousands of happy users who have found meaningful connections through Metadatez. Sign up today and start your journey!</p>
+            <h2>Ready to Find Your Life Partner?</h2>
+            <p>Join thousands of singles who are serious about marriage and start your journey to finding the perfect match today.</p>
             <div class="cta-buttons">
-                <button class="btn btn-white" id="cta-signup-btn"><i class="fas fa-rocket"></i> Sign Up Now</button>
-                <button class="btn btn-transparent"><i class="fas fa-question-circle"></i> Learn More</button>
+                <button class="btn btn-white" id="category-signup-btn"><i class="fas fa-user-plus"></i> Sign Up Now</button>
+                <button class="btn btn-transparent"><i class="fas fa-question-circle"></i> How It Works</button>
             </div>
         </div>
     </section>
@@ -1427,7 +1060,7 @@
                     <select id="signup-category" class="form-control" required>
                         <option value="">Select a category</option>
                         <option value="dating">Dating</option>
-                        <option value="marriage">Marriage</option>
+                        <option value="marriage" selected>Marriage</option>
                         <option value="religious">Religious</option>
                         <option value="polygamy">Polygamy</option>
                         <option value="friendship">Friendship</option>
@@ -1469,7 +1102,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
         // Theme Toggle
         const themeToggle = document.getElementById('theme-toggle');
@@ -1503,8 +1135,7 @@
         // Modal Handling
         const loginBtn = document.getElementById('login-btn');
         const signupBtn = document.getElementById('signup-btn');
-        const heroSignupBtn = document.getElementById('hero-signup-btn');
-        const ctaSignupBtn = document.getElementById('cta-signup-btn');
+        const categorySignupBtn = document.getElementById('category-signup-btn');
         const loginModal = document.getElementById('login-modal');
         const signupModal = document.getElementById('signup-modal');
         const closeModals = document.querySelectorAll('.close-modal');
@@ -1523,8 +1154,7 @@
         
         loginBtn.addEventListener('click', () => openModal(loginModal));
         signupBtn.addEventListener('click', () => openModal(signupModal));
-        heroSignupBtn.addEventListener('click', () => openModal(signupModal));
-        ctaSignupBtn.addEventListener('click', () => openModal(signupModal));
+        categorySignupBtn.addEventListener('click', () => openModal(signupModal));
         
         closeModals.forEach(btn => {
             btn.addEventListener('click', function() {
@@ -1646,42 +1276,41 @@
             // In a real implementation, this would redirect to the profile page
         });
         
-        // Testimonial Slider
-        $(document).ready(function(){
-            $('.testimonial-slider').slick({
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                adaptiveHeight: true,
-                autoplay: true,
-                autoplaySpeed: 5000,
+        // Profile buttons
+        document.querySelectorAll('.profile-btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                // Check if user is logged in
+                const isLoggedIn = false; // This would be set based on actual login status
+                
+                if (!isLoggedIn) {
+                    openModal(loginModal);
+                } else {
+                    // Redirect to profile page
+                    window.location.href = 'profile.html';
+                }
             });
         });
         
-        // Button Ripple Effect
-        document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
+        document.querySelectorAll('.profile-btn-outline').forEach(button => {
+            button.addEventListener('click', function() {
+                // Check if user is logged in
+                const isLoggedIn = false; // This would be set based on actual login status
                 
-                const x = e.clientX - e.target.getBoundingClientRect().left;
-                const y = e.clientY - e.target.getBoundingClientRect().top;
-                
-                const ripple = document.createElement('span');
-                ripple.className = 'ripple';
-                ripple.style.left = `${x}px`;
-                ripple.style.top = `${y}px`;
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 1000);
-                
-                // Redirect after ripple animation
-                setTimeout(() => {
-                    window.location.href = this.getAttribute('href');
-                }, 300);
+                if (!isLoggedIn) {
+                    openModal(loginModal);
+                } else {
+                    // Check subscription level
+                    const subscriptionLevel = 'free'; // This would come from backend
+                    
+                    if (subscriptionLevel === 'free') {
+                        alert('Free accounts can only message 3 users. Upgrade to Premium for unlimited messaging.');
+                        // Redirect to subscription page
+                        window.location.href = 'index.html#plans';
+                    } else {
+                        // Open messaging interface
+                        alert('Messaging interface would open here.');
+                    }
+                }
             });
         });
     </script>

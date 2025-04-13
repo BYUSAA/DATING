@@ -3,464 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | MetaDatez</title>
+    <title>My Profile | Metadatez</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="holographic-bg"></div>
-    <div class="binary-rain"></div>
-    
+    <div class="cyber-loader" id="loader">
+        <div class="cyber-circle"></div>
+        <div class="cyber-circle"></div>
+        <div class="cyber-circle"></div>
+    </div>
+
     <header class="cyber-header">
-        <div class="logo" data-text="MetaDatez">MetaDatez</div>
-        <nav>
+        <div class="logo-container">
+            <img src="assets/images/logo.png" alt="Metadatez Logo" class="logo">
+            <h1 class="logo-text">METADATEZ</h1>
+        </div>
+        <nav class="cyber-nav">
             <ul>
-                <li><a href="index.html" class="nav-link" data-hover="Home">Home</a></li>
-                <li><a href="categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
-                <li><a href="#" class="nav-link" data-hover="Messages"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="#" class="nav-link" data-hover="Notifications"><i class="fas fa-bell"></i></a></li>
-                <li><a href="profile.html" class="nav-link active" data-hover="Profile"><i class="fas fa-user"></i></a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="categories/dating.html" class="nav-link">Categories</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
+        <div class="auth-buttons">
+            <a href="#" id="profileBtn" class="cyber-button"><i class="fas fa-user"></i> Profile</a>
+            <a href="#" id="logoutBtn" class="cyber-button secondary">Logout</a>
+        </div>
+        <div class="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </div>
     </header>
 
-    <main class="cyber-main profile-main">
-        <section class="profile-hero">
-            <div class="profile-cover" style="background: linear-gradient(rgba(5, 10, 14, 0.5), rgba(5, 10, 14, 0.8)), url('./assets/images/profile-cover.jpg') center/cover no-repeat;">
-                <div class="profile-actions">
-                    <button class="cyber-button-outline"><i class="fas fa-cog"></i> Settings</button>
-                    <button class="cyber-button"><i class="fas fa-bolt"></i> Boost Profile</button>
-                </div>
-            </div>
-            
-            <div class="profile-header">
-                <div class="profile-avatar">
-                    <div class="avatar-image pulse" style="background: url('./assets/images/avatar.jpg') center/cover no-repeat;"></div>
-                    <div class="online-status online"></div>
-                    <div class="verification-badge"><i class="fas fa-check"></i></div>
-                </div>
-                
-                <div class="profile-info">
-                    <h1 class="profile-name">Quantum<span class="cyberpunk">Explorer</span></h1>
-                    <p class="profile-title">Holographic Dating Enthusiast</p>
+    <main class="profile-main">
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img src="assets/images/default-avatar.jpg" alt="Profile Avatar" id="profileAvatar">
+                        <div class="profile-status online"></div>
+                    </div>
+                    <h2 id="profileName">Loading...</h2>
+                    <p class="profile-subtitle" id="profileEmail">user@example.com</p>
                     
                     <div class="profile-stats">
-                        <div class="stat">
-                            <div class="stat-value">247</div>
-                            <div class="stat-label">Connections</div>
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>128</span>
+                            <p>Likes</p>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">89%</div>
-                            <div class="stat-label">Match Rate</div>
+                        <div class="stat-item">
+                            <i class="fas fa-comments"></i>
+                            <span>64</span>
+                            <p>Messages</p>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">4.9</div>
-                            <div class="stat-label">Rating</div>
+                        <div class="stat-item">
+                            <i class="fas fa-eye"></i>
+                            <span>1.2K</span>
+                            <p>Views</p>
                         </div>
                     </div>
+                    
+                    <div class="profile-info">
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="profileLocation">Unknown</span></p>
+                        <p><i class="fas fa-user-tag"></i> <span id="profileCategory">Not specified</span></p>
+                        <p><i class="fas fa-tags"></i> <span id="profileSubcategory">Not specified</span></p>
+                    </div>
+                    
+                    <a href="subscription.html" class="cyber-button primary full-width">Upgrade Plan</a>
                 </div>
                 
-                <div class="profile-quick-actions">
-                    <button class="quick-action" title="Edit Profile"><i class="fas fa-pencil-alt"></i></button>
-                    <button class="quick-action" title="Share Profile"><i class="fas fa-share-alt"></i></button>
-                    <button class="quick-action" title="View Activity"><i class="fas fa-chart-line"></i></button>
+                <div class="profile-quick-links">
+                    <a href="#" class="quick-link active"><i class="fas fa-user-circle"></i> Profile</a>
+                    <a href="#" class="quick-link"><i class="fas fa-heart"></i> Matches</a>
+                    <a href="#" class="quick-link"><i class="fas fa-comments"></i> Messages</a>
+                    <a href="#" class="quick-link"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="quick-link"><i class="fas fa-gem"></i> Premium Features</a>
                 </div>
-            </div>
-        </section>
-
-        <section class="profile-content">
-            <div class="profile-nav">
-                <ul>
-                    <li class="active"><a href="#about">About</a></li>
-                    <li><a href="#media">Holo-Media</a></li>
-                    <li><a href="#interests">Quantum Interests</a></li>
-                    <li><a href="#matches">Matches</a></li>
-                    <li><a href="#messages">Messages</a></li>
-                </ul>
             </div>
             
-            <div class="profile-sections">
-                <section id="about" class="profile-section active">
-                    <h2 class="section-title neon-underline">HOLOGRAPHIC IDENTITY MATRIX</h2>
-                    
-                    <div class="about-grid">
-                        <div class="about-card">
-                            <h3><i class="fas fa-user-astronaut"></i> Basic Info</h3>
-                            <ul class="info-list">
-                                <li><strong>Quantum Age:</strong> 28</li>
-                                <li><strong>Gender:</strong> Non-binary</li>
-                                <li><strong>Location:</strong> Digital Dimension</li>
-                                <li><strong>Joined:</strong> 12.21.2022</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="about-card">
-                            <h3><i class="fas fa-brain"></i> Personality</h3>
-                            <div class="personality-traits">
-                                <div class="trait">
-                                    <div class="trait-name">Adventurous</div>
-                                    <div class="trait-bar" style="width: 90%"></div>
-                                </div>
-                                <div class="trait">
-                                    <div class="trait-name">Empathetic</div>
-                                    <div class="trait-bar" style="width: 85%"></div>
-                                </div>
-                                <div class="trait">
-                                    <div class="trait-name">Creative</div>
-                                    <div class="trait-bar" style="width: 95%"></div>
-                                </div>
-                                <div class="trait">
-                                    <div class="trait-name">Analytical</div>
-                                    <div class="trait-bar" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="about-card bio-card">
-                            <h3><i class="fas fa-stars"></i> Bio</h3>
-                            <p>Digital explorer navigating the quantum dating universe. Passionate about holographic experiences, neural connections, and pushing the boundaries of virtual relationships. When I'm not surfing the cyber waves, I'm probably exploring new dimensions or coding the next reality-bending app.</p>
-                            <p>Looking for someone to share interdimensional adventures with, whether that's exploring virtual worlds, debating the nature of digital consciousness, or just enjoying the simple pleasures of a well-rendered sunset.</p>
-                        </div>
+            <div class="profile-content">
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h3>Profile Information</h3>
+                        <button class="cyber-button small edit-btn">Edit Profile</button>
                     </div>
-                </section>
-                
-                <section id="media" class="profile-section">
-                    <h2 class="section-title neon-underline">HOLO-MEDIA GALLERY</h2>
                     
-                    <div class="media-grid">
-                        <div class="media-card main-media" style="background: url('./assets/images/profile-media1.jpg') center/cover no-repeat;">
-                            <div class="media-overlay">
-                                <button class="media-action"><i class="fas fa-expand"></i></button>
-                            </div>
-                        </div>
-                        <div class="media-card" style="background: url('./assets/images/profile-media2.jpg') center/cover no-repeat;">
-                            <div class="media-overlay">
-                                <button class="media-action"><i class="fas fa-expand"></i></button>
-                            </div>
-                        </div>
-                        <div class="media-card" style="background: url('./assets/images/profile-media3.jpg') center/cover no-repeat;">
-                            <div class="media-overlay">
-                                <button class="media-action"><i class="fas fa-expand"></i></button>
-                            </div>
-                        </div>
-                        <div class="media-card video-card" style="background: url('./assets/images/profile-media4.jpg') center/cover no-repeat;">
-                            <div class="media-overlay">
-                                <button class="media-action"><i class="fas fa-play"></i></button>
-                            </div>
-                        </div>
-                        <div class="media-card add-media">
-                            <i class="fas fa-plus"></i>
-                            <span>Add Media</span>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="interests" class="profile-section">
-                    <h2 class="section-title neon-underline">QUANTUM INTERESTS</h2>
-                    
-                    <div class="interests-grid">
-                        <div class="interest-category">
-                            <h3><i class="fas fa-gamepad"></i> Activities</h3>
-                            <div class="interest-tags">
-                                <span class="interest-tag">VR Gaming</span>
-                                <span class="interest-tag">Holographic Art</span>
-                                <span class="interest-tag">Neural Programming</span>
-                                <span class="interest-tag">Quantum Physics</span>
-                                <span class="interest-tag">Digital Exploration</span>
-                            </div>
+                    <form id="profileForm" class="cyber-form">
+                        <div class="cyber-form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" name="bio" rows="4" placeholder="Tell others about yourself..."></textarea>
                         </div>
                         
-                        <div class="interest-category">
-                            <h3><i class="fas fa-heart"></i> Relationship</h3>
-                            <div class="interest-tags">
-                                <span class="interest-tag">Long-term</span>
-                                <span class="interest-tag">Open to Short-term</span>
-                                <span class="interest-tag">Virtual First</span>
-                                <span class="interest-tag">Emotional Connection</span>
-                            </div>
+                        <div class="cyber-form-group">
+                            <label for="lookingFor">Looking For</label>
+                            <input type="text" id="lookingFor" name="lookingFor" placeholder="What are you looking for?">
                         </div>
                         
-                        <div class="interest-category">
-                            <h3><i class="fas fa-globe-americas"></i> Lifestyle</h3>
-                            <div class="interest-tags">
-                                <span class="interest-tag">Tech Enthusiast</span>
-                                <span class="interest-tag">Digital Nomad</span>
-                                <span class="interest-tag">Night Owl</span>
-                                <span class="interest-tag">Flexible Schedule</span>
-                            </div>
-                        </div>
-                        
-                        <div class="compatibility-chart">
-                            <h3><i class="fas fa-project-diagram"></i> Compatibility Matrix</h3>
-                            <div class="chart-container">
-                                <canvas id="compatibilityChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section id="matches" class="profile-section">
-                    <h2 class="section-title neon-underline">QUANTUM MATCHES</h2>
-                    
-                    <div class="matches-filters">
-                        <div class="filter-group">
-                            <label for="match-sort">Sort by:</label>
-                            <select id="match-sort" class="cyber-select">
-                                <option value="compatibility">Compatibility</option>
-                                <option value="recent">Most Recent</option>
-                                <option value="distance">Nearest</option>
+                        <div class="cyber-form-group">
+                            <label for="category">Main Category</label>
+                            <select id="category" name="category">
+                                <option value="" disabled selected>Select your category</option>
+                                <option value="dating">Dating</option>
+                                <option value="marriage">Marriage</option>
+                                <option value="religious">Religious</option>
+                                <option value="polygamy">Polygamy</option>
+                                <option value="friendship">Friendship</option>
+                                <option value="fantasy">Fantasy</option>
+                                <option value="international">International</option>
+                                <option value="business">Business Elites</option>
+                                <option value="specialneeds">Special Needs</option>
+                                <option value="penpal">Pen Pal</option>
                             </select>
                         </div>
                         
-                        <div class="filter-group">
-                            <label for="match-filter">Filter by:</label>
-                            <select id="match-filter" class="cyber-select">
-                                <option value="all">All Matches</option>
-                                <option value="unread">Unread</option>
-                                <option value="favorites">Favorites</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="matches-grid">
-                        <!-- Matches will be loaded via JavaScript -->
-                    </div>
-                    
-                    <button class="cyber-button vanishing-btn load-more">LOAD MORE MATCHES</button>
-                </section>
-                
-                <section id="messages" class="profile-section">
-                    <h2 class="section-title neon-underline">HOLO-MESSAGES</h2>
-                    
-                    <div class="messages-container">
-                        <div class="conversations-list">
-                            <div class="conversation active">
-                                <div class="conversation-avatar" style="background: url('./assets/images/avatar1.jpg') center/cover no-repeat;"></div>
-                                <div class="conversation-info">
-                                    <div class="conversation-header">
-                                        <h4>NeuralNova</h4>
-                                        <span class="time">2h ago</span>
-                                    </div>
-                                    <p class="preview">Hey! I was thinking about our conversation about quantum entanglement...</p>
-                                </div>
-                            </div>
-                            
-                            <div class="conversation">
-                                <div class="conversation-avatar" style="background: url('./assets/images/avatar2.jpg') center/cover no-repeat;"></div>
-                                <div class="conversation-info">
-                                    <div class="conversation-header">
-                                        <h4>CyberSage</h4>
-                                        <span class="time">5h ago</span>
-                                    </div>
-                                    <p class="preview">Are you still up for that VR museum tour this weekend?</p>
-                                </div>
-                            </div>
-                            
-                            <div class="conversation">
-                                <div class="conversation-avatar" style="background: url('./assets/images/avatar3.jpg') center/cover no-repeat;"></div>
-                                <div class="conversation-info">
-                                    <div class="conversation-header">
-                                        <h4>HoloHacker</h4>
-                                        <span class="time">1d ago</span>
-                                    </div>
-                                    <p class="preview">Check out this new holographic environment I coded!</p>
-                                </div>
-                            </div>
+                        <div class="cyber-form-group">
+                            <label for="subcategory">Subcategory</label>
+                            <input type="text" id="subcategory" name="subcategory" placeholder="More specific interests">
                         </div>
                         
-                        <div class="message-thread">
-                            <div class="message-header">
-                                <div class="recipient-info">
-                                    <div class="recipient-avatar" style="background: url('./assets/images/avatar1.jpg') center/cover no-repeat;"></div>
-                                    <h3>NeuralNova</h3>
-                                    <div class="online-status online"></div>
-                                </div>
-                                <div class="message-actions">
-                                    <button class="message-action"><i class="fas fa-phone"></i></button>
-                                    <button class="message-action"><i class="fas fa-video"></i></button>
-                                    <button class="message-action"><i class="fas fa-ellipsis-h"></i></button>
-                                </div>
-                            </div>
-                            
-                            <div class="messages">
-                                <div class="message received">
-                                    <div class="message-content">
-                                        <p>Hey! I was thinking about our conversation about quantum entanglement and how it relates to relationships. It's fascinating how we can feel connected across digital dimensions.</p>
-                                        <span class="message-time">2:14 PM</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="message sent">
-                                    <div class="message-content">
-                                        <p>Absolutely! The non-locality principle suggests that two entangled particles remain connected even when separated by vast distances. Maybe human connections work similarly on some level.</p>
-                                        <span class="message-time">2:17 PM</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="message received">
-                                    <div class="message-content">
-                                        <p>That's a beautiful thought. Would you like to explore this idea more in a shared VR environment this evening? I know a great quantum physics simulation we could visit.</p>
-                                        <span class="message-time">2:19 PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="message-composer">
-                                <div class="composer-tools">
-                                    <button class="composer-tool"><i class="fas fa-paperclip"></i></button>
-                                    <button class="composer-tool"><i class="fas fa-microphone"></i></button>
-                                    <button class="composer-tool"><i class="fas fa-magic"></i></button>
-                                </div>
-                                <input type="text" placeholder="Compose holo-message..." class="cyber-input">
-                                <button class="send-button"><i class="fas fa-paper-plane"></i></button>
-                            </div>
+                        <button type="submit" class="cyber-button primary">Save Changes</button>
+                    </form>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h3>Photos</h3>
+                        <div class="upload-btn-wrapper">
+                            <button class="cyber-button small">Upload Photo</button>
+                            <input type="file" id="photoUpload" accept="image/*" multiple>
                         </div>
                     </div>
-                </section>
-            </div>
-        </section>
-    </main>
-
-    <footer class="cyber-footer">
-        <div class="footer-grid">
-            <div class="footer-logo">MetaDatez</div>
-            <div class="footer-links">
-                <a href="terms.html" class="footer-link">Terms</a>
-                <a href="privacy.html" class="footer-link">Privacy</a>
-                <a href="safety.html" class="footer-link">Safety</a>
-                <a href="contact.html" class="footer-link">Contact</a>
-            </div>
-            <div class="social-holograms">
-                <div class="social-icon pulse"></div>
-                <div class="social-icon pulse"></div>
-                <div class="social-icon pulse"></div>
+                    
+                    <div id="profilePhotos" class="profile-media-grid">
+                        <!-- Photos will be loaded here by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h3>Videos</h3>
+                        <div class="upload-btn-wrapper">
+                            <button class="cyber-button small">Upload Video</button>
+                            <input type="file" id="videoUpload" accept="video/*">
+                        </div>
+                    </div>
+                    
+                    <div id="profileVideos" class="profile-media-grid">
+                        <!-- Videos will be loaded here by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h3>Account Settings</h3>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <div class="setting-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Privacy Settings</h4>
+                            <p>Control who can see your profile and contact you</p>
+                            <a href="#" class="cyber-link">Configure</a>
+                        </div>
+                        
+                        <div class="setting-card">
+                            <i class="fas fa-bell"></i>
+                            <h4>Notification Preferences</h4>
+                            <p>Choose how you receive notifications</p>
+                            <a href="#" class="cyber-link">Configure</a>
+                        </div>
+                        
+                        <div class="setting-card">
+                            <i class="fas fa-credit-card"></i>
+                            <h4>Subscription</h4>
+                            <p>Upgrade or manage your subscription plan</p>
+                            <a href="subscription.html" class="cyber-link">View Plans</a>
+                        </div>
+                        
+                        <div class="setting-card">
+                            <i class="fas fa-user-secret"></i>
+                            <h4>Security</h4>
+                            <p>Change password and security settings</p>
+                            <a href="#" class="cyber-link">Configure</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="copyright">© 2023 MetaDatez. All rights reserved.</div>
-    </footer>
+    </main>
 
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Profile navigation
-            const profileNavLinks = document.querySelectorAll('.profile-nav a');
-            const profileSections = document.querySelectorAll('.profile-section');
-            
-            profileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    
-                    profileNavLinks.forEach(link => link.parentElement.classList.remove('active'));
-                    this.parentElement.classList.add('active');
-                    
-                    profileSections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.id === targetId) {
-                            section.classList.add('active');
-                        }
-                    });
-                });
-            });
-            
-            // Initialize compatibility chart
-            const ctx = document.getElementById('compatibilityChart').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Intellect', 'Emotion', 'Adventure', 'Creativity', 'Humor', 'Values'],
-                    datasets: [{
-                        label: 'Your Profile',
-                        data: [90, 85, 95, 92, 80, 88],
-                        backgroundColor: 'rgba(0, 255, 252, 0.2)',
-                        borderColor: 'rgba(0, 255, 252, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(0, 255, 252, 1)'
-                    }, {
-                        label: 'Ideal Match',
-                        data: [85, 90, 90, 85, 85, 95],
-                        backgroundColor: 'rgba(255, 42, 109, 0.2)',
-                        borderColor: 'rgba(255, 42, 109, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(255, 42, 109, 1)'
-                    }]
-                },
-                options: {
-                    scales: {
-                        r: {
-                            angleLines: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            pointLabels: {
-                                color: 'white'
-                            },
-                            ticks: {
-                                backdropColor: 'transparent',
-                                color: 'white'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: 'white'
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Load matches
-            loadMatches();
-            
-            // Conversation switching
-            const conversations = document.querySelectorAll('.conversation');
-            conversations.forEach(convo => {
-                convo.addEventListener('click', function() {
-                    conversations.forEach(c => c.classList.remove('active'));
-                    this.classList.add('active');
-                    // In a real app, this would load the conversation
-                });
-            });
-        });
-        
-        function loadMatches() {
-            // In a real app, this would load matches from an API
-            const matchesGrid = document.querySelector('.matches-grid');
-            matchesGrid.innerHTML = '';
-            
-            const sampleMatches = [
-                { name: 'NeuralNova', compatibility: '98%', avatar: 'avatar1.jpg', lastActive: '2h ago' },
-                { name: 'CyberSage', compatibility: '95%', avatar: 'avatar2.jpg', lastActive: '5h ago' },
-                { name: 'HoloHacker', compatibility: '93%', avatar: 'avatar3.jpg', lastActive: '1d ago' },
-                { name: 'QuantumQueen', compatibility: '91%', avatar: 'avatar4.jpg', lastActive: '1d ago' },
-                { name: 'DataDruid', compatibility: '89%', avatar: 'avatar5.jpg', lastActive: '2d ago' },
-                { name: 'ByteBard', compatibility: '87%', avatar: 'avatar6.jpg', lastActive: '3d ago' }
-            ];
-            
-            sampleMatches.forEach(match => {
-                const matchCard = document.createElement('div');
-                matchCard.className = 'match-card';
-                matchCard.innerHTML = `
-                    <div class="match-avatar" style="background: url('./assets/images/${match.avatar}') center/cover no-repeat;"></div>
-                    <div class="match-info">
-                        <h4>${match.name}</h4>
-                        <div class="match-compatibility">${match.compatibility} match</div>
-                        <div class="match-status">Active ${match.lastActive}</div>
-                    </div>
-                    <div class="match-actions">
-                        <button class="match-action"><i class="fas fa-comment"></i></button>
-                        <button class="match-action"><i class="fas fa-heart"></i></button>
-                    </div>
-                `;
-                matchesGrid.appendChild(matchCard);
-            });
-        }
-    </script>
+    <script src="auth.js"></script>
 </body>
 </html>

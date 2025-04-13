@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating | Metadatez</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+    
+    <header class="futuristic-header">
+        <div class="logo-container">
+            <div class="logo-particle" id="particle1"></div>
+            <div class="logo-particle" id="particle2"></div>
+            <div class="logo-particle" id="particle3"></div>
+            <h1 class="logo-text">METADATEZ</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="logout-link" style="display: none;"><a href="#" id="logoutBtn">Logout</a></li>
+                <li class="login-link"><a href="auth/login.html">Login</a></li>
+                <li class="login-link"><a href="auth/signup.html">Sign Up</a></li>
+                <li class="logout-link" style="display: none;"><a href="profile.html" id="userGreeting">Hi, User</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="category-main">
+        <section class="category-hero" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/dating-bg.jpg')">
+            <div class="category-hero-content">
+                <h1>Dating</h1>
+                <p>Find romantic connections with like-minded individuals who share your interests and values.</p>
+                <div class="category-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <span>1,245 Active Members</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-heart"></i>
+                        <span>328 Successful Matches</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-description">
+            <div class="description-content">
+                <h2>Find Your Romantic Connection</h2>
+                <p>The Dating category on Metadatez is designed for individuals seeking romantic relationships. Our advanced AI matching system analyzes your preferences, personality traits, and behavior to connect you with compatible partners.</p>
+                <p>Whether you're looking for casual dating or a serious relationship, our platform provides the tools and environment to make meaningful connections.</p>
+                
+                <div class="category-features">
+                    <div class="feature">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Matchmaking</h3>
+                        <p>Our algorithm learns your preferences to suggest better matches over time.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-comments"></i>
+                        <h3>Smart Messaging</h3>
+                        <p>AI-powered conversation starters to help break the ice.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Verified Profiles</h3>
+                        <p>Rigorous verification ensures authentic connections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-members">
+            <div class="members-header">
+                <h2>Meet Your Potential Matches</h2>
+                <div class="filter-controls">
+                    <select id="genderFilter">
+                        <option value="all">All Genders</option>
+                        <option value="male">Men</option>
+                        <option value="female">Women</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="ageFilter">
+                        <option value="all">All Ages</option>
+                        <option value="18-25">18-25</option>
+                        <option value="26-35">26-35</option>
+                        <option value="36-45">36-45</option>
+                        <option value="46+">46+</option>
+                    </select>
+                    <select id="locationFilter">
+                        <option value="all">All Locations</option>
+                        <option value="us">United States</option>
+                        <option value="europe">Europe</option>
+                        <option value="asia">Asia</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="members-grid">
+                <!-- Member cards would be dynamically generated in a real app -->
+                <div class="member-card">
+                    <div class="member-photos">
+                        <img src="assets/images/member1.jpg" alt="Sarah" class="main-photo">
+                        <div class="photo-thumbnails">
+                            <img src="assets/images/member1-1.jpg" alt="Sarah photo 1">
+                            <img src="assets/images/member1-2.jpg" alt="Sarah photo 2">
+                            <img src="assets/images/member1-3.jpg" alt="Sarah photo 3">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarah, 28</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> New York, USA</p>
+                        <div class="member-bio">
+                            <p>Art lover and travel enthusiast looking for someone to share adventures with.</p>
+                        </div>
+                        <div class="member-tags">
+                            <span class="tag">Art</span>
+                            <span class="tag">Travel</span>
+                            <span class="tag">Yoga</span>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-like"><i class="fas fa-heart"></i> Like</button>
+                            <button class="btn-message"><i class="fas fa-comment"></i> Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photos">
+                        <img src="assets/images/member2.jpg" alt="Mike" class="main-photo">
+                        <div class="photo-thumbnails">
+                            <img src="assets/images/member2-1.jpg" alt="Mike photo 1">
+                            <img src="assets/images/member2-2.jpg" alt="Mike photo 2">
+                            <img src="assets/images/member2-3.jpg" alt="Mike photo 3">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Mike, 32</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> London, UK</p>
+                        <div class="member-bio">
+                            <p>Tech entrepreneur who enjoys hiking and cooking. Looking for a serious relationship.</p>
+                        </div>
+                        <div class="member-tags">
+                            <span class="tag">Tech</span>
+                            <span class="tag">Hiking</span>
+                            <span class="tag">Cooking</span>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-like"><i class="fas fa-heart"></i> Like</button>
+                            <button class="btn-message"><i class="fas fa-comment"></i> Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More member cards... -->
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <span>...</span>
+                <button class="page-btn">10</button>
+                <button class="next-btn">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="category-cta">
+            <h2>Ready to Find Your Match?</h2>
+            <p>Join thousands of happy couples who met through Metadatez</p>
+            <div class="cta-buttons">
+                <a href="auth/signup.html" class="btn-primary">Sign Up Now</a>
+                <a href="subscription.html" class="btn-secondary">View Subscription Plans</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="futuristic-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>METADATEZ</h3>
+                <p>The future of meaningful connections</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="polygamy.html">Polygamy</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Metadatez. All rights reserved. A next-generation dating platform.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="assets/js/category.js"></script>
+</body>
+</html>

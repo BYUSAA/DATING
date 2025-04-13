@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy | MetaDatez</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="holographic-bg"></div>
+    <div class="binary-rain"></div>
+    
+    <header class="cyber-header">
+        <div class="logo" data-text="MetaDatez">MetaDatez</div>
+        <nav>
+            <ul>
+                <li><a href="../index.html" class="nav-link" data-hover="Home">Home</a></li>
+                <li><a href="../categories.html" class="nav-link" data-hover="Categories">Categories</a></li>
+                <li><a href="../auth/login.html" class="nav-link" data-hover="Login">Login</a></li>
+                <li><a href="../auth/signup.html" class="nav-link glow-button" data-hover="Sign Up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cyber-main">
+        <section class="category-hero" style="background: linear-gradient(rgba(5, 10, 14, 0.7), rgba(5, 10, 14, 0.9)), url('../assets/images/fantasy-bg.jpg') center/cover no-repeat;">
+            <h1 class="neon-text">FANTASY <span class="cyberpunk">REALMS</span></h1>
+            <p class="subtitle">Explore romantic connections in imaginative virtual worlds</p>
+        </section>
+
+        <section class="category-content">
+            <div class="category-info">
+                <h2 class="section-title neon-underline">IMMERSIVE FANTASY DATING</h2>
+                <p>Step into extraordinary virtual realms where you can connect with others through shared fantasies and roleplay scenarios. Our platform offers safe, consensual spaces for imaginative exploration.</p>
+                
+                <div class="fantasy-worlds">
+                    <h3>Select Your Fantasy Realm:</h3>
+                    <div class="world-grid">
+                        <div class="world-card" style="background: url('../assets/images/fantasy-medieval.jpg') center/cover no-repeat;">
+                            <div class="world-overlay">
+                                <h4>Medieval Kingdom</h4>
+                            </div>
+                        </div>
+                        <div class="world-card" style="background: url('../assets/images/fantasy-scifi.jpg') center/cover no-repeat;">
+                            <div class="world-overlay">
+                                <h4>Sci-Fi Universe</h4>
+                            </div>
+                        </div>
+                        <div class="world-card" style="background: url('../assets/images/fantasy-superhero.jpg') center/cover no-repeat;">
+                            <div class="world-overlay">
+                                <h4>Superhero Realm</h4>
+                            </div>
+                        </div>
+                        <div class="world-card" style="background: url('../assets/images/fantasy-vampire.jpg') center/cover no-repeat;">
+                            <div class="world-overlay">
+                                <h4>Vampire Court</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="members-grid">
+                <h2 class="section-title neon-underline">FANTASY CONNECTIONS</h2>
+                <div class="members-container">
+                    <!-- Members will be loaded via JavaScript -->
+                </div>
+                <button class="cyber-button vanishing-btn load-more">LOAD MORE CONNECTIONS</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="cyber-footer">
+        <!-- Same footer as dating.html -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategoryMembers('fantasy');
+            
+            // World selection functionality
+            const worldCards = document.querySelectorAll('.world-card');
+            worldCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const world = this.querySelector('h4').textContent;
+                    console.log(`Entering ${world} realm`);
+                    // In a real implementation, this would filter members by world preference
+                });
+            });
+        });
+    </script>
+</body>
+</html>

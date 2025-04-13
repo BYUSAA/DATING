@@ -10,231 +10,243 @@
 </head>
 <body>
     <div class="theme-toggle">
-        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
     </div>
     
-    <header class="futuristic-header">
-        <div class="holographic-logo">
-            <img src="assets/images/logo-hologram.png" alt="Metadatez Logo">
-            <div class="holographic-effect"></div>
+    <header class="cyber-header">
+        <div class="logo-container">
+            <img src="assets/images/metadatez-logo.png" alt="Metadatez Logo" class="holographic-logo">
+            <h1 class="neon-text">METADATEZ</h1>
         </div>
-        <nav>
+        <nav class="cyber-nav">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="dating.html"><i class="fas fa-heart"></i> Dating</a>
-                        <a href="marriage.html"><i class="fas fa-ring"></i> Marriage</a>
-                        <a href="religious.html"><i class="fas fa-pray"></i> Religious</a>
-                        <a href="polygamy.html"><i class="fas fa-users"></i> Polygamy</a>
-                        <a href="friendship.html"><i class="fas fa-hands-helping"></i> Friendship</a>
-                        <a href="fantasy.html"><i class="fas fa-magic"></i> Fantasy</a>
-                        <a href="international.html"><i class="fas fa-globe"></i> International</a>
-                        <a href="business.html"><i class="fas fa-briefcase"></i> Business</a>
-                        <a href="specialneeds.html"><i class="fas fa-wheelchair"></i> Special Needs</a>
-                        <a href="penpal.html"><i class="fas fa-envelope"></i> Pen Pal</a>
-                    </div>
-                </li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin-dashboard.html" id="adminLink" style="display: none;">
-                    <i class="fas fa-user-shield"></i> Admin
-                </a></li>
-                <li><a href="profile.html" id="profileLink" style="display: none;">
-                    <img src="assets/images/default-avatar.jpg" alt="Profile">
-                </a></li>
-                <li><a href="login.html" class="login-btn">Login</a></li>
-                <li><a href="signup.html" class="signup-btn">Sign Up</a></li>
-                <li><a href="#" id="logoutBtn" class="login-btn" style="display: none;">Logout</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="categories/dating.html" class="nav-link">Categories</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="auth/login.html" class="nav-link login-btn">Login</a></li>
+                <li><a href="auth/signup.html" class="nav-link signup-btn">Sign Up</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="cyber-banner">
-        <div class="binary-rain"></div>
-        <h1>Welcome to <span class="neon-text">Metadatez</span></h1>
-        <p class="tagline">Where futuristic connections begin</p>
-        <div class="pulse-circle"></div>
-    </div>
+    <main class="cyber-main">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2 class="neon-text">FIND YOUR FUTURE TODAY</h2>
+                <p class="cyber-text">Connecting souls across dimensions with our AI-powered matching system</p>
+                <div class="hero-buttons">
+                    <a href="auth/signup.html" class="cyber-button">Get Started</a>
+                    <a href="subscription.html" class="cyber-button-alt">Premium Plans</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/holographic-connection.png" alt="Holographic Connection" class="hologram-effect">
+            </div>
+        </section>
 
-    <main class="categories-grid">
-        <h2 class="section-title">Choose Your Connection</h2>
-        
-        <div class="category-container">
-            <!-- Dating -->
-            <div class="category-card" onclick="navigateTo('dating.html')">
-                <div class="category-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3>Dating</h3>
-                <p>Find romantic connections with like-minded individuals</p>
-                <div class="hover-effect"></div>
+        <section class="categories-section">
+            <h3 class="section-title neon-text">EXPLORE OUR UNIQUE CATEGORIES</h3>
+            <div class="category-grid">
+                <a href="categories/dating.html" class="category-card" data-category="dating">
+                    <div class="category-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Dating</h4>
+                    <p>Find romantic connections with like-minded individuals</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/marriage.html" class="category-card" data-category="marriage">
+                    <div class="category-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h4>Marriage</h4>
+                    <p>For those seeking lifelong commitment</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/religious.html" class="category-card" data-category="religious">
+                    <div class="category-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h4>Religious</h4>
+                    <p>Connect through shared faith and beliefs</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/polygamy.html" class="category-card" data-category="polygamy">
+                    <div class="category-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Polygamy</h4>
+                    <p>For alternative relationship structures</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/friendship.html" class="category-card" data-category="friendship">
+                    <div class="category-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Friendship</h4>
+                    <p>Build meaningful platonic relationships</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/fantasy.html" class="category-card" data-category="fantasy">
+                    <div class="category-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h4>Fantasy</h4>
+                    <p>Explore imaginative connections</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/international.html" class="category-card" data-category="international">
+                    <div class="category-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>International</h4>
+                    <p>Connect across borders</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/business.html" class="category-card" data-category="business">
+                    <div class="category-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4>Business Elites</h4>
+                    <p>Network with professionals</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/specialneeds.html" class="category-card" data-category="specialneeds">
+                    <div class="category-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h4>Special Needs</h4>
+                    <p>Inclusive connections</p>
+                    <div class="cyber-border"></div>
+                </a>
+                
+                <a href="categories/penpal.html" class="category-card" data-category="penpal">
+                    <div class="category-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Pen Pal</h4>
+                    <p>Connect with inmates worldwide</p>
+                    <div class="cyber-border"></div>
+                </a>
             </div>
-            
-            <!-- Marriage -->
-            <div class="category-card" onclick="navigateTo('marriage.html')">
-                <div class="category-icon">
-                    <i class="fas fa-ring"></i>
+        </section>
+
+        <section class="features-section">
+            <h3 class="section-title neon-text">WHY CHOOSE METADATEZ?</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>AI Matchmaking</h4>
+                    <p>Our advanced algorithm finds your perfect match using personality analysis</p>
                 </div>
-                <h3>Marriage</h3>
-                <p>For those seeking lifelong partnerships</p>
-                <div class="hover-effect"></div>
-            </div>
-            
-            <!-- Religious -->
-            <div class="category-card" onclick="navigateTo('religious.html')">
-                <div class="category-icon">
-                    <i class="fas fa-pray"></i>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Verified Profiles</h4>
+                    <p>All profiles undergo strict verification for your safety</p>
                 </div>
-                <h3>Religious</h3>
-                <p>Connect with people who share your faith</p>
-                <div class="hover-effect"></div>
-            </div>
-            
-            <!-- Polygamy -->
-            <div class="category-card" onclick="navigateTo('polygamy.html')">
-                <div class="category-icon">
-                    <i class="fas fa-users"></i>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile Optimized</h4>
+                    <p>Seamless experience across all devices</p>
                 </div>
-                <h3>Polygamy</h3>
-                <p>For multiple partner relationships</p>
-                <div class="hover-effect"></div>
-            </div>
-            
-            <!-- Friendship -->
-            <div class="category-card" onclick="navigateTo('friendship.html')">
-                <div class="category-icon">
-                    <i class="fas fa-hands-helping"></i>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>Secure Messaging</h4>
+                    <p>End-to-end encrypted communications</p>
                 </div>
-                <h3>Friendship</h3>
-                <p>Build meaningful platonic relationships</p>
-                <div class="hover-effect"></div>
             </div>
-            
-            <!-- Fantasy -->
-            <div class="category-card" onclick="navigateTo('fantasy.html')">
-                <div class="category-icon">
-                    <i class="fas fa-magic"></i>
+        </section>
+
+        <section class="testimonials-section">
+            <h3 class="section-title neon-text">SUCCESS STORIES</h3>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="user-avatar">
+                        <img src="assets/images/users/user1.jpg" alt="User Avatar">
+                    </div>
+                    <p>"Metadatez helped me find my soulmate in the most unexpected place!"</p>
+                    <span class="user-name">- Sarah & Mark</span>
                 </div>
-                <h3>Fantasy</h3>
-                <p>Explore unique and imaginative connections</p>
-                <div class="hover-effect"></div>
-            </div>
-            
-            <!-- International -->
-            <div class="category-card" onclick="navigateTo('international.html')">
-                <div class="category-icon">
-                    <i class="fas fa-globe"></i>
+                <div class="testimonial-card">
+                    <div class="user-avatar">
+                        <img src="assets/images/users/user2.jpg" alt="User Avatar">
+                    </div>
+                    <p>"The AI matching was scarily accurate. We're getting married next month!"</p>
+                    <span class="user-name">- James & Lisa</span>
                 </div>
-                <h3>International</h3>
-                <p>Connect across borders and cultures</p>
-                <div class="hover-effect"></div>
             </div>
-            
-            <!-- Business Elites -->
-            <div class="category-card" onclick="navigateTo('business.html')">
-                <div class="category-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Business Elites</h3>
-                <p>Network with professionals and entrepreneurs</p>
-                <div class="hover-effect"></div>
-            </div>
-            
-            <!-- Special Needs -->
-            <div class="category-card" onclick="navigateTo('specialneeds.html')">
-                <div class="category-icon">
-                    <i class="fas fa-wheelchair"></i>
-                </div>
-                <h3>Special Needs</h3>
-                <p>Inclusive connections for everyone</p>
-                <div class="hover-effect"></div>
-            </div>
-            
-            <!-- Pen Pal -->
-            <div class="category-card" onclick="navigateTo('penpal.html')">
-                <div class="category-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3>Pen Pal</h3>
-                <p>Meaningful correspondence connections</p>
-                <div class="hover-effect"></div>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <section class="features-section">
-        <h2 class="section-title">Why Choose Metadatez?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>AI Matchmaking</h3>
-                <p>Our advanced AI learns your preferences to suggest perfect matches.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Verified Profiles</h3>
-                <p>All profiles go through our strict verification process.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Mobile Optimized</h3>
-                <p>Seamless experience across all devices.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <h3>Secure & Private</h3>
-                <p>Your data is protected with military-grade encryption.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="futuristic-footer">
+    <footer class="cyber-footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="assets/images/logo-hologram.png" alt="Metadatez Logo">
-                <p>Connecting futures today</p>
+                <img src="assets/images/metadatez-logo-white.png" alt="Metadatez Logo">
             </div>
-            
             <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+                <div class="link-group">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="safety-tips.html">Safety Tips</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
             </div>
-            
-            <div class="footer-social">
-                <h4>Connect With Us</h4>
+            <div class="social-media">
+                <h5>Connect With Us</h5>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p>&copy; 2023 Metadatez. All rights reserved.</p>
+            <p>&copy; 2023 Metadatez. All rights reserved. A futuristic dating platform.</p>
         </div>
     </footer>
 
-    <script src="auth.js"></script>
     <script src="script.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>

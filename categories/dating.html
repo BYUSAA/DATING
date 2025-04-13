@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating - Metadatez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="theme-switcher"><i class="fas fa-moon"></i></button>
+    </div>
+    
+    <header class="futuristic-header">
+        <div class="logo-container">
+            <div class="logo-particle" id="particle-1"></div>
+            <div class="logo-particle" id="particle-2"></div>
+            <div class="logo-particle" id="particle-3"></div>
+            <h1>METADATEZ</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#" id="profile-link">Profile</a></li>
+                <li><a href="#" id="logout-link">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="category-container">
+        <div class="category-header">
+            <div class="category-icon large">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h2>Dating</h2>
+            <p>Find romantic connections for casual or serious relationships</p>
+        </div>
+        
+        <div class="category-description">
+            <h3>About Dating on Metadatez</h3>
+            <p>Our dating category is designed to help you find meaningful romantic connections, whether you're looking for something casual or a more serious relationship. Our AI matching system analyzes your preferences and behavior to suggest compatible partners.</p>
+            
+            <div class="category-features">
+                <div class="feature">
+                    <i class="fas fa-robot"></i>
+                    <h4>AI Matching</h4>
+                    <p>Advanced algorithms suggest compatible partners based on your preferences and behavior.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-filter"></i>
+                    <h4>Smart Filters</h4>
+                    <p>Filter matches by location, interests, relationship goals, and more.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-comments"></i>
+                    <h4>Icebreakers</h4>
+                    <p>Stuck on what to say? Our AI suggests conversation starters based on profiles.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-members">
+            <h3>People in Dating</h3>
+            <div class="member-filters">
+                <div class="filter-group">
+                    <label for="gender-filter">Gender</label>
+                    <select id="gender-filter">
+                        <option value="all">All</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="age-filter">Age Range</label>
+                    <div class="range-slider">
+                        <span id="age-min">18</span>
+                        <input type="range" id="age-filter" min="18" max="80" value="30">
+                        <span id="age-max">80</span>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label for="location-filter">Location</label>
+                    <select id="location-filter">
+                        <option value="all">Anywhere</option>
+                        <option value="same-city">Same City</option>
+                        <option value="same-country">Same Country</option>
+                        <option value="international">International</option>
+                    </select>
+                </div>
+                <button class="filter-button vanish">Apply Filters</button>
+            </div>
+            
+            <div class="members-grid" id="members-grid">
+                <!-- Members will be loaded here -->
+                <div class="loading-members">
+                    <div class="loading-spinner"></div>
+                    <p>Finding members...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="other-categories">
+            <h3>Not what you're looking for? Try these categories:</h3>
+            <div class="category-links">
+                <a href="marriage.html" class="category-link">
+                    <i class="fas fa-ring"></i>
+                    <span>Marriage</span>
+                </a>
+                <a href="friendship.html" class="category-link">
+                    <i class="fas fa-hands-helping"></i>
+                    <span>Friendship</span>
+                </a>
+                <a href="fantasy.html" class="category-link">
+                    <i class="fas fa-magic"></i>
+                    <span>Fantasy</span>
+                </a>
+                <a href="international.html" class="category-link">
+                    <i class="fas fa-globe"></i>
+                    <span>International</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script src="../auth.js"></script>
+    <script>
+        // Check authentication
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = auth.getCurrentUser();
+            
+            if (!user) {
+                window.location.href = '../login.html';
+                return;
+            }
+            
+            // Set up profile link
+            document.getElementById('profile-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = '../profile.html';
+            });
+            
+            // Set up logout link
+            document.getElementById('logout-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                auth.logout();
+                window.location.href = '../index.html';
+            });
+            
+            // Load fake members
+            setTimeout(() => {
+                loadMembers();
+            }, 1500);
+            
+            // Age filter display
+            document.getElementById('age-filter').addEventListener('input', function() {
+                document.getElementById('age-min').textContent = this.value;
+            });
+        });
+        
+        // Load fake members
+        function loadMembers() {
+            const membersGrid = document.getElementById('members-grid');
+            membersGrid.innerHTML = '';
+            
+            const fakeMembers = [
+                { id: 1, name: 'Alex Johnson', age: 28, location: 'Chicago, IL', photo: 'https://randomuser.me/api/portraits/men/32.jpg', subcategories: ['Serious Relationship', 'Same City'] },
+                { id: 2, name: 'Sarah Miller', age: 25, location: 'Boston, MA', photo: 'https://randomuser.me/api/portraits/women/44.jpg', subcategories: ['Casual Dating'] },
+                { id: 3, name: 'Jamie Smith', age: 30, location: 'Seattle, WA', photo: 'https://randomuser.me/api/portraits/women/68.jpg', subcategories: ['Long Distance'] },
+                { id: 4, name: 'Taylor Brown', age: 27, location: 'Austin, TX', photo: 'https://randomuser.me/api/portraits/men/75.jpg', subcategories: ['Casual Dating', 'Same City'] },
+                { id: 5, name: 'Morgan Lee', age: 31, location: 'Denver, CO', photo: 'https://randomuser.me/api/portraits/women/25.jpg', subcategories: ['Serious Relationship'] },
+                { id: 6, name: 'Jordan Wilson', age: 29, location: 'Miami, FL', photo: 'https://randomuser.me/api/portraits/men/55.jpg', subcategories: ['New Experiences'] },
+                { id: 7, name: 'Casey Davis', age: 26, location: 'Portland, OR', photo: 'https://randomuser.me/api/portraits/women/33.jpg', subcategories: ['Casual Dating'] },
+                { id: 8, name: 'Riley Martinez', age: 32, location: 'Atlanta, GA', photo: 'https://randomuser.me/api/portraits/men/22.jpg', subcategories: ['Serious Relationship'] }
+            ];
+            
+            fakeMembers.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'member-card';
+                memberCard.innerHTML = `
+                    <div class="member-photo">
+                        <img src="${member.photo}" alt="${member.name}">
+                    </div>
+                    <div class="member-info">
+                        <h4>${member.name}</h4>
+                        <p class="member-age-location">${member.age} • ${member.location}</p>
+                        <div class="member-subcategories">
+                            ${member.subcategories.map(sub => `<span class="subcategory-tag">${sub}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="member-actions">
+                        <button class="member-action vanish" data-member-id="${member.id}">
+                            <i class="fas fa-heart"></i> Like
+                        </button>
+                        <button class="member-action secondary vanish" data-member-id="${member.id}">
+                            <i class="fas fa-comment"></i> Message
+                        </button>
+                    </div>
+                `;
+                
+                membersGrid.appendChild(memberCard);
+            });
+            
+            // Add event listeners to member buttons
+            document.querySelectorAll('.member-action').forEach(button => {
+                button.addEventListener('click', function() {
+                    const memberId = this.getAttribute('data-member-id');
+                    const member = fakeMembers.find(m => m.id == memberId);
+                    
+                    if (this.classList.contains('secondary')) {
+                        // Message button - check subscription
+                        const user = auth.getCurrentUser();
+                        
+                        if (user.subscription === 'free') {
+                            if (confirm('Free accounts are limited to 3 conversations. Upgrade to send unlimited messages. Would you like to upgrade now?')) {
+                                window.location.href = '../subscription.html';
+                            }
+                        } else {
+                            alert(`Messaging ${member.name}...`);
+                        }
+                    } else {
+                        // Like button
+                        alert(`You liked ${member.name}!`);
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

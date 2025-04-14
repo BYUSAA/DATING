@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating - MetaDate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes.css">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="logo-container">
+            <h1 class="logo">MetaDate</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html" class="active">Dating</a></li>
+                <!-- Other nav items -->
+            </ul>
+        </nav>
+        <!-- Auth buttons and theme switcher -->
+    </header>
+
+    <main>
+        <section class="category-header">
+            <h2>Dating Connections</h2>
+            <p>Find meaningful connections and romantic partners in your area or across the globe.</p>
+        </section>
+
+        <section class="category-filters">
+            <div class="filter-group">
+                <label for="gender">I'm looking for</label>
+                <select id="gender">
+                    <option value="any">Any gender</option>
+                    <option value="male">Men</option>
+                    <option value="female">Women</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <!-- More filters -->
+        </section>
+
+        <section class="profiles-grid">
+            <!-- Profile cards would be populated by JS -->
+            <div class="loading-spinner">Loading profiles...</div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Standard footer -->
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="category.js"></script>
+</body>
+</html>

@@ -1,83 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MetaDate - Futuristic Dating Platform</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/themes.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes.css">
 </head>
-<body>
-    <!-- Animated Logo -->
-    <div class="logo-container">
-        <div class="logo-bubble" id="bubble1"></div>
-        <div class="logo-bubble" id="bubble2"></div>
-        <div class="logo-bubble" id="bubble3"></div>
-        <h1 class="logo-text">MetaDate</h1>
-    </div>
-
-    <!-- Theme Switcher -->
-    <div class="theme-switcher">
-        <button id="theme-toggle">
-            <i class="fas fa-moon"></i>
-            <span>Dark Mode</span>
-        </button>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="dating.html">Dating</a></li>
-            <li><a href="marriage.html">Marriage</a></li>
-            <li><a href="religious.html">Religious</a></li>
-            <li><a href="polygamy.html">Polygamy</a></li>
-            <li><a href="friendship.html">Friendship</a></li>
-            <li><a href="fantasy.html">Fantasy</a></li>
-            <li><a href="international.html">International</a></li>
-            <li><a href="business.html">Business</a></li>
-            <li><a href="specialneeds.html">Special Needs</a></li>
-            <li><a href="penpal.html">Penpal</a></li>
-        </ul>
-    </nav>
-
-    <!-- User Controls -->
-    <div class="user-controls">
-        <a href="login.html" class="btn login-btn">Login</a>
-        <a href="signup.html" class="btn signup-btn">Sign Up</a>
-    </div>
-
-    <!-- Main Content -->
-    <main class="hero-section">
-        <h2>Find Your Perfect Match in the Metaverse</h2>
-        <p>MetaDate connects you with like-minded individuals across multiple dimensions of relationships.</p>
-        
-        <div class="cta-buttons">
-            <a href="signup.html" class="btn primary-btn">Get Started</a>
-            <a href="about.html" class="btn secondary-btn">Learn More</a>
+<body class="light-theme">
+    <header>
+        <div class="logo-container">
+            <h1 class="logo" id="animated-logo">MetaDate</h1>
+            <div class="bubble-animation"></div>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="religious.html">Religious</a></li>
+                <li><a href="polygamy.html">Polygamy</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="fantasy.html">Fantasy</a></li>
+                <li><a href="international.html">International</a></li>
+                <li><a href="business.html">Business</a></li>
+                <li><a href="specialneeds.html">Special Needs</a></li>
+                <li><a href="penpal.html">Pen Pal</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn primary" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+        <div class="theme-switcher">
+            <button id="theme-toggle" class="theme-toggle-btn">🌓</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Find Your Perfect Match in the Metaverse</h2>
+                <p>MetaDate connects souls across dimensions with our advanced AI matching system and immersive dating experiences.</p>
+                <div class="cta-buttons">
+                    <button class="btn primary large" onclick="window.location.href='signup.html'">Start Your Journey</button>
+                    <button class="btn outline large" onclick="window.location.href='about.html'">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-avatars">
+                    <div class="avatar" style="--delay: 0s;"></div>
+                    <div class="avatar" style="--delay: 0.5s;"></div>
+                    <div class="avatar" style="--delay: 1s;"></div>
+                    <div class="avatar" style="--delay: 1.5s;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h3>Why Choose MetaDate?</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔮</div>
+                    <h4>AI-Powered Matching</h4>
+                    <p>Our quantum algorithm analyzes 1,000+ compatibility factors to find your perfect match.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h4>Multidimensional Dating</h4>
+                    <p>Connect with potential partners across different realities and dimensions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Secure & Private</h4>
+                    <p>Blockchain-verified identities and end-to-end encrypted communications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h4>Immersive Experiences</h4>
+                    <p>Virtual reality dates in exotic locations across the multiverse.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h3>Success Stories Across Realities</h3>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-avatar"></div>
+                    <p>"MetaDate helped me find my soulmate in a parallel universe. We're now happily entangled!"</p>
+                    <div class="testimonial-author">- Zara-9 from Dimension X-287</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-avatar"></div>
+                    <p>"After 300 failed dates in my timeline, MetaDate found my perfect match in just 3 days!"</p>
+                    <div class="testimonial-author">- Kael-R from Timeline Ω</div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Service</a>
-            <a href="contact.html">Contact</a>
+        <div class="footer-content">
+            <div class="footer-logo">MetaDate</div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h5>Company</h5>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+                <div class="link-group">
+                    <h5>Legal</h5>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+                <div class="link-group">
+                    <h5>Resources</h5>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="safety.html">Safety Tips</a>
+                </div>
+            </div>
         </div>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+        <div class="footer-bottom">
+            <p>© 2023 MetaDate. All rights reserved across all dimensions.</p>
+            <div class="social-links">
+                <a href="#">🌌</a>
+                <a href="#">🌀</a>
+                <a href="#">🌠</a>
+                <a href="#">🪐</a>
+            </div>
         </div>
-        <p>&copy; 2023 MetaDate. All rights reserved.</p>
     </footer>
 
-    <script src="assets/js/animations.js"></script>
-    <script src="assets/js/theme-switcher.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="main.js"></script>
+    <script src="theme-switcher.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>

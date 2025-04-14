@@ -1,0 +1,92 @@
+:root {
+    --primary-color: #6e48aa;
+    --secondary-color: #9d50bb;
+    --accent-color: #4776e6;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --card-bg: #fff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --primary-color: #9d50bb;
+    --secondary-color: #6e48aa;
+    --accent-color: #4776e6;
+    --text-color: #f0f0f0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: var(--transition);
+    margin: 0;
+    padding: 0;
+}
+
+/* Logo animation */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.logo-bubble {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 5px;
+    color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: bounce 2s infinite alternate;
+    display: inline-block;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
+/* Add different delays for each letter */
+.logo-bubble:nth-child(1) { animation-delay: 0.1s; }
+.logo-bubble:nth-child(2) { animation-delay: 0.2s; }
+.logo-bubble:nth-child(3) { animation-delay: 0.3s; }
+.logo-bubble:nth-child(4) { animation-delay: 0.4s; }
+.logo-bubble:nth-child(5) { animation-delay: 0.5s; }
+.logo-bubble:nth-child(6) { animation-delay: 0.6s; }
+.logo-bubble:nth-child(7) { animation-delay: 0.7s; }
+.logo-bubble:nth-child(8) { animation-delay: 0.8s; }
+
+/* Theme toggle */
+.theme-toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation and other styles would continue... */

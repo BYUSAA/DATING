@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - MetaDate</title>
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776e6;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        .dark-mode {
+            --primary-color: #7b2cbf;
+            --secondary-color: #9d4edd;
+            --accent-color: #5a189a;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(30, 30, 30, 0.9);
+        }
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .profile-container {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid var(--card-bg);
+            box-shadow: var(--shadow);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .profile-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .location-icon {
+            margin-right: 0.5rem;
+        }
+
+        .profile-bio {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .action-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .tab-item {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .tab-item.active {
+            color: var(--primary-color);
+        }
+
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .about-section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .about-value {
+            font-size: 1.1rem;
+        }
+
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .interest-tag {
+            background-color: rgba(110, 72, 170, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .photos-section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .photo-item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .matches-section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .match-card {
+            text-align: center;
+        }
+
+        .match-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+        }
+
+        .match-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .match-name {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .match-compatibility {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-bubble {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(110, 72, 170, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1rem;
+            }
+
+            .profile-container {
+                padding-top: 6rem;
+            }
+
+            .profile-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .profile-tabs {
+                flex-wrap: wrap;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .matches-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    JS
+                    <div class="user-dropdown">
+                        <div class="dropdown-item">My Profile</div>
+                        <div class="dropdown-item">Messages</div>
+                        <div class="dropdown-item">Settings</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Profile Photo">
+            </div>
+            <h1 class="profile-name">John Smith</h1>
+            <div class="profile-location">
+                <span class="location-icon">📍</span> New York, USA
+            </div>
+            <p class="profile-bio">
+                Adventure seeker and coffee enthusiast. I love hiking, photography, and exploring new cultures. 
+                Looking for someone to share spontaneous trips and deep conversations with.
+            </p>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Matches</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">Connections</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Profile Complete</div>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <a href="#" class="action-btn btn-primary">Edit Profile</a>
+                <a href="subscription.html" class="action-btn btn-secondary">Upgrade Plan</a>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <div class="tab-item active" data-tab="about">About</div>
+            <div class="tab-item" data-tab="photos">Photos</div>
+            <div class="tab-item" data-tab="matches">Matches</div>
+        </div>
+
+        <div class="tab-content active" id="about">
+            <div class="about-section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <div class="about-label">Age</div>
+                        <div class="about-value">28</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Gender</div>
+                        <div class="about-value">Male</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Looking For</div>
+                        <div class="about-value">Dating, Friendship</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Occupation</div>
+                        <div class="about-value">Photographer</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Education</div>
+                        <div class="about-value">Bachelor's in Fine Arts</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Religion</div>
+                        <div class="about-value">Spiritual</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Height</div>
+                        <div class="about-value">6'1" (185 cm)</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Relationship Status</div>
+                        <div class="about-value">Single</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">Interests</h2>
+                <div class="interests-container">
+                    <div class="interest-tag">Photography</div>
+                    <div class="interest-tag">Travel</div>
+                    <div class="interest-tag">Hiking</div>
+                    <div class="interest-tag">Coffee</div>
+                    <div class="interest-tag">Reading</div>
+                    <div class="interest-tag">Music</div>
+                    <div class="interest-tag">Cooking</div>
+                    <div class="interest-tag">Art</div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="section-title">Personality</h2>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <div class="about-label">Introvert/Extrovert</div>
+                        <div class="about-value">Ambivert</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Love Language</div>
+                        <div class="about-value">Quality Time, Words of Affirmation</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Pets</div>
+                        <div class="about-value">Dog lover</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Smoking</div>
+                        <div class="about-value">Never</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Drinking</div>
+                        <div class="about-value">Socially</div>
+                    </div>
+                    <div class="about-item">
+                        <div class="about-label">Diet</div>
+                        <div class="about-value">Vegetarian</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="photos">
+            <div class="photos-section">
+                <h2 class="section-title">My Photos</h2>
+                <div class="photos-grid">
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 1">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 2">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1429087969512-1e85aab2683d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 3">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1505673542670-a5e3b5c7c98b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 4">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 5">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="matches">
+            <div class="matches-section">
+                <h2 class="section-title">Recent Matches</h2>
+                <div class="matches-grid">
+                    <div class="match-card">
+                        <div class="match-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Match 1">
+                        </div>
+                        <div class="match-name">Sophia</div>
+                        <div class="match-compatibility">92% match</div>
+                    </div>
+                    <div class="match-card">
+                        <div class="match-avatar">
+                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Match 2">
+                        </div>
+                        <div class="match-name">Emma</div>
+                        <div class="match-compatibility">88% match</div>
+                    </div>
+                    <div class="match-card">
+                        <div class="match-avatar">
+                            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Match 3">
+                        </div>
+                        <div class="match-name">Olivia</div>
+                        <div class="match-compatibility">85% match</div>
+                    </div>
+                    <div class="match-card">
+                        <div class="match-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Match 4">
+                        </div>
+                        <div class="match-name">Ava</div>
+                        <div class="match-compatibility">83% match</div>
+                    </div>
+                    <div class="match-card">
+                        <div class="match-avatar">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Match 5">
+                        </div>
+                        <div class="match-name">Isabella</div>
+                        <div class="match-compatibility">81% match</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate</span>
+                </div>
+                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="international.html">International</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon">📧</span> support@metadate.com</p>
+                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
+                <p><span class="contact-icon">🏢</span> 123 Dating St, Love City, 10001</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        });
+
+        // Tab functionality
+        const tabItems = document.querySelectorAll('.tab-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const tabId = item.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                tabItems.forEach(tab => tab.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                item.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // User dropdown functionality
+        const userAvatar = document.querySelector('.user-avatar');
+        
+        userAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.user-dropdown').style.opacity = '1';
+            document.querySelector('.user-dropdown').style.visibility = 'visible';
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelector('.user-dropdown').style.opacity = '0';
+            document.querySelector('.user-dropdown').style.visibility = 'hidden';
+        });
+    </script>
+</body>
+</html>

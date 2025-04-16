@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaDate - Futuristic Dating Platform</title>
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg: #fff;
+            --nav-bg: #fff;
+            --hover-color: #7d5bbe;
+            --border-color: #ddd;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #9d50bb;
+            --secondary-color: #6e48aa;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --nav-bg: #1a1a1a;
+            --hover-color: #a56cc1;
+            --border-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-animation {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .hero {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .categories {
+            padding: 3rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .categories h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: 1.5rem;
+        }
+
+        .category-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--nav-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-animation" id="logoAnimation"></div>
+                MetaDate
+            </a>
+            <div class="nav-links">
+                <a href="dating.html">Dating</a>
+                <a href="marriage.html">Marriage</a>
+                <a href="religious.html">Religious</a>
+                <a href="polygamy.html">Polygamy</a>
+                <a href="friendship.html">Friendship</a>
+                <a href="fantasy.html">Fantasy</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="window.location.href='login.html'">Login</button>
+                <button class="btn btn-primary" onclick="window.location.href='signup.html'">Sign Up</button>
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Perfect Connection</h1>
+        <p>MetaDate brings people together through advanced matching algorithms in a futuristic dating environment. Discover meaningful relationships that align with your values and lifestyle.</p>
+        <button class="btn btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
+    </section>
+
+    <section class="categories">
+        <h2>Explore Our Dating Categories</h2>
+        <div class="category-grid">
+            <div class="category-card" onclick="window.location.href='dating.html'">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
+                <div class="category-content">
+                    <h3>Dating</h3>
+                    <p>Find someone special for casual or serious dating experiences.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='marriage.html'">
+                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
+                <div class="category-content">
+                    <h3>Marriage</h3>
+                    <p>Connect with partners seeking long-term commitment and marriage.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='religious.html'">
+                <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
+                <div class="category-content">
+                    <h3>Religious</h3>
+                    <p>Meet partners who share your faith and spiritual values.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='polygamy.html'">
+                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Polygamy">
+                <div class="category-content">
+                    <h3>Polygamy</h3>
+                    <p>Explore consensual non-monogamous relationship options.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='friendship.html'">
+                <img src="https://images.unsplash.com/photo-1543269664-76bc3997d9ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
+                <div class="category-content">
+                    <h3>Friendship</h3>
+                    <p>Build meaningful platonic connections with like-minded people.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='fantasy.html'">
+                <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fantasy">
+                <div class="category-content">
+                    <h3>Fantasy</h3>
+                    <p>Explore unique and imaginative relationship possibilities.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='international.html'">
+                <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
+                <div class="category-content">
+                    <h3>International</h3>
+                    <p>Connect with people from different cultures and countries.</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='business.html'">
+                <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
+                <div class="category-content">
+                    <h3>Business</h3>
+                    <p>Network and build professional relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">© 2023 MetaDate. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        htmlElement.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Create bouncing bubbles for logo animation
+        const logoAnimation = document.getElementById('logoAnimation');
+        const colors = ['#6e48aa', '#9d50bb', '#4776E6', '#8E54E9'];
+        
+        for (let i = 0; i < 4; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.width = `${10 + i * 5}px`;
+            bubble.style.height = `${10 + i * 5}px`;
+            bubble.style.left = `${i * 15}px`;
+            bubble.style.bottom = '0';
+            bubble.style.background = `linear-gradient(135deg, ${colors[i]}, ${colors[(i + 1) % colors.length]})`;
+            bubble.style.animationDelay = `${i * 0.2}s`;
+            logoAnimation.appendChild(bubble);
+        }
+
+        // Admin login shortcut for development
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'a') {
+                window.location.href = 'admin-dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>

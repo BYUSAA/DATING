@@ -1,0 +1,238 @@
+/* ===== Polygamy Page Specific Styles ===== */
+/* Warm, Inclusive Color Palette */
+:root {
+    --poly-primary: #9c27b0;
+    --poly-secondary: #ff9800;
+    --poly-accent: #4caf50;
+    --poly-bg: #f5f5f5;
+    --poly-card: #ffffff;
+    --poly-text: #333333;
+    --poly-light: #757575;
+}
+
+.dark-theme {
+    --poly-primary: #ba68c8;
+    --poly-secondary: #ffb74d;
+    --poly-accent: #81c784;
+    --poly-bg: #121212;
+    --poly-card: #1e1e1e;
+    --poly-text: #f5f5f5;
+    --poly-light: #bdbdbd;
+}
+
+/* Poly Header */
+.poly-header {
+    background-color: var(--poly-card);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heart-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('heart-pulse.svg') no-repeat center;
+    animation: pulse 2s infinite;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Poly Hover Effects */
+.poly-hover {
+    transition: all 0.3s ease;
+}
+.poly-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
+}
+
+.poly-pulse {
+    animation: pulse-border 2s infinite;
+}
+
+/* Hero Section */
+.poly-hero {
+    display: flex;
+    align-items: center;
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, var(--poly-bg), #f0e6f6);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--poly-primary);
+    margin-bottom: 1rem;
+}
+
+.poly-underline {
+    position: relative;
+}
+.poly-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--poly-primary), var(--poly-secondary));
+}
+
+.hero-illustration {
+    position: relative;
+    width: 50%;
+    height: 400px;
+}
+
+.poly-relationship {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+}
+
+.person {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--poly-primary);
+    background-size: cover;
+}
+.person:nth-child(1) {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-image: url('person1.jpg');
+}
+.person:nth-child(2) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('person2.jpg');
+}
+.person:nth-child(3) {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-image: url('person3.jpg');
+}
+
+.heart-connector {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('heart-connector.svg') no-repeat center;
+    background-size: contain;
+}
+
+/* Poly Types Grid */
+.poly-types {
+    padding: 5rem 5%;
+    background-color: var(--poly-card);
+}
+
+.type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.type-card {
+    background-color: var(--poly-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(156, 39, 176, 0.2);
+}
+.type-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(156, 39, 176, 0.1);
+}
+
+.type-icon {
+    font-size: 2.5rem;
+    color: var(--poly-primary);
+    margin-bottom: 1rem;
+}
+
+/* Guide Accordion */
+.poly-guide {
+    padding: 5rem 5%;
+    background-color: var(--poly-bg);
+}
+
+.guide-accordion .accordion-item {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.guide-accordion .accordion-header {
+    background-color: var(--poly-primary);
+    color: white;
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guide-accordion .accordion-content {
+    padding: 1.5rem;
+    background-color: var(--poly-card);
+    display: none;
+}
+
+.guide-accordion .active .accordion-content {
+    display: block;
+}
+
+/* Success Stories */
+.poly-success {
+    padding: 5rem 5%;
+    background-color: var(--poly-card);
+}
+
+.story-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 2rem 0;
+}
+
+.story-card {
+    min-width: 300px;
+    background-color: var(--poly-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.story-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.story-content {
+    padding: 1.5rem;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.05); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0.3; }
+}
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 0 0 rgba(156, 39, 176, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(156, 39, 176, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(156, 39, 176, 0); }
+}

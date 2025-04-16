@@ -1,0 +1,59 @@
+/* Accessibility Features */
+.accessibility-toolbar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.accessibility-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+.accessibility-menu {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--shadow-hover);
+    display: none;
+}
+
+.accessibility-menu.show {
+    display: block;
+}
+
+.accessibility-option {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+.high-contrast {
+    --text-color: #000;
+    --text-light: #333;
+    --bg-color: #fff;
+    --card-bg: #f0f0f0;
+    --border-color: #000;
+}
+
+.dyslexia-friendly {
+    font-family: 'OpenDyslexic', sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.8;
+}
+
+.text-large {
+    font-size: 1.2rem;
+}

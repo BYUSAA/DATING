@@ -1,0 +1,330 @@
+/* Religious Page Specific Styles */
+.religious-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    background-image: url('religious-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.religious-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.religious-hero .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Faith Guide Section */
+.faith-guide {
+    padding: 4rem 0;
+    background-color: var(--card-bg);
+}
+
+.faith-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.faith-card {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.faith-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.faith-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.faith-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.faith-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    min-height: 3rem;
+}
+
+/* Religious Filters */
+.religious-filters {
+    padding: 4rem 0;
+    background-color: var(--bg-color);
+}
+
+.filter-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.filter-accordion {
+    margin: 2rem 0;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 1rem;
+    background-color: rgba(110, 72, 170, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.accordion-content {
+    padding: 1rem;
+    display: none;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+/* Communities Section */
+.faith-communities {
+    padding: 4rem 0;
+    background-color: var(--card-bg);
+}
+
+.communities-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+}
+
+.community-card {
+    min-width: 300px;
+    scroll-snap-align: start;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.community-banner {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.community-info {
+    padding: 1.5rem;
+}
+
+.community-stats {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+}
+
+/* Testimonials */
+.faith-testimonials {
+    padding: 4rem 0;
+    background-color: var(--bg-color);
+}
+
+.testimonial-slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+}
+
+.testimonial {
+    min-width: 300px;
+    scroll-snap-align: start;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.testimonial-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-content blockquote {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.testimonial-author {
+    margin-top: auto;
+}
+
+.testimonial-author strong {
+    display: block;
+    color: var(--primary-color);
+}
+
+/* Resources */
+.faith-resources {
+    padding: 4rem 0;
+    background-color: var(--card-bg);
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.resource-card {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.resource-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.resource-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.resource-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    min-height: 3rem;
+}
+
+/* CTA Section */
+.faith-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.faith-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.faith-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .religious-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .religious-hero .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .faith-grid, .resources-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .religious-hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .religious-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .faith-cta h2 {
+        font-size: 2rem;
+    }
+}

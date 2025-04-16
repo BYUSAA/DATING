@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy & Roleplay Dating | MetaDate</title>
+    <meta name="description" content="Find your mythical match in enchanted realms. Connect with elves, vampires, wizards, and more in our immersive fantasy dating community.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="fantasy.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme"> <!-- Default to dark theme for fantasy vibe -->
+    <!-- Animated Background Particles -->
+    <div id="particles-js"></div>
+
+    <!-- Header with Fantasy-Themed Nav -->
+    <header class="fantasy-header">
+        <div class="logo-container">
+            <h1 class="logo glitch" data-text="MetaDate">MetaDate</h1>
+            <div class="magic-sparkle"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="fantasy.html" class="active"><i class="fas fa-dragon"></i> Fantasy</a></li>
+                <li><a href="roleplay.html"><i class="fas fa-theater-masks"></i> Roleplay</a></li>
+                <li><a href="cosplay.html"><i class="fas fa-mask"></i> Cosplay</a></li>
+                <li><a href="larp.html"><i class="fas fa-swords"></i> LARP</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn magic-hover" onclick="window.location.href='login.html'">
+                <i class="fas fa-hat-wizard"></i> Login
+            </button>
+            <button class="btn primary magic-hover" onclick="window.location.href='signup.html'">
+                <i class="fas fa-scroll"></i> Sign Up
+            </button>
+        </div>
+        <div class="theme-switcher">
+            <button id="theme-toggle" class="theme-toggle-btn magic-hover">🌙</button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Animated Fantasy Background -->
+    <section class="fantasy-hero">
+        <div class="hero-content">
+            <h1 class="enchanted-text">Find Your <span class="magic-underline">Mythical Match</span></h1>
+            <p class="tagline">Connect with elves, vampires, wizards, and warriors in enchanted realms.</p>
+            <div class="cta-buttons">
+                <button class="btn primary large magic-btn" onclick="window.location.href='signup.html'">
+                    <i class="fas fa-hat-wizard"></i> Begin Your Quest
+                </button>
+                <button class="btn outline large magic-hover" onclick="scrollToRealms()">
+                    <i class="fas fa-map"></i> Explore Realms
+                </button>
+            </div>
+        </div>
+        <div class="hero-characters">
+            <div class="character elf" data-tooltip="Elven Archer"></div>
+            <div class="character vampire" data-tooltip="Vampire Noble"></div>
+            <div class="character mage" data-tooltip="Arcane Mage"></div>
+            <div class="character orc" data-tooltip="Orc Warrior"></div>
+        </div>
+    </section>
+
+    <!-- Fantasy Role Selection -->
+    <section class="fantasy-roles">
+        <h2>Choose Your Fantasy Persona</h2>
+        <p>Who will you be in this enchanted world?</p>
+        
+        <div class="role-grid">
+            <!-- Fantasy Race Selection -->
+            <div class="role-card" data-race="elf">
+                <div class="role-icon"><i class="fas fa-leaf"></i></div>
+                <h3>Elf</h3>
+                <p>Graceful, immortal beings of the forest.</p>
+                <button class="btn small outline magic-hover">Select</button>
+            </div>
+            <div class="role-card" data-race="vampire">
+                <div class="role-icon"><i class="fas fa-moon"></i></div>
+                <h3>Vampire</h3>
+                <p>Elegant, nocturnal lords and ladies.</p>
+                <button class="btn small outline magic-hover">Select</button>
+            </div>
+            <div class="role-card" data-race="mage">
+                <div class="role-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <h3>Mage</h3>
+                <p>Wielders of arcane and elemental magic.</p>
+                <button class="btn small outline magic-hover">Select</button>
+            </div>
+            <div class="role-card" data-race="werewolf">
+                <div class="role-icon"><i class="fas fa-paw"></i></div>
+                <h3>Werewolf</h3>
+                <p>Fierce protectors of the wild.</p>
+                <button class="btn small outline magic-hover">Select</button>
+            </div>
+            <div class="role-card" data-race="fairy">
+                <div class="role-icon"><i class="fas fa-sparkles"></i></div>
+                <h3>Fairy</h3>
+                <p>Tiny, mischievous, and magical.</p>
+                <button class="btn small outline magic-hover">Select</button>
+            </div>
+            <div class="role-card" data-race="custom">
+                <div class="role-icon"><i class="fas fa-user-astronaut"></i></div>
+                <h3>Custom</h3>
+                <p>Create your own fantasy race!</p>
+                <button class="btn small outline magic-hover">Select</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Fantasy Filters -->
+    <section class="fantasy-filters">
+        <h2>Refine Your Enchanted Search</h2>
+        <p>Find the perfect match with magical precision.</p>
+        
+        <div class="filter-accordion">
+            <!-- Race & Class Filters -->
+            <div class="accordion-item active">
+                <div class="accordion-header">
+                    <h3><i class="fas fa-dragon"></i> Race & Class</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="filter-group">
+                        <label for="fantasy-race">Primary Race</label>
+                        <select id="fantasy-race">
+                            <option value="any">Any Race</option>
+                            <option value="elf">Elf</option>
+                            <option value="vampire">Vampire</option>
+                            <option value="mage">Mage</option>
+                            <option value="werewolf">Werewolf</option>
+                            <option value="fairy">Fairy</option>
+                            <option value="dragonborn">Dragonborn</option>
+                            <option value="custom">Custom Race</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="fantasy-class">Class/Role</label>
+                        <select id="fantasy-class">
+                            <option value="any">Any Class</option>
+                            <option value="warrior">Warrior</option>
+                            <option value="rogue">Rogue</option>
+                            <option value="mage">Mage</option>
+                            <option value="healer">Healer</option>
+                            <option value="necromancer">Necromancer</option>
+                            <option value="bard">Bard</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Roleplay Style Filters -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3><i class="fas fa-theater-masks"></i> Roleplay Style</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="filter-group">
+                        <label for="rp-intensity">Roleplay Intensity</label>
+                        <select id="rp-intensity">
+                            <option value="any">Any</option>
+                            <option value="casual">Casual (Light RP)</option>
+                            <option value="moderate">Moderate (Semi-RP)</option>
+                            <option value="hardcore">Hardcore (Full Immersion)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="rp-format">Preferred Format</label>
+                        <select id="rp-format">
+                            <option value="any">Any</option>
+                            <option value="text">Text-Based</option>
+                            <option value="voice">Voice RP</option>
+                            <option value="video">Video/VR RP</option>
+                            <option value="larp">Live-Action (LARP)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- World & Setting Filters -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3><i class="fas fa-globe"></i> World & Setting</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="filter-group">
+                        <label for="world-type">World Type</label>
+                        <select id="world-type">
+                            <option value="any">Any</option>
+                            <option value="high-fantasy">High Fantasy</option>
+                            <option value="dark-fantasy">Dark Fantasy</option>
+                            <option value="urban-fantasy">Urban Fantasy</option>
+                            <option value="steampunk">Steampunk</option>
+                            <option value="sci-fantasy">Sci-Fantasy</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="story-theme">Preferred Themes</label>
+                        <select id="story-theme">
+                            <option value="any">Any</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="romance">Romance</option>
+                            <option value="political">Political Intrigue</option>
+                            <option value="horror">Gothic Horror</option>
+                            <option value="comedy">Comedy</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn primary magic-btn" id="apply-filters">
+            <i class="fas fa-search"></i> Cast Search Spell
+        </button>
+    </section>
+
+    <!-- Featured Fantasy Realms (Communities) -->
+    <section class="fantasy-realms" id="realms">
+        <h2>Featured Fantasy Realms</h2>
+        <p>Join thriving roleplay communities and guilds.</p>
+        
+        <div class="realm-carousel">
+            <!-- Realm 1: Vampire Court -->
+            <div class="realm-card" style="background-image: url('vampire-court-bg.jpg')">
+                <div class="realm-overlay"></div>
+                <div class="realm-content">
+                    <h3>The Eternal Night Court</h3>
+                    <div class="realm-stats">
+                        <span><i class="fas fa-users"></i> 1,245 Vampires</span>
+                        <span><i class="fas fa-calendar"></i> Active since 2018</span>
+                    </div>
+                    <p>A gothic haven for vampire nobles and their thralls. Engage in political intrigue, blood bonds, and eternal romance.</p>
+                    <button class="btn magic-hover"><i class="fas fa-door-open"></i> Enter Court</button>
+                </div>
+            </div>
+            
+            <!-- Realm 2: Mage Academy -->
+            <div class="realm-card" style="background-image: url('mage-academy-bg.jpg')">
+                <div class="realm-overlay"></div>
+                <div class="realm-content">
+                    <h3>Arcane Athenaeum</h3>
+                    <div class="realm-stats">
+                        <span><i class="fas fa-users"></i> 890 Mages</span>
+                        <span><i class="fas fa-calendar"></i> Active since 2020</span>
+                    </div>
+                    <p>A mystical academy where wizards, witches, and sorcerers study forbidden arts and form magical bonds.</p>
+                    <button class="btn magic-hover"><i class="fas fa-door-open"></i> Enroll Now</button>
+                </div>
+            </div>
+            
+            <!-- Realm 3: Elven Forest -->
+            <div class="realm-card" style="background-image: url('elven-forest-bg.jpg')">
+                <div class="realm-overlay"></div>
+                <div class="realm-content">
+                    <h3>Silvershade Grove</h3>
+                    <div class="realm-stats">
+                        <span><i class="fas fa-users"></i> 720 Elves</span>
+                        <span><i class="fas fa-calendar"></i> Active since 2019</span>
+                    </div>
+                    <p>An ancient woodland realm where elves, druids, and fey creatures live in harmony with nature.</p>
+                    <button class="btn magic-hover"><i class="fas fa-door-open"></i> Enter Grove</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fantasy Dating Success Stories -->
+    <section class="fantasy-success">
+        <h2>Enchanted Love Stories</h2>
+        <p>Real couples who found love through fantasy roleplay.</p>
+        
+        <div class="success-stories">
+            <!-- Story 1 -->
+            <div class="story-card">
+                <div class="story-image" style="background-image: url('couple-vampire-mage.jpg')"></div>
+                <div class="story-content">
+                    <h3>Vampire Lord & Arcane Scholar</h3>
+                    <blockquote>
+                        "We met in a Gothic RP server as enemies—a vampire and a mage. Three years later, we're married and still writing our story."
+                    </blockquote>
+                    <div class="story-author">
+                        <strong>Lucian & Seraphina</strong>
+                        <span>Together since 2021</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story 2 -->
+            <div class="story-card">
+                <div class="story-image" style="background-image: url('couple-elf-human.jpg')"></div>
+                <div class="story-content">
+                    <h3>Elven Princess & Human Knight</h3>
+                    <blockquote>
+                        "Our characters fell in love during a year-long LARP campaign. Now we're planning a fantasy-themed wedding!"
+                    </blockquote>
+                    <div class="story-author">
+                        <strong>Aelara & Gareth</strong>
+                        <span>Engaged</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="fantasy-cta">
+        <div class="cta-content">
+            <h2>Ready to Begin Your Adventure?</h2>
+            <p>Join thousands of fantasy enthusiasts in magical connections.</p>
+            <div class="cta-buttons">
+                <button class="btn primary large magic-btn" onclick="window.location.href='signup.html'">
+                    <i class="fas fa-scroll"></i> Create Free Profile
+                </button>
+                <button class="btn outline large magic-hover" onclick="window.location.href='login.html'">
+                    <i class="fas fa-hat-wizard"></i> Sign In
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Fantasy-Themed Links -->
+    <footer class="fantasy-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>MetaDate</h3>
+                <p>Where fantasy becomes reality.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h5>Fantasy Dating</h5>
+                    <a href="#">Vampire Dating</a>
+                    <a href="#">Elf Dating</a>
+                    <a href="#">Mage Dating</a>
+                    <a href="#">Werewolf Dating</a>
+                </div>
+                <div class="link-group">
+                    <h5>Resources</h5>
+                    <a href="#">Roleplay Guides</a>
+                    <a href="#">Character Creation</a>
+                    <a href="#">Fantasy Writing Tips</a>
+                    <a href="#">LARP Events</a>
+                </div>
+                <div class="link-group">
+                    <h5>Company</h5>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 MetaDate. All realms reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="main.js"></script>
+    <script src="fantasy.js"></script>
+</body>
+</html>

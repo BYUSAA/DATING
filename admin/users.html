@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - MetaDate</title>
+    <!-- Same head as dashboard.html -->
+</head>
+<body class="light-theme">
+    <div class="admin-container">
+        <!-- Same sidebar -->
+
+        <main class="admin-main">
+            <header class="admin-toolbar">
+                <h1>User Management</h1>
+                <div class="toolbar-actions">
+                    <input type="text" placeholder="Search users..." class="search-input">
+                    <button class="btn primary">+ Add User</button>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Users would be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../main.js"></script>
+    <script src="../admin.js"></script>
+</body>
+</html>

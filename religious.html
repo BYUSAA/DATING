@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Connections - Faith-Based Dating | MetaDate</title>
+    <meta name="description" content="Find meaningful connections with people who share your spiritual values and religious beliefs on MetaDate's faith-based dating platform.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="religious.css">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="logo-container">
+            <h1 class="logo">MetaDate</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="religious.html" class="active">Religious</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <!-- Other nav items -->
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn primary" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+        <div class="theme-switcher">
+            <button id="theme-toggle" class="theme-toggle-btn">🌓</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with Parallax Effect -->
+        <section class="religious-hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Sacred Connections</h1>
+                <p class="subtitle">Find love that honors your faith and spiritual journey</p>
+                <div class="cta-buttons">
+                    <button class="btn primary large" onclick="window.location.href='signup.html'">Join Our Faith Community</button>
+                    <button class="btn outline large" onclick="scrollToTestimonials()">Hear Success Stories</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faith Selection Guide -->
+        <section class="faith-guide">
+            <h2>Find Your Faith Community</h2>
+            <p class="section-intro">Connect with believers who share your spiritual path</p>
+            
+            <div class="faith-grid">
+                <div class="faith-card" data-faith="christian">
+                    <div class="faith-icon">✝️</div>
+                    <h3>Christian Dating</h3>
+                    <p>Meet Christian singles seeking God-centered relationships</p>
+                    <button class="btn small outline">Explore</button>
+                </div>
+                
+                <div class="faith-card" data-faith="muslim">
+                    <div class="faith-icon">🕌</div>
+                    <h3>Muslim Dating</h3>
+                    <p>Find your halal match with Muslim singles</p>
+                    <button class="btn small outline">Explore</button>
+                </div>
+                
+                <div class="faith-card" data-faith="jewish">
+                    <div class="faith-icon">✡️</div>
+                    <h3>Jewish Dating</h3>
+                    <p>Connect with Jewish singles for meaningful relationships</p>
+                    <button class="btn small outline">Explore</button>
+                </div>
+                
+                <div class="faith-card" data-faith="hindu">
+                    <div class="faith-icon">🕉️</div>
+                    <h3>Hindu Dating</h3>
+                    <p>Meet Hindu singles who value dharma in relationships</p>
+                    <button class="btn small outline">Explore</button>
+                </div>
+                
+                <div class="faith-card" data-faith="buddhist">
+                    <div class="faith-icon">☸️</div>
+                    <h3>Buddhist Dating</h3>
+                    <p>Find mindful connections with Buddhist singles</p>
+                    <button class="btn small outline">Explore</button>
+                </div>
+                
+                <div class="faith-card" data-faith="other">
+                    <div class="faith-icon">🙏</div>
+                    <h3>Other Faiths</h3>
+                    <p>Connect with spiritual seekers from various traditions</p>
+                    <button class="btn small outline">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Religious Filters -->
+        <section class="religious-filters">
+            <div class="filter-container">
+                <h2>Refine Your Spiritual Match</h2>
+                <p>Use our detailed filters to find someone who aligns with your faith values</p>
+                
+                <div class="filter-accordion">
+                    <div class="accordion-item active">
+                        <div class="accordion-header">
+                            <h3>Basic Beliefs</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="filter-group">
+                                <label for="religion">Religion</label>
+                                <select id="religion">
+                                    <option value="any">Any Religion</option>
+                                    <option value="christian">Christianity</option>
+                                    <option value="catholic">Catholic</option>
+                                    <option value="protestant">Protestant</option>
+                                    <option value="orthodox">Orthodox</option>
+                                    <option value="muslim">Islam</option>
+                                    <option value="sunni">Sunni Muslim</option>
+                                    <option value="shia">Shia Muslim</option>
+                                    <option value="jewish">Judaism</option>
+                                    <option value="hindu">Hinduism</option>
+                                    <option value="buddhist">Buddhism</option>
+                                    <option value="sikh">Sikhism</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="denomination">Denomination/Sect</label>
+                                <select id="denomination" disabled>
+                                    <option value="any">Select Religion First</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="conversion">Open to Conversion</label>
+                                <select id="conversion">
+                                    <option value="any">Any</option>
+                                    <option value="yes">Must be open</option>
+                                    <option value="no">Not required</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Practice & Devotion</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="filter-group">
+                                <label for="devotion">Level of Devotion</label>
+                                <select id="devotion">
+                                    <option value="any">Any</option>
+                                    <option value="secular">Secular/Cultural</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="devout">Devout</option>
+                                    <option value="orthodox">Orthodox</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="prayer">Prayer Frequency</label>
+                                <select id="prayer">
+                                    <option value="any">Any</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="holidays">Holidays Only</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="kosher">Dietary Requirements</label>
+                                <select id="kosher">
+                                    <option value="any">Any</option>
+                                    <option value="halal">Halal</option>
+                                    <option value="kosher">Kosher</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Family & Lifestyle</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="filter-group">
+                                <label for="children">Religious Upbringing for Children</label>
+                                <select id="children">
+                                    <option value="any">Any</option>
+                                    <option value="essential">Essential</option>
+                                    <option value="preferred">Preferred</option>
+                                    <option value="open">Open to Discussion</option>
+                                    <option value="none">Not Important</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="sabbath">Sabbath Observance</label>
+                                <select id="sabbath">
+                                    <option value="any">Any</option>
+                                    <option value="strict">Strict Observance</option>
+                                    <option value="partial">Partial Observance</option>
+                                    <option value="none">No Observance</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="interfaith">Interfaith Relationships</label>
+                                <select id="interfaith">
+                                    <option value="any">Any</option>
+                                    <option value="no">Same Faith Only</option>
+                                    <option value="yes">Open to Interfaith</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn primary" id="apply-filters">Apply Filters</button>
+                <button class="btn outline" id="reset-filters">Reset All</button>
+            </div>
+        </section>
+
+        <!-- Featured Faith Communities -->
+        <section class="faith-communities">
+            <h2>Featured Faith Communities</h2>
+            <p>Join active groups of believers seeking meaningful connections</p>
+            
+            <div class="communities-carousel">
+                <div class="community-card">
+                    <div class="community-banner" style="background-image: url('christian-community.jpg')"></div>
+                    <div class="community-info">
+                        <h3>Christian Singles Fellowship</h3>
+                        <div class="community-stats">
+                            <span>2,450 members</span>
+                            <span>85 active today</span>
+                        </div>
+                        <p>A supportive community for Christian singles seeking God-centered relationships through prayer and fellowship.</p>
+                        <button class="btn small">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card">
+                    <div class="community-banner" style="background-image: url('muslim-community.jpg')"></div>
+                    <div class="community-info">
+                        <h3>Muslim Marriage Seekers</h3>
+                        <div class="community-stats">
+                            <span>1,890 members</span>
+                            <span>62 active today</span>
+                        </div>
+                        <p>A respectful space for Muslim singles seeking halal relationships with shared values and traditions.</p>
+                        <button class="btn small">Join Community</button>
+                    </div>
+                </div>
+                
+                <div class="community-card">
+                    <div class="community-banner" style="background-image: url('jewish-community.jpg')"></div>
+                    <div class="community-info">
+                        <h3>Jewish Connections</h3>
+                        <div class="community-stats">
+                            <span>1,200 members</span>
+                            <span>45 active today</span>
+                        </div>
+                        <p>Connecting Jewish singles for meaningful relationships, whether you're Reform, Conservative, or Orthodox.</p>
+                        <button class="btn small">Join Community</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Testimonials -->
+        <section class="faith-testimonials" id="testimonials">
+            <h2>Sacred Love Stories</h2>
+            <p>Real couples who found love through shared faith</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-image" style="background-image: url('couple1.jpg')"></div>
+                    <div class="testimonial-content">
+                        <blockquote>"We connected over our shared Lutheran faith and values. After months of praying together online, we knew God had brought us together."</blockquote>
+                        <div class="testimonial-author">
+                            <strong>Sarah & Michael</strong>
+                            <span>Married June 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-image" style="background-image: url('couple2.jpg')"></div>
+                    <div class="testimonial-content">
+                        <blockquote>"As Orthodox Jews, finding someone who shared our level of observance was challenging. MetaDate made it possible!"</blockquote>
+                        <div class="testimonial-author">
+                            <strong>Rachel & David</strong>
+                            <span>Engaged</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-image" style="background-image: url('couple3.jpg')"></div>
+                    <div class="testimonial-content">
+                        <blockquote>"Our shared commitment to Islamic values created an instant connection. We're now planning our nikkah!"</blockquote>
+                        <div class="testimonial-author">
+                            <strong>Aisha & Yusuf</strong>
+                            <span>Together 1 year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faith Resources Section -->
+        <section class="faith-resources">
+            <h2>Faith & Dating Resources</h2>
+            <p>Guidance for nurturing faith-centered relationships</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📖</div>
+                    <h3>Religious Dating Guides</h3>
+                    <p>Learn how to navigate dating while maintaining your spiritual values</p>
+                    <a href="#" class="btn small outline">Read Articles</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">💒</div>
+                    <h3>Find Houses of Worship</h3>
+                    <p>Locate churches, mosques, synagogues and temples near you</p>
+                    <a href="#" class="btn small outline">Search Now</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🎙️</div>
+                    <h3>Faith & Love Podcast</h3>
+                    <p>Listen to interviews with couples who balanced faith and romance</p>
+                    <a href="#" class="btn small outline">Listen Now</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🕌</div>
+                    <h3>Religious Counselors</h3>
+                    <p>Connect with faith leaders for relationship advice</p>
+                    <a href="#" class="btn small outline">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="faith-cta">
+            <div class="cta-content">
+                <h2>Ready to Find Your Faithful Match?</h2>
+                <p>Join thousands of believers seeking meaningful, faith-centered relationships</p>
+                <div class="cta-buttons">
+                    <button class="btn primary large" onclick="window.location.href='signup.html'">Create Free Account</button>
+                    <button class="btn outline large" onclick="window.location.href='login.html'">Sign In</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MetaDate</div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h5>Religious Dating</h5>
+                    <a href="#">Christian Dating</a>
+                    <a href="#">Muslim Dating</a>
+                    <a href="#">Jewish Dating</a>
+                    <a href="#">Hindu Dating</a>
+                    <a href="#">Buddhist Dating</a>
+                </div>
+                <div class="link-group">
+                    <h5>Company</h5>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="careers.html">Careers</a>
+                </div>
+                <div class="link-group">
+                    <h5>Legal</h5>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 MetaDate. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="theme-switcher.js"></script>
+    <script src="religious.js"></script>
+</body>
+</html>

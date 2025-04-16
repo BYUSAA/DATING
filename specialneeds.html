@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Needs Dating - MetaDate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="accessibility.css">
+</head>
+<body class="light-theme">
+    <header>
+        <!-- Standard header -->
+    </header>
+
+    <main>
+        <section class="category-header">
+            <h2>Special Needs Dating</h2>
+            <p>Inclusive dating for people with disabilities and special needs.</p>
+        </section>
+
+        <section class="category-filters">
+            <div class="filter-group">
+                <label for="needs-type">Special Needs</label>
+                <select id="needs-type">
+                    <option value="any">Any</option>
+                    <option value="physical">Physical Disabilities</option>
+                    <option value="sensory">Sensory Disabilities</option>
+                    <option value="cognitive">Cognitive Disabilities</option>
+                    <option value="mental-health">Mental Health</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="accessibility">Accessibility Needs</label>
+                <select id="accessibility">
+                    <option value="any">Any</option>
+                    <option value="wheelchair">Wheelchair Access</option>
+                    <option value="sign-language">Sign Language</option>
+                    <option value="text-communication">Text Communication</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="profiles-grid">
+            <div class="loading-spinner">Loading profiles...</div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Standard footer -->
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="category.js"></script>
+    <script src="accessibility.js"></script>
+</body>
+</html>

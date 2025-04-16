@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - MetaDate</title>
+    <style>
+        /* Same CSS as index.html with additional admin styles */
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+            --card-bg: #fff;
+            --nav-bg: #fff;
+            --hover-color: #7d5bbe;
+            --border-color: #ddd;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --success-color: #2ecc71;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #9d50bb;
+            --secondary-color: #6e48aa;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --nav-bg: #1a1a1a;
+            --hover-color: #a56cc1;
+            --border-color: #333;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --success-color: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-animation {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .admin-container {
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .stat-card p {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .admin-section {
+            margin-bottom: 3rem;
+        }
+
+        .admin-section h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(110, 72, 170, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(110, 72, 170, 0.05);
+        }
+
+        .status-active {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .status-pending {
+            color: var(--warning-color);
+            font-weight: 600;
+        }
+
+        .status-banned {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .search-filter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .filter-box select {
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        footer {
+            background-color: var(--nav-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .admin-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .search-filter {
+                flex-direction: column;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-animation" id="logoAnimation"></div>
+                MetaDate
+            </a>
+            <div class="nav-links">
+                <a href="admin-dashboard.html" class="active">Dashboard</a>
+                <a href="admin-users.html">Users</a>
+                <a href="admin-profiles.html">Profiles</a>
+                <a href="admin-subscriptions.html">Subscriptions</a>
+                <a href="admin-reports.html">Reports</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-danger" onclick="window.location.href='index.html'">Logout</button>
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="admin-container">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div>
+                <button class="btn btn-primary">Generate Report</button>
+            </div>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p>1,248</p>
+            </div>
+            <div class="stat-card">
+                <h3>New Today</h3>
+                <p>24</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Now</h3>
+                <p>187</p>
+            </div>
+            <div class="stat-card">
+                <h3>Premium Members</h3>
+                <p>543</p>
+            </div>
+            <div class="stat-card">
+                <h3>Reports</h3>
+                <p>12</p>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h2>Recent Users</h2>
+            <div class="search-filter">
+                <div class="search-box">
+                    <input type="text" placeholder="Search users...">
+                </div>
+                <div class="filter-box">
+                    <select>
+                        <option>All Status</option>
+                        <option>Active</option>
+                        <option>Pending</option>
+                        <option>Banned</option>
+                    </select>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Joined</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1248</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>Today, 10:30 AM</td>
+                        <td class="status-active">Active</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">View</button>
+                                <button class="btn btn-warning action-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1247</td>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>Today, 9:15 AM</td>
+                        <td class="status-active">Active</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">View</button>
+                                <button class="btn btn-warning action-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1246</td>
+                        <td>Robert Johnson</td>
+                        <td>robert@example.com</td>
+                        <td>Yesterday</td>
+                        <td class="status-pending">Pending</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">View</button>
+                                <button class="btn btn-success action-btn">Approve</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1245</td>
+                        <td>Emily Davis</td>
+                        <td>emily@example.com</td>
+                        <td>Yesterday</td>
+                        <td class="status-active">Active</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">View</button>
+                                <button class="btn btn-warning action-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#1244</td>
+                        <td>Michael Brown</td>
+                        <td>michael@example.com</td>
+                        <td>2 days ago</td>
+                        <td class="status-banned">Banned</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">View</button>
+                                <button class="btn btn-success action-btn">Unban</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-section">
+            <h2>Recent Reports</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Report ID</th>
+                        <th>Reported User</th>
+                        <th>Reported By</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#87</td>
+                        <td>User #1024</td>
+                        <td>User #876</td>
+                        <td>Inappropriate content</td>
+                        <td class="status-pending">Pending</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">Review</button>
+                                <button class="btn btn-danger action-btn">Dismiss</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#86</td>
+                        <td>User #998</td>
+                        <td>User #542</td>
+                        <td>Harassment</td>
+                        <td class="status-pending">Pending</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">Review</button>
+                                <button class="btn btn-danger action-btn">Dismiss</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#85</td>
+                        <td>User #765</td>
+                        <td>User #321</td>
+                        <td>Fake profile</td>
+                        <td class="status-active">Resolved</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary action-btn">View</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">© 2023 MetaDate. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        htmlElement.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Create bouncing bubbles for logo animation
+        const logoAnimation = document.getElementById('logoAnimation');
+        const colors = ['#6e48aa', '#9d50bb', '#4776E6', '#8E54E9'];
+        
+        for (let i = 0; i < 4; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.width = `${10 + i * 5}px`;
+            bubble.style.height = `${10 + i * 5}px`;
+            bubble.style.left = `${i * 15}px`;
+            bubble.style.bottom = '0';
+            bubble.style.background = `linear-gradient(135deg, ${colors[i]}, ${colors[(i + 1) % colors.length]})`;
+            bubble.style.animationDelay = `${i * 0.2}s`;
+            logoAnimation.appendChild(bubble);
+        }
+    </script>
+</body>
+</html>

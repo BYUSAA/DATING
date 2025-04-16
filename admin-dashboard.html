@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - MetaDate</title>
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776e6;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+            --sidebar-active: #34495e;
+        }
+
+        .dark-mode {
+            --primary-color: #7b2cbf;
+            --secondary-color: #9d4edd;
+            --accent-color: #5a189a;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --sidebar-bg: #1a1a1a;
+            --sidebar-text: #e0e0e0;
+            --sidebar-active: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 1.5rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .admin-logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .admin-logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .admin-name {
+            font-weight: 500;
+        }
+
+        .admin-role {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .menu-title {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        .menu-item {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            background-color: var(--sidebar-active);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .menu-icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+        }
+
+        .topbar {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .admin-logout {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 0, 0, 0.1);
+            color: #ff6b6b;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .admin-logout:hover {
+            background-color: rgba(255, 0, 0, 0.2);
+        }
+
+        .content-area {
+            padding: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-change {
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-change.up {
+            color: #2ecc71;
+        }
+
+        .stat-change.down {
+            color: #e74c3c;
+        }
+
+        .dashboard-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .section-actions a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .data-table th, .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background-color: rgba(110, 72, 170, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background-color: rgba(110, 72, 170, 0.05);
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+        }
+
+        .status-pending {
+            background-color: rgba(241, 196, 15, 0.1);
+            color: #f1c40f;
+        }
+
+        .status-banned {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        .action-btn {
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+        }
+
+        .btn-delete {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+        }
+
+        .btn-view {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+        }
+
+        .btn-edit:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .chart-container {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            height: 350px;
+        }
+
+        .recent-activity {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .activity-item {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(110, 72, 170, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-time {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+                overflow: hidden;
+            }
+            
+            .sidebar-header, .menu-title, .menu-text {
+                display: none;
+            }
+            
+            .menu-item {
+                justify-content: center;
+                padding: 1rem;
+            }
+            
+            .menu-icon {
+                margin-right: 0;
+                font-size: 1.3rem;
+            }
+            
+            .main-content {
+                margin-left: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="admin-logo">
+                <div class="admin-logo-bubble">M</div>
+                <span class="admin-logo-text">MetaDate</span>
+            </div>
+            <div class="admin-info">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <div class="admin-name">Admin User</div>
+                    <div class="admin-role">Super Admin</div>
+                </div>
+            </div>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <div class="menu-title">Main</div>
+            <li class="menu-item active">
+                <span class="menu-icon">📊</span>
+                <span class="menu-text">Dashboard</span>
+            </li>
+            <li class="menu-item">
+                <span class="menu-icon">👤</span>
+                <span class="menu-text">Users</span>
+            </li>
+            <li class="menu-item">
+                <span class="menu-icon">💌</span>
+                <span class="menu-text">Messages</span>
+            </li>
+            <li class="menu-item">
+                <span class="menu-icon">📝</span>
+                <span class="menu-text">Reports</span>
+            </li>
+            
+            <div class="menu-title">Management</div>
+            <li class="menu-item">
+                <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Settings</span>
+            </li>
+            <li class="menu-item">
+                <span class="menu-icon">🛠️</span>
+                <span class="menu-text">Tools</span>
+            </li>
+            <li class="menu-item">
+                <span class="menu-icon">📢</span>
+                <span class="menu-text">Announcements</span>
+            </li>
+            
+            <div class="menu-title">Other</div>
+            <li class="menu-item">
+                <span class="menu-icon">📁</span>
+                <span class="menu-text">Documents</span>
+            </li>
+            <li class="menu-item">
+                <span class="menu-icon">🆘</span>
+                <span class="menu-text">Support</span>
+            </li>
+        </ul>
+    </aside>
+    
+    <main class="main-content">
+        <div class="topbar">
+            <div class="page-title">Dashboard Overview</div>
+            <div class="topbar-actions">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <a href="login.html" class="admin-logout">
+                    <span class="menu-icon">🚪</span>
+                    <span class="menu-text">Logout</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="content-area">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Total Users</div>
+                    <div class="stat-value">12,548</div>
+                    <div class="stat-change up">↑ 12.5% from last month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Active Now</div>
+                    <div class="stat-value">3,217</div>
+                    <div class="stat-change up">↑ 8.3% from yesterday</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">New Matches</div>
+                    <div class="stat-value">1,842</div>
+                    <div class="stat-change up">↑ 5.7% from last week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Reports</div>
+                    <div class="stat-value">47</div>
+                    <div class="stat-change down">↓ 15.2% from last week</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Users</h2>
+                    <div class="section-actions">
+                        <a href="#">View All →</a>
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#4587</td>
+                            <td>Alex Johnson</td>
+                            <td>alex.johnson@example.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>2 days ago</td>
+                            <td>
+                                <button class="action-btn btn-view">View</button>
+                                <button class="action-btn btn-edit">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#4586</td>
+                            <td>Sarah Williams</td>
+                            <td>sarah.w@example.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>3 days ago</td>
+                            <td>
+                                <button class="action-btn btn-view">View</button>
+                                <button class="action-btn btn-edit">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#4585</td>
+                            <td>Michael Brown</td>
+                            <td>michael.b@example.com</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>4 days ago</td>
+                            <td>
+                                <button class="action-btn btn-view">View</button>
+                                <button class="action-btn btn-edit">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#4584</td>
+                            <td>Emily Davis</td>
+                            <td>emily.d@example.com</td>
+                            <td><span class="status-badge status-banned">Banned</span></td>
+                            <td>1 week ago</td>
+                            <td>
+                                <button class="action-btn btn-view">View</button>
+                                <button class="action-btn btn-delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#4583</td>
+                            <td>David Wilson</td>
+                            <td>david.w@example.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>1 week ago</td>
+                            <td>
+                                <button class="action-btn btn-view">View</button>
+                                <button class="action-btn btn-edit">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">User Growth</h2>
+                    <div class="section-actions">
+                        <a href="#">View Analytics →</a>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <!-- Chart would be rendered here with a library like Chart.js -->
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #777;">
+                        User Growth Chart Area
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Activity</h2>
+                    <div class="section-actions">
+                        <a href="#">View All →</a>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">New user registered</div>
+                            <div class="activity-desc">Alex Johnson created an account</div>
+                            <div class="activity-time">10 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">💌</div>
+                        <div class="activity-content">
+                            <div class="activity-title">New message report</div>
+                            <div class="activity-desc">Sarah reported a message from user #1234</div>
+                            <div class="activity-time">1 hour ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">🛠️</div>
+                        <div class="activity-content">
+                            <div class="activity-title">System update</div>
+                            <div class="activity-desc">Applied security patch v2.4.1</div>
+                            <div class="activity-time">3 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Profile verification</div>
+                            <div class="activity-desc">Michael Brown verified his profile</div>
+                            <div class="activity-time">5 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">⚠️</div>
+                        <div class="activity-content">
+                            <div class="activity-title">User banned</div>
+                            <div class="activity-desc">Emily Davis was banned for policy violation</div>
+                            <div class="activity-time">1 day ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        });
+
+        // Sidebar menu functionality
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

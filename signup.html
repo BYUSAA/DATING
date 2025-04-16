@@ -168,7 +168,7 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             padding: 3rem;
         }
 
@@ -213,11 +213,15 @@
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group.full-width {
             grid-column: span 2;
+        }
+
+        .form-group.half-width {
+            grid-column: span 1;
         }
 
         .form-group label {
@@ -226,7 +230,9 @@
             font-weight: 500;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, 
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 0.8rem 1rem;
             border-radius: 8px;
@@ -236,10 +242,130 @@
             font-size: 1rem;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, 
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(110, 72, 170, 0.2);
+        }
+
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .upload-text {
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-hint {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .preview-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview-item img, .preview-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            cursor: pointer;
+        }
+
+        .subscription-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subscription-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .subscription-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .subscription-card.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+
+        .subscription-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .subscription-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subscription-features {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .subscription-features li {
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-icon {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
         }
 
         .terms-conditions {
@@ -428,7 +554,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .form-group.full-width {
+            .form-group.full-width, .form-group.half-width {
                 grid-column: span 1;
             }
 
@@ -438,6 +564,10 @@
 
             .login-link {
                 grid-column: span 1;
+            }
+
+            .subscription-options {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -476,11 +606,11 @@
             </div>
             
             <form class="signup-form" id="signupForm">
-                <div class="form-group">
+                <div class="form-group half-width">
                     <label for="first-name">First Name</label>
                     <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group half-width">
                     <label for="last-name">Last Name</label>
                     <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
                 </div>
@@ -488,15 +618,15 @@
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group half-width">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a password" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group half-width">
                     <label for="confirm-password">Confirm Password</label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group half-width">
                     <label for="gender">Gender</label>
                     <select id="gender" name="gender" required>
                         <option value="">Select gender</option>
@@ -506,7 +636,7 @@
                         <option value="prefer-not-to-say">Prefer not to say</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group half-width">
                     <label for="birthdate">Date of Birth</label>
                     <input type="date" id="birthdate" name="birthdate" required>
                 </div>
@@ -520,6 +650,78 @@
                         <option value="business">Business Networking</option>
                         <option value="penpal">Pen Pal</option>
                     </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Choose Your Subscription Plan</label>
+                    <div class="subscription-options">
+                        <div class="subscription-card" data-plan="basic">
+                            <div class="subscription-name">Basic</div>
+                            <div class="subscription-price">$9.99/month</div>
+                            <ul class="subscription-features">
+                                <li><span class="feature-icon">✓</span> 5 Photo Uploads</li>
+                                <li><span class="feature-icon">✓</span> 1 Video Upload</li>
+                                <li><span class="feature-icon">✓</span> Standard Matching</li>
+                            </ul>
+                        </div>
+                        <div class="subscription-card" data-plan="premium">
+                            <div class="subscription-name">Premium</div>
+                            <div class="subscription-price">$19.99/month</div>
+                            <ul class="subscription-features">
+                                <li><span class="feature-icon">✓</span> 20 Photo Uploads</li>
+                                <li><span class="feature-icon">✓</span> 5 Video Uploads</li>
+                                <li><span class="feature-icon">✓</span> Priority Matching</li>
+                            </ul>
+                        </div>
+                        <div class="subscription-card" data-plan="vip">
+                            <div class="subscription-name">VIP</div>
+                            <div class="subscription-price">$29.99/month</div>
+                            <ul class="subscription-features">
+                                <li><span class="feature-icon">✓</span> Unlimited Photos</li>
+                                <li><span class="feature-icon">✓</span> Unlimited Videos</li>
+                                <li><span class="feature-icon">✓</span> VIP Matching</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <input type="hidden" id="subscription-plan" name="subscription-plan" value="">
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Profile Photo (Required)</label>
+                    <div class="upload-area" id="photoUpload">
+                        <div class="upload-icon">📷</div>
+                        <div class="upload-text">Click to upload profile photo</div>
+                        <div class="upload-hint">JPG or PNG, max 5MB</div>
+                        <input type="file" id="profile-photo" name="profile-photo" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="preview-container" id="photoPreview"></div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Additional Photos (Optional)</label>
+                    <div class="upload-area" id="additionalPhotosUpload">
+                        <div class="upload-icon">🖼️</div>
+                        <div class="upload-text">Click to upload additional photos</div>
+                        <div class="upload-hint">JPG or PNG, max 5MB each</div>
+                        <input type="file" id="additional-photos" name="additional-photos" accept="image/*" multiple style="display: none;">
+                    </div>
+                    <div class="preview-container" id="additionalPhotosPreview"></div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Profile Video (Optional)</label>
+                    <div class="upload-area" id="videoUpload">
+                        <div class="upload-icon">🎥</div>
+                        <div class="upload-text">Click to upload profile video</div>
+                        <div class="upload-hint">MP4, max 20MB</div>
+                        <input type="file" id="profile-video" name="profile-video" accept="video/*" style="display: none;">
+                    </div>
+                    <div class="preview-container" id="videoPreview"></div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="bio">About You</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Tell others about yourself..."></textarea>
                 </div>
                 
                 <div class="terms-conditions full-width">
@@ -596,16 +798,128 @@
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
-        // Signup form validation
-        const signupForm = document.getElementById('signupForm');
-        const password = document.getElementById('password');
-        const confirmPassword = document.getElementById('confirm-password');
+        // Subscription plan selection
+        const subscriptionCards = document.querySelectorAll('.subscription-card');
+        const subscriptionPlanInput = document.getElementById('subscription-plan');
+        
+        subscriptionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                subscriptionCards.forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                subscriptionPlanInput.value = card.getAttribute('data-plan');
+            });
+        });
 
+        // File upload functionality
+        const photoUpload = document.getElementById('photoUpload');
+        const profilePhotoInput = document.getElementById('profile-photo');
+        const photoPreview = document.getElementById('photoPreview');
+        
+        const additionalPhotosUpload = document.getElementById('additionalPhotosUpload');
+        const additionalPhotosInput = document.getElementById('additional-photos');
+        const additionalPhotosPreview = document.getElementById('additionalPhotosPreview');
+        
+        const videoUpload = document.getElementById('videoUpload');
+        const profileVideoInput = document.getElementById('profile-video');
+        const videoPreview = document.getElementById('videoPreview');
+        
+        // Profile photo upload
+        photoUpload.addEventListener('click', () => profilePhotoInput.click());
+        
+        profilePhotoInput.addEventListener('change', function() {
+            photoPreview.innerHTML = '';
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    previewItem.innerHTML = `
+                        <img src="${e.target.result}" alt="Profile Photo">
+                        <div class="remove-btn" onclick="removePreview(this.parentNode, 'profile-photo')">×</div>
+                    `;
+                    photoPreview.appendChild(previewItem);
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        
+        // Additional photos upload
+        additionalPhotosUpload.addEventListener('click', () => additionalPhotosInput.click());
+        
+        additionalPhotosInput.addEventListener('change', function() {
+            if (this.files) {
+                for (let i = 0; i < this.files.length; i++) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'preview-item';
+                        previewItem.innerHTML = `
+                            <img src="${e.target.result}" alt="Additional Photo">
+                            <div class="remove-btn" onclick="removePreview(this.parentNode, 'additional-photos', ${i})">×</div>
+                        `;
+                        additionalPhotosPreview.appendChild(previewItem);
+                    };
+                    reader.readAsDataURL(this.files[i]);
+                }
+            }
+        });
+        
+        // Video upload
+        videoUpload.addEventListener('click', () => profileVideoInput.click());
+        
+        profileVideoInput.addEventListener('change', function() {
+            videoPreview.innerHTML = '';
+            if (this.files && this.files[0]) {
+                const videoUrl = URL.createObjectURL(this.files[0]);
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                previewItem.innerHTML = `
+                    <video controls>
+                        <source src="${videoUrl}" type="${this.files[0].type}">
+                    </video>
+                    <div class="remove-btn" onclick="removePreview(this.parentNode, 'profile-video')">×</div>
+                `;
+                videoPreview.appendChild(previewItem);
+            }
+        });
+        
+        // Remove preview function
+        window.removePreview = function(element, inputType, index = null) {
+            element.remove();
+            if (inputType === 'profile-photo') {
+                profilePhotoInput.value = '';
+            } else if (inputType === 'additional-photos') {
+                // For additional photos, we can't remove individual files from the FileList
+                // So we'll just clear all if any is removed (simplified approach)
+                additionalPhotosInput.value = '';
+                additionalPhotosPreview.innerHTML = '';
+            } else if (inputType === 'profile-video') {
+                profileVideoInput.value = '';
+            }
+        };
+        
+        // Form submission
+        const signupForm = document.getElementById('signupForm');
+        
         signupForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Check if required fields are filled
+            if (!profilePhotoInput.files || profilePhotoInput.files.length === 0) {
+                alert('Please upload a profile photo');
+                return;
+            }
+            
+            if (!subscriptionPlanInput.value) {
+                alert('Please select a subscription plan');
+                return;
+            }
+            
             // Check if passwords match
-            if (password.value !== confirmPassword.value) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
                 alert('Passwords do not match!');
                 return;
             }
@@ -620,22 +934,6 @@
             alert('Account created successfully! Redirecting to profile...');
             window.location.href = 'profile.html';
         });
-
-        // Password strength indicator (could be enhanced)
-        password.addEventListener('input', function() {
-            const strength = calculatePasswordStrength(password.value);
-            // Could add visual feedback here
-        });
-
-        function calculatePasswordStrength(password) {
-            let strength = 0;
-            if (password.length > 7) strength++;
-            if (password.match(/[a-z]/)) strength++;
-            if (password.match(/[A-Z]/)) strength++;
-            if (password.match(/[0-9]/)) strength++;
-            if (password.match(/[^a-zA-Z0-9]/)) strength++;
-            return strength;
-        }
     </script>
 </body>
 </html>

@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage - MetaDate</title>
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776e6;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        .dark-mode {
+            --primary-color: #7b2cbf;
+            --secondary-color: #9d4edd;
+            --accent-color: #5a189a;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(30, 30, 30, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .auth-buttons .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-signup {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .filter-section {
+            padding: 2rem;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+        }
+
+        .filter-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-reset {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            margin-right: 1rem;
+        }
+
+        .filter-apply {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .filter-reset:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+
+        .filter-apply:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .profiles-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .profile-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .profile-info {
+            padding: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .profile-age {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .location-icon {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .profile-bio {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .profile-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .interest-tag {
+            background-color: rgba(110, 72, 170, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-like {
+            background-color: var(--primary-color);
+            color: white;
+            flex-grow: 1;
+            margin-right: 0.5rem;
+        }
+
+        .btn-message {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            flex-grow: 1;
+            margin-left: 0.5rem;
+        }
+
+        .btn-like:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-message:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover, .pagination-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .marriage-features {
+            padding: 4rem 2rem;
+            background-color: var(--card-bg);
+            margin-top: 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-bubble {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(110, 72, 170, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html" class="active">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1>Find Your Life Partner</h1>
+        <p>Connect with serious individuals who are looking for a committed relationship leading to marriage.</p>
+    </section>
+
+    <section class="filter-section">
+        <h2 class="filter-title">Filter Profiles</h2>
+        <div class="filter-grid">
+            <div class="filter-group">
+                <label for="gender">I'm looking for</label>
+                <select id="gender">
+                    <option value="male">Men</option>
+                    <option value="female">Women</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="age-range">Age range</label>
+                <select id="age-range">
+                    <option value="25-30">25-30</option>
+                    <option value="31-35" selected>31-35</option>
+                    <option value="36-40">36-40</option>
+                    <option value="41+">41+</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="religion">Religion</label>
+                <select id="religion">
+                    <option value="any">Any religion</option>
+                    <option value="christian">Christian</option>
+                    <option value="muslim">Muslim</option>
+                    <option value="hindu">Hindu</option>
+                    <option value="buddhist">Buddhist</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="location">Location</label>
+                <select id="location">
+                    <option value="any">Anywhere</option>
+                    <option value="local">Near me</option>
+                    <option value="country">My country</option>
+                </select>
+            </div>
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn filter-reset">Reset</button>
+            <button class="filter-btn filter-apply">Apply Filters</button>
+        </div>
+    </section>
+
+    <section class="profiles-section">
+        <h2 class="section-title">Compatible Partners</h2>
+        <div class="profile-grid">
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">Verified</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Michael</h3>
+                    <div class="profile-age">32 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Chicago, USA
+                    </div>
+                    <p class="profile-bio">Financial analyst looking for a serious relationship. Values family, honesty, and shared goals.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Family</span>
+                        <span class="interest-tag">Travel</span>
+                        <span class="interest-tag">Finance</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">Premium</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">David</h3>
+                    <div class="profile-age">35 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Toronto, Canada
+                    </div>
+                    <p class="profile-bio">Doctor seeking a life partner who shares my values of compassion and commitment.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Medicine</span>
+                        <span class="interest-tag">Hiking</span>
+                        <span class="interest-tag">Reading</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">New</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">James</h3>
+                    <div class="profile-age">30 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> London, UK
+                    </div>
+                    <p class="profile-bio">Teacher looking to build a family with someone who values education and personal growth.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Education</span>
+                        <span class="interest-tag">Music</span>
+                        <span class="interest-tag">Sports</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">Verified</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Robert</h3>
+                    <div class="profile-age">38 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Sydney, Australia
+                    </div>
+                    <p class="profile-bio">Architect seeking a partner to build a life and home together. Values creativity and stability.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Architecture</span>
+                        <span class="interest-tag">Art</span>
+                        <span class="interest-tag">Travel</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">Premium</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Daniel</h3>
+                    <div class="profile-age">33 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Berlin, Germany
+                    </div>
+                    <p class="profile-bio">Engineer looking for a meaningful connection that could lead to marriage and family.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Technology</span>
+                        <span class="interest-tag">Nature</span>
+                        <span class="interest-tag">Cooking</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">New</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">William</h3>
+                    <div class="profile-age">36 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Paris, France
+                    </div>
+                    <p class="profile-bio">Chef looking for a partner to share life's flavors with. Values family traditions and good food.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Cooking</span>
+                        <span class="interest-tag">Wine</span>
+                        <span class="interest-tag">Travel</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <a href="#" class="pagination-btn">❮</a>
+            <a href="#" class="pagination-btn active">1</a>
+            <a href="#" class="pagination-btn">2</a>
+            <a href="#" class="pagination-btn">3</a>
+            <a href="#" class="pagination-btn">4</a>
+            <a href="#" class="pagination-btn">5</a>
+            <a href="#" class="pagination-btn">❯</a>
+        </div>
+    </section>
+
+    <section class="marriage-features">
+        <div class="features-container">
+            <h2 class="features-title">Why MetaDate for Marriage?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💍</div>
+                    <h3>Serious Intentions</h3>
+                    <p>All members are verified and looking for committed relationships leading to marriage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy Focused</h3>
+                    <p>Your journey to finding a life partner remains private and secure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Compatibility Matching</h3>
+                    <p>Our advanced algorithm matches you based on values, lifestyle, and long-term goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate</span>
+                </div>
+                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="international.html">International</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon">📧</span> support@metadate.com</p>
+                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
+                <p><span class="contact-icon">🏢</span> 123 Dating St, Love City, 10001</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        });
+
+        // Profile card like functionality
+        const likeButtons = document.querySelectorAll('.btn-like');
+        likeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.textContent = '❤️ Liked!';
+                button.style.backgroundColor = '#ff6b6b';
+                setTimeout(() => {
+                    button.textContent = '❤️ Like';
+                    button.style.backgroundColor = 'var(--primary-color)';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

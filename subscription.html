@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans - MetaDate</title>
+    <style>
+        /* Reusing styles from index.html with additions */
+        
+        .pricing-hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(110, 72, 170, 0.2), rgba(157, 80, 187, 0.2));
+        }
+        
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .pricing-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary-color);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-period {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .pricing-features {
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-icon {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+        
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="pricing-hero">
+        <h1>Upgrade Your Experience</h1>
+        <p>Unlock premium features to enhance your dating journey</p>
+    </section>
+
+    <div class="pricing-container">
+        <div class="pricing-intro">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p>All plans include our satisfaction guarantee. If you're not happy within the first 7 days, we'll give you a full refund.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="pricing-title">Basic</h3>
+                <div class="pricing-price">$0<span class="pricing-period">/month</span></div>
+                <p>Perfect for trying out MetaDate</p>
+                
+                <div class="pricing-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Create a profile
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Browse matches
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Send 5 messages/day
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✗</span> Advanced matching
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✗</span> See who liked you
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✗</span> Priority support
+                    </div>
+                </div>
+                
+                <a href="signup.html" class="pricing-btn btn-outline">Get Started</a>
+            </div>
+            
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h3 class="pricing-title">Premium</h3>
+                <div class="pricing-price">$29.99<span class="pricing-period">/month</span></div>
+                <p>Best value for serious daters</p>
+                
+                <div class="pricing-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Unlimited messages
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> See who viewed your profile
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Advanced matching algorithm
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Boost your profile weekly
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Read receipts
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Priority customer support
+                    </div>
+                </div>
+                
+                <a href="signup.html?plan=premium" class="pricing-btn btn-primary">Choose Premium</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3 class="pricing-title">VIP</h3>
+                <div class="pricing-price">$99.99<span class="pricing-period">/month</span></div>
+                <p>For those who want the best</p>
+                
+                <div class="pricing-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> All Premium features
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Profile highlighting
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Daily profile boosts
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Exclusive matchmaking
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> Personal dating coach
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span> 24/7 VIP support
+                    </div>
+                </div>
+                
+                <a href="signup.html?plan=vip" class="pricing-btn btn-outline">Choose VIP</a>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do you accept?</div>
+                <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and Apple Pay.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel my subscription anytime?</div>
+                <p>Yes, you can cancel your subscription at any time. Your premium features will remain active until the end of your billing period.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is there a discount for long-term subscriptions?</div>
+                <p>Yes! We offer 15% off for 6-month subscriptions and 30% off for annual subscriptions.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What happens if I don't find a match?</div>
+                <p>While we can't guarantee matches, our premium features significantly increase your chances. If you're not satisfied, you can cancel anytime.</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I upgrade or change my plan?</div>
+                <p>You can change your plan at any time in your account settings. The changes will take effect at your next billing cycle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Same footer as index.html -->
+    <footer>
+        <!-- Footer content from index.html -->
+    </footer>
+
+    <script>
+        // Same JavaScript as index.html
+        
+        // Plan selection functionality
+        document.querySelectorAll('.pricing-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // In a real app, this would track the selected plan
+                const plan = this.textContent.includes('Premium') ? 'premium' : 
+                            this.textContent.includes('VIP') ? 'vip' : 'basic';
+                console.log('Selected plan:', plan);
+            });
+        });
+    </script>
+</body>
+</html>

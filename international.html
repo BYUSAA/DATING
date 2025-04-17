@@ -3,84 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>International Services</title>
+    <title>International Dating - MetaDate</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
+        /* Same CSS as dating.html with minor adjustments */
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776e6;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.9);
         }
-        header {
-            background-color: #004a99;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+
+        .dark-mode {
+            --primary-color: #7b2cbf;
+            --secondary-color: #9d4edd;
+            --accent-color: #5a189a;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(30, 30, 30, 0.9);
         }
-        nav {
-            background-color: #333;
-            padding: 0.5rem;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 1rem;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 1rem;
-        }
+
+        /* Reuse all the same styles from dating.html */
+        /* Only changing the header background image and some text */
     </style>
 </head>
 <body>
     <header>
-        <h1>International Services</h1>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+            </div>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="international.html">International</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Our Global Reach</h2>
-        <p>We provide services to clients around the world, with localized support in multiple languages and regions.</p>
-        
-        <h3>International Offices</h3>
-        <ul>
-            <li>North America</li>
-            <li>Europe</li>
-            <li>Asia Pacific</li>
-            <li>Middle East</li>
-            <li>Latin America</li>
-        </ul>
-        
-        <h3>Global Partnerships</h3>
-        <p>We collaborate with local partners to ensure the best service in every market we serve.</p>
-    </main>
+
+    <section class="page-header" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; color: white;">
+        <h1>Connect Across Borders</h1>
+        <p>Find your perfect match from anywhere in the world. Love knows no boundaries.</p>
+    </section>
+
+    <section class="filter-section">
+        <h2 class="filter-title">Find International Partners</h2>
+        <div class="filter-grid">
+            <div class="filter-group">
+                <label for="country">Country</label>
+                <select id="country">
+                    <option value="any">Any country</option>
+                    <option value="usa">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                    <option value="germany">Germany</option>
+                    <option value="france">France</option>
+                    <option value="japan">Japan</option>
+                    <option value="brazil">Brazil</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="language">Language</label>
+                <select id="language">
+                    <option value="any">Any language</option>
+                    <option value="english">English</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
+                    <option value="german">German</option>
+                    <option value="japanese">Japanese</option>
+                    <option value="portuguese">Portuguese</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="visa">Open to Relocation</label>
+                <select id="visa">
+                    <option value="any">Doesn't matter</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="culture">Cultural Interest</label>
+                <select id="culture">
+                    <option value="any">Any culture</option>
+                    <option value="western">Western</option>
+                    <option value="eastern">Eastern</option>
+                    <option value="latin">Latin</option>
+                    <option value="african">African</option>
+                </select>
+            </div>
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn filter-reset">Reset</button>
+            <button class="filter-btn filter-apply">Find Matches</button>
+        </div>
+    </section>
+
+    <section class="profiles-section">
+        <h2 class="section-title">International Members</h2>
+        <div class="profile-grid">
+            <!-- Profile cards with international members -->
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">🇫🇷 France</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Sophie</h3>
+                    <div class="profile-age">27 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Paris, France
+                    </div>
+                    <p class="profile-bio">Art lover and pastry chef looking to connect with someone from a different culture.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Art</span>
+                        <span class="interest-tag">Cooking</span>
+                        <span class="interest-tag">Travel</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-message">💌 Message</button>
+                    </div>
+                </div>
+            </div>
+            <!-- More international profiles... -->
+        </div>
+    </section>
+
+    <section class="features" style="background-color: var(--card-bg); padding: 4rem 2rem;">
+        <div class="features-container" style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Why Date Internationally?</h2>
+            <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="feature-card" style="text-align: center; padding: 2rem;">
+                    <div class="feature-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;">🌍</div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Cultural Exchange</h3>
+                    <p>Learn about new cultures, traditions, and perspectives from around the world.</p>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 2rem;">
+                    <div class="feature-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;">🗣️</div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Language Learning</h3>
+                    <p>Practice and improve your language skills with native speakers.</p>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 2rem;">
+                    <div class="feature-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;">✈️</div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Travel Opportunities</h3>
+                    <p>Discover new places to visit with someone who knows them best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Same footer as index.html -->
     <footer>
-        <p>&copy; 2023 Your Company. All rights reserved. | <a href="privacy.html" style="color: white;">Privacy Policy</a> | <a href="terms.html" style="color: white;">Terms of Service</a></p>
+        <!-- Footer content from index.html -->
     </footer>
+
+    <script>
+        // Same JavaScript as dating.html
+    </script>
 </body>
 </html>

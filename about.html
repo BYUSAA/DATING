@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MetaDate</title>
+    <style>
+        /* Reusing styles from index.html with additions */
+        
+        .about-hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(110, 72, 170, 0.2), rgba(157, 80, 187, 0.2));
+        }
+        
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .about-section {
+            margin-bottom: 3rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+        
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .value-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <h1>Our Story</h1>
+        <p>Connecting hearts across the world through innovative technology</p>
+    </section>
+
+    <div class="about-content">
+        <section class="about-section">
+            <h2 class="section-title">Who We Are</h2>
+            <p>MetaDate was founded in 2020 with a simple mission: to help people find meaningful connections in an increasingly digital world. Our team of relationship experts, technologists, and designers came together to create a platform that goes beyond superficial swiping.</p>
+            <p>We believe that everyone deserves to find love, friendship, or companionship, regardless of their background, preferences, or circumstances. Our advanced matching algorithms and diverse community make it easier than ever to find your perfect match.</p>
+        </section>
+        
+        <section class="about-section">
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-list">
+                <div class="value-item">
+                    <div class="value-icon">❤️</div>
+                    <h3>Authentic Connections</h3>
+                    <p>We prioritize meaningful interactions over casual encounters, fostering relationships that last.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🔒</div>
+                    <h3>Privacy & Safety</h3>
+                    <p>Your data and personal information are protected with industry-leading security measures.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🌐</div>
+                    <h3>Inclusivity</h3>
+                    <p>We welcome people of all backgrounds, orientations, and relationship preferences.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We continuously improve our platform with cutting-edge technology to enhance your experience.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about-section">
+            <h2 class="section-title">Meet the Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar"></div>
+                    <h3>Sarah Johnson</h3>
+                    <p>CEO & Founder</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar"></div>
+                    <h3>Michael Chen</h3>
+                    <p>CTO</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar"></div>
+                    <h3>Emma Rodriguez</h3>
+                    <p>Head of Design</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar"></div>
+                    <h3>David Kim</h3>
+                    <p>Lead Developer</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="about-section">
+            <h2 class="section-title">Join Our Community</h2>
+            <p>With over 1 million members worldwide, MetaDate is growing rapidly. Whether you're looking for love, friendship, or something in between, we have a place for you.</p>
+            <div class="cta-buttons" style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                <a href="signup.html" class="cta-btn cta-primary" style="padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; background-color: var(--primary-color); color: white; border: 2px solid var(--primary-color);">Get Started</a>
+                <a href="contact.html" class="cta-btn cta-secondary" style="padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">Contact Us</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Same footer as index.html -->
+    <footer>
+        <!-- Footer content from index.html -->
+    </footer>
+
+    <script>
+        // Same JavaScript as index.html
+    </script>
+</body>
+</html>

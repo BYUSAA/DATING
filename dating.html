@@ -6,9 +6,9 @@
     <title>Dating - MetaDate</title>
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #4776e6;
+            --primary-color: #e91e63;
+            --secondary-color: #ff4081;
+            --accent-color: #ff9800;
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
@@ -17,9 +17,9 @@
         }
 
         .dark-mode {
-            --primary-color: #7b2cbf;
-            --secondary-color: #9d4edd;
-            --accent-color: #5a189a;
+            --primary-color: #c2185b;
+            --secondary-color: #e91e63;
+            --accent-color: #ff5722;
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -159,7 +159,7 @@
         .page-header {
             padding: 8rem 2rem 4rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(255, 64, 129, 0.1));
             position: relative;
             overflow: hidden;
         }
@@ -248,7 +248,7 @@
         }
 
         .filter-reset:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(233, 30, 99, 0.1);
         }
 
         .filter-apply:hover {
@@ -350,7 +350,7 @@
         }
 
         .interest-tag {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(233, 30, 99, 0.1);
             color: var(--primary-color);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -374,7 +374,7 @@
             justify-content: center;
         }
 
-        .btn-connect {
+        .btn-like {
             background-color: var(--primary-color);
             color: white;
             flex-grow: 1;
@@ -391,12 +391,12 @@
             text-align: center;
         }
 
-        .btn-connect:hover {
+        .btn-like:hover {
             background-color: var(--secondary-color);
         }
 
         .btn-message:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(233, 30, 99, 0.1);
         }
 
         .pagination {
@@ -424,7 +424,7 @@
             color: white;
         }
 
-        .friendship-features {
+        .dating-features {
             padding: 4rem 2rem;
             background-color: var(--card-bg);
             margin-top: 2rem;
@@ -521,7 +521,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(233, 30, 99, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -621,9 +621,9 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="dating.html">Dating</a></li>
+                <li><a href="dating.html" class="active">Dating</a></li>
                 <li><a href="marriage.html">Marriage</a></li>
-                <li><a href="friendship.html" class="active">Friendship</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -636,20 +636,19 @@
     </header>
 
     <section class="page-header">
-        <h1>Make Genuine Friends</h1>
-        <p>Connect with like-minded people who share your interests and values for meaningful dating.</p>
+        <h1>Find Your Perfect Match</h1>
+        <p>Connect with compatible singles who share your interests and values for meaningful relationships.</p>
     </section>
 
     <section class="filter-section">
-        <h2 class="filter-title">Filter Profiles</h2>
+        <h2 class="filter-title">Find Your Match</h2>
         <div class="filter-grid">
             <div class="filter-group">
-                <label for="gender">Gender</label>
+                <label for="gender">Looking for</label>
                 <select id="gender">
-                    <option value="any">Any gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="male">Men</option>
+                    <option value="female">Women</option>
+                    <option value="any">Anyone</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -683,12 +682,12 @@
         </div>
         <div class="filter-buttons">
             <button class="filter-btn filter-reset">Reset</button>
-            <button class="filter-btn filter-apply">Apply Filters</button>
+            <button class="filter-btn filter-apply">Find Matches</button>
         </div>
     </section>
 
     <section class="profiles-section">
-        <h2 class="section-title">People Looking for Friends</h2>
+        <h2 class="section-title">Featured Singles</h2>
         <div class="profile-grid">
             <div class="profile-card">
                 <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
@@ -700,14 +699,14 @@
                     <div class="profile-location">
                         <span class="location-icon">📍</span> New York, USA
                     </div>
-                    <p class="profile-bio">Book lover and coffee enthusiast looking for friends to explore the city's hidden cafes and bookstores with.</p>
+                    <p class="profile-bio">Creative soul looking for someone to share adventures with. Love art galleries and weekend getaways.</p>
                     <div class="profile-interests">
-                        <span class="interest-tag">Reading</span>
-                        <span class="interest-tag">Coffee</span>
-                        <span class="interest-tag">Exploring</span>
+                        <span class="interest-tag">Art</span>
+                        <span class="interest-tag">Travel</span>
+                        <span class="interest-tag">Wine</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-connect">🤝 Connect</button>
+                        <button class="action-btn btn-like">❤️ Like</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -722,14 +721,14 @@
                     <div class="profile-location">
                         <span class="location-icon">📍</span> Los Angeles, USA
                     </div>
-                    <p class="profile-bio">Musician and outdoor enthusiast looking for friends to jam with and go hiking on weekends.</p>
+                    <p class="profile-bio">Musician and fitness enthusiast looking for someone to share both quiet nights and active adventures.</p>
                     <div class="profile-interests">
                         <span class="interest-tag">Music</span>
-                        <span class="interest-tag">Hiking</span>
-                        <span class="interest-tag">Photography</span>
+                        <span class="interest-tag">Fitness</span>
+                        <span class="interest-tag">Cooking</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-connect">🤝 Connect</button>
+                        <button class="action-btn btn-like">❤️ Like</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -744,14 +743,14 @@
                     <div class="profile-location">
                         <span class="location-icon">📍</span> Chicago, USA
                     </div>
-                    <p class="profile-bio">Artist looking for creative friends to collaborate with and discuss art, design, and culture.</p>
+                    <p class="profile-bio">Entrepreneur looking for an intellectual partner who enjoys deep conversations and spontaneous trips.</p>
                     <div class="profile-interests">
-                        <span class="interest-tag">Art</span>
-                        <span class="interest-tag">Design</span>
-                        <span class="interest-tag">Museums</span>
+                        <span class="interest-tag">Business</span>
+                        <span class="interest-tag">Philosophy</span>
+                        <span class="interest-tag">Adventure</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-connect">🤝 Connect</button>
+                        <button class="action-btn btn-like">❤️ Like</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -766,14 +765,14 @@
                     <div class="profile-location">
                         <span class="location-icon">📍</span> Toronto, Canada
                     </div>
-                    <p class="profile-bio">Foodie and travel lover looking for friends to try new restaurants and plan trips with.</p>
+                    <p class="profile-bio">Food blogger looking for someone who appreciates good food and great conversation.</p>
                     <div class="profile-interests">
                         <span class="interest-tag">Food</span>
-                        <span class="interest-tag">Travel</span>
                         <span class="interest-tag">Photography</span>
+                        <span class="interest-tag">Comedy</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-connect">🤝 Connect</button>
+                        <button class="action-btn btn-like">❤️ Like</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -788,14 +787,14 @@
                     <div class="profile-location">
                         <span class="location-icon">📍</span> London, UK
                     </div>
-                    <p class="profile-bio">Tech enthusiast and gamer looking for friends to discuss the latest tech and play multiplayer games with.</p>
+                    <p class="profile-bio">Tech professional looking for a partner who balances my analytical side with creativity and fun.</p>
                     <div class="profile-interests">
                         <span class="interest-tag">Technology</span>
                         <span class="interest-tag">Gaming</span>
-                        <span class="interest-tag">Movies</span>
+                        <span class="interest-tag">Cocktails</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-connect">🤝 Connect</button>
+                        <button class="action-btn btn-like">❤️ Like</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -810,14 +809,14 @@
                     <div class="profile-location">
                         <span class="location-icon">📍</span> Sydney, Australia
                     </div>
-                    <p class="profile-bio">Fitness trainer looking for workout buddies and friends to stay active and healthy with.</p>
+                    <p class="profile-bio">Doctor looking for a meaningful connection with someone kind, funny, and adventurous.</p>
                     <div class="profile-interests">
-                        <span class="interest-tag">Fitness</span>
-                        <span class="interest-tag">Nutrition</span>
-                        <span class="interest-tag">Outdoors</span>
+                        <span class="interest-tag">Medicine</span>
+                        <span class="interest-tag">Surfing</span>
+                        <span class="interest-tag">Reading</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-connect">🤝 Connect</button>
+                        <button class="action-btn btn-like">❤️ Like</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -834,24 +833,24 @@
         </div>
     </section>
 
-    <section class="friendship-features">
+    <section class="dating-features">
         <div class="features-container">
-            <h2 class="features-title">Why MetaDate for Friendship?</h2>
+            <h2 class="features-title">Why Choose MetaDate?</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>Genuine Connections</h3>
-                    <p>Meet people who are genuinely interested in building meaningful dating.</p>
+                    <div class="feature-icon">💖</div>
+                    <h3>Smart Matching</h3>
+                    <p>Our advanced algorithm connects you with compatible partners based on your personality and preferences.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Interest-Based Matching</h3>
-                    <p>Connect with people who share your hobbies and interests.</p>
+                    <div class="feature-icon">🔒</div>
+                    <h3>Verified Profiles</h3>
+                    <p>We verify all profiles to ensure you're connecting with real people looking for genuine relationships.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Local & Global</h3>
-                    <p>Find friends in your area or connect with people from around the world.</p>
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Community</h3>
+                    <p>Meet interesting singles from around the world or find someone special in your neighborhood.</p>
                 </div>
             </div>
         </div>
@@ -864,7 +863,7 @@
                     <div class="footer-logo-bubble">M</div>
                     <span class="footer-logo-text">MetaDate</span>
                 </div>
-                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <p>MetaDate is a premium dating platform that helps people find meaningful connections and lasting relationships.</p>
                 <div class="social-links">
                     <a href="#" class="social-link">f</a>
                     <a href="#" class="social-link">t</a>
@@ -919,22 +918,24 @@
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
-        // Profile card connect functionality
-        const connectButtons = document.querySelectorAll('.btn-connect');
-        connectButtons.forEach(button => {
+        // Like button functionality
+        const likeButtons = document.querySelectorAll('.btn-like');
+        likeButtons.forEach(button => {
             button.addEventListener('click', () => {
-                button.textContent = '✓ Connected';
-                button.style.backgroundColor = '#2ecc71';
-                setTimeout(() => {
-                    button.textContent = '🤝 Connect';
-                    button.style.backgroundColor = 'var(--primary-color)';
-                }, 2000);
+                if (button.textContent === '❤️ Like') {
+                    button.textContent = '❤️ Liked!';
+                    button.style.backgroundColor = '#2ecc71';
+                    setTimeout(() => {
+                        button.textContent = '❤️ Like';
+                        button.style.backgroundColor = 'var(--primary-color)';
+                    }, 2000);
+                }
             });
         });
 
         // Filter functionality
         document.querySelector('.filter-apply').addEventListener('click', () => {
-            alert('Filters applied! (This is a demo)');
+            alert('Finding your matches... (This is a demo)');
         });
 
         document.querySelector('.filter-reset').addEventListener('click', () => {

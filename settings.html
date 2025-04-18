@@ -223,6 +223,31 @@
             height: fit-content;
         }
 
+        .profile-selector {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-selector label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .profile-selector select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
         .settings-menu {
             list-style: none;
         }
@@ -474,26 +499,29 @@
             margin-bottom: 1rem;
         }
 
-        .privacy-options {
+        .privacy-options, .notification-options, .security-options, .preference-options {
             margin-top: 2rem;
         }
 
-        .privacy-option {
+        .privacy-option, .notification-option, .security-option, .preference-option {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .privacy-option:last-child {
+        .privacy-option:last-child, .notification-option:last-child, 
+        .security-option:last-child, .preference-option:last-child {
             border-bottom: none;
         }
 
-        .privacy-option h4 {
+        .privacy-option h4, .notification-option h4, 
+        .security-option h4, .preference-option h4 {
             margin-bottom: 0.5rem;
             color: var(--primary-color);
         }
 
-        .privacy-option p {
+        .privacy-option p, .notification-option p, 
+        .security-option p, .preference-option p {
             margin-bottom: 1rem;
             font-size: 0.95rem;
         }
@@ -506,6 +534,61 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-size: 1rem;
+        }
+
+        .payment-methods {
+            margin-top: 2rem;
+        }
+
+        .payment-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .payment-card-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+
+        .payment-card-info {
+            flex-grow: 1;
+        }
+
+        .payment-card-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .help-section {
+            margin-top: 2rem;
+        }
+
+        .help-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .help-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .help-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        .help-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .help-item a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -708,6 +791,17 @@
         <div class="container">
             <div class="settings-container">
                 <div class="settings-sidebar">
+                    <div class="profile-selector">
+                        <label for="profileSelect">Select Profile</label>
+                        <select id="profileSelect" class="form-control">
+                            <option value="personal">Personal Profile</option>
+                            <option value="dating">Dating Profile</option>
+                            <option value="marriage">Marriage Profile</option>
+                            <option value="friendship">Friendship Profile</option>
+                            <option value="religious">Religious Profile</option>
+                        </select>
+                    </div>
+
                     <ul class="settings-menu">
                         <li><a href="#profile" class="active"><i class="fas fa-user"></i> Profile</a></li>
                         <li><a href="#account"><i class="fas fa-cog"></i> Account</a></li>
@@ -721,6 +815,7 @@
                 </div>
 
                 <div class="settings-content">
+                    <!-- Profile Section -->
                     <div id="profile">
                         <h2 class="section-title">Profile Settings</h2>
                         
@@ -734,7 +829,7 @@
                             </div>
                         </div>
 
-                        <form>
+                        <form id="profileForm">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName">First Name</label>
@@ -773,12 +868,56 @@
                             </div>
 
                             <div class="form-actions">
-                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="button" class="btn btn-secondary" id="resetProfile">Reset</button>
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>
                         </form>
                     </div>
 
+                    <!-- Account Section -->
+                    <div id="account" style="display: none;">
+                        <h2 class="section-title">Account Settings</h2>
+                        
+                        <form id="accountForm">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" value="john.doe@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" value="+1 (555) 123-4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="language">Preferred Language</label>
+                                <select id="language" class="form-control">
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                    <option value="zh">Chinese</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timezone">Timezone</label>
+                                <select id="timezone" class="form-control">
+                                    <option value="pst">Pacific Time (PST)</option>
+                                    <option value="mst">Mountain Time (MST)</option>
+                                    <option value="cst">Central Time (CST)</option>
+                                    <option value="est" selected>Eastern Time (EST)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="resetAccount">Reset</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Privacy Section -->
                     <div id="privacy" style="display: none;">
                         <h2 class="section-title">Privacy Settings</h2>
                         
@@ -786,7 +925,7 @@
                             <div class="privacy-option">
                                 <h4>Profile Visibility</h4>
                                 <p>Control who can see your profile and personal information</p>
-                                <select class="select-control">
+                                <select class="select-control" id="profileVisibility">
                                     <option value="public">Public (Anyone can see my profile)</option>
                                     <option value="members">Members only (Only logged-in users)</option>
                                     <option value="connections">Connections only (People I've connected with)</option>
@@ -799,7 +938,7 @@
                                 <p>Show when you were last active on the platform</p>
                                 <div class="toggle-group">
                                     <label class="switch">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" id="activityStatus" checked>
                                         <span class="slider"></span>
                                     </label>
                                     <span class="toggle-label">Show my activity status</span>
@@ -812,7 +951,7 @@
                                 <p>Allow your profile to appear in search results</p>
                                 <div class="toggle-group">
                                     <label class="switch">
-                                        <input type="checkbox" checked>
+                                        <input type="checkbox" id="searchVisibility" checked>
                                         <span class="slider"></span>
                                     </label>
                                     <span class="toggle-label">Include me in search results</span>
@@ -825,7 +964,7 @@
                                 <p>Allow MetaDate to use your data for improving our services</p>
                                 <div class="toggle-group">
                                     <label class="switch">
-                                        <input type="checkbox">
+                                        <input type="checkbox" id="dataSharing">
                                         <span class="slider"></span>
                                     </label>
                                     <span class="toggle-label">Allow data sharing</span>
@@ -835,8 +974,278 @@
                         </div>
 
                         <div class="form-actions">
-                            <button type="button" class="btn btn-secondary">Reset</button>
-                            <button type="submit" class="btn btn-primary">Save Privacy Settings</button>
+                            <button type="button" class="btn btn-secondary" id="resetPrivacy">Reset</button>
+                            <button type="button" class="btn btn-primary" id="savePrivacy">Save Privacy Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Section -->
+                    <div id="notifications" style="display: none;">
+                        <h2 class="section-title">Notification Settings</h2>
+                        
+                        <div class="notification-options">
+                            <div class="notification-option">
+                                <h4>Email Notifications</h4>
+                                <p>Control which email notifications you receive</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailMessages" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">New messages</span>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailMatches" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">New matches</span>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailPromotions">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Promotions and offers</span>
+                                </div>
+                            </div>
+
+                            <div class="notification-option">
+                                <h4>Push Notifications</h4>
+                                <p>Control which push notifications you receive on your device</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="pushMessages" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">New messages</span>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="pushMatches" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">New matches</span>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="pushReminders">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Activity reminders</span>
+                                </div>
+                            </div>
+
+                            <div class="notification-option">
+                                <h4>SMS Notifications</h4>
+                                <p>Control which text message notifications you receive</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="smsMessages">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">New messages</span>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="smsSecurity">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Security alerts</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="resetNotifications">Reset</button>
+                            <button type="button" class="btn btn-primary" id="saveNotifications">Save Notification Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- Security Section -->
+                    <div id="security" style="display: none;">
+                        <h2 class="section-title">Security Settings</h2>
+                        
+                        <div class="security-options">
+                            <div class="security-option">
+                                <h4>Password</h4>
+                                <p>Change your account password</p>
+                                <button class="btn btn-secondary" id="changePassword">Change Password</button>
+                            </div>
+
+                            <div class="security-option">
+                                <h4>Two-Factor Authentication</h4>
+                                <p>Add an extra layer of security to your account</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="twoFactorAuth">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Enable Two-Factor Authentication</span>
+                                </div>
+                                <p class="toggle-description">Requires a verification code when logging in from new devices</p>
+                            </div>
+
+                            <div class="security-option">
+                                <h4>Login Activity</h4>
+                                <p>Review recent login attempts to your account</p>
+                                <button class="btn btn-secondary" id="viewLoginActivity">View Login Activity</button>
+                            </div>
+
+                            <div class="security-option">
+                                <h4>Connected Devices</h4>
+                                <p>Manage devices that are currently logged in to your account</p>
+                                <button class="btn btn-secondary" id="manageDevices">Manage Devices</button>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-danger" id="deactivateAccount">Deactivate Account</button>
+                        </div>
+                    </div>
+
+                    <!-- Preferences Section -->
+                    <div id="preferences" style="display: none;">
+                        <h2 class="section-title">Preferences</h2>
+                        
+                        <div class="preference-options">
+                            <div class="preference-option">
+                                <h4>Theme</h4>
+                                <p>Choose between light and dark mode</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="themePreference">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Dark Mode</span>
+                                </div>
+                            </div>
+
+                            <div class="preference-option">
+                                <h4>Email Frequency</h4>
+                                <p>How often you receive email updates from us</p>
+                                <select class="select-control" id="emailFrequency">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-option">
+                                <h4>Content Preferences</h4>
+                                <p>Customize the type of content you see</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="showExplicitContent">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Show explicit content</span>
+                                </div>
+                            </div>
+
+                            <div class="preference-option">
+                                <h4>Accessibility</h4>
+                                <p>Adjust settings for better accessibility</p>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="highContrastMode">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">High contrast mode</span>
+                                </div>
+                                <div class="toggle-group">
+                                    <label class="switch">
+                                        <input type="checkbox" id="reduceAnimations">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Reduce animations</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="resetPreferences">Reset</button>
+                            <button type="button" class="btn btn-primary" id="savePreferences">Save Preferences</button>
+                        </div>
+                    </div>
+
+                    <!-- Payment Section -->
+                    <div id="payment" style="display: none;">
+                        <h2 class="section-title">Payment Methods</h2>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-card">
+                                <div class="payment-card-icon">
+                                    <i class="fab fa-cc-visa"></i>
+                                </div>
+                                <div class="payment-card-info">
+                                    <h4>Visa ending in 4242</h4>
+                                    <p>Expires 12/2025</p>
+                                </div>
+                                <div class="payment-card-actions">
+                                    <button class="btn btn-secondary">Edit</button>
+                                    <button class="btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+
+                            <div class="payment-card">
+                                <div class="payment-card-icon">
+                                    <i class="fab fa-cc-paypal"></i>
+                                </div>
+                                <div class="payment-card-info">
+                                    <h4>PayPal</h4>
+                                    <p>john.doe@example.com</p>
+                                </div>
+                                <div class="payment-card-actions">
+                                    <button class="btn btn-secondary">Edit</button>
+                                    <button class="btn btn-danger">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" id="addPaymentMethod">Add Payment Method</button>
+
+                        <div class="billing-history" style="margin-top: 2rem;">
+                            <h4>Billing History</h4>
+                            <p>View and download your past invoices</p>
+                            <button class="btn btn-secondary" id="viewBillingHistory">View Billing History</button>
+                        </div>
+
+                        <div class="subscription" style="margin-top: 2rem;">
+                            <h4>Subscription</h4>
+                            <p>You're currently on the Premium plan ($9.99/month)</p>
+                            <button class="btn btn-danger" id="cancelSubscription">Cancel Subscription</button>
+                        </div>
+                    </div>
+
+                    <!-- Help Section -->
+                    <div id="help" style="display: none;">
+                        <h2 class="section-title">Help Center</h2>
+                        
+                        <div class="help-section">
+                            <div class="help-item">
+                                <h4>Frequently Asked Questions</h4>
+                                <p>Find answers to common questions about your account and features.</p>
+                                <a href="#">View FAQs <i class="fas fa-chevron-right"></i></a>
+                            </div>
+
+                            <div class="help-item">
+                                <h4>Contact Support</h4>
+                                <p>Can't find what you're looking for? Our support team is here to help.</p>
+                                <a href="#">Contact Support <i class="fas fa-chevron-right"></i></a>
+                            </div>
+
+                            <div class="help-item">
+                                <h4>Community Forum</h4>
+                                <p>Connect with other users and get advice from the community.</p>
+                                <a href="#">Visit Forum <i class="fas fa-chevron-right"></i></a>
+                            </div>
+
+                            <div class="help-item">
+                                <h4>Feedback</h4>
+                                <p>We'd love to hear your thoughts on how we can improve MetaDate.</p>
+                                <a href="#">Submit Feedback <i class="fas fa-chevron-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -957,6 +1366,127 @@
                     avatarPreview.src = e.target.result;
                 }
                 reader.readAsDataURL(file);
+            }
+        });
+
+        // Profile selector functionality
+        const profileSelect = document.getElementById('profileSelect');
+        profileSelect.addEventListener('change', function() {
+            alert(`Switching to ${this.options[this.selectedIndex].text} settings`);
+            // In a real app, this would load the appropriate profile settings
+        });
+
+        // Form submission handlers
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profile settings saved!');
+        });
+
+        document.getElementById('accountForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Account settings saved!');
+        });
+
+        // Button handlers
+        document.getElementById('savePrivacy').addEventListener('click', function() {
+            alert('Privacy settings saved!');
+        });
+
+        document.getElementById('saveNotifications').addEventListener('click', function() {
+            alert('Notification settings saved!');
+        });
+
+        document.getElementById('savePreferences').addEventListener('click', function() {
+            alert('Preferences saved!');
+        });
+
+        document.getElementById('changePassword').addEventListener('click', function() {
+            alert('Password change dialog would appear here');
+        });
+
+        document.getElementById('viewLoginActivity').addEventListener('click', function() {
+            alert('Showing login activity');
+        });
+
+        document.getElementById('manageDevices').addEventListener('click', function() {
+            alert('Showing connected devices');
+        });
+
+        document.getElementById('deactivateAccount').addEventListener('click', function() {
+            if(confirm('Are you sure you want to deactivate your account?')) {
+                alert('Account deactivation process started');
+            }
+        });
+
+        document.getElementById('addPaymentMethod').addEventListener('click', function() {
+            alert('Payment method dialog would appear here');
+        });
+
+        document.getElementById('viewBillingHistory').addEventListener('click', function() {
+            alert('Showing billing history');
+        });
+
+        document.getElementById('cancelSubscription').addEventListener('click', function() {
+            if(confirm('Are you sure you want to cancel your subscription?')) {
+                alert('Subscription cancellation process started');
+            }
+        });
+
+        // Reset buttons
+        document.getElementById('resetProfile').addEventListener('click', function() {
+            if(confirm('Reset all profile changes?')) {
+                document.getElementById('profileForm').reset();
+            }
+        });
+
+        document.getElementById('resetAccount').addEventListener('click', function() {
+            if(confirm('Reset all account changes?')) {
+                document.getElementById('accountForm').reset();
+            }
+        });
+
+        document.getElementById('resetPrivacy').addEventListener('click', function() {
+            if(confirm('Reset all privacy settings to defaults?')) {
+                document.getElementById('profileVisibility').value = 'public';
+                document.getElementById('activityStatus').checked = true;
+                document.getElementById('searchVisibility').checked = true;
+                document.getElementById('dataSharing').checked = false;
+            }
+        });
+
+        document.getElementById('resetNotifications').addEventListener('click', function() {
+            if(confirm('Reset all notification settings to defaults?')) {
+                document.getElementById('emailMessages').checked = true;
+                document.getElementById('emailMatches').checked = true;
+                document.getElementById('emailPromotions').checked = false;
+                document.getElementById('pushMessages').checked = true;
+                document.getElementById('pushMatches').checked = true;
+                document.getElementById('pushReminders').checked = false;
+                document.getElementById('smsMessages').checked = false;
+                document.getElementById('smsSecurity').checked = true;
+            }
+        });
+
+        document.getElementById('resetPreferences').addEventListener('click', function() {
+            if(confirm('Reset all preferences to defaults?')) {
+                document.getElementById('themePreference').checked = false;
+                document.getElementById('emailFrequency').value = 'weekly';
+                document.getElementById('showExplicitContent').checked = false;
+                document.getElementById('highContrastMode').checked = false;
+                document.getElementById('reduceAnimations').checked = false;
+            }
+        });
+
+        // Theme preference toggle
+        document.getElementById('themePreference').addEventListener('change', function() {
+            if(this.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '🌞';
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
             }
         });
     </script>

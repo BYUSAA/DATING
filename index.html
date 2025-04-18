@@ -6,30 +6,26 @@
     <title>MetaDate - Find Your Perfect Match</title>
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #ff6b6b;
+            --primary-color: #ff6b6b; /* Coral accent color */
+            --secondary-color: #ff8e8e;
+            --accent-color: #4a6bff; /* Blue from profile */
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
-            --nav-bg: rgba(255, 255, 255, 0.9);
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --text-light: #777;
-            --border-color: #eee;
+            --nav-bg: rgba(255, 255, 255, 0.9);
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
 
         .dark-mode {
-            --primary-color: #9d50bb;
-            --secondary-color: #6e48aa;
-            --accent-color: #ff5252;
+            --primary-color: #ff5252;
+            --secondary-color: #ff7b7b;
+            --accent-color: #5a7bff;
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
-            --nav-bg: rgba(30, 30, 30, 0.9);
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --text-light: #aaa;
-            --border-color: #333;
+            --nav-bg: rgba(30, 30, 30, 0.9);
         }
 
         * {
@@ -46,13 +42,6 @@
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
         header {
             background-color: var(--nav-bg);
             backdrop-filter: blur(10px);
@@ -63,11 +52,13 @@
             box-shadow: var(--shadow);
         }
 
-        nav {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
@@ -167,7 +158,7 @@
         }
 
         .dropdown-item:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(255, 107, 107, 0.1);
         }
 
         .dropdown-divider {
@@ -185,68 +176,12 @@
             margin-left: 1rem;
         }
 
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-accent {
-            background-color: var(--accent-color);
-            color: white;
-            border: 2px solid var(--accent-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(110, 72, 170, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-accent:hover {
-            background-color: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hero Section */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
+            padding: 10rem 2rem 5rem;
+            text-align: center;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             color: white;
             position: relative;
-            text-align: center;
         }
 
         .hero::before {
@@ -266,7 +201,6 @@
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         .hero h1 {
@@ -282,7 +216,7 @@
             animation: fadeIn 1.5s ease;
         }
 
-        .hero-buttons {
+        .cta-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -290,12 +224,44 @@
             animation: fadeIn 2s ease;
         }
 
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Features Section */
         .features {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -347,7 +313,6 @@
             color: var(--primary-color);
         }
 
-        /* Testimonials Section */
         .testimonials {
             padding: 5rem 2rem;
             background-color: var(--card-bg);
@@ -417,7 +382,6 @@
             font-size: 0.9rem;
         }
 
-        /* How It Works Section */
         .how-it-works {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -472,7 +436,6 @@
             z-index: 0;
         }
 
-        /* CTA Section */
         .cta-section {
             padding: 5rem 2rem;
             text-align: center;
@@ -492,53 +455,6 @@
             opacity: 0.9;
         }
 
-        /* Categories Section */
-        .categories {
-            padding: 80px 0;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .category-info {
-            padding: 20px;
-        }
-
-        .category-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .category-info p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Footer */
         footer {
             background-color: var(--card-bg);
             padding: 3rem 2rem;
@@ -593,7 +509,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(255, 107, 107, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -650,7 +566,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -679,7 +594,7 @@
                 font-size: 2.5rem;
             }
 
-            .hero-buttons, .cta-buttons {
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -691,42 +606,45 @@
             .step {
                 margin-bottom: 2rem;
             }
-
-            .features-grid, .testimonials-grid, .category-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">
-                    <div class="logo-bubble">M</div>
-                    <span>MetaDate</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <a href="login.html" class="btn btn-secondary">Login</a>
-                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
-                    <button class="theme-toggle" id="themeToggle">🌓</button>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <div class="user-dropdown">
+                        <div class="dropdown-item" id="dropdownProfile">My Profile</div>
+                        <div class="dropdown-item" id="dropdownMessages">Messages</div>
+                        <div class="dropdown-item" id="dropdownSettings">Settings</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item" id="dropdownLogout">Logout</div>
+                    </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Find Your Perfect Match</h1>
             <p>MetaDate connects you with compatible partners based on your personality, interests, and relationship goals.</p>
-            <div class="hero-buttons">
+            <div class="cta-buttons">
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
                 <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
             </div>
@@ -750,59 +668,6 @@
                 <div class="feature-icon">🌐</div>
                 <h3 class="feature-title">Global Community</h3>
                 <p>Connect with singles from around the world who share your values and interests.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Explore Connections</h2>
-                <p>Discover different ways to connect with people across the globe through our specialized categories</p>
-            </div>
-            <div class="category-grid">
-                <a href="dating.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
-                    <div class="category-info">
-                        <h3>Dating</h3>
-                        <p>Find romantic connections with like-minded individuals</p>
-                    </div>
-                </a>
-                <a href="marriage.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
-                    <div class="category-info">
-                        <h3>Marriage</h3>
-                        <p>Serious relationships leading to lifelong commitment</p>
-                    </div>
-                </a>
-                <a href="religious.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
-                    <div class="category-info">
-                        <h3>Religious</h3>
-                        <p>Connect with people who share your faith and values</p>
-                    </div>
-                </a>
-                <a href="friendship.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
-                    <div class="category-info">
-                        <h3>Friendship</h3>
-                        <p>Platonic connections and meaningful friendships</p>
-                    </div>
-                </a>
-                <a href="international.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
-                    <div class="category-info">
-                        <h3>International</h3>
-                        <p>Connect with people from different cultures</p>
-                    </div>
-                </a>
-                <a href="business.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
-                    <div class="category-info">
-                        <h3>Business</h3>
-                        <p>Professional networking and connections</p>
-                    </div>
-                </a>
             </div>
         </div>
     </section>
@@ -881,7 +746,7 @@
     <section class="cta-section">
         <h2>Ready to Find Your Match?</h2>
         <p>Join thousands of happy couples who found love through MetaDate.</p>
-        <div class="hero-buttons">
+        <div class="cta-buttons">
             <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
             <a href="about.html" class="btn btn-secondary">Learn More</a>
         </div>
@@ -949,966 +814,37 @@
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // User dropdown functionality
+        const userAvatar = document.querySelector('.user-avatar');
+        
+        userAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.user-dropdown').style.opacity = '1';
+            document.querySelector('.user-dropdown').style.visibility = 'visible';
         });
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaDate - Find Your Perfect Match</title>
-    <style>
-        :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #fff;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --text-light: #777;
-            --border-color: #eee;
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        }
 
-        .dark-mode {
-            --primary-color: #9d50bb;
-            --secondary-color: #6e48aa;
-            --accent-color: #ff5252;
-            --text-color: #f0f0f0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --nav-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --text-light: #aaa;
-            --border-color: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo-bubble {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 50%;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .user-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            margin-left: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .user-dropdown {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            width: 200px;
-            padding: 1rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .user-avatar:hover .user-dropdown {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .dropdown-item {
-            padding: 0.5rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: rgba(110, 72, 170, 0.1);
-        }
-
-        .dropdown-divider {
-            height: 1px;
-            background-color: rgba(0, 0, 0, 0.1);
-            margin: 0.5rem 0;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--text-color);
-            margin-left: 1rem;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-accent {
-            background-color: var(--accent-color);
-            color: white;
-            border: 2px solid var(--accent-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(110, 72, 170, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-accent:hover {
-            background-color: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: white;
-            position: relative;
-            text-align: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0.7;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            animation: fadeIn 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeIn 1.5s ease;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            animation: fadeIn 2s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 5rem 2rem;
-            background-color: var(--card-bg);
-        }
-
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background-color: var(--bg-color);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            opacity: 0.1;
-            color: var(--primary-color);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            margin-right: 1rem;
-            overflow: hidden;
-        }
-
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .author-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.2rem;
-        }
-
-        .author-info p {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 3rem;
-            position: relative;
-        }
-
-        .step {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1.5rem;
-        }
-
-        .step-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .steps::before {
-            content: '';
-            position: absolute;
-            top: 30px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient);
-            z-index: 0;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 5rem 2rem;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: white;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Categories Section */
-        .categories {
-            padding: 80px 0;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .category-info {
-            padding: 20px;
-        }
-
-        .category-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .category-info p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--card-bg);
-            padding: 3rem 2rem;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo-bubble {
-            width: 30px;
-            height: 30px;
-            background: var(--gradient);
-            border-radius: 50%;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.8rem;
-        }
-
-        .footer-logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .footer-about p {
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-links h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-contact p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-icon {
-            margin-right: 10px;
-            color: var(--primary-color);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            .nav-links {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-links li {
-                margin: 0.5rem;
-            }
-
-            .user-menu {
-                margin-top: 1rem;
-            }
-
-            .hero {
-                padding: 8rem 1rem 4rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons, .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .steps::before {
-                display: none;
-            }
-
-            .step {
-                margin-bottom: 2rem;
-            }
-
-            .features-grid, .testimonials-grid, .category-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">
-                    <div class="logo-bubble">M</div>
-                    <span>MetaDate</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <a href="login.html" class="btn btn-secondary">Login</a>
-                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
-                    <button class="theme-toggle" id="themeToggle">🌓</button>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Find Your Perfect Match</h1>
-            <p>MetaDate connects you with compatible partners based on your personality, interests, and relationship goals.</p>
-            <div class="hero-buttons">
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
-                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="features">
-        <h2 class="section-title">Why Choose MetaDate</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💖</div>
-                <h3 class="feature-title">Smart Matching</h3>
-                <p>Our advanced algorithm analyzes compatibility factors to connect you with your ideal partner.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Verified Profiles</h3>
-                <p>All profiles are manually verified to ensure authenticity and reduce fake accounts.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3 class="feature-title">Global Community</h3>
-                <p>Connect with singles from around the world who share your values and interests.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Explore Connections</h2>
-                <p>Discover different ways to connect with people across the globe through our specialized categories</p>
-            </div>
-            <div class="category-grid">
-                <a href="dating.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
-                    <div class="category-info">
-                        <h3>Dating</h3>
-                        <p>Find romantic connections with like-minded individuals</p>
-                    </div>
-                </a>
-                <a href="marriage.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
-                    <div class="category-info">
-                        <h3>Marriage</h3>
-                        <p>Serious relationships leading to lifelong commitment</p>
-                    </div>
-                </a>
-                <a href="religious.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
-                    <div class="category-info">
-                        <h3>Religious</h3>
-                        <p>Connect with people who share your faith and values</p>
-                    </div>
-                </a>
-                <a href="friendship.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
-                    <div class="category-info">
-                        <h3>Friendship</h3>
-                        <p>Platonic connections and meaningful friendships</p>
-                    </div>
-                </a>
-                <a href="international.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
-                    <div class="category-info">
-                        <h3>International</h3>
-                        <p>Connect with people from different cultures</p>
-                    </div>
-                </a>
-                <a href="business.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
-                    <div class="category-info">
-                        <h3>Business</h3>
-                        <p>Professional networking and connections</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="testimonials-container">
-            <h2 class="section-title">Success Stories</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        MetaDate helped me find my soulmate when I had almost given up hope. We're getting married next spring!
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sarah J.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Sarah J.</h4>
-                            <p>Found love in 2022</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        As a busy professional, I didn't have time for dating apps. MetaDate's quality matches saved me so much time!
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Michael T.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Michael T.</h4>
-                            <p>Matched in 2023</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        I made genuine friendships through MetaDate that have lasted years. It's more than just a dating site.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Emma L.">
-                        </div>
-                        <div class="author-info">
-                            <h4>Emma L.</h4>
-                            <p>Member since 2021</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works" id="how-it-works">
-        <h2 class="section-title">How MetaDate Works</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3 class="step-title">Create Profile</h3>
-                <p>Tell us about yourself and what you're looking for in a partner.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3 class="step-title">Find Matches</h3>
-                <p>Our algorithm suggests compatible partners based on your preferences.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3 class="step-title">Connect</h3>
-                <p>Start meaningful conversations with your matches and build connections.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <h2>Ready to Find Your Match?</h2>
-        <p>Join thousands of happy couples who found love through MetaDate.</p>
-        <div class="hero-buttons">
-            <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
-            <a href="about.html" class="btn btn-secondary">Learn More</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <div class="footer-logo-bubble">M</div>
-                    <span class="footer-logo-text">MetaDate</span>
-                </div>
-                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">t</a>
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">ig</a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="religious.html">Religious</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="international.html">International</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Info</h3>
-                <p><span class="contact-icon">📧</span> support@metadate.com</p>
-                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
-                <p><span class="contact-icon">🏢</span> 123 Dating St, Love City, 10001</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 MetaDate. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-
-        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
-        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
-
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelector('.user-dropdown').style.opacity = '0';
+            document.querySelector('.user-dropdown').style.visibility = 'hidden';
+        });
+
+        // Dropdown menu actions
+        document.getElementById('dropdownProfile').addEventListener('click', () => {
+            window.location.href = 'profile.html';
+        });
+
+        document.getElementById('dropdownMessages').addEventListener('click', () => {
+            window.location.href = 'messages.html';
+        });
+
+        document.getElementById('dropdownSettings').addEventListener('click', () => {
+            window.location.href = 'settings.html';
+        });
+
+        document.getElementById('dropdownLogout').addEventListener('click', () => {
+            // Logout logic here
+            window.location.href = 'index.html';
         });
 
         // Smooth scrolling for anchor links

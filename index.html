@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaDate - Futuristic Dating Platform</title>
+    <title>MetaDate - Find Your Perfect Match</title>
     <style>
         :root {
             --primary-color: #6e48aa;
             --secondary-color: #9d50bb;
-            --accent-color: #4776e6;
+            --accent-color: #ff6b6b;
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
             --nav-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --text-light: #777;
             --border-color: #eee;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
 
         .dark-mode {
             --primary-color: #9d50bb;
             --secondary-color: #6e48aa;
-            --accent-color: #4776e6;
+            --accent-color: #ff5252;
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --nav-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             --text-light: #aaa;
             --border-color: #333;
         }
@@ -67,1968 +68,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo-bubble {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 8px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            margin-left: 10px;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 20px;
-            cursor: pointer;
-            margin-left: 15px;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .hero-text {
-            flex: 1;
-            padding-right: 40px;
-        }
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: var(--text-light);
-        }
-
-        .hero-buttons {
-            display: flex;
-        }
-
-        .hero-buttons .btn {
-            margin-right: 15px;
-        }
-
-        .floating-cards {
-            position: relative;
-            height: 400px;
-        }
-
-        .profile-card {
-            position: absolute;
-            width: 200px;
-            height: 250px;
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: all 0.5s;
-        }
-
-        .profile-card img {
-            width: 100%;
-            height: 70%;
-            object-fit: cover;
-        }
-
-        .profile-info {
-            padding: 10px;
-        }
-
-        .profile-info h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .profile-info p {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .card-1 {
-            top: 0;
-            left: 0;
-            transform: rotate(-5deg);
-            z-index: 1;
-            animation: float 6s infinite ease-in-out;
-        }
-
-        .card-2 {
-            top: 50px;
-            left: 220px;
-            transform: rotate(3deg);
-            z-index: 2;
-            animation: float 8s infinite ease-in-out 1s;
-        }
-
-        .card-3 {
-            top: 20px;
-            left: 440px;
-            transform: rotate(-2deg);
-            z-index: 3;
-            animation: float 7s infinite ease-in-out 0.5s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(var(--rotation)); }
-            50% { transform: translateY(-20px) rotate(var(--rotation)); }
-        }
-
-        /* Categories Section */
-        .categories {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .category-info {
-            padding: 20px;
-        }
-
-        .category-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .category-info p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--card-bg);
-            padding: 50px 0 20px;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Page-specific styles */
-        .page-header {
-            padding: 120px 0 60px;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
-        }
-
-        .page-header h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .page-header p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .page-content {
-            padding: 60px 0;
-        }
-
-        /* Dating Profiles Grid */
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .profile-card-page {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-        }
-
-        .profile-card-page:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .profile-card-page img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .profile-details {
-            padding: 20px;
-        }
-
-        .profile-details h3 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .profile-details .age {
-            color: var(--text-light);
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .profile-details .location {
-            display: flex;
-            align-items: center;
-            color: var(--text-light);
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .profile-details .location i {
-            margin-right: 5px;
-        }
-
-        .profile-details .bio {
-            margin-bottom: 15px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .interest-tag {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        .profile-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* Form Styles */
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-size: 16px;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(110, 72, 170, 0.2);
-        }
-
-        .form-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: var(--text-light);
-        }
-
-        .form-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Admin Dashboard */
-        .dashboard {
-            display: flex;
-            min-height: calc(100vh - 80px);
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: var(--card-bg);
-            padding: 20px 0;
-            box-shadow: var(--shadow);
-        }
-
-        .sidebar-header {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .sidebar-header h3 {
-            color: var(--primary-color);
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            padding: 20px 0;
-        }
-
-        .sidebar-menu li {
-            margin-bottom: 5px;
-        }
-
-        .sidebar-menu a {
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: all 0.3s;
-        }
-
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 30px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background-color: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .stat-card h3 {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-
-        .stat-card p {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .data-table th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
-        }
-
-        .data-table tr:hover {
-            background-color: rgba(110, 72, 170, 0.1);
-        }
-
-        .action-btn {
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            margin-right: 5px;
-            font-size: 12px;
-        }
-
-        .edit-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .delete-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .floating-cards {
-                height: 300px;
-            }
-
-            .card-1, .card-2, .card-3 {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 0 auto 20px;
-                transform: none;
-                animation: none;
-            }
-
-            nav {
-                flex-direction: column;
-                padding: 15px;
-            }
-
-            .nav-links {
-                margin: 15px 0;
-            }
-
-            .auth-buttons {
-                margin-top: 10px;
-            }
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-            animation: modalFadeIn 0.3s;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h3 {
-            color: var(--primary-color);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
-
-        .modal-footer {
-            padding: 20px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: flex-end;
-        }
-    </style>
-</head>
-<body>
-    <!-- Main Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">
-                    <div class="logo-bubble">M</div>
-                    <span>MetaDate</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="international.html">International</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <a href="login.html" class="btn btn-outline">Login</a>
-                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
-                    <button class="theme-toggle" id="themeToggle">🌓</button>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Home Page Content -->
-    <main id="homePage">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Find Your Perfect Match in the Metaverse</h1>
-                        <p>MetaDate connects souls across dimensions with our advanced AI matching system. Whether you're looking for love, friendship, or something more, we've got you covered.</p>
-                        <div class="hero-buttons">
-                            <a href="signup.html" class="btn btn-primary">Get Started</a>
-                            <a href="about.html" class="btn btn-outline">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <div class="floating-cards">
-                            <div class="profile-card card-1" style="--rotation: -5deg;">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile">
-                                <div class="profile-info">
-                                    <h3>Sarah, 28</h3>
-                                    <p>New York • Artist</p>
-                                </div>
-                            </div>
-                            <div class="profile-card card-2" style="--rotation: 3deg;">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
-                                <div class="profile-info">
-                                    <h3>Michael, 31</h3>
-                                    <p>London • Engineer</p>
-                                </div>
-                            </div>
-                            <div class="profile-card card-3" style="--rotation: -2deg;">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile">
-                                <div class="profile-info">
-                                    <h3>Jessica, 25</h3>
-                                    <p>Tokyo • Designer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="categories">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Explore Connections</h2>
-                    <p>Discover different ways to connect with people across the globe through our specialized categories</p>
-                </div>
-                <div class="category-grid">
-                    <a href="dating.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
-                        <div class="category-info">
-                            <h3>Dating</h3>
-                            <p>Find romantic connections with like-minded individuals</p>
-                        </div>
-                    </a>
-                    <a href="marriage.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
-                        <div class="category-info">
-                            <h3>Marriage</h3>
-                            <p>Serious relationships leading to lifelong commitment</p>
-                        </div>
-                    </a>
-                    <a href="religious.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
-                        <div class="category-info">
-                            <h3>Religious</h3>
-                            <p>Connect with people who share your faith and values</p>
-                        </div>
-                    </a>
-                    <a href="polygamy.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Polygamy">
-                        <div class="category-info">
-                            <h3>Polygamy</h3>
-                            <p>Alternative relationship structures and connections</p>
-                        </div>
-                    </a>
-                    <a href="friendship.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
-                        <div class="category-info">
-                            <h3>Friendship</h3>
-                            <p>Platonic connections and meaningful friendships</p>
-                        </div>
-                    </a>
-                    <a href="fantasy.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fantasy">
-                        <div class="category-info">
-                            <h3>Fantasy</h3>
-                            <p>Explore imaginative and roleplay connections</p>
-                        </div>
-                    </a>
-                    <a href="international.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
-                        <div class="category-info">
-                            <h3>International</h3>
-                            <p>Connect with people from different cultures</p>
-                        </div>
-                    </a>
-                    <a href="business.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
-                        <div class="category-info">
-                            <h3>Business</h3>
-                            <p>Professional networking and connections</p>
-                        </div>
-                    </a>
-                    <a href="specialneeds.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1504198266287-1659872e6590?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Special Needs">
-                        <div class="category-info">
-                            <h3>Special Needs</h3>
-                            <p>Inclusive dating for people with disabilities</p>
-                        </div>
-                    </a>
-                    <a href="penpal.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pen Pal">
-                        <div class="category-info">
-                            <h3>Pen Pal</h3>
-                            <p>Old-fashioned letter writing connections</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Dating Page Content (hidden by default) -->
-    <main id="datingPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Dating Connections</h1>
-                <p>Find romantic partners who share your interests and values</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Emily Johnson</h3>
-                            <div class="age">28 years</div>
-                            <div class="location"><i>📍</i> Los Angeles, CA</div>
-                            <div class="bio">Adventure seeker and coffee enthusiast looking for someone to explore the world with.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Travel</span>
-                                <span class="interest-tag">Photography</span>
-                                <span class="interest-tag">Hiking</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>David Chen</h3>
-                            <div class="age">31 years</div>
-                            <div class="location"><i>📍</i> New York, NY</div>
-                            <div class="bio">Software engineer who loves jazz, cooking, and meaningful conversations.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Technology</span>
-                                <span class="interest-tag">Music</span>
-                                <span class="interest-tag">Cooking</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Sophia Martinez</h3>
-                            <div class="age">26 years</div>
-                            <div class="location"><i>📍</i> Miami, FL</div>
-                            <div class="bio">Art curator with a passion for contemporary art and beach volleyball.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Art</span>
-                                <span class="interest-tag">Sports</span>
-                                <span class="interest-tag">Dancing</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Marriage Page Content (hidden by default) -->
-    <main id="marriagePage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Marriage Connections</h1>
-                <p>Find your life partner for a committed relationship</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Aisha Khan</h3>
-                            <div class="age">30 years</div>
-                            <div class="location"><i>📍</i> Chicago, IL</div>
-                            <div class="bio">Doctor looking for a serious relationship leading to marriage. Family-oriented and values honesty.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Medicine</span>
-                                <span class="interest-tag">Reading</span>
-                                <span class="interest-tag">Family</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>James Wilson</h3>
-                            <div class="age">35 years</div>
-                            <div class="location"><i>📍</i> Seattle, WA</div>
-                            <div class="bio">Entrepreneur ready to settle down and start a family. Looking for a partner who shares my values.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Business</span>
-                                <span class="interest-tag">Outdoors</span>
-                                <span class="interest-tag">Family</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Religious Page Content (hidden by default) -->
-    <main id="religiousPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Religious Connections</h1>
-                <p>Connect with people who share your faith and spiritual values</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Rachel Cohen</h3>
-                            <div class="age">27 years</div>
-                            <div class="location"><i>📍</i> Brooklyn, NY</div>
-                            <div class="bio">Jewish educator looking for a partner who shares my faith and commitment to community.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Judaism</span>
-                                <span class="interest-tag">Education</span>
-                                <span class="interest-tag">Community</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Polygamy Page Content (hidden by default) -->
-    <main id="polygamyPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Polygamy Connections</h1>
-                <p>Explore alternative relationship structures with like-minded individuals</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Danielle & Mark</h3>
-                            <div class="age">32 & 34 years</div>
-                            <div class="location"><i>📍</i> Portland, OR</div>
-                            <div class="bio">Married couple looking to expand our loving relationship with someone special.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Polyamory</span>
-                                <span class="interest-tag">Hiking</span>
-                                <span class="interest-tag">Music</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Friendship Page Content (hidden by default) -->
-    <main id="friendshipPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Friendship Connections</h1>
-                <p>Build meaningful platonic relationships with people who share your interests</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Alex Taylor</h3>
-                            <div class="age">29 years</div>
-                            <div class="location"><i>📍</i> Austin, TX</div>
-                            <div class="bio">New in town and looking for friends to explore the city with. Love live music and craft beer.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Music</span>
-                                <span class="interest-tag">Foodie</span>
-                                <span class="interest-tag">Sports</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Fantasy Page Content (hidden by default) -->
-    <main id="fantasyPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Fantasy Connections</h1>
-                <p>Explore imaginative relationships and roleplay scenarios</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Luna</h3>
-                            <div class="age">Roleplayer</div>
-                            <div class="location"><i>📍</i> Fantasy Realm</div>
-                            <div class="bio">Elven princess seeking worthy companions for epic adventures and magical connections.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Fantasy</span>
-                                <span class="interest-tag">Roleplay</span>
-                                <span class="interest-tag">Storytelling</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- International Page Content (hidden by default) -->
-    <main id="internationalPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>International Connections</h1>
-                <p>Meet people from different cultures and countries around the world</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Yuki Tanaka</h3>
-                            <div class="age">27 years</div>
-                            <div class="location"><i>📍</i> Tokyo, Japan</div>
-                            <div class="bio">Japanese language teacher interested in cultural exchange and making international friends.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Japan</span>
-                                <span class="interest-tag">Language</span>
-                                <span class="interest-tag">Travel</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Business Page Content (hidden by default) -->
-    <main id="businessPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Business Connections</h1>
-                <p>Network with professionals and create valuable business relationships</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Robert Johnson</h3>
-                            <div class="age">42 years</div>
-                            <div class="location"><i>📍</i> San Francisco, CA</div>
-                            <div class="bio">Tech entrepreneur looking to connect with potential partners and investors.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Startups</span>
-                                <span class="interest-tag">Technology</span>
-                                <span class="interest-tag">Networking</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Special Needs Page Content (hidden by default) -->
-    <main id="specialneedsPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Special Needs Connections</h1>
-                <p>Inclusive dating for people with disabilities</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Megan Carter</h3>
-                            <div class="age">31 years</div>
-                            <div class="location"><i>📍</i> Denver, CO</div>
-                            <div class="bio">Wheelchair user looking for meaningful connections with someone who understands accessibility needs.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Accessibility</span>
-                                <span class="interest-tag">Art</span>
-                                <span class="interest-tag">Advocacy</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Pen Pal Page Content (hidden by default) -->
-    <main id="penpalPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Pen Pal Connections</h1>
-                <p>Find letter-writing partners from around the world</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="profiles-grid">
-                    <div class="profile-card-page">
-                        <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Profile">
-                        <div class="profile-details">
-                            <h3>Thomas Wright</h3>
-                            <div class="age">45 years</div>
-                            <div class="location"><i>📍</i> Oxford, UK</div>
-                            <div class="bio">Looking for pen pals to exchange handwritten letters about literature, history, and life.</div>
-                            <div class="interests">
-                                <span class="interest-tag">Writing</span>
-                                <span class="interest-tag">Books</span>
-                                <span class="interest-tag">History</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Connect</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Login Page Content (hidden by default) -->
-    <main id="loginPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Login to Your Account</h1>
-                <p>Access your MetaDate profile and continue your journey</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="form-container">
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="loginEmail">Email Address</label>
-                            <input type="email" id="loginEmail" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="loginPassword">Password</label>
-                            <input type="password" id="loginPassword" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
-                        </div>
-                        <div class="form-actions">
-                            <a href="signup.html" class="btn btn-outline">Create Account</a>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </div>
-                        <div class="form-footer">
-                            <a href="#">Forgot password?</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Signup Page Content (hidden by default) -->
-    <main id="signupPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Create Your Account</h1>
-                <p>Join MetaDate and start your journey to meaningful connections</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="form-container">
-                    <form id="signupForm">
-                        <div class="form-group">
-                            <label for="signupName">Full Name</label>
-                            <input type="text" id="signupName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupEmail">Email Address</label>
-                            <input type="email" id="signupEmail" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupPassword">Password</label>
-                            <input type="password" id="signupPassword" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signupConfirm">Confirm Password</label>
-                            <input type="password" id="signupConfirm" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" required> I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>
-                            </label>
-                        </div>
-                        <div class="form-actions">
-                            <a href="login.html" class="btn btn-outline">Already have an account?</a>
-                            <button type="submit" class="btn btn-primary">Sign Up</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Profile Page Content (hidden by default) -->
-    <main id="profilePage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>My Profile</h1>
-                <p>Manage your profile and preferences</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="form-container">
-                    <form id="profileForm">
-                        <div class="form-group">
-                            <label>Profile Photo</label>
-                            <div style="display: flex; align-items: center; gap: 20px;">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Profile" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                                <button type="button" class="btn btn-outline">Change Photo</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="profileName">Full Name</label>
-                            <input type="text" id="profileName" class="form-control" value="Sarah Johnson">
-                        </div>
-                        <div class="form-group">
-                            <label for="profileAge">Age</label>
-                            <input type="number" id="profileAge" class="form-control" value="28">
-                        </div>
-                        <div class="form-group">
-                            <label for="profileLocation">Location</label>
-                            <input type="text" id="profileLocation" class="form-control" value="Los Angeles, CA">
-                        </div>
-                        <div class="form-group">
-                            <label for="profileBio">Bio</label>
-                            <textarea id="profileBio" class="form-control" rows="4">Adventure seeker and coffee enthusiast looking for someone to explore the world with.</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Interests</label>
-                            <div class="interests">
-                                <span class="interest-tag">Travel <button type="button" style="background: none; border: none; color: white; margin-left: 5px;">×</button></span>
-                                <span class="interest-tag">Photography <button type="button" style="background: none; border: none; color: white; margin-left: 5px;">×</button></span>
-                                <span class="interest-tag">Hiking <button type="button" style="background: none; border: none; color: white; margin-left: 5px;">×</button></span>
-                            </div>
-                            <div style="display: flex; margin-top: 10px;">
-                                <input type="text" id="newInterest" class="form-control" placeholder="Add new interest" style="flex: 1; margin-right: 10px;">
-                                <button type="button" class="btn btn-outline">Add</button>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-outline">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Subscription Page Content (hidden by default) -->
-    <main id="subscriptionPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Subscription Plans</h1>
-                <p>Upgrade your experience with our premium membership options</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="category-grid">
-                    <div class="category-card">
-                        <div class="category-info">
-                            <h3>Basic</h3>
-                            <p>Free</p>
-                            <ul style="list-style: none; margin: 15px 0;">
-                                <li>✓ Create a profile</li>
-                                <li>✓ Limited matches per day</li>
-                                <li>✗ Advanced search filters</li>
-                                <li>✗ Message read receipts</li>
-                            </ul>
-                            <button class="btn btn-outline" style="width: 100%;">Current Plan</button>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-info">
-                            <h3>Premium</h3>
-                            <p>$19.99/month</p>
-                            <ul style="list-style: none; margin: 15px 0;">
-                                <li>✓ Unlimited matches</li>
-                                <li>✓ Advanced search filters</li>
-                                <li>✓ Message read receipts</li>
-                                <li>✓ Priority customer support</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;">Upgrade</button>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-info">
-                            <h3>VIP</h3>
-                            <p>$49.99/month</p>
-                            <ul style="list-style: none; margin: 15px 0;">
-                                <li>✓ All Premium features</li>
-                                <li>✓ Profile highlighting</li>
-                                <li>✓ Personal matchmaker</li>
-                                <li>✓ Exclusive events</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;">Upgrade</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- About Page Content (hidden by default) -->
-    <main id="aboutPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>About MetaDate</h1>
-                <p>Our mission to connect souls across dimensions</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="margin-bottom: 20px;">Our Story</h2>
-                    <p style="margin-bottom: 20px;">MetaDate was founded in 2023 with a vision to revolutionize the way people connect in the digital age. We believe that meaningful relationships can transcend physical boundaries when powered by cutting-edge technology and genuine human values.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">Our Technology</h2>
-                    <p style="margin-bottom: 20px;">Using advanced AI algorithms and neural matching systems, MetaDate analyzes thousands of data points to connect you with the most compatible individuals based on your personality, values, and relationship goals.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">Our Team</h2>
-                    <p style="margin-bottom: 20px;">We're a diverse team of relationship experts, data scientists, and technologists passionate about creating connections that matter. Our headquarters are in San Francisco, with team members spanning across 12 countries.</p>
-                    
-                    <div style="margin-top: 40px; text-align: center;">
-                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Privacy Page Content (hidden by default) -->
-    <main id="privacyPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Privacy Policy</h1>
-                <p>How we protect and use your information</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="margin-bottom: 20px;">1. Information We Collect</h2>
-                    <p style="margin-bottom: 20px;">We collect information you provide when creating an account, including your name, email address, age, gender, and preferences. We also collect data about your interactions with our platform.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">2. How We Use Your Information</h2>
-                    <p style="margin-bottom: 20px;">Your information is used to provide and improve our services, personalize your experience, facilitate matches, and communicate with you. We do not sell your personal data to third parties.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">3. Data Security</h2>
-                    <p style="margin-bottom: 20px;">We implement industry-standard security measures to protect your data, including encryption, access controls, and regular security audits.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">4. Your Rights</h2>
-                    <p style="margin-bottom: 20px;">You have the right to access, correct, or delete your personal information. You can also opt out of marketing communications at any time.</p>
-                    
-                    <p style="margin-top: 40px; font-size: 14px; color: var(--text-light);">Last updated: January 2023</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Terms Page Content (hidden by default) -->
-    <main id="termsPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Terms of Service</h1>
-                <p>Rules and guidelines for using our platform</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="margin-bottom: 20px;">1. Eligibility</h2>
-                    <p style="margin-bottom: 20px;">You must be at least 18 years old to use MetaDate. By creating an account, you represent that you meet this requirement.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">2. Account Responsibility</h2>
-                    <p style="margin-bottom: 20px;">You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">3. Prohibited Conduct</h2>
-                    <p style="margin-bottom: 20px;">You agree not to engage in harassment, spamming, fraudulent activities, or any behavior that violates our community guidelines.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">4. Subscription Terms</h2>
-                    <p style="margin-bottom: 20px;">Premium subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. Refunds are available within 14 days of purchase.</p>
-                    
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">5. Limitation of Liability</h2>
-                    <p style="margin-bottom: 20px;">MetaDate is not responsible for the conduct of any user on or off the platform. We provide no guarantees about the success of matches made through our service.</p>
-                    
-                    <p style="margin-top: 40px; font-size: 14px; color: var(--text-light);">Last updated: January 2023</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Contact Page Content (hidden by default) -->
-    <main id="contactPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <p>We'd love to hear from you</p>
-            </div>
-        </section>
-        <section class="page-content">
-            <div class="container">
-                <div class="form-container">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="contactName">Your Name</label>
-                            <input type="text" id="contactName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactEmail">Email Address</label>
-                            <input type="email" id="contactEmail" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactSubject">Subject</label>
-                            <select id="contactSubject" class="form-control" required>
-                                <option value="">Select a subject</option>
-                                <option value="support">Technical Support</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="press">Press Inquiry</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="contactMessage">Message</label>
-                            <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-                <div style="text-align: center; margin-top: 40px;">
-                    <h3>Other Ways to Reach Us</h3>
-                    <p style="margin: 15px 0;">Email: support@metadate.com</p>
-                    <p style="margin: 15px 0;">Phone: +1 (555) 123-4567</p>
-                    <p style="margin: 15px 0;">Address: 123 Connection Way, San Francisco, CA 94107</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Admin Dashboard Content (hidden by default) -->
-    <main id="adminDashboardPage" style="display: none;">
-        <div class="dashboard">
-            <div class="sidebar">
-                <div class="sidebar-header">
-                    <h3>Admin Dashboard</h3>
-                </div>
-                <ul class="sidebar-menu">
-                    <li><a href="#" class="active">Overview</a></li>
-                    <li><a href="#">Users</a></li>
-                    <li><a href="#">Profiles</a></li>
-                    <li><a href="#">Subscriptions</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
-            <div class="main-content">
-                <h2>Dashboard Overview</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>Total Users</h3>
-                        <p>12,548</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Active Today</h3>
-                        <p>3,214</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>New This Week</h3>
-                        <p>1,876</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Premium Members</h3>
-                        <p>4,592</p>
-                    </div>
-                </div>
-                <h3 style="margin-bottom: 20px;">Recent Signups</h3>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Signup Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#12547</td>
-                                <td>John Smith</td>
-                                <td>john.smith@example.com</td>
-                                <td>2023-05-15</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12546</td>
-                                <td>Emily Johnson</td>
-                                <td>emily.j@example.com</td>
-                                <td>2023-05-15</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12545</td>
-                                <td>Michael Brown</td>
-                                <td>michael.b@example.com</td>
-                                <td>2023-05-14</td>
-                                <td>Pending</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12544</td>
-                                <td>Sarah Wilson</td>
-                                <td>sarah.w@example.com</td>
-                                <td>2023-05-14</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12543</td>
-                                <td>David Lee</td>
-                                <td>david.lee@example.com</td>
-                                <td>2023-05-13</td>
-                                <td>Suspended</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>MetaDate</h3>
-                    <p>Connecting souls across dimensions with advanced AI matching technology.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="dating.html">Dating</a></li>
-                        <li><a href="marriage.html">Marriage</a></li>
-                        <li><a href="friendship.html">Friendship</a></li>
-                        <li><a href="international.html">International</a></li>
-                        <li><a href="business.html">Business</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Connect</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 MetaDate. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Admin Login</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="adminLoginForm">
-                    <div class="form-group">
-                        <label for="adminEmail">Email</label>
-                        <input type="email" id="adminEmail" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="adminPassword">Password</label>
-                        <input type="password" id="adminPassword" class="form-control" required>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-outline close-modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-
-        // Check for saved theme preference or use preferred color scheme
-        const savedTheme = localStorage.getItem('theme') || 
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        // Apply the saved theme
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.textContent = '🌞';
-        }
-
-        // Toggle theme on button click
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeToggle.textContent = isDark ? '🌞' : '🌓';
-        });
-
-        // Page Routing Simulation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the current "page" from the URL hash
-            const hash = window.location.hash.substring(1) || 'home';
-            
-            // Hide all pages
-            document.querySelectorAll('main').forEach(page => {
-                page.style.display = 'none';
-            });
-            
-            // Show the current page
-            const currentPage = document.getElementById(`${hash}Page`);
-            if (currentPage) {
-                currentPage.style.display = 'block';
-            } else {
-                document.getElementById('homePage').style.display = 'block';
-            }
-            
-            // Handle navigation clicks
-            document.querySelectorAll('a[href^="#"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.getAttribute('href').substring(1);
-                    
-                    // Hide all pages
-                    document.querySelectorAll('main').forEach(page => {
-                        page.style.display = 'none';
-                    });
-                    
-                    // Show the selected page
-                    const selectedPage = document.getElementById(`${pageId}Page`);
-                    if (selectedPage) {
-                        selectedPage.style.display = 'block';
-                        window.location.hash = pageId;
-                    }
-                });
-            });
-            
-            // Admin Login Simulation
-            const adminLoginForm = document.getElementById('adminLoginForm');
-            const loginModal = document.getElementById('loginModal');
-            const closeModalButtons = document.querySelectorAll('.close-modal');
-            
-            // Show admin login modal when admin link is clicked
-            document.querySelectorAll('a[href="admin-dashboard.html"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    loginModal.style.display = 'flex';
-                });
-            });
-            
-            // Close modal when X or cancel is clicked
-            closeModalButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    loginModal.style.display = 'none';
-                });
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target === loginModal) {
-                    loginModal.style.display = 'none';
-                }
-            });
-            
-            // Admin login form submission
-            adminLoginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('adminEmail').value;
-                const password = document.getElementById('adminPassword').value;
-                
-                if (email === 'byusammartin@gmail.com' && password === 'Digital@12345') {
-                    // Hide all pages
-                    document.querySelectorAll('main').forEach(page => {
-                        page.style.display = 'none';
-                    });
-                    
-                    // Show admin dashboard
-                    document.getElementById('adminDashboardPage').style.display = 'block';
-                    window.location.hash = 'admin-dashboard';
-                    loginModal.style.display = 'none';
-                } else {
-                    alert('Invalid admin credentials');
-                }
-            });
-            
-            // Form submissions
-            document.getElementById('loginForm')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Login functionality would be implemented here with backend connection');
-            });
-            
-            document.getElementById('signupForm')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Signup functionality would be implemented here with backend connection');
-            });
-            
-            document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            });
-            
-            document.getElementById('profileForm')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Profile updated successfully!');
-            });
-        });
-
-        // Floating cards animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.profile-card');
-            cards.forEach((card, index) => {
-                // Random delay for each card
-                card.style.animationDelay = `${index * 0.5}s`;
-            });
-        });
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaDate - Find Your Perfect Match</title>
-    <style>
-        :root {
-            --primary-color: #ff6b6b; /* Coral accent color */
-            --secondary-color: #ff8e8e;
-            --accent-color: #4a6bff; /* Blue from profile */
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #fff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        }
-
-        .dark-mode {
-            --primary-color: #ff5252;
-            --secondary-color: #ff7b7b;
-            --accent-color: #5a7bff;
-            --text-color: #f0f0f0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --nav-bg: rgba(30, 30, 30, 0.9);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .logo {
@@ -2128,7 +167,7 @@
         }
 
         .dropdown-item:hover {
-            background-color: rgba(255, 107, 107, 0.1);
+            background-color: rgba(110, 72, 170, 0.1);
         }
 
         .dropdown-divider {
@@ -2146,12 +185,68 @@
             margin-left: 1rem;
         }
 
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 10rem 2rem 5rem;
-            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             color: white;
             position: relative;
+            text-align: center;
         }
 
         .hero::before {
@@ -2171,6 +266,7 @@
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .hero h1 {
@@ -2186,7 +282,7 @@
             animation: fadeIn 1.5s ease;
         }
 
-        .cta-buttons {
+        .hero-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -2194,44 +290,12 @@
             animation: fadeIn 2s ease;
         }
 
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: white;
-            color: var(--primary-color);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Features Section */
         .features {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -2283,6 +347,7 @@
             color: var(--primary-color);
         }
 
+        /* Testimonials Section */
         .testimonials {
             padding: 5rem 2rem;
             background-color: var(--card-bg);
@@ -2352,6 +417,7 @@
             font-size: 0.9rem;
         }
 
+        /* How It Works Section */
         .how-it-works {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -2406,6 +472,7 @@
             z-index: 0;
         }
 
+        /* CTA Section */
         .cta-section {
             padding: 5rem 2rem;
             text-align: center;
@@ -2425,6 +492,53 @@
             opacity: 0.9;
         }
 
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .category-info p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Footer */
         footer {
             background-color: var(--card-bg);
             padding: 3rem 2rem;
@@ -2479,7 +593,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(255, 107, 107, 0.1);
+            background-color: rgba(110, 72, 170, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2536,6 +650,7 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -2564,7 +679,7 @@
                 font-size: 2.5rem;
             }
 
-            .cta-buttons {
+            .hero-buttons, .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -2576,45 +691,42 @@
             .step {
                 margin-bottom: 2rem;
             }
+
+            .features-grid, .testimonials-grid, .category-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <div class="logo-bubble">M</div>
-                <span>MetaDate</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="dating.html">Dating</a></li>
-                <li><a href="marriage.html">Marriage</a></li>
-                <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="user-menu">
-                <button class="theme-toggle" id="themeToggle">🌓</button>
-                <div class="user-avatar">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
-                    <div class="user-dropdown">
-                        <div class="dropdown-item" id="dropdownProfile">My Profile</div>
-                        <div class="dropdown-item" id="dropdownMessages">Messages</div>
-                        <div class="dropdown-item" id="dropdownSettings">Settings</div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item" id="dropdownLogout">Logout</div>
-                    </div>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-bubble">M</div>
+                    <span>MetaDate</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <button class="theme-toggle" id="themeToggle">🌓</button>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Find Your Perfect Match</h1>
             <p>MetaDate connects you with compatible partners based on your personality, interests, and relationship goals.</p>
-            <div class="cta-buttons">
+            <div class="hero-buttons">
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
                 <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
             </div>
@@ -2638,6 +750,59 @@
                 <div class="feature-icon">🌐</div>
                 <h3 class="feature-title">Global Community</h3>
                 <p>Connect with singles from around the world who share your values and interests.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Connections</h2>
+                <p>Discover different ways to connect with people across the globe through our specialized categories</p>
+            </div>
+            <div class="category-grid">
+                <a href="dating.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
+                    <div class="category-info">
+                        <h3>Dating</h3>
+                        <p>Find romantic connections with like-minded individuals</p>
+                    </div>
+                </a>
+                <a href="marriage.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
+                    <div class="category-info">
+                        <h3>Marriage</h3>
+                        <p>Serious relationships leading to lifelong commitment</p>
+                    </div>
+                </a>
+                <a href="religious.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
+                    <div class="category-info">
+                        <h3>Religious</h3>
+                        <p>Connect with people who share your faith and values</p>
+                    </div>
+                </a>
+                <a href="friendship.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
+                    <div class="category-info">
+                        <h3>Friendship</h3>
+                        <p>Platonic connections and meaningful friendships</p>
+                    </div>
+                </a>
+                <a href="international.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
+                    <div class="category-info">
+                        <h3>International</h3>
+                        <p>Connect with people from different cultures</p>
+                    </div>
+                </a>
+                <a href="business.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
+                    <div class="category-info">
+                        <h3>Business</h3>
+                        <p>Professional networking and connections</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -2716,7 +881,7 @@
     <section class="cta-section">
         <h2>Ready to Find Your Match?</h2>
         <p>Join thousands of happy couples who found love through MetaDate.</p>
-        <div class="cta-buttons">
+        <div class="hero-buttons">
             <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
             <a href="about.html" class="btn btn-secondary">Learn More</a>
         </div>
@@ -2784,37 +949,966 @@
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
-        // User dropdown functionality
-        const userAvatar = document.querySelector('.user-avatar');
-        
-        userAvatar.addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.querySelector('.user-dropdown').style.opacity = '1';
-            document.querySelector('.user-dropdown').style.visibility = 'visible';
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaDate - Find Your Perfect Match</title>
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --text-light: #777;
+            --border-color: #eee;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            document.querySelector('.user-dropdown').style.opacity = '0';
-            document.querySelector('.user-dropdown').style.visibility = 'hidden';
-        });
+        .dark-mode {
+            --primary-color: #9d50bb;
+            --secondary-color: #6e48aa;
+            --accent-color: #ff5252;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --text-light: #aaa;
+            --border-color: #333;
+        }
 
-        // Dropdown menu actions
-        document.getElementById('dropdownProfile').addEventListener('click', () => {
-            window.location.href = 'profile.html';
-        });
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-        document.getElementById('dropdownMessages').addEventListener('click', () => {
-            window.location.href = 'messages.html';
-        });
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-        document.getElementById('dropdownSettings').addEventListener('click', () => {
-            window.location.href = 'settings.html';
-        });
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        document.getElementById('dropdownLogout').addEventListener('click', () => {
-            // Logout logic here
-            window.location.href = 'index.html';
+        /* Header Styles */
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background-color: var(--card-bg);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-color);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.1;
+            color: var(--primary-color);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 1rem;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .category-info p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-bubble {
+            width: 30px;
+            height: 30px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(110, 72, 170, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1rem;
+            }
+
+            .hero {
+                padding: 8rem 1rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons, .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            .step {
+                margin-bottom: 2rem;
+            }
+
+            .features-grid, .testimonials-grid, .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-bubble">M</div>
+                    <span>MetaDate</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <button class="theme-toggle" id="themeToggle">🌓</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Match</h1>
+            <p>MetaDate connects you with compatible partners based on your personality, interests, and relationship goals.</p>
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
+                <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Why Choose MetaDate</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💖</div>
+                <h3 class="feature-title">Smart Matching</h3>
+                <p>Our advanced algorithm analyzes compatibility factors to connect you with your ideal partner.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Verified Profiles</h3>
+                <p>All profiles are manually verified to ensure authenticity and reduce fake accounts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3 class="feature-title">Global Community</h3>
+                <p>Connect with singles from around the world who share your values and interests.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Connections</h2>
+                <p>Discover different ways to connect with people across the globe through our specialized categories</p>
+            </div>
+            <div class="category-grid">
+                <a href="dating.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
+                    <div class="category-info">
+                        <h3>Dating</h3>
+                        <p>Find romantic connections with like-minded individuals</p>
+                    </div>
+                </a>
+                <a href="marriage.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
+                    <div class="category-info">
+                        <h3>Marriage</h3>
+                        <p>Serious relationships leading to lifelong commitment</p>
+                    </div>
+                </a>
+                <a href="religious.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
+                    <div class="category-info">
+                        <h3>Religious</h3>
+                        <p>Connect with people who share your faith and values</p>
+                    </div>
+                </a>
+                <a href="friendship.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
+                    <div class="category-info">
+                        <h3>Friendship</h3>
+                        <p>Platonic connections and meaningful friendships</p>
+                    </div>
+                </a>
+                <a href="international.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
+                    <div class="category-info">
+                        <h3>International</h3>
+                        <p>Connect with people from different cultures</p>
+                    </div>
+                </a>
+                <a href="business.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
+                    <div class="category-info">
+                        <h3>Business</h3>
+                        <p>Professional networking and connections</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        MetaDate helped me find my soulmate when I had almost given up hope. We're getting married next spring!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sarah J.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah J.</h4>
+                            <p>Found love in 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        As a busy professional, I didn't have time for dating apps. MetaDate's quality matches saved me so much time!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Michael T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>Matched in 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        I made genuine friendships through MetaDate that have lasted years. It's more than just a dating site.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Emma L.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma L.</h4>
+                            <p>Member since 2021</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">How MetaDate Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Create Profile</h3>
+                <p>Tell us about yourself and what you're looking for in a partner.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Find Matches</h3>
+                <p>Our algorithm suggests compatible partners based on your preferences.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Connect</h3>
+                <p>Start meaningful conversations with your matches and build connections.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Find Your Match?</h2>
+        <p>Join thousands of happy couples who found love through MetaDate.</p>
+        <div class="hero-buttons">
+            <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
+            <a href="about.html" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate</span>
+                </div>
+                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="international.html">International</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon">📧</span> support@metadate.com</p>
+                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
+                <p><span class="contact-icon">🏢</span> 123 Dating St, Love City, 10001</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
         // Smooth scrolling for anchor links

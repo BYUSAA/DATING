@@ -5,160 +5,371 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - MetaDate</title>
     <style>
-        /* Reusing styles from about.html with additions */
-        
-        .privacy-container {
-            max-width: 1000px;
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #4776e6;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --text-light: #777;
+            --border-color: #eee;
+        }
+
+        .dark-mode {
+            --primary-color: #9d50bb;
+            --secondary-color: #6e48aa;
+            --accent-color: #4776e6;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --text-light: #aaa;
+            --border-color: #333;
+        }
+
+        /* Header and navigation styles */
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 2rem 4rem;
+            padding: 0 20px;
         }
-        
+
+        /* Privacy Policy Specific Styles */
+        .privacy-header {
+            padding: 150px 0 50px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+        }
+
+        .privacy-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .privacy-header p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            margin-top: 20px;
+            color: var(--text-light);
+        }
+
+        .privacy-container {
+            padding: 60px 0;
+        }
+
+        .privacy-content {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+        }
+
         .privacy-section {
-            margin-bottom: 3rem;
+            margin-bottom: 40px;
         }
-        
+
         .privacy-section h2 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
+            font-size: 28px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
         }
-        
+
         .privacy-section h3 {
-            margin: 1.5rem 0 0.5rem;
+            color: var(--text-color);
+            margin: 25px 0 15px;
+            font-size: 20px;
         }
-        
+
         .privacy-section p, .privacy-section ul {
-            margin-bottom: 1rem;
-            line-height: 1.6;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
-        
+
         .privacy-section ul {
-            padding-left: 1.5rem;
+            padding-left: 20px;
         }
-        
-        .last-updated {
-            font-style: italic;
-            opacity: 0.8;
-            margin-bottom: 2rem;
+
+        .privacy-section li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: rgba(110, 72, 170, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: var(--card-bg);
+            padding: 60px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .privacy-header {
+                padding: 130px 0 40px;
+            }
+            
+            .privacy-header h1 {
+                font-size: 32px;
+            }
+            
+            .privacy-content {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <div class="logo-bubble">M</div>
-                <span>MetaDate</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="dating.html">Dating</a></li>
-                <li><a href="marriage.html">Marriage</a></li>
-                <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="signup.html" class="btn btn-signup">Sign Up</a>
-                <button class="theme-toggle" id="themeToggle">🌓</button>
-            </div>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-bubble">M</div>
+                    <span>MetaDate</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <button class="theme-toggle" id="themeToggle">🌓</button>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main class="privacy-container">
-        <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: June 15, 2023</p>
-        
-        <section class="privacy-section">
-            <h2>Introduction</h2>
-            <p>At MetaDate, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
-            <p>Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site or use our services.</p>
+    <main>
+        <section class="privacy-header">
+            <div class="container">
+                <h1>Privacy Policy</h1>
+                <p>Your privacy is important to us. This policy explains how we collect, use, and protect your information.</p>
+                <div class="last-updated">Last updated: June 15, 2023</div>
+            </div>
         </section>
-        
-        <section class="privacy-section">
-            <h2>Information We Collect</h2>
-            <p>We may collect information about you in a variety of ways. The information we may collect includes:</p>
-            
-            <h3>Personal Data</h3>
-            <p>Personally identifiable information that you voluntarily provide to us when registering for an account or using our services, such as:</p>
-            <ul>
-                <li>Name, email address, and phone number</li>
-                <li>Date of birth and gender</li>
-                <li>Location information</li>
-                <li>Payment information (for premium services)</li>
-                <li>Photos and profile information</li>
-            </ul>
-            
-            <h3>Derivative Data</h3>
-            <p>Information our servers automatically collect when you access our services, such as:</p>
-            <ul>
-                <li>IP address and device information</li>
-                <li>Browser type and operating system</li>
-                <li>Usage data and interaction with our services</li>
-            </ul>
-        </section>
-        
-        <section class="privacy-section">
-            <h2>How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
-            <ul>
-                <li>Create and manage your account</li>
-                <li>Provide and personalize our services</li>
-                <li>Improve our platform and user experience</li>
-                <li>Communicate with you about your account and our services</li>
-                <li>Prevent fraud and ensure security</li>
-                <li>Comply with legal obligations</li>
-            </ul>
-        </section>
-        
-        <section class="privacy-section">
-            <h2>Sharing Your Information</h2>
-            <p>We may share information we have collected about you in certain situations, including:</p>
-            <ul>
-                <li><strong>With Other Users:</strong> Your profile information will be visible to other users as part of our matching services.</li>
-                <li><strong>With Service Providers:</strong> We may share your information with third parties that perform services for us.</li>
-                <li><strong>For Legal Reasons:</strong> We may disclose your information if required by law or to protect our rights.</li>
-                <li><strong>Business Transfers:</strong> In connection with any merger or sale of company assets.</li>
-            </ul>
-        </section>
-        
-        <section class="privacy-section">
-            <h2>Security of Your Information</h2>
-            <p>We use administrative, technical, and physical security measures to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure.</p>
-        </section>
-        
-        <section class="privacy-section">
-            <h2>Your Privacy Rights</h2>
-            <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
-            <ul>
-                <li>The right to access and receive a copy of your personal data</li>
-                <li>The right to request correction of inaccurate information</li>
-                <li>The right to request deletion of your personal data</li>
-                <li>The right to opt-out of certain data processing activities</li>
-            </ul>
-            <p>To exercise these rights, please contact us at privacy@metadate.com.</p>
-        </section>
-        
-        <section class="privacy-section">
-            <h2>Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-        </section>
-        
-        <section class="privacy-section">
-            <h2>Contact Us</h2>
-            <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
-            <p>Email: privacy@metadate.com<br>
-            Address: 123 Privacy Lane, Data City, 10001</p>
+
+        <section class="container privacy-container">
+            <div class="privacy-content">
+                <div class="privacy-section">
+                    <h2>Introduction</h2>
+                    <p>MetaDate ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our dating platform and services.</p>
+                    
+                    <div class="highlight-box">
+                        <p>By using MetaDate, you consent to the data practices described in this policy. If you do not agree, please do not access or use our services.</p>
+                    </div>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Information We Collect</h2>
+                    <h3>Personal Information</h3>
+                    <p>We may collect personally identifiable information that you voluntarily provide, including:</p>
+                    <ul>
+                        <li>Name, email address, phone number</li>
+                        <li>Date of birth, gender, sexual orientation</li>
+                        <li>Payment information for premium services</li>
+                        <li>Photos and profile information</li>
+                        <li>Messages and communication with other users</li>
+                    </ul>
+
+                    <h3>Automatically Collected Information</h3>
+                    <p>When you use our services, we may automatically collect:</p>
+                    <ul>
+                        <li>Device information (IP address, browser type, operating system)</li>
+                        <li>Usage data (pages visited, features used, time spent)</li>
+                        <li>Location data (with your permission)</li>
+                        <li>Cookies and similar tracking technologies</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>How We Use Your Information</h2>
+                    <p>We use the information we collect for various purposes:</p>
+                    <ul>
+                        <li>To provide and maintain our services</li>
+                        <li>To create and manage your account</li>
+                        <li>To personalize your experience and suggest matches</li>
+                        <li>To process payments for premium features</li>
+                        <li>To communicate with you about your account</li>
+                        <li>To improve our services and develop new features</li>
+                        <li>To prevent fraud and ensure platform security</li>
+                        <li>To comply with legal obligations</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Sharing of Information</h2>
+                    <p>We may share your information in the following situations:</p>
+                    <ul>
+                        <li><strong>With Other Users:</strong> Your profile information is visible to other users as part of our matching services.</li>
+                        <li><strong>Service Providers:</strong> We may share data with third-party vendors who perform services for us.</li>
+                        <li><strong>Business Transfers:</strong> In connection with any merger or sale of company assets.</li>
+                        <li><strong>Legal Requirements:</strong> When required by law or to protect our rights.</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <p>We never sell your personal information to third-party advertisers or data brokers.</p>
+                    </div>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Data Security</h2>
+                    <p>We implement appropriate technical and organizational measures to protect your personal information, including:</p>
+                    <ul>
+                        <li>Encryption of sensitive data</li>
+                        <li>Regular security audits</li>
+                        <li>Access controls to personal information</li>
+                        <li>Secure server infrastructure</li>
+                    </ul>
+                    <p>However, no internet transmission or electronic storage is completely secure, so we cannot guarantee absolute security.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Your Rights and Choices</h2>
+                    <p>Depending on your location, you may have certain rights regarding your personal information:</p>
+                    <ul>
+                        <li><strong>Access:</strong> Request a copy of your personal data.</li>
+                        <li><strong>Correction:</strong> Update or correct inaccurate information.</li>
+                        <li><strong>Deletion:</strong> Request deletion of your personal data.</li>
+                        <li><strong>Opt-out:</strong> Object to certain processing activities.</li>
+                        <li><strong>Data Portability:</strong> Request transfer of your data to another service.</li>
+                    </ul>
+                    <p>To exercise these rights, please contact us at privacy@metadate.com.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy periodically. We will notify you of significant changes by posting the new policy on our website and updating the "Last Updated" date.</p>
+                    <p>Your continued use of our services after such changes constitutes acceptance of the updated policy.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>Contact Us</h2>
+                    <p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
+                    <p><strong>Email:</strong> privacy@metadate.com</p>
+                    <p><strong>Mail:</strong> MetaDate Privacy Officer, 123 Connection Lane, San Francisco, CA 94107</p>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Same footer as index.html -->
     <footer>
-        <!-- Footer content from index.html -->
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div class="logo-bubble" style="width: 30px; height: 30px; font-size: 14px; margin-right: 10px;">M</div>
+                        <h3>MetaDate</h3>
+                    </div>
+                    <p>Connecting souls through meaningful relationships with our advanced matching technology.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html" style="color: var(--primary-color);">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="dating.html">Dating</a></li>
+                        <li><a href="marriage.html">Marriage</a></li>
+                        <li><a href="religious.html">Religious</a></li>
+                        <li><a href="international.html">International</a></li>
+                        <li><a href="business.html">Business</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#">📱</a>
+                        <a href="#">📘</a>
+                        <a href="#">📸</a>
+                        <a href="#">🔗</a>
+                    </div>
+                    <h3>Newsletter</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button>→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MetaDate. All rights reserved. | Designed with ❤️ for meaningful connections</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Same JavaScript as index.html
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Apply the saved theme
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '🌞';
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '🌞' : '🌓';
+        });
     </script>
 </body>
 </html>

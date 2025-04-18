@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polygamous Connections | MetaDate</title>
+    <style>
+        /* Base styles from previous pages */
+        :root {
+            --primary-color: #6A0DAD; /* Purple */
+            --secondary-color: #4B0082; /* Indigo */
+            --accent-color: #FFD700; /* Gold */
+            --text-color: #333;
+            --bg-color: #F5F5F5;
+            --card-bg: #FFF;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --text-light: #666;
+            --border-color: #E0E0E0;
+        }
+
+        .dark-mode {
+            --primary-color: #4B0082;
+            --secondary-color: #6A0DAD;
+            --accent-color: #FFC107;
+            --text-color: #F0F0F0;
+            --bg-color: #121212;
+            --card-bg: #1E1E1E;
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --text-light: #AAA;
+            --border-color: #333;
+        }
+
+        /* ... (include all other base styles from previous pages) ... */
+
+        .polygamy-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .polygamy-type {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .polygamy-type h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .polygamy-type h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="polygamy.html" class="active">Polygamy</a></li>
+                <li><a href="religious.html">Religious</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <div class="user-dropdown">
+                        <div class="dropdown-item">My Profile</div>
+                        <div class="dropdown-item">Messages</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header" style="background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(106, 13, 173, 0.8)), url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+        <div class="container">
+            <h1>Polygamous Connections</h1>
+            <p>Find like-minded individuals interested in ethical non-monogamous relationships</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="religious-intro">
+                <h2>Explore Consensual Non-Monogamy</h2>
+                <p>At MetaDate, we support all forms of ethical relationships. Whether you're interested in polyamory, polygyny, polyandry, or other forms of consensual non-monogamy, our platform helps you connect with compatible partners.</p>
+            </div>
+
+            <div class="polygamy-types">
+                <div class="polygamy-type">
+                    <h3><i class="fas fa-heart"></i> Polyamory</h3>
+                    <p>Multiple loving relationships with the knowledge and consent of everyone involved. Focused on emotional connections and openness.</p>
+                    <button class="btn btn-primary">Explore Polyamory</button>
+                </div>
+                <div class="polygamy-type">
+                    <h3><i class="fas fa-venus-double"></i> Polygyny</h3>
+                    <p>One man with multiple wives. Often practiced in certain religious and cultural traditions with full consent.</p>
+                    <button class="btn btn-primary">Explore Polygyny</button>
+                </div>
+                <div class="polygamy-type">
+                    <h3><i class="fas fa-mars-double"></i> Polyandry</h3>
+                    <p>One woman with multiple husbands. A rarer but equally valid form of plural marriage.</p>
+                    <button class="btn btn-primary">Explore Polyandry</button>
+                </div>
+            </div>
+
+            <div class="religious-profiles">
+                <h2 class="section-title">Featured Profiles</h2>
+                <div class="profiles-grid">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophia">
+                            </div>
+                            <div class="profile-info">
+                                <h3>Sophia</h3>
+                                <p><i class="fas fa-heart"></i> Polyamorous • 29 years</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <p>Ethical non-monogamist seeking additional partners for my existing polycule. Must be comfortable with open communication and boundaries.</p>
+                            <div class="religious-values">
+                                <span class="value-tag"><i class="fas fa-comments"></i> Communication</span>
+                                <span class="value-tag"><i class="fas fa-hand-holding-heart"></i> Compersion</span>
+                                <span class="value-tag"><i class="fas fa-users"></i> Kitchen Table Poly</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary">View Profile</button>
+                            <button class="btn btn-primary">Connect</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="James">
+                            </div>
+                            <div class="profile-info">
+                                <h3>James</h3>
+                                <p><i class="fas fa-venus-double"></i> Polygynous • 35 years</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <p>Seeking a second wife to join our loving Muslim family. My current wife is supportive and looking for a sister-wife to share life with.</p>
+                            <div class="religious-values">
+                                <span class="value-tag"><i class="fas fa-mosque"></i> Muslim</span>
+                                <span class="value-tag"><i class="fas fa-home"></i> Family-oriented</span>
+                                <span class="value-tag"><i class="fas fa-quran"></i> Traditional</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary">View Profile</button>
+                            <button class="btn btn-primary">Connect</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Amina">
+                            </div>
+                            <div class="profile-info">
+                                <h3>Amina</h3>
+                                <p><i class="fas fa-users"></i> Polyandrous • 31 years</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <p>Independent woman interested in having multiple committed partners. Looking for emotionally mature men comfortable with this arrangement.</p>
+                            <div class="religious-values">
+                                <span class="value-tag"><i class="fas fa-female"></i> Feminist</span>
+                                <span class="value-tag"><i class="fas fa-balance-scale"></i> Equality</span>
+                                <span class="value-tag"><i class="fas fa-heartbeat"></i> Emotional Connection</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary">View Profile</button>
+                            <button class="btn btn-primary">Connect</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="religious-form">
+                <h2 class="section-title">Find Your Poly Match</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="polyType">Polygamy Type</label>
+                        <select id="polyType" class="form-control">
+                            <option value="">Any Type</option>
+                            <option value="polyamory">Polyamory</option>
+                            <option value="polygyny">Polygyny</option>
+                            <option value="polyandry">Polyandry</option>
+                            <option value="swinging">Swinging</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="polyExperience">Experience Level</label>
+                        <select id="polyExperience" class="form-control">
+                            <option value="">Any Level</option>
+                            <option value="new">New to Poly</option>
+                            <option value="experienced">Experienced</option>
+                            <option value="established">In Established Poly Relationship</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="polyValues">Important Values</label>
+                        <input type="text" id="polyValues" class="form-control" placeholder="e.g. compersion, hierarchy, communication">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Same footer as previous pages -->
+    </footer>
+
+    <script>
+        // Same JavaScript functionality as previous pages
+    </script>
+</body>
+</html>

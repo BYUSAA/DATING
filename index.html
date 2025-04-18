@@ -6,26 +6,30 @@
     <title>MetaDate - Find Your Perfect Match</title>
     <style>
         :root {
-            --primary-color: #ff6b6b; /* Coral accent color */
-            --secondary-color: #ff8e8e;
-            --accent-color: #4a6bff; /* Blue from profile */
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --accent-color: #ff6b6b;
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --text-light: #777;
+            --border-color: #eee;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
 
         .dark-mode {
-            --primary-color: #ff5252;
-            --secondary-color: #ff7b7b;
-            --accent-color: #5a7bff;
+            --primary-color: #9d50bb;
+            --secondary-color: #6e48aa;
+            --accent-color: #ff5252;
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --text-light: #aaa;
+            --border-color: #333;
         }
 
         * {
@@ -42,6 +46,13 @@
             line-height: 1.6;
         }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
         header {
             background-color: var(--nav-bg);
             backdrop-filter: blur(10px);
@@ -52,13 +63,11 @@
             box-shadow: var(--shadow);
         }
 
-        .navbar {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 15px 0;
         }
 
         .logo {
@@ -158,7 +167,7 @@
         }
 
         .dropdown-item:hover {
-            background-color: rgba(255, 107, 107, 0.1);
+            background-color: rgba(110, 72, 170, 0.1);
         }
 
         .dropdown-divider {
@@ -176,12 +185,68 @@
             margin-left: 1rem;
         }
 
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 10rem 2rem 5rem;
-            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             color: white;
             position: relative;
+            text-align: center;
         }
 
         .hero::before {
@@ -201,6 +266,7 @@
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .hero h1 {
@@ -216,7 +282,7 @@
             animation: fadeIn 1.5s ease;
         }
 
-        .cta-buttons {
+        .hero-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -224,44 +290,12 @@
             animation: fadeIn 2s ease;
         }
 
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: white;
-            color: var(--primary-color);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Features Section */
         .features {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -313,6 +347,7 @@
             color: var(--primary-color);
         }
 
+        /* Testimonials Section */
         .testimonials {
             padding: 5rem 2rem;
             background-color: var(--card-bg);
@@ -382,6 +417,7 @@
             font-size: 0.9rem;
         }
 
+        /* How It Works Section */
         .how-it-works {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -436,6 +472,7 @@
             z-index: 0;
         }
 
+        /* CTA Section */
         .cta-section {
             padding: 5rem 2rem;
             text-align: center;
@@ -455,6 +492,53 @@
             opacity: 0.9;
         }
 
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 20px;
+        }
+
+        .category-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .category-info p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Footer */
         footer {
             background-color: var(--card-bg);
             padding: 3rem 2rem;
@@ -509,7 +593,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(255, 107, 107, 0.1);
+            background-color: rgba(110, 72, 170, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -566,6 +650,7 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -594,7 +679,7 @@
                 font-size: 2.5rem;
             }
 
-            .cta-buttons {
+            .hero-buttons, .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -606,45 +691,42 @@
             .step {
                 margin-bottom: 2rem;
             }
+
+            .features-grid, .testimonials-grid, .category-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <div class="logo-bubble">M</div>
-                <span>MetaDate</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="dating.html">Dating</a></li>
-                <li><a href="marriage.html">Marriage</a></li>
-                <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="user-menu">
-                <button class="theme-toggle" id="themeToggle">🌓</button>
-                <div class="user-avatar">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
-                    <div class="user-dropdown">
-                        <div class="dropdown-item" id="dropdownProfile">My Profile</div>
-                        <div class="dropdown-item" id="dropdownMessages">Messages</div>
-                        <div class="dropdown-item" id="dropdownSettings">Settings</div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item" id="dropdownLogout">Logout</div>
-                    </div>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-bubble">M</div>
+                    <span>MetaDate</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <button class="theme-toggle" id="themeToggle">🌓</button>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Find Your Perfect Match</h1>
             <p>MetaDate connects you with compatible partners based on your personality, interests, and relationship goals.</p>
-            <div class="cta-buttons">
+            <div class="hero-buttons">
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
                 <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
             </div>
@@ -668,6 +750,59 @@
                 <div class="feature-icon">🌐</div>
                 <h3 class="feature-title">Global Community</h3>
                 <p>Connect with singles from around the world who share your values and interests.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Connections</h2>
+                <p>Discover different ways to connect with people across the globe through our specialized categories</p>
+            </div>
+            <div class="category-grid">
+                <a href="dating.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
+                    <div class="category-info">
+                        <h3>Dating</h3>
+                        <p>Find romantic connections with like-minded individuals</p>
+                    </div>
+                </a>
+                <a href="marriage.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
+                    <div class="category-info">
+                        <h3>Marriage</h3>
+                        <p>Serious relationships leading to lifelong commitment</p>
+                    </div>
+                </a>
+                <a href="religious.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
+                    <div class="category-info">
+                        <h3>Religious</h3>
+                        <p>Connect with people who share your faith and values</p>
+                    </div>
+                </a>
+                <a href="friendship.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
+                    <div class="category-info">
+                        <h3>Friendship</h3>
+                        <p>Platonic connections and meaningful friendships</p>
+                    </div>
+                </a>
+                <a href="international.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
+                    <div class="category-info">
+                        <h3>International</h3>
+                        <p>Connect with people from different cultures</p>
+                    </div>
+                </a>
+                <a href="business.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
+                    <div class="category-info">
+                        <h3>Business</h3>
+                        <p>Professional networking and connections</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -746,7 +881,7 @@
     <section class="cta-section">
         <h2>Ready to Find Your Match?</h2>
         <p>Join thousands of happy couples who found love through MetaDate.</p>
-        <div class="cta-buttons">
+        <div class="hero-buttons">
             <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
             <a href="about.html" class="btn btn-secondary">Learn More</a>
         </div>
@@ -812,39 +947,6 @@
             const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
             localStorage.setItem('theme', newTheme);
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
-        });
-
-        // User dropdown functionality
-        const userAvatar = document.querySelector('.user-avatar');
-        
-        userAvatar.addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.querySelector('.user-dropdown').style.opacity = '1';
-            document.querySelector('.user-dropdown').style.visibility = 'visible';
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            document.querySelector('.user-dropdown').style.opacity = '0';
-            document.querySelector('.user-dropdown').style.visibility = 'hidden';
-        });
-
-        // Dropdown menu actions
-        document.getElementById('dropdownProfile').addEventListener('click', () => {
-            window.location.href = 'profile.html';
-        });
-
-        document.getElementById('dropdownMessages').addEventListener('click', () => {
-            window.location.href = 'messages.html';
-        });
-
-        document.getElementById('dropdownSettings').addEventListener('click', () => {
-            window.location.href = 'settings.html';
-        });
-
-        document.getElementById('dropdownLogout').addEventListener('click', () => {
-            // Logout logic here
-            window.location.href = 'index.html';
         });
 
         // Smooth scrolling for anchor links

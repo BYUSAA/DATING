@@ -6,9 +6,9 @@
     <title>Login - MetaDate</title>
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #4776e6;
+            --primary-color: #673AB7;
+            --secondary-color: #5E35B1;
+            --accent-color: #7C4DFF;
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
@@ -17,9 +17,9 @@
         }
 
         .dark-mode {
-            --primary-color: #7b2cbf;
-            --secondary-color: #9d4edd;
-            --accent-color: #5a189a;
+            --primary-color: #5E35B1;
+            --secondary-color: #4527A0;
+            --accent-color: #9575CD;
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -114,6 +114,11 @@
             color: white;
         }
 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         .auth-buttons .btn {
             padding: 0.5rem 1.5rem;
             border-radius: 20px;
@@ -124,25 +129,24 @@
         }
 
         .btn-login {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-signup {
             background-color: transparent;
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
         }
 
-        .btn-signup {
-            background-color: var(--primary-color);
-            color: white;
-            border: 2px solid var(--primary-color);
-        }
-
         .btn-login:hover {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
         }
 
         .btn-signup:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+            background-color: rgba(103, 58, 183, 0.1);
         }
 
         .theme-toggle {
@@ -160,7 +164,7 @@
             align-items: center;
             justify-content: center;
             padding: 6rem 2rem 4rem;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+            background: linear-gradient(135deg, rgba(103, 58, 183, 0.05), rgba(94, 53, 177, 0.05));
         }
 
         .login-card {
@@ -168,38 +172,23 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
             width: 100%;
-            max-width: 500px;
-            padding: 3rem;
+            max-width: 450px;
+            padding: 2.5rem;
             text-align: center;
         }
 
-        .login-logo {
+        .login-header {
             margin-bottom: 2rem;
         }
 
-        .login-logo-bubble {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-        }
-
-        .login-title {
+        .login-header h1 {
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--primary-color);
         }
 
-        .login-subtitle {
-            margin-bottom: 2rem;
+        .login-header p {
+            color: var(--text-color);
             opacity: 0.8;
         }
 
@@ -217,17 +206,17 @@
         .login-form input {
             width: 100%;
             padding: 0.8rem 1rem;
-            border-radius: 8px;
             border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
             background-color: var(--card-bg);
             color: var(--text-color);
-            font-size: 1rem;
         }
 
         .login-form input:focus {
-            outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(110, 72, 170, 0.2);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(103, 58, 183, 0.2);
         }
 
         .remember-forgot {
@@ -243,7 +232,6 @@
         }
 
         .remember-me input {
-            width: auto;
             margin-right: 0.5rem;
         }
 
@@ -253,85 +241,112 @@
             font-size: 0.9rem;
         }
 
-        .login-btn {
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login-form {
             width: 100%;
-            padding: 1rem;
-            border-radius: 8px;
-            border: none;
+            padding: 0.8rem;
             background-color: var(--primary-color);
             color: white;
+            border: none;
+            border-radius: 8px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-bottom: 1.5rem;
         }
 
-        .login-btn:hover {
+        .btn-login-form:hover {
             background-color: var(--secondary-color);
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 1.5rem 0;
-            color: #777;
-            font-size: 0.9rem;
-        }
-
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .divider::before {
-            margin-right: 1rem;
-        }
-
-        .divider::after {
-            margin-left: 1rem;
+            transform: translateY(-2px);
         }
 
         .social-login {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
             margin-bottom: 1.5rem;
         }
 
+        .social-login p {
+            position: relative;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
         .social-btn {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--card-bg);
-            border: 1px solid #ddd;
-            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
             transition: all 0.3s ease;
+        }
+
+        .social-btn.google {
+            background-color: #DB4437;
+        }
+
+        .social-btn.facebook {
+            background-color: #4267B2;
+        }
+
+        .social-btn.apple {
+            background-color: #000000;
         }
 
         .social-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .signup-link {
+        .register-link {
             margin-top: 1.5rem;
-            font-size: 0.9rem;
+            color: var(--text-color);
         }
 
-        .signup-link a {
+        .register-link a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
         }
 
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
         footer {
             background-color: var(--card-bg);
-            padding: 3rem 2rem;
+            padding: 2rem;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
         }
 
@@ -374,29 +389,6 @@
             font-size: 0.9rem;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
         .footer-links h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
@@ -421,20 +413,9 @@
             color: var(--primary-color);
         }
 
-        .footer-contact p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-icon {
-            margin-right: 10px;
-            color: var(--primary-color);
-        }
-
         .copyright {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             font-size: 0.9rem;
@@ -461,7 +442,7 @@
             }
 
             .login-card {
-                padding: 2rem;
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -482,7 +463,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="login.html" class="btn btn-login active">Login</a>
                 <a href="signup.html" class="btn btn-signup">Sign Up</a>
                 <button class="theme-toggle" id="themeToggle">🌓</button>
             </div>
@@ -491,12 +472,11 @@
 
     <main class="login-container">
         <div class="login-card">
-            <div class="login-logo">
-                <div class="login-logo-bubble">M</div>
-                <h1 class="login-title">Welcome Back</h1>
-                <p class="login-subtitle">Login to your MetaDate account to continue your journey</p>
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to continue your journey to meaningful connections</p>
             </div>
-            
+
             <form class="login-form" id="loginForm">
                 <div class="form-group">
                     <label for="email">Email Address</label>
@@ -511,20 +491,23 @@
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember">Remember me</label>
                     </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
                 </div>
-                <button type="submit" class="login-btn">Login</button>
-                
-                <div class="divider">or continue with</div>
-                
-                <div class="social-login">
-                    <div class="social-btn">G</div>
-                    <div class="social-btn">f</div>
-                    <div class="social-btn">in</div>
-                </div>
-                
-                <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+                <button type="submit" class="btn-login-form">Log In</button>
             </form>
+
+            <div class="social-login">
+                <p>Or continue with</p>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn google" title="Sign in with Google">G</a>
+                    <a href="#" class="social-btn facebook" title="Sign in with Facebook">f</a>
+                    <a href="#" class="social-btn apple" title="Sign in with Apple">A</a>
+                </div>
+            </div>
+
+            <div class="register-link">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </div>
         </div>
     </main>
 
@@ -535,13 +518,7 @@
                     <div class="footer-logo-bubble">M</div>
                     <span class="footer-logo-text">MetaDate</span>
                 </div>
-                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">t</a>
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">ig</a>
-                </div>
+                <p>MetaDate is a premium dating platform that helps people find meaningful connections and lasting relationships.</p>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
@@ -563,11 +540,13 @@
                     <li><a href="international.html">International</a></li>
                 </ul>
             </div>
-            <div class="footer-contact">
-                <h3>Contact Info</h3>
-                <p><span class="contact-icon">📧</span> support@metadate.com</p>
-                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
-                <p><span class="contact-icon">🏢</span> 123 Dating St, Love City, 10001</p>
+            <div class="footer-links">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="safety.html">Safety Tips</a></li>
+                    <li><a href="guidelines.html">Community Guidelines</a></li>
+                </ul>
             </div>
         </div>
         <div class="copyright">
@@ -590,24 +569,13 @@
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
-        // Login form submission
+        // Form submission
         const loginForm = document.getElementById('loginForm');
-        
-        loginForm.addEventListener('submit', function(e) {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Check for admin credentials
-            if (email === 'byusammartin@gmail.com' && password === 'Digital@12345') {
-                window.location.href = 'admin-dashboard.html';
-                return;
-            }
-            
-            // For demonstration, just show an alert
-            alert('Login successful! Redirecting to profile...');
-            window.location.href = 'profile.html';
+            // Here you would typically handle the login logic
+            alert('Login functionality would be implemented here');
+            // loginForm.reset();
         });
     </script>
 </body>

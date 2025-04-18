@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Connections | MetaDate</title>
+    <style>
+        :root {
+            --primary-color: #9C27B0; /* Deep Purple */
+            --secondary-color: #7B1FA2; /* Purple */
+            --accent-color: #FFD700; /* Gold */
+            --text-color: #333;
+            --bg-color: #F5F5F5;
+            --card-bg: #FFF;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --text-light: #666;
+            --border-color: #E0E0E0;
+        }
+
+        .dark-mode {
+            --primary-color: #7B1FA2;
+            --secondary-color: #9C27B0;
+            --accent-color: #FFC107;
+            --text-color: #F0F0F0;
+            --bg-color: #121212;
+            --card-bg: #1E1E1E;
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --text-light: #AAA;
+            --border-color: #333;
+        }
+
+        /* ... (other base styles) ... */
+
+        .fantasy-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .fantasy-category {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .fantasy-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .fantasy-category i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="fantasy.html" class="active">Fantasy</a></li>
+                <li><a href="pets.html">Pets</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <div class="user-dropdown">
+                        <div class="dropdown-item">My Profile</div>
+                        <div class="dropdown-item">Messages</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header" style="background: linear-gradient(rgba(156, 39, 176, 0.8), rgba(156, 39, 176, 0.8)), url('https://images.unsplash.com/photo-1518709766631-a6a7f45921c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+        <div class="container">
+            <h1>Fantasy Connections</h1>
+            <p>Explore roleplay, cosplay, and fantasy relationships in a safe, consensual environment</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="religious-intro">
+                <h2>Bring Your Fantasies to Life</h2>
+                <p>Whether you're into historical roleplay, fantasy scenarios, or cosplay dating, MetaDate helps you find partners who share your imaginative interests.</p>
+            </div>
+
+            <div class="fantasy-categories">
+                <div class="fantasy-category">
+                    <i class="fas fa-crown"></i>
+                    <h3>Royalty Roleplay</h3>
+                    <p>Kings, queens, lords and ladies seeking their courtly matches</p>
+                    <button class="btn btn-primary">Explore</button>
+                </div>
+                <div class="fantasy-category">
+                    <i class="fas fa-dragon"></i>
+                    <h3>Fantasy Worlds</h3>
+                    <p>Elves, dwarves, wizards and other fantasy archetypes</p>
+                    <button class="btn btn-primary">Explore</button>
+                </div>
+                <div class="fantasy-category">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Secret Identity</h3>
+                    <p>Superheroes, villains, and alter egos</p>
+                    <button class="btn btn-primary">Explore</button>
+                </div>
+                <div class="fantasy-category">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Historical RP</h3>
+                    <p>Victorian, Renaissance, or other historical periods</p>
+                    <button class="btn btn-primary">Explore</button>
+                </div>
+            </div>
+
+            <div class="religious-profiles">
+                <h2 class="section-title">Featured Fantasy Profiles</h2>
+                <div class="profiles-grid">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Morgana">
+                            </div>
+                            <div class="profile-info">
+                                <h3>Morgana</h3>
+                                <p><i class="fas fa-magic"></i> Sorceress • 28 years</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <p>Enchantress seeking her apprentice or fellow magic user for mystical roleplay and fantasy dating. Must appreciate candlelit rituals and arcane knowledge.</p>
+                            <div class="religious-values">
+                                <span class="value-tag"><i class="fas fa-book-spells"></i> Spellcasting</span>
+                                <span class="value-tag"><i class="fas fa-moon"></i> Night Court</span>
+                                <span class="value-tag"><i class="fas fa-crystal-ball"></i> Divination</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary">View Profile</button>
+                            <button class="btn btn-primary">Connect</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Victor">
+                            </div>
+                            <div class="profile-info">
+                                <h3>Victor</h3>
+                                <p><i class="fas fa-chess-king"></i> Vampire Lord • 35 years</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <p>Ancient vampire seeking companion for eternal night. Must appreciate fine wine, Gothic architecture, and philosophical debates about mortality.</p>
+                            <div class="religious-values">
+                                <span class="value-tag"><i class="fas fa-moon"></i> Nocturnal</span>
+                                <span class="value-tag"><i class="fas fa-gem"></i> Refined Taste</span>
+                                <span class="value-tag"><i class="fas fa-book-dead"></i> Gothic Romance</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary">View Profile</button>
+                            <button class="btn btn-primary">Connect</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Aria">
+                            </div>
+                            <div class="profile-info">
+                                <h3>Aria</h3>
+                                <p><i class="fas fa-mask"></i> Cosplayer • 25 years</p>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <p>Professional cosplayer looking for a partner to attend conventions with and create amazing couples cosplays. Anime, games, and comics welcome!</p>
+                            <div class="religious-values">
+                                <span class="value-tag"><i class="fas fa-camera"></i> Photogenic</span>
+                                <span class="value-tag"><i class="fas fa-tshirt"></i> Crafting</span>
+                                <span class="value-tag"><i class="fas fa-gamepad"></i> Geek Culture</span>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-secondary">View Profile</button>
+                            <button class="btn btn-primary">Connect</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="religious-form">
+                <h2 class="section-title">Find Your Fantasy Match</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="fantasyType">Fantasy Type</label>
+                        <select id="fantasyType" class="form-control">
+                            <option value="">Any Type</option>
+                            <option value="medieval">Medieval/Royalty</option>
+                            <option value="fantasy">High Fantasy</option>
+                            <option value="scifi">Sci-Fi</option>
+                            <option value="horror">Gothic/Horror</option>
+                            <option value="cosplay">Cosplay</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="roleplayLevel">Roleplay Commitment</label>
+                        <select id="roleplayLevel" class="form-control">
+                            <option value="">Any Level</option>
+                            <option value="casual">Casual/Events Only</option>
+                            <option value="partial">Partial Lifestyle</option>
+                            <option value="full">Full Immersion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fantasyInterests">Specific Interests</label>
+                        <input type="text" id="fantasyInterests" class="form-control" placeholder="e.g. vampire, steampunk, anime">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Same footer as previous pages -->
+    </footer>
+
+    <script>
+        // Same JavaScript functionality as previous pages
+    </script>
+</body>
+</html>

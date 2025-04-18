@@ -6,9 +6,9 @@
     <title>Marriage - MetaDate</title>
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #4776e6;
+            --primary-color: #d4af37; /* Gold */
+            --secondary-color: #b8860b; /* Dark Goldenrod */
+            --accent-color: #1e3a8a; /* Deep Blue */
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
@@ -17,9 +17,9 @@
         }
 
         .dark-mode {
-            --primary-color: #7b2cbf;
-            --secondary-color: #9d4edd;
-            --accent-color: #5a189a;
+            --primary-color: #ffd700; /* Gold */
+            --secondary-color: #daa520; /* Goldenrod */
+            --accent-color: #1e3a8a; /* Deep Blue */
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -159,7 +159,7 @@
         .page-header {
             padding: 8rem 2rem 4rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(30, 58, 138, 0.1));
             position: relative;
             overflow: hidden;
         }
@@ -167,7 +167,7 @@
         .page-header h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -248,7 +248,7 @@
         }
 
         .filter-reset:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(212, 175, 55, 0.1);
         }
 
         .filter-apply:hover {
@@ -350,7 +350,7 @@
         }
 
         .interest-tag {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(212, 175, 55, 0.1);
             color: var(--primary-color);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -369,9 +369,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-like {
+        .btn-engage {
             background-color: var(--primary-color);
             color: white;
             flex-grow: 1;
@@ -385,17 +388,15 @@
             flex-grow: 1;
             margin-left: 0.5rem;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
         }
 
-        .btn-like:hover {
+        .btn-engage:hover {
             background-color: var(--secondary-color);
         }
 
         .btn-message:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(212, 175, 55, 0.1);
         }
 
         .pagination {
@@ -520,7 +521,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(212, 175, 55, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -636,18 +637,18 @@
 
     <section class="page-header">
         <h1>Find Your Life Partner</h1>
-        <p>Connect with serious individuals who are looking for a committed relationship leading to marriage.</p>
+        <p>Connect with serious individuals who are ready for commitment and building a future together.</p>
     </section>
 
     <section class="filter-section">
-        <h2 class="filter-title">Filter Profiles</h2>
+        <h2 class="filter-title">Refine Your Search</h2>
         <div class="filter-grid">
             <div class="filter-group">
-                <label for="gender">I'm looking for</label>
+                <label for="gender">Looking for</label>
                 <select id="gender">
-                    <option value="male">Men</option>
-                    <option value="female">Women</option>
-                    <option value="other">Other</option>
+                    <option value="male">Husband</option>
+                    <option value="female">Wife</option>
+                    <option value="any">Partner</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -660,14 +661,13 @@
                 </select>
             </div>
             <div class="filter-group">
-                <label for="religion">Religion</label>
-                <select id="religion">
-                    <option value="any">Any religion</option>
-                    <option value="christian">Christian</option>
-                    <option value="muslim">Muslim</option>
-                    <option value="hindu">Hindu</option>
-                    <option value="buddhist">Buddhist</option>
-                    <option value="other">Other</option>
+                <label for="values">Core Values</label>
+                <select id="values">
+                    <option value="any">Any values</option>
+                    <option value="religious">Religious</option>
+                    <option value="family">Family-oriented</option>
+                    <option value="traditional">Traditional</option>
+                    <option value="progressive">Progressive</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -681,141 +681,141 @@
         </div>
         <div class="filter-buttons">
             <button class="filter-btn filter-reset">Reset</button>
-            <button class="filter-btn filter-apply">Apply Filters</button>
+            <button class="filter-btn filter-apply">Find Matches</button>
         </div>
     </section>
 
     <section class="profiles-section">
-        <h2 class="section-title">Compatible Partners</h2>
+        <h2 class="section-title">Serious Candidates for Marriage</h2>
         <div class="profile-grid">
             <div class="profile-card">
-                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
                     <span class="profile-badge">Verified</span>
                 </div>
                 <div class="profile-info">
-                    <h3 class="profile-name">Michael</h3>
-                    <div class="profile-age">32 years</div>
+                    <h3 class="profile-name">Sophia</h3>
+                    <div class="profile-age">29 years</div>
                     <div class="profile-location">
-                        <span class="location-icon">📍</span> Chicago, USA
+                        <span class="location-icon">📍</span> Boston, USA
                     </div>
-                    <p class="profile-bio">Financial analyst looking for a serious relationship. Values family, honesty, and shared goals.</p>
+                    <p class="profile-bio">Teacher looking for a life partner to build a loving family with. Values honesty, faith, and mutual respect.</p>
                     <div class="profile-interests">
                         <span class="interest-tag">Family</span>
+                        <span class="interest-tag">Education</span>
                         <span class="interest-tag">Travel</span>
-                        <span class="interest-tag">Finance</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-engage">💍 Engage</button>
+                        <a href="message.html" class="action-btn btn-message">💌 Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">Premium</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">James</h3>
+                    <div class="profile-age">32 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> London, UK
+                    </div>
+                    <p class="profile-bio">Architect seeking a committed relationship leading to marriage. Believes in partnership, growth, and shared dreams.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Design</span>
+                        <span class="interest-tag">Nature</span>
+                        <span class="interest-tag">Cooking</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-engage">💍 Engage</button>
+                        <a href="message.html" class="action-btn btn-message">💌 Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">New</span>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Aisha</h3>
+                    <div class="profile-age">27 years</div>
+                    <div class="profile-location">
+                        <span class="location-icon">📍</span> Dubai, UAE
+                    </div>
+                    <p class="profile-bio">Doctor ready to settle down with someone who values family, faith, and personal growth.</p>
+                    <div class="profile-interests">
+                        <span class="interest-tag">Medicine</span>
+                        <span class="interest-tag">Charity</span>
+                        <span class="interest-tag">Reading</span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="action-btn btn-engage">💍 Engage</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
             </div>
             <div class="profile-card">
                 <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                    <span class="profile-badge">Premium</span>
+                    <span class="profile-badge">Verified</span>
                 </div>
                 <div class="profile-info">
-                    <h3 class="profile-name">David</h3>
+                    <h3 class="profile-name">Michael</h3>
                     <div class="profile-age">35 years</div>
                     <div class="profile-location">
-                        <span class="location-icon">📍</span> Toronto, Canada
+                        <span class="location-icon">📍</span> Sydney, Australia
                     </div>
-                    <p class="profile-bio">Doctor seeking a life partner who shares my values of compassion and commitment.</p>
+                    <p class="profile-bio">Entrepreneur looking for a wife to share life's journey with. Values loyalty, kindness, and shared purpose.</p>
                     <div class="profile-interests">
-                        <span class="interest-tag">Medicine</span>
-                        <span class="interest-tag">Hiking</span>
-                        <span class="interest-tag">Reading</span>
+                        <span class="interest-tag">Business</span>
+                        <span class="interest-tag">Fitness</span>
+                        <span class="interest-tag">Philanthropy</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
-                        <a href="message.html" class="action-btn btn-message">💌 Message</a>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-card">
-                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                    <span class="profile-badge">New</span>
-                </div>
-                <div class="profile-info">
-                    <h3 class="profile-name">James</h3>
-                    <div class="profile-age">30 years</div>
-                    <div class="profile-location">
-                        <span class="location-icon">📍</span> London, UK
-                    </div>
-                    <p class="profile-bio">Teacher looking to build a family with someone who values education and personal growth.</p>
-                    <div class="profile-interests">
-                        <span class="interest-tag">Education</span>
-                        <span class="interest-tag">Music</span>
-                        <span class="interest-tag">Sports</span>
-                    </div>
-                    <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-engage">💍 Engage</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
             </div>
             <div class="profile-card">
                 <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                    <span class="profile-badge">Verified</span>
+                    <span class="profile-badge">Premium</span>
                 </div>
                 <div class="profile-info">
-                    <h3 class="profile-name">Robert</h3>
-                    <div class="profile-age">38 years</div>
+                    <h3 class="profile-name">Emma</h3>
+                    <div class="profile-age">30 years</div>
                     <div class="profile-location">
-                        <span class="location-icon">📍</span> Sydney, Australia
+                        <span class="location-icon">📍</span> Toronto, Canada
                     </div>
-                    <p class="profile-bio">Architect seeking a partner to build a life and home together. Values creativity and stability.</p>
+                    <p class="profile-bio">Lawyer seeking a partner for marriage who values communication, respect, and building a life together.</p>
                     <div class="profile-interests">
-                        <span class="interest-tag">Architecture</span>
-                        <span class="interest-tag">Art</span>
+                        <span class="interest-tag">Law</span>
                         <span class="interest-tag">Travel</span>
+                        <span class="interest-tag">Yoga</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-engage">💍 Engage</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
             </div>
             <div class="profile-card">
-                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                    <span class="profile-badge">Premium</span>
+                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                    <span class="profile-badge">New</span>
                 </div>
                 <div class="profile-info">
-                    <h3 class="profile-name">Daniel</h3>
+                    <h3 class="profile-name">David</h3>
                     <div class="profile-age">33 years</div>
                     <div class="profile-location">
                         <span class="location-icon">📍</span> Berlin, Germany
                     </div>
-                    <p class="profile-bio">Engineer looking for a meaningful connection that could lead to marriage and family.</p>
+                    <p class="profile-bio">Engineer ready to commit to marriage with someone who shares values of honesty, family, and personal growth.</p>
                     <div class="profile-interests">
                         <span class="interest-tag">Technology</span>
-                        <span class="interest-tag">Nature</span>
-                        <span class="interest-tag">Cooking</span>
+                        <span class="interest-tag">Hiking</span>
+                        <span class="interest-tag">Music</span>
                     </div>
                     <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
-                        <a href="message.html" class="action-btn btn-message">💌 Message</a>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-card">
-                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                    <span class="profile-badge">New</span>
-                </div>
-                <div class="profile-info">
-                    <h3 class="profile-name">William</h3>
-                    <div class="profile-age">36 years</div>
-                    <div class="profile-location">
-                        <span class="location-icon">📍</span> Paris, France
-                    </div>
-                    <p class="profile-bio">Chef looking for a partner to share life's flavors with. Values family traditions and good food.</p>
-                    <div class="profile-interests">
-                        <span class="interest-tag">Cooking</span>
-                        <span class="interest-tag">Wine</span>
-                        <span class="interest-tag">Travel</span>
-                    </div>
-                    <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
+                        <button class="action-btn btn-engage">💍 Engage</button>
                         <a href="message.html" class="action-btn btn-message">💌 Message</a>
                     </div>
                 </div>
@@ -837,19 +837,19 @@
             <h2 class="features-title">Why MetaDate for Marriage?</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">💍</div>
+                    <div class="feature-icon">💒</div>
                     <h3>Serious Intentions</h3>
-                    <p>All members are verified and looking for committed relationships leading to marriage.</p>
+                    <p>Our members are genuinely looking for marriage, not casual dating.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy Focused</h3>
-                    <p>Your journey to finding a life partner remains private and secure.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">❤️</div>
+                    <div class="feature-icon">🔍</div>
                     <h3>Compatibility Matching</h3>
-                    <p>Our advanced algorithm matches you based on values, lifestyle, and long-term goals.</p>
+                    <p>Advanced algorithms match you based on values, lifestyle, and long-term goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Verified Profiles</h3>
+                    <p>Rigorous verification ensures you're connecting with authentic individuals.</p>
                 </div>
             </div>
         </div>
@@ -862,7 +862,7 @@
                     <div class="footer-logo-bubble">M</div>
                     <span class="footer-logo-text">MetaDate</span>
                 </div>
-                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <p>MetaDate helps serious individuals find their life partners through meaningful connections.</p>
                 <div class="social-links">
                     <a href="#" class="social-link">f</a>
                     <a href="#" class="social-link">t</a>
@@ -917,16 +917,29 @@
             themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
         });
 
-        // Profile card like functionality
-        const likeButtons = document.querySelectorAll('.btn-like');
-        likeButtons.forEach(button => {
+        // Engage button functionality
+        const engageButtons = document.querySelectorAll('.btn-engage');
+        engageButtons.forEach(button => {
             button.addEventListener('click', () => {
-                button.textContent = '❤️ Liked!';
-                button.style.backgroundColor = '#ff6b6b';
-                setTimeout(() => {
-                    button.textContent = '❤️ Like';
-                    button.style.backgroundColor = 'var(--primary-color)';
-                }, 2000);
+                if (button.textContent === '💍 Engage') {
+                    button.textContent = '💍 Engaged!';
+                    button.style.backgroundColor = '#1e3a8a';
+                    setTimeout(() => {
+                        button.textContent = '💍 Engage';
+                        button.style.backgroundColor = 'var(--primary-color)';
+                    }, 2000);
+                }
+            });
+        });
+
+        // Filter functionality
+        document.querySelector('.filter-apply').addEventListener('click', () => {
+            alert('Finding your perfect match... (This is a demo)');
+        });
+
+        document.querySelector('.filter-reset').addEventListener('click', () => {
+            document.querySelectorAll('.filter-section select').forEach(select => {
+                select.selectedIndex = 0;
             });
         });
     </script>

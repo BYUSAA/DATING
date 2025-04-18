@@ -322,6 +322,27 @@
             justify-content: space-between;
         }
 
+        .btn-message {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            flex-grow: 1;
+            margin-left: 0.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-message:hover {
+            background-color: rgba(110, 72, 170, 0.1);
+        }
+
         .testimonials {
             padding: 60px 0;
             background-color: var(--bg-color);
@@ -598,7 +619,7 @@
                             </div>
                             <div class="profile-actions">
                                 <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Like</button>
+                                <a href="message.html" class="btn-message">💌 Message</a>
                             </div>
                         </div>
                     </div>
@@ -616,7 +637,7 @@
                             </div>
                             <div class="profile-actions">
                                 <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Like</button>
+                                <a href="message.html" class="btn-message">💌 Message</a>
                             </div>
                         </div>
                     </div>
@@ -635,7 +656,7 @@
                             </div>
                             <div class="profile-actions">
                                 <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Like</button>
+                                <a href="message.html" class="btn-message">💌 Message</a>
                             </div>
                         </div>
                     </div>

@@ -6,9 +6,9 @@
     <title>My Profile - MetaDate</title>
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #4776e6;
+            --primary-color: #4a6bff;
+            --secondary-color: #6a8cff;
+            --accent-color: #ff6b6b;
             --text-color: #333;
             --bg-color: #f9f9f9;
             --card-bg: #fff;
@@ -17,9 +17,9 @@
         }
 
         .dark-mode {
-            --primary-color: #7b2cbf;
-            --secondary-color: #9d4edd;
-            --accent-color: #5a189a;
+            --primary-color: #5a7bff;
+            --secondary-color: #7a9cff;
+            --accent-color: #ff7b7b;
             --text-color: #f0f0f0;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -157,7 +157,7 @@
         }
 
         .dropdown-item:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(74, 107, 255, 0.1);
         }
 
         .dropdown-divider {
@@ -211,6 +211,27 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .profile-avatar-edit {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .profile-avatar:hover .profile-avatar-edit {
+            opacity: 1;
         }
 
         .profile-name {
@@ -271,6 +292,9 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
 
         .btn-primary {
@@ -285,6 +309,12 @@
             border: 2px solid var(--primary-color);
         }
 
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--accent-color);
+        }
+
         .btn-primary:hover {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
@@ -293,7 +323,14 @@
         }
 
         .btn-secondary:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(74, 107, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff5252;
+            border-color: #ff5252;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -356,6 +393,7 @@
 
         .about-item {
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .about-label {
@@ -368,6 +406,20 @@
             font-size: 1.1rem;
         }
 
+        .edit-icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--primary-color);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .about-item:hover .edit-icon {
+            opacity: 1;
+        }
+
         .interests-container {
             display: flex;
             flex-wrap: wrap;
@@ -375,11 +427,43 @@
         }
 
         .interest-tag {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(74, 107, 255, 0.1);
             color: var(--primary-color);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .remove-interest {
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .add-interest {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .add-interest input {
+            flex-grow: 1;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .add-interest button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            padding: 0 1rem;
+            cursor: pointer;
         }
 
         .photos-section {
@@ -414,6 +498,55 @@
             transform: scale(1.05);
         }
 
+        .photo-actions {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-item:hover .photo-actions {
+            opacity: 1;
+        }
+
+        .photo-action-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .photo-action-btn.delete {
+            background-color: rgba(255, 107, 107, 0.9);
+        }
+
+        .add-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(74, 107, 255, 0.1);
+            color: var(--primary-color);
+            border: 2px dashed var(--primary-color);
+            cursor: pointer;
+        }
+
+        .add-photo:hover {
+            background-color: rgba(74, 107, 255, 0.2);
+        }
+
+        .add-photo-icon {
+            font-size: 2rem;
+        }
+
         .matches-section {
             background-color: var(--card-bg);
             border-radius: 15px;
@@ -429,6 +562,7 @@
 
         .match-card {
             text-align: center;
+            position: relative;
         }
 
         .match-avatar {
@@ -438,6 +572,7 @@
             background-color: #ddd;
             margin: 0 auto 1rem;
             overflow: hidden;
+            position: relative;
         }
 
         .match-avatar img {
@@ -454,6 +589,119 @@
         .match-compatibility {
             color: var(--primary-color);
             font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .match-actions {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .match-action-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .match-message {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .match-remove {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+        }
+
+        .edit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .edit-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         footer {
@@ -510,7 +758,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(74, 107, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -644,11 +892,11 @@
                 <div class="user-avatar">
                     JS
                     <div class="user-dropdown">
-                        <div class="dropdown-item">My Profile</div>
-                        <div class="dropdown-item">Messages</div>
-                        <div class="dropdown-item">Settings</div>
+                        <div class="dropdown-item" id="dropdownProfile">My Profile</div>
+                        <div class="dropdown-item" id="dropdownMessages">Messages</div>
+                        <div class="dropdown-item" id="dropdownSettings">Settings</div>
                         <div class="dropdown-divider"></div>
-                        <div class="dropdown-item">Logout</div>
+                        <div class="dropdown-item" id="dropdownLogout">Logout</div>
                     </div>
                 </div>
             </div>
@@ -659,12 +907,13 @@
         <div class="profile-header">
             <div class="profile-avatar">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Profile Photo">
+                <div class="profile-avatar-edit" id="editAvatar">✏️</div>
             </div>
-            <h1 class="profile-name">John Smith</h1>
+            <h1 class="profile-name" id="profileName">John Smith</h1>
             <div class="profile-location">
-                <span class="location-icon">📍</span> New York, USA
+                <span class="location-icon">📍</span> <span id="profileLocation">New York, USA</span>
             </div>
-            <p class="profile-bio">
+            <p class="profile-bio" id="profileBio">
                 Adventure seeker and coffee enthusiast. I love hiking, photography, and exploring new cultures. 
                 Looking for someone to share spontaneous trips and deep conversations with.
             </p>
@@ -683,8 +932,9 @@
                 </div>
             </div>
             <div class="profile-actions">
-                <a href="#" class="action-btn btn-primary">Edit Profile</a>
-                <a href="subscription.html" class="action-btn btn-secondary">Upgrade Plan</a>
+                <button class="action-btn btn-primary" id="editProfileBtn">Edit Profile</button>
+                <button class="action-btn btn-accent" id="messageBtn">Messages</button>
+                <button class="action-btn btn-secondary" id="upgradeBtn">Upgrade Plan</button>
             </div>
         </div>
 
@@ -700,50 +950,62 @@
                 <div class="about-grid">
                     <div class="about-item">
                         <div class="about-label">Age</div>
-                        <div class="about-value">28</div>
+                        <div class="about-value" id="profileAge">28</div>
+                        <span class="edit-icon" data-field="age">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Gender</div>
-                        <div class="about-value">Male</div>
+                        <div class="about-value" id="profileGender">Male</div>
+                        <span class="edit-icon" data-field="gender">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Looking For</div>
-                        <div class="about-value">Dating, Friendship</div>
+                        <div class="about-value" id="profileLookingFor">Dating, Friendship</div>
+                        <span class="edit-icon" data-field="lookingFor">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Occupation</div>
-                        <div class="about-value">Photographer</div>
+                        <div class="about-value" id="profileOccupation">Photographer</div>
+                        <span class="edit-icon" data-field="occupation">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Education</div>
-                        <div class="about-value">Bachelor's in Fine Arts</div>
+                        <div class="about-value" id="profileEducation">Bachelor's in Fine Arts</div>
+                        <span class="edit-icon" data-field="education">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Religion</div>
-                        <div class="about-value">Spiritual</div>
+                        <div class="about-value" id="profileReligion">Spiritual</div>
+                        <span class="edit-icon" data-field="religion">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Height</div>
-                        <div class="about-value">6'1" (185 cm)</div>
+                        <div class="about-value" id="profileHeight">6'1" (185 cm)</div>
+                        <span class="edit-icon" data-field="height">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Relationship Status</div>
-                        <div class="about-value">Single</div>
+                        <div class="about-value" id="profileStatus">Single</div>
+                        <span class="edit-icon" data-field="status">✏️</span>
                     </div>
                 </div>
             </div>
 
             <div class="about-section">
                 <h2 class="section-title">Interests</h2>
-                <div class="interests-container">
-                    <div class="interest-tag">Photography</div>
-                    <div class="interest-tag">Travel</div>
-                    <div class="interest-tag">Hiking</div>
-                    <div class="interest-tag">Coffee</div>
-                    <div class="interest-tag">Reading</div>
-                    <div class="interest-tag">Music</div>
-                    <div class="interest-tag">Cooking</div>
-                    <div class="interest-tag">Art</div>
+                <div class="interests-container" id="interestsContainer">
+                    <div class="interest-tag">Photography<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Travel<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Hiking<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Coffee<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Reading<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Music<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Cooking<span class="remove-interest">×</span></div>
+                    <div class="interest-tag">Art<span class="remove-interest">×</span></div>
+                </div>
+                <div class="add-interest">
+                    <input type="text" id="newInterest" placeholder="Add new interest">
+                    <button id="addInterestBtn">+</button>
                 </div>
             </div>
 
@@ -752,27 +1014,33 @@
                 <div class="about-grid">
                     <div class="about-item">
                         <div class="about-label">Introvert/Extrovert</div>
-                        <div class="about-value">Ambivert</div>
+                        <div class="about-value" id="profilePersonality">Ambivert</div>
+                        <span class="edit-icon" data-field="personality">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Love Language</div>
-                        <div class="about-value">Quality Time, Words of Affirmation</div>
+                        <div class="about-value" id="profileLoveLanguage">Quality Time, Words of Affirmation</div>
+                        <span class="edit-icon" data-field="loveLanguage">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Pets</div>
-                        <div class="about-value">Dog lover</div>
+                        <div class="about-value" id="profilePets">Dog lover</div>
+                        <span class="edit-icon" data-field="pets">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Smoking</div>
-                        <div class="about-value">Never</div>
+                        <div class="about-value" id="profileSmoking">Never</div>
+                        <span class="edit-icon" data-field="smoking">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Drinking</div>
-                        <div class="about-value">Socially</div>
+                        <div class="about-value" id="profileDrinking">Socially</div>
+                        <span class="edit-icon" data-field="drinking">✏️</span>
                     </div>
                     <div class="about-item">
                         <div class="about-label">Diet</div>
-                        <div class="about-value">Vegetarian</div>
+                        <div class="about-value" id="profileDiet">Vegetarian</div>
+                        <span class="edit-icon" data-field="diet">✏️</span>
                     </div>
                 </div>
             </div>
@@ -784,21 +1052,42 @@
                 <div class="photos-grid">
                     <div class="photo-item">
                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 1">
+                        <div class="photo-actions">
+                            <button class="photo-action-btn delete">×</button>
+                        </div>
                     </div>
                     <div class="photo-item">
                         <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 2">
+                        <div class="photo-actions">
+                            <button class="photo-action-btn delete">×</button>
+                        </div>
                     </div>
                     <div class="photo-item">
                         <img src="https://images.unsplash.com/photo-1429087969512-1e85aab2683d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 3">
+                        <div class="photo-actions">
+                            <button class="photo-action-btn delete">×</button>
+                        </div>
                     </div>
                     <div class="photo-item">
                         <img src="https://images.unsplash.com/photo-1505673542670-a5e3b5c7c98b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 4">
+                        <div class="photo-actions">
+                            <button class="photo-action-btn delete">×</button>
+                        </div>
                     </div>
                     <div class="photo-item">
                         <img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 5">
+                        <div class="photo-actions">
+                            <button class="photo-action-btn delete">×</button>
+                        </div>
                     </div>
                     <div class="photo-item">
                         <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Photo 6">
+                        <div class="photo-actions">
+                            <button class="photo-action-btn delete">×</button>
+                        </div>
+                    </div>
+                    <div class="photo-item add-photo">
+                        <div class="add-photo-icon">+</div>
                     </div>
                 </div>
             </div>
@@ -814,6 +1103,10 @@
                         </div>
                         <div class="match-name">Sophia</div>
                         <div class="match-compatibility">92% match</div>
+                        <div class="match-actions">
+                            <button class="match-action-btn match-message">💬</button>
+                            <button class="match-action-btn match-remove">×</button>
+                        </div>
                     </div>
                     <div class="match-card">
                         <div class="match-avatar">
@@ -821,6 +1114,10 @@
                         </div>
                         <div class="match-name">Emma</div>
                         <div class="match-compatibility">88% match</div>
+                        <div class="match-actions">
+                            <button class="match-action-btn match-message">💬</button>
+                            <button class="match-action-btn match-remove">×</button>
+                        </div>
                     </div>
                     <div class="match-card">
                         <div class="match-avatar">
@@ -828,6 +1125,10 @@
                         </div>
                         <div class="match-name">Olivia</div>
                         <div class="match-compatibility">85% match</div>
+                        <div class="match-actions">
+                            <button class="match-action-btn match-message">💬</button>
+                            <button class="match-action-btn match-remove">×</button>
+                        </div>
                     </div>
                     <div class="match-card">
                         <div class="match-avatar">
@@ -835,6 +1136,10 @@
                         </div>
                         <div class="match-name">Ava</div>
                         <div class="match-compatibility">83% match</div>
+                        <div class="match-actions">
+                            <button class="match-action-btn match-message">💬</button>
+                            <button class="match-action-btn match-remove">×</button>
+                        </div>
                     </div>
                     <div class="match-card">
                         <div class="match-avatar">
@@ -842,11 +1147,59 @@
                         </div>
                         <div class="match-name">Isabella</div>
                         <div class="match-compatibility">81% match</div>
+                        <div class="match-actions">
+                            <button class="match-action-btn match-message">💬</button>
+                            <button class="match-action-btn match-remove">×</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="edit-modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Profile</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editName">Name</label>
+                <input type="text" class="form-control" id="editName" value="John Smith">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editLocation">Location</label>
+                <input type="text" class="form-control" id="editLocation" value="New York, USA">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editBio">Bio</label>
+                <textarea class="form-control" id="editBio" rows="4">Adventure seeker and coffee enthusiast. I love hiking, photography, and exploring new cultures. Looking for someone to share spontaneous trips and deep conversations with.</textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="action-btn btn-secondary" id="cancelEdit">Cancel</button>
+                <button class="action-btn btn-primary" id="saveProfile">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Field Modal -->
+    <div class="edit-modal" id="editFieldModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="fieldModalTitle">Edit Field</h3>
+                <button class="close-modal" id="closeFieldModal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label" id="fieldLabel" for="editFieldValue">Value</label>
+                <input type="text" class="form-control" id="editFieldValue">
+            </div>
+            <div class="modal-actions">
+                <button class="action-btn btn-secondary" id="cancelFieldEdit">Cancel</button>
+                <button class="action-btn btn-primary" id="saveField">Save</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-container">
@@ -941,6 +1294,167 @@
         document.addEventListener('click', () => {
             document.querySelector('.user-dropdown').style.opacity = '0';
             document.querySelector('.user-dropdown').style.visibility = 'hidden';
+        });
+
+        // Dropdown menu actions
+        document.getElementById('dropdownProfile').addEventListener('click', () => {
+            window.location.href = 'profile.html';
+        });
+
+        document.getElementById('dropdownMessages').addEventListener('click', () => {
+            window.location.href = 'messages.html';
+        });
+
+        document.getElementById('dropdownSettings').addEventListener('click', () => {
+            window.location.href = 'settings.html';
+        });
+
+        document.getElementById('dropdownLogout').addEventListener('click', () => {
+            // Logout logic here
+            window.location.href = 'index.html';
+        });
+
+        // Edit Profile Modal
+        const editModal = document.getElementById('editModal');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const closeModal = document.getElementById('closeModal');
+        const cancelEdit = document.getElementById('cancelEdit');
+        const saveProfile = document.getElementById('saveProfile');
+        const messageBtn = document.getElementById('messageBtn');
+
+        editProfileBtn.addEventListener('click', () => {
+            editModal.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            editModal.classList.remove('active');
+        });
+
+        cancelEdit.addEventListener('click', () => {
+            editModal.classList.remove('active');
+        });
+
+        saveProfile.addEventListener('click', () => {
+            const newName = document.getElementById('editName').value;
+            const newLocation = document.getElementById('editLocation').value;
+            const newBio = document.getElementById('editBio').value;
+            
+            document.getElementById('profileName').textContent = newName;
+            document.getElementById('profileLocation').textContent = newLocation;
+            document.getElementById('profileBio').textContent = newBio;
+            
+            editModal.classList.remove('active');
+        });
+
+        messageBtn.addEventListener('click', () => {
+            window.location.href = 'messages.html';
+        });
+
+        // Edit individual fields
+        const editFieldModal = document.getElementById('editFieldModal');
+        const closeFieldModal = document.getElementById('closeFieldModal');
+        const cancelFieldEdit = document.getElementById('cancelFieldEdit');
+        const saveField = document.getElementById('saveField');
+        const editIcons = document.querySelectorAll('.edit-icon');
+        let currentField = null;
+
+        editIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const field = icon.getAttribute('data-field');
+                const fieldId = 'profile' + field.charAt(0).toUpperCase() + field.slice(1);
+                const currentValue = document.getElementById(fieldId).textContent;
+                
+                currentField = fieldId;
+                document.getElementById('fieldModalTitle').textContent = 'Edit ' + field.replace(/([A-Z])/g, ' $1');
+                document.getElementById('fieldLabel').textContent = field.replace(/([A-Z])/g, ' $1');
+                document.getElementById('editFieldValue').value = currentValue;
+                
+                editFieldModal.classList.add('active');
+            });
+        });
+
+        closeFieldModal.addEventListener('click', () => {
+            editFieldModal.classList.remove('active');
+        });
+
+        cancelFieldEdit.addEventListener('click', () => {
+            editFieldModal.classList.remove('active');
+        });
+
+        saveField.addEventListener('click', () => {
+            const newValue = document.getElementById('editFieldValue').value;
+            document.getElementById(currentField).textContent = newValue;
+            editFieldModal.classList.remove('active');
+        });
+
+        // Edit avatar
+        document.getElementById('editAvatar').addEventListener('click', () => {
+            alert('Avatar editing functionality would go here - typically opening a file picker');
+        });
+
+        // Add/remove interests
+        const interestsContainer = document.getElementById('interestsContainer');
+        const addInterestBtn = document.getElementById('addInterestBtn');
+        const newInterestInput = document.getElementById('newInterest');
+
+        // Remove interest
+        interestsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-interest')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+        // Add interest
+        addInterestBtn.addEventListener('click', () => {
+            const interestText = newInterestInput.value.trim();
+            if (interestText) {
+                const interestTag = document.createElement('div');
+                interestTag.className = 'interest-tag';
+                interestTag.innerHTML = `${interestText}<span class="remove-interest">×</span>`;
+                interestsContainer.appendChild(interestTag);
+                newInterestInput.value = '';
+            }
+        });
+
+        newInterestInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addInterestBtn.click();
+            }
+        });
+
+        // Photo actions
+        const photoDeleteBtns = document.querySelectorAll('.photo-action-btn.delete');
+        photoDeleteBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (confirm('Are you sure you want to delete this photo?')) {
+                    btn.closest('.photo-item').remove();
+                }
+            });
+        });
+
+        // Add photo
+        document.querySelector('.add-photo').addEventListener('click', () => {
+            alert('Photo upload functionality would go here - typically opening a file picker');
+        });
+
+        // Match actions
+        const matchMessageBtns = document.querySelectorAll('.match-message');
+        const matchRemoveBtns = document.querySelectorAll('.match-remove');
+
+        matchMessageBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.location.href = 'messages.html';
+            });
+        });
+
+        matchRemoveBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (confirm('Are you sure you want to remove this match?')) {
+                    btn.closest('.match-card').remove();
+                }
+            });
         });
     </script>
 </body>

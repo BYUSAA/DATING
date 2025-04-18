@@ -3,145 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Plans - MetaDate</title>
+    <title>Premium Subscription - MetaDate</title>
     <style>
-        /* Reusing styles from index.html with additions */
-        
-        .pricing-hero {
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.2), rgba(157, 80, 187, 0.2));
+        :root {
+            --primary-color: #FFA000;
+            --secondary-color: #FF8F00;
+            --accent-color: #FFC107;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --premium-gradient: linear-gradient(135deg, #FFA000, #FFC107);
         }
-        
-        .pricing-container {
+
+        .dark-mode {
+            --primary-color: #FF8F00;
+            --secondary-color: #FF6F00;
+            --accent-color: #FFA000;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --premium-gradient: linear-gradient(135deg, #FF8F00, #FFA000);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
         }
-        
-        .pricing-intro {
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: var(--premium-gradient);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .auth-buttons .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-signup {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 8rem 2rem 4rem;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            background: linear-gradient(135deg, rgba(255, 160, 0, 0.1), rgba(255, 143, 0, 0.1));
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .subscription-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
-        
+
         .pricing-card {
             background-color: var(--card-bg);
             border-radius: 15px;
-            padding: 2rem;
+            overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
         }
-        
+
         .pricing-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        
+
         .pricing-card.popular {
-            border: 2px solid var(--primary-color);
+            border: 2px solid var(--accent-color);
         }
-        
+
         .popular-badge {
             position: absolute;
-            top: -10px;
-            right: 20px;
-            background-color: var(--primary-color);
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent-color);
             color: white;
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
         }
-        
-        .pricing-title {
+
+        .pricing-header {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 160, 0, 0.1), rgba(255, 193, 7, 0.1));
+        }
+
+        .pricing-name {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--primary-color);
         }
-        
+
         .pricing-price {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
-        
+
         .pricing-period {
-            font-size: 1rem;
+            color: var(--text-color);
             opacity: 0.8;
+            font-size: 0.9rem;
         }
-        
+
         .pricing-features {
-            margin: 2rem 0;
+            padding: 2rem;
         }
-        
-        .feature-item {
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
-            margin-bottom: 0.8rem;
         }
-        
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
         .feature-icon {
-            margin-right: 0.5rem;
-            color: var(--primary-color);
+            color: var(--accent-color);
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
         }
-        
-        .pricing-btn {
+
+        .pricing-button {
             display: block;
-            width: 100%;
-            padding: 1rem;
-            border-radius: 8px;
             text-align: center;
+            padding: 0.8rem;
+            background: var(--premium-gradient);
+            color: white;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border: 2px solid var(--primary-color);
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 160, 0, 0.3);
         }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+
+        .benefits-section {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
         }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .btn-outline:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+
+        .benefit-card {
+            display: flex;
+            align-items: flex-start;
         }
-        
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-right: 1rem;
+        }
+
+        .benefit-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
         .faq-section {
-            max-width: 800px;
-            margin: 0 auto;
+            margin-bottom: 4rem;
         }
-        
+
         .faq-item {
             background-color: var(--card-bg);
             border-radius: 10px;
-            padding: 1.5rem;
             margin-bottom: 1rem;
             box-shadow: var(--shadow);
+            overflow: hidden;
         }
-        
+
         .faq-question {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 160, 0, 0.05);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .testimonials-section {
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: left;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 1rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-bubble {
+            width: 30px;
+            height: 30px;
+            background: var(--premium-gradient);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 160, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
@@ -168,152 +593,267 @@
         </nav>
     </header>
 
-    <section class="pricing-hero">
-        <h1>Upgrade Your Experience</h1>
-        <p>Unlock premium features to enhance your dating journey</p>
+    <section class="page-header">
+        <h1>Unlock Premium Features</h1>
+        <p>Upgrade your experience and get the most out of your MetaDate journey with our exclusive subscription plans.</p>
     </section>
 
-    <div class="pricing-container">
-        <div class="pricing-intro">
-            <h2 class="section-title">Choose Your Plan</h2>
-            <p>All plans include our satisfaction guarantee. If you're not happy within the first 7 days, we'll give you a full refund.</p>
-        </div>
-        
+    <section class="subscription-section">
+        <h2 class="section-title">Choose Your Plan</h2>
         <div class="pricing-grid">
             <div class="pricing-card">
-                <h3 class="pricing-title">Basic</h3>
-                <div class="pricing-price">$0<span class="pricing-period">/month</span></div>
-                <p>Perfect for trying out MetaDate</p>
-                
-                <div class="pricing-features">
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Create a profile
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Browse matches
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Send 5 messages/day
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✗</span> Advanced matching
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✗</span> See who liked you
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✗</span> Priority support
-                    </div>
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Basic</h3>
+                    <div class="pricing-price">$0</div>
+                    <div class="pricing-period">Forever free</div>
                 </div>
-                
-                <a href="signup.html" class="pricing-btn btn-outline">Get Started</a>
+                <div class="pricing-features">
+                    <ul class="feature-list">
+                        <li><span class="feature-icon">✓</span> Create a profile</li>
+                        <li><span class="feature-icon">✓</span> Browse matches</li>
+                        <li><span class="feature-icon">✓</span> Send limited messages</li>
+                        <li><span class="feature-icon">✓</span> Basic matching algorithm</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Current Plan</a>
+                </div>
             </div>
-            
+
             <div class="pricing-card popular">
                 <div class="popular-badge">Most Popular</div>
-                <h3 class="pricing-title">Premium</h3>
-                <div class="pricing-price">$29.99<span class="pricing-period">/month</span></div>
-                <p>Best value for serious daters</p>
-                
-                <div class="pricing-features">
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Unlimited messages
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> See who viewed your profile
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Advanced matching algorithm
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Boost your profile weekly
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Read receipts
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Priority customer support
-                    </div>
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Premium</h3>
+                    <div class="pricing-price">$29</div>
+                    <div class="pricing-period">per month</div>
                 </div>
-                
-                <a href="signup.html?plan=premium" class="pricing-btn btn-primary">Choose Premium</a>
+                <div class="pricing-features">
+                    <ul class="feature-list">
+                        <li><span class="feature-icon">✓</span> Unlimited messaging</li>
+                        <li><span class="feature-icon">✓</span> See who liked you</li>
+                        <li><span class="feature-icon">✓</span> Advanced matching algorithm</li>
+                        <li><span class="feature-icon">✓</span> Boost your profile weekly</li>
+                        <li><span class="feature-icon">✓</span> Read receipts</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Upgrade Now</a>
+                </div>
             </div>
-            
+
             <div class="pricing-card">
-                <h3 class="pricing-title">VIP</h3>
-                <div class="pricing-price">$99.99<span class="pricing-period">/month</span></div>
-                <p>For those who want the best</p>
-                
-                <div class="pricing-features">
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> All Premium features
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Profile highlighting
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Daily profile boosts
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Exclusive matchmaking
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> Personal dating coach
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">✓</span> 24/7 VIP support
-                    </div>
+                <div class="pricing-header">
+                    <h3 class="pricing-name">VIP</h3>
+                    <div class="pricing-price">$99</div>
+                    <div class="pricing-period">per month</div>
                 </div>
-                
-                <a href="signup.html?plan=vip" class="pricing-btn btn-outline">Choose VIP</a>
+                <div class="pricing-features">
+                    <ul class="feature-list">
+                        <li><span class="feature-icon">✓</span> All Premium features</li>
+                        <li><span class="feature-icon">✓</span> Profile highlighting</li>
+                        <li><span class="feature-icon">✓</span> Unlimited boosts</li>
+                        <li><span class="feature-icon">✓</span> Priority customer support</li>
+                        <li><span class="feature-icon">✓</span> Exclusive matchmaking</li>
+                        <li><span class="feature-icon">✓</span> Monthly profile review</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Get VIP</a>
+                </div>
             </div>
         </div>
-        
+
+        <div class="benefits-section">
+            <h2 class="section-title">Premium Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-content">
+                        <h3>Priority Visibility</h3>
+                        <p>Get shown to more potential matches with boosted placement in search results.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💌</div>
+                    <div class="benefit-content">
+                        <h3>Unlimited Messages</h3>
+                        <p>Connect without limits - send as many messages as you want to your matches.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <div class="benefit-content">
+                        <h3>Advanced Filters</h3>
+                        <p>Refine your search with premium filters to find exactly what you're looking for.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">👀</div>
+                    <div class="benefit-content">
+                        <h3>See Who Likes You</h3>
+                        <p>Skip the guessing game and see who's already interested in you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="faq-section">
             <h2 class="section-title">Frequently Asked Questions</h2>
-            
             <div class="faq-item">
-                <div class="faq-question">What payment methods do you accept?</div>
-                <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and Apple Pay.</p>
+                <div class="faq-question">
+                    <span>How does billing work?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Subscriptions are billed monthly on the date you originally signed up. You can cancel anytime before your next billing cycle.</p>
+                </div>
             </div>
-            
             <div class="faq-item">
-                <div class="faq-question">Can I cancel my subscription anytime?</div>
-                <p>Yes, you can cancel your subscription at any time. Your premium features will remain active until the end of your billing period.</p>
+                <div class="faq-question">
+                    <span>Can I change my plan later?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can upgrade or downgrade your plan at any time through your account settings.</p>
+                </div>
             </div>
-            
             <div class="faq-item">
-                <div class="faq-question">Is there a discount for long-term subscriptions?</div>
-                <p>Yes! We offer 15% off for 6-month subscriptions and 30% off for annual subscriptions.</p>
+                <div class="faq-question">
+                    <span>Is there a free trial?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We occasionally offer free trials. Check our promotions page or sign up to see current offers.</p>
+                </div>
             </div>
-            
             <div class="faq-item">
-                <div class="faq-question">What happens if I don't find a match?</div>
-                <p>While we can't guarantee matches, our premium features significantly increase your chances. If you're not satisfied, you can cancel anytime.</p>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">How do I upgrade or change my plan?</div>
-                <p>You can change your plan at any time in your account settings. The changes will take effect at your next billing cycle.</p>
+                <div class="faq-question">
+                    <span>How do I cancel my subscription?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can cancel anytime through your account settings. Your subscription will remain active until the end of the current billing period.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Same footer as index.html -->
+        <div class="testimonials-section">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Upgrading to Premium was the best decision I made. I met my partner within two weeks thanks to the advanced matching features!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>Premium Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>The VIP experience is worth every penny. The exclusive matchmaking service introduced me to people I would never have found on my own.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>VIP Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>I was skeptical about paying for a dating service, but the unlimited messaging feature helped me build real connections quickly.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Jennifer L.</h4>
+                            <p>Premium Member</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <!-- Footer content from index.html -->
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate</span>
+                </div>
+                <p>MetaDate is a premium dating platform that helps people find meaningful connections and lasting relationships.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="international.html">International</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon">📧</span> support@metadate.com</p>
+                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
+                <p><span class="contact-icon">🏢</span> 123 Connection St, Heart City, 10001</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // Same JavaScript as index.html
-        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        });
+
+        // FAQ toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
         // Plan selection functionality
-        document.querySelectorAll('.pricing-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // In a real app, this would track the selected plan
-                const plan = this.textContent.includes('Premium') ? 'premium' : 
-                            this.textContent.includes('VIP') ? 'vip' : 'basic';
-                console.log('Selected plan:', plan);
+        const pricingButtons = document.querySelectorAll('.pricing-button');
+        pricingButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (e.target.textContent === 'Current Plan') {
+                    e.preventDefault();
+                } else {
+                    alert('Subscription flow would be implemented here');
+                }
             });
         });
     </script>

@@ -167,228 +167,7 @@
             margin-left: 15px;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(110, 72, 170, 0.1), rgba(157, 80, 187, 0.1));
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .hero-text {
-            flex: 1;
-            padding-right: 40px;
-        }
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: var(--text-light);
-        }
-
-        .hero-buttons {
-            display: flex;
-        }
-
-        .hero-buttons .btn {
-            margin-right: 15px;
-        }
-
-        .floating-cards {
-            position: relative;
-            height: 400px;
-        }
-
-        .profile-card {
-            position: absolute;
-            width: 200px;
-            height: 250px;
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: all 0.5s;
-        }
-
-        .profile-card img {
-            width: 100%;
-            height: 70%;
-            object-fit: cover;
-        }
-
-        .profile-info {
-            padding: 10px;
-        }
-
-        .profile-info h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .profile-info p {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .card-1 {
-            top: 0;
-            left: 0;
-            transform: rotate(-5deg);
-            z-index: 1;
-            animation: float 6s infinite ease-in-out;
-        }
-
-        .card-2 {
-            top: 50px;
-            left: 220px;
-            transform: rotate(3deg);
-            z-index: 2;
-            animation: float 8s infinite ease-in-out 1s;
-        }
-
-        .card-3 {
-            top: 20px;
-            left: 440px;
-            transform: rotate(-2deg);
-            z-index: 3;
-            animation: float 7s infinite ease-in-out 0.5s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(var(--rotation)); }
-            50% { transform: translateY(-20px) rotate(var(--rotation)); }
-        }
-
-        /* Categories Section */
-        .categories {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .category-info {
-            padding: 20px;
-        }
-
-        .category-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .category-info p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--card-bg);
-            padding: 50px 0 20px;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Page-specific styles */
+        /* Page Header */
         .page-header {
             padding: 120px 0 60px;
             text-align: center;
@@ -407,6 +186,7 @@
             margin: 0 auto;
         }
 
+        /* Page Content */
         .page-content {
             padding: 60px 0;
         }
@@ -418,7 +198,7 @@
             gap: 30px;
         }
 
-        .profile-card-page {
+        .profile-card {
             background-color: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
@@ -426,12 +206,12 @@
             transition: all 0.3s;
         }
 
-        .profile-card-page:hover {
+        .profile-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .profile-card-page img {
+        .profile-card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
@@ -542,6 +322,120 @@
         .form-footer a {
             color: var(--primary-color);
             text-decoration: none;
+        }
+
+        /* Subscription Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .plan-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .plan-card .price {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-card .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-card .features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .plan-card .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* About Page */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 28px;
+            margin: 40px 0 20px;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 50px 0 20px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 14px;
         }
 
         /* Admin Dashboard */
@@ -664,49 +558,6 @@
             color: white;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .floating-cards {
-                height: 300px;
-            }
-
-            .card-1, .card-2, .card-3 {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 0 auto 20px;
-                transform: none;
-                animation: none;
-            }
-
-            nav {
-                flex-direction: column;
-                padding: 15px;
-            }
-
-            .nav-links {
-                margin: 15px 0;
-            }
-
-            .auth-buttons {
-                margin-top: 10px;
-            }
-        }
-
         /* Modal Styles */
         .modal {
             display: none;
@@ -767,169 +618,151 @@
             display: flex;
             justify-content: flex-end;
         }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .nav-links {
+                margin: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 5px;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+            }
+
+            .page-header {
+                padding: 100px 0 40px;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Main Navigation -->
+    <!-- Header Navigation (same for all pages) -->
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">
+                <a href="#home" class="logo">
                     <div class="logo-bubble">M</div>
                     <span>MetaDate</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="international.html">International</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="#dating">Dating</a></li>
+                    <li><a href="#marriage">Marriage</a></li>
+                    <li><a href="#friendship">Friendship</a></li>
+                    <li><a href="#international">International</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
                 <div class="auth-buttons">
-                    <a href="login.html" class="btn btn-outline">Login</a>
-                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <a href="#login" class="btn btn-outline">Login</a>
+                    <a href="#signup" class="btn btn-primary">Sign Up</a>
                     <button class="theme-toggle" id="themeToggle">🌓</button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Home Page Content -->
-    <main id="homePage">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Find Your Perfect Match in the Metaverse</h1>
-                        <p>MetaDate connects souls across dimensions with our advanced AI matching system. Whether you're looking for love, friendship, or something more, we've got you covered.</p>
-                        <div class="hero-buttons">
-                            <a href="signup.html" class="btn btn-primary">Get Started</a>
-                            <a href="about.html" class="btn btn-outline">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <div class="floating-cards">
-                            <div class="profile-card card-1" style="--rotation: -5deg;">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile">
-                                <div class="profile-info">
-                                    <h3>Sarah, 28</h3>
-                                    <p>New York • Artist</p>
-                                </div>
-                            </div>
-                            <div class="profile-card card-2" style="--rotation: 3deg;">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
-                                <div class="profile-info">
-                                    <h3>Michael, 31</h3>
-                                    <p>London • Engineer</p>
-                                </div>
-                            </div>
-                            <div class="profile-card card-3" style="--rotation: -2deg;">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile">
-                                <div class="profile-info">
-                                    <h3>Jessica, 25</h3>
-                                    <p>Tokyo • Designer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Page Content Sections -->
+    <main>
+        <!-- Home Page -->
+        <section id="homePage" class="page-content">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Welcome to MetaDate</h1>
+                    <p>Find your perfect match in our futuristic dating platform</p>
                 </div>
             </div>
-        </section>
-
-        <section class="categories">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Explore Connections</h2>
-                    <p>Discover different ways to connect with people across the globe through our specialized categories</p>
-                </div>
-                <div class="category-grid">
-                    <a href="dating.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
-                        <div class="category-info">
-                            <h3>Dating</h3>
-                            <p>Find romantic connections with like-minded individuals</p>
-                        </div>
-                    </a>
-                    <a href="marriage.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
-                        <div class="category-info">
-                            <h3>Marriage</h3>
-                            <p>Serious relationships leading to lifelong commitment</p>
-                        </div>
-                    </a>
-                    <a href="religious.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
-                        <div class="category-info">
-                            <h3>Religious</h3>
-                            <p>Connect with people who share your faith and values</p>
-                        </div>
-                    </a>
-                    <a href="polygamy.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Polygamy">
-                        <div class="category-info">
-                            <h3>Polygamy</h3>
-                            <p>Alternative relationship structures and connections</p>
-                        </div>
-                    </a>
-                    <a href="friendship.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
-                        <div class="category-info">
-                            <h3>Friendship</h3>
-                            <p>Platonic connections and meaningful friendships</p>
-                        </div>
-                    </a>
-                    <a href="fantasy.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fantasy">
-                        <div class="category-info">
-                            <h3>Fantasy</h3>
-                            <p>Explore imaginative and roleplay connections</p>
-                        </div>
-                    </a>
-                    <a href="international.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
-                        <div class="category-info">
-                            <h3>International</h3>
-                            <p>Connect with people from different cultures</p>
-                        </div>
-                    </a>
-                    <a href="business.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
-                        <div class="category-info">
-                            <h3>Business</h3>
-                            <p>Professional networking and connections</p>
-                        </div>
-                    </a>
-                    <a href="specialneeds.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1504198266287-1659872e6590?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Special Needs">
-                        <div class="category-info">
-                            <h3>Special Needs</h3>
-                            <p>Inclusive dating for people with disabilities</p>
-                        </div>
-                    </a>
-                    <a href="penpal.html" class="category-card">
-                        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pen Pal">
-                        <div class="category-info">
-                            <h3>Pen Pal</h3>
-                            <p>Old-fashioned letter writing connections</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Dating Page Content (hidden by default) -->
-    <main id="datingPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Dating Connections</h1>
-                <p>Find romantic partners who share your interests and values</p>
-            </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <!-- Featured profiles would go here -->
+                    <div class="profile-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile">
+                        <div class="profile-details">
+                            <h3>Sarah, 28</h3>
+                            <div class="age">New York • Artist</div>
+                            <div class="bio">Creative soul looking for someone to share adventures with.</div>
+                            <div class="interests">
+                                <span class="interest-tag">Art</span>
+                                <span class="interest-tag">Travel</span>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                        <div class="profile-details">
+                            <h3>Michael, 31</h3>
+                            <div class="age">London • Engineer</div>
+                            <div class="bio">Tech enthusiast who loves hiking and good conversations.</div>
+                            <div class="interests">
+                                <span class="interest-tag">Technology</span>
+                                <span class="interest-tag">Nature</span>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile">
+                        <div class="profile-details">
+                            <h3>Jessica, 25</h3>
+                            <div class="age">Tokyo • Designer</div>
+                            <div class="bio">Fashion lover exploring the world one city at a time.</div>
+                            <div class="interests">
+                                <span class="interest-tag">Fashion</span>
+                                <span class="interest-tag">Travel</span>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dating Page -->
+        <section id="datingPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Dating Connections</h1>
+                    <p>Find romantic partners who share your interests and values</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="profiles-grid">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Emily Johnson</h3>
@@ -947,7 +780,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>David Chen</h3>
@@ -965,7 +798,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Sophia Martinez</h3>
@@ -986,20 +819,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Marriage Page Content (hidden by default) -->
-    <main id="marriagePage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Marriage Connections</h1>
-                <p>Find your life partner for a committed relationship</p>
+        <!-- Marriage Page -->
+        <section id="marriagePage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Marriage Connections</h1>
+                    <p>Find your life partner for a committed relationship</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Aisha Khan</h3>
@@ -1017,7 +848,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>James Wilson</h3>
@@ -1038,20 +869,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Religious Page Content (hidden by default) -->
-    <main id="religiousPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Religious Connections</h1>
-                <p>Connect with people who share your faith and spiritual values</p>
+        <!-- Religious Page -->
+        <section id="religiousPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Religious Connections</h1>
+                    <p>Connect with people who share your faith and spiritual values</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Rachel Cohen</h3>
@@ -1069,23 +898,39 @@
                             </div>
                         </div>
                     </div>
+                    <div class="profile-card">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Profile">
+                        <div class="profile-details">
+                            <h3>Mohammed Ali</h3>
+                            <div class="age">32 years</div>
+                            <div class="location"><i>📍</i> Dearborn, MI</div>
+                            <div class="bio">Practicing Muslim seeking a partner for a halal relationship leading to marriage.</div>
+                            <div class="interests">
+                                <span class="interest-tag">Islam</span>
+                                <span class="interest-tag">Charity</span>
+                                <span class="interest-tag">Family</span>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Polygamy Page Content (hidden by default) -->
-    <main id="polygamyPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Polygamy Connections</h1>
-                <p>Explore alternative relationship structures with like-minded individuals</p>
+        <!-- Polygamy Page -->
+        <section id="polygamyPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Polygamy Connections</h1>
+                    <p>Explore alternative relationship structures with like-minded individuals</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/40.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Danielle & Mark</h3>
@@ -1106,20 +951,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Friendship Page Content (hidden by default) -->
-    <main id="friendshipPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Friendship Connections</h1>
-                <p>Build meaningful platonic relationships with people who share your interests</p>
+        <!-- Friendship Page -->
+        <section id="friendshipPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Friendship Connections</h1>
+                    <p>Build meaningful platonic relationships with people who share your interests</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Alex Taylor</h3>
@@ -1140,20 +983,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Fantasy Page Content (hidden by default) -->
-    <main id="fantasyPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Fantasy Connections</h1>
-                <p>Explore imaginative relationships and roleplay scenarios</p>
+        <!-- Fantasy Page -->
+        <section id="fantasyPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Fantasy Connections</h1>
+                    <p>Explore imaginative relationships and roleplay scenarios</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Luna</h3>
@@ -1174,20 +1015,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- International Page Content (hidden by default) -->
-    <main id="internationalPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>International Connections</h1>
-                <p>Meet people from different cultures and countries around the world</p>
+        <!-- International Page -->
+        <section id="internationalPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>International Connections</h1>
+                    <p>Meet people from different cultures and countries around the world</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Yuki Tanaka</h3>
@@ -1208,20 +1047,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Business Page Content (hidden by default) -->
-    <main id="businessPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Business Connections</h1>
-                <p>Network with professionals and create valuable business relationships</p>
+        <!-- Business Page -->
+        <section id="businessPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Business Connections</h1>
+                    <p>Network with professionals and create valuable business relationships</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Robert Johnson</h3>
@@ -1242,20 +1079,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Special Needs Page Content (hidden by default) -->
-    <main id="specialneedsPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Special Needs Connections</h1>
-                <p>Inclusive dating for people with disabilities</p>
+        <!-- Special Needs Page -->
+        <section id="specialneedsPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Special Needs Connections</h1>
+                    <p>Inclusive dating for people with disabilities</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Megan Carter</h3>
@@ -1276,20 +1111,18 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Pen Pal Page Content (hidden by default) -->
-    <main id="penpalPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Pen Pal Connections</h1>
-                <p>Find letter-writing partners from around the world</p>
+        <!-- Pen Pal Page -->
+        <section id="penpalPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Pen Pal Connections</h1>
+                    <p>Find letter-writing partners from around the world</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="profiles-grid">
-                    <div class="profile-card-page">
+                    <div class="profile-card">
                         <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Profile">
                         <div class="profile-details">
                             <h3>Thomas Wright</h3>
@@ -1310,17 +1143,15 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Login Page Content (hidden by default) -->
-    <main id="loginPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Login to Your Account</h1>
-                <p>Access your MetaDate profile and continue your journey</p>
+        <!-- Login Page -->
+        <section id="loginPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Login to Your Account</h1>
+                    <p>Access your MetaDate profile and continue your journey</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="form-container">
                     <form id="loginForm">
@@ -1338,7 +1169,7 @@
                             </label>
                         </div>
                         <div class="form-actions">
-                            <a href="signup.html" class="btn btn-outline">Create Account</a>
+                            <a href="#signup" class="btn btn-outline">Create Account</a>
                             <button type="submit" class="btn btn-primary">Login</button>
                         </div>
                         <div class="form-footer">
@@ -1348,17 +1179,15 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Signup Page Content (hidden by default) -->
-    <main id="signupPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Create Your Account</h1>
-                <p>Join MetaDate and start your journey to meaningful connections</p>
+        <!-- Signup Page -->
+        <section id="signupPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Create Your Account</h1>
+                    <p>Join MetaDate and start your journey to meaningful connections</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="form-container">
                     <form id="signupForm">
@@ -1380,28 +1209,26 @@
                         </div>
                         <div class="form-group">
                             <label>
-                                <input type="checkbox" required> I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>
+                                <input type="checkbox" required> I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a>
                             </label>
                         </div>
                         <div class="form-actions">
-                            <a href="login.html" class="btn btn-outline">Already have an account?</a>
+                            <a href="#login" class="btn btn-outline">Already have an account?</a>
                             <button type="submit" class="btn btn-primary">Sign Up</button>
                         </div>
                     </form>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Profile Page Content (hidden by default) -->
-    <main id="profilePage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>My Profile</h1>
-                <p>Manage your profile and preferences</p>
+        <!-- Profile Page -->
+        <section id="profilePage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>My Profile</h1>
+                    <p>Manage your profile and preferences</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="form-container">
                     <form id="profileForm">
@@ -1448,161 +1275,147 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Subscription Page Content (hidden by default) -->
-    <main id="subscriptionPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Subscription Plans</h1>
-                <p>Upgrade your experience with our premium membership options</p>
+        <!-- Subscription Page -->
+        <section id="subscriptionPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Subscription Plans</h1>
+                    <p>Upgrade your experience with our premium membership options</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
-                <div class="category-grid">
-                    <div class="category-card">
-                        <div class="category-info">
-                            <h3>Basic</h3>
-                            <p>Free</p>
-                            <ul style="list-style: none; margin: 15px 0;">
-                                <li>✓ Create a profile</li>
-                                <li>✓ Limited matches per day</li>
-                                <li>✗ Advanced search filters</li>
-                                <li>✗ Message read receipts</li>
-                            </ul>
-                            <button class="btn btn-outline" style="width: 100%;">Current Plan</button>
-                        </div>
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <h3>Basic</h3>
+                        <div class="price">Free</div>
+                        <ul class="features">
+                            <li>Create a profile</li>
+                            <li>Limited matches per day</li>
+                            <li>Basic search filters</li>
+                            <li>Send 5 messages per day</li>
+                        </ul>
+                        <button class="btn btn-outline" style="width: 100%;">Current Plan</button>
                     </div>
-                    <div class="category-card">
-                        <div class="category-info">
-                            <h3>Premium</h3>
-                            <p>$19.99/month</p>
-                            <ul style="list-style: none; margin: 15px 0;">
-                                <li>✓ Unlimited matches</li>
-                                <li>✓ Advanced search filters</li>
-                                <li>✓ Message read receipts</li>
-                                <li>✓ Priority customer support</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;">Upgrade</button>
-                        </div>
+                    <div class="plan-card">
+                        <h3>Premium</h3>
+                        <div class="price">$19.99/month</div>
+                        <ul class="features">
+                            <li>Unlimited matches</li>
+                            <li>Advanced search filters</li>
+                            <li>Unlimited messages</li>
+                            <li>See who liked you</li>
+                            <li>Priority customer support</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;">Upgrade</button>
                     </div>
-                    <div class="category-card">
-                        <div class="category-info">
-                            <h3>VIP</h3>
-                            <p>$49.99/month</p>
-                            <ul style="list-style: none; margin: 15px 0;">
-                                <li>✓ All Premium features</li>
-                                <li>✓ Profile highlighting</li>
-                                <li>✓ Personal matchmaker</li>
-                                <li>✓ Exclusive events</li>
-                            </ul>
-                            <button class="btn btn-primary" style="width: 100%;">Upgrade</button>
-                        </div>
+                    <div class="plan-card">
+                        <h3>VIP</h3>
+                        <div class="price">$49.99/month</div>
+                        <ul class="features">
+                            <li>All Premium features</li>
+                            <li>Profile highlighting</li>
+                            <li>Personal matchmaker</li>
+                            <li>Exclusive events</li>
+                            <li>Verified badge</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;">Upgrade</button>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- About Page Content (hidden by default) -->
-    <main id="aboutPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>About MetaDate</h1>
-                <p>Our mission to connect souls across dimensions</p>
+        <!-- About Page -->
+        <section id="aboutPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>About MetaDate</h1>
+                    <p>Our mission to connect souls across dimensions</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="margin-bottom: 20px;">Our Story</h2>
-                    <p style="margin-bottom: 20px;">MetaDate was founded in 2023 with a vision to revolutionize the way people connect in the digital age. We believe that meaningful relationships can transcend physical boundaries when powered by cutting-edge technology and genuine human values.</p>
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>MetaDate was founded in 2023 with a vision to revolutionize the way people connect in the digital age. We believe that meaningful relationships can transcend physical boundaries when powered by cutting-edge technology and genuine human values.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">Our Technology</h2>
-                    <p style="margin-bottom: 20px;">Using advanced AI algorithms and neural matching systems, MetaDate analyzes thousands of data points to connect you with the most compatible individuals based on your personality, values, and relationship goals.</p>
+                    <h2>Our Technology</h2>
+                    <p>Using advanced AI algorithms and neural matching systems, MetaDate analyzes thousands of data points to connect you with the most compatible individuals based on your personality, values, and relationship goals.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">Our Team</h2>
-                    <p style="margin-bottom: 20px;">We're a diverse team of relationship experts, data scientists, and technologists passionate about creating connections that matter. Our headquarters are in San Francisco, with team members spanning across 12 countries.</p>
+                    <h2>Our Team</h2>
+                    <p>We're a diverse team of relationship experts, data scientists, and technologists passionate about creating connections that matter. Our headquarters are in San Francisco, with team members spanning across 12 countries.</p>
                     
                     <div style="margin-top: 40px; text-align: center;">
-                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                        <a href="#contact" class="btn btn-primary">Contact Us</a>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Privacy Page Content (hidden by default) -->
-    <main id="privacyPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Privacy Policy</h1>
-                <p>How we protect and use your information</p>
+        <!-- Privacy Page -->
+        <section id="privacyPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Privacy Policy</h1>
+                    <p>How we protect and use your information</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="margin-bottom: 20px;">1. Information We Collect</h2>
-                    <p style="margin-bottom: 20px;">We collect information you provide when creating an account, including your name, email address, age, gender, and preferences. We also collect data about your interactions with our platform.</p>
+                <div class="about-content">
+                    <h2>1. Information We Collect</h2>
+                    <p>We collect information you provide when creating an account, including your name, email address, age, gender, and preferences. We also collect data about your interactions with our platform.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">2. How We Use Your Information</h2>
-                    <p style="margin-bottom: 20px;">Your information is used to provide and improve our services, personalize your experience, facilitate matches, and communicate with you. We do not sell your personal data to third parties.</p>
+                    <h2>2. How We Use Your Information</h2>
+                    <p>Your information is used to provide and improve our services, personalize your experience, facilitate matches, and communicate with you. We do not sell your personal data to third parties.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">3. Data Security</h2>
-                    <p style="margin-bottom: 20px;">We implement industry-standard security measures to protect your data, including encryption, access controls, and regular security audits.</p>
+                    <h2>3. Data Security</h2>
+                    <p>We implement industry-standard security measures to protect your data, including encryption, access controls, and regular security audits.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">4. Your Rights</h2>
-                    <p style="margin-bottom: 20px;">You have the right to access, correct, or delete your personal information. You can also opt out of marketing communications at any time.</p>
+                    <h2>4. Your Rights</h2>
+                    <p>You have the right to access, correct, or delete your personal information. You can also opt out of marketing communications at any time.</p>
                     
                     <p style="margin-top: 40px; font-size: 14px; color: var(--text-light);">Last updated: January 2023</p>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Terms Page Content (hidden by default) -->
-    <main id="termsPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Terms of Service</h1>
-                <p>Rules and guidelines for using our platform</p>
+        <!-- Terms Page -->
+        <section id="termsPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Terms of Service</h1>
+                    <p>Rules and guidelines for using our platform</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 style="margin-bottom: 20px;">1. Eligibility</h2>
-                    <p style="margin-bottom: 20px;">You must be at least 18 years old to use MetaDate. By creating an account, you represent that you meet this requirement.</p>
+                <div class="about-content">
+                    <h2>1. Eligibility</h2>
+                    <p>You must be at least 18 years old to use MetaDate. By creating an account, you represent that you meet this requirement.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">2. Account Responsibility</h2>
-                    <p style="margin-bottom: 20px;">You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+                    <h2>2. Account Responsibility</h2>
+                    <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">3. Prohibited Conduct</h2>
-                    <p style="margin-bottom: 20px;">You agree not to engage in harassment, spamming, fraudulent activities, or any behavior that violates our community guidelines.</p>
+                    <h2>3. Prohibited Conduct</h2>
+                    <p>You agree not to engage in harassment, spamming, fraudulent activities, or any behavior that violates our community guidelines.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">4. Subscription Terms</h2>
-                    <p style="margin-bottom: 20px;">Premium subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. Refunds are available within 14 days of purchase.</p>
+                    <h2>4. Subscription Terms</h2>
+                    <p>Premium subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period. Refunds are available within 14 days of purchase.</p>
                     
-                    <h2 style="margin-bottom: 20px; margin-top: 40px;">5. Limitation of Liability</h2>
-                    <p style="margin-bottom: 20px;">MetaDate is not responsible for the conduct of any user on or off the platform. We provide no guarantees about the success of matches made through our service.</p>
+                    <h2>5. Limitation of Liability</h2>
+                    <p>MetaDate is not responsible for the conduct of any user on or off the platform. We provide no guarantees about the success of matches made through our service.</p>
                     
                     <p style="margin-top: 40px; font-size: 14px; color: var(--text-light);">Last updated: January 2023</p>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Contact Page Content (hidden by default) -->
-    <main id="contactPage" style="display: none;">
-        <section class="page-header">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <p>We'd love to hear from you</p>
+        <!-- Contact Page -->
+        <section id="contactPage" class="page-content" style="display:none;">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Contact Us</h1>
+                    <p>We'd love to hear from you</p>
+                </div>
             </div>
-        </section>
-        <section class="page-content">
             <div class="container">
                 <div class="form-container">
                     <form id="contactForm">
@@ -1641,122 +1454,100 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Admin Dashboard Content (hidden by default) -->
-    <main id="adminDashboardPage" style="display: none;">
-        <div class="dashboard">
-            <div class="sidebar">
-                <div class="sidebar-header">
-                    <h3>Admin Dashboard</h3>
+        <!-- Admin Dashboard -->
+        <section id="adminDashboardPage" class="page-content" style="display:none;">
+            <div class="dashboard">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Admin Dashboard</h3>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="active">Overview</a></li>
+                        <li><a href="#">Users</a></li>
+                        <li><a href="#">Profiles</a></li>
+                        <li><a href="#">Subscriptions</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#home">Logout</a></li>
+                    </ul>
                 </div>
-                <ul class="sidebar-menu">
-                    <li><a href="#" class="active">Overview</a></li>
-                    <li><a href="#">Users</a></li>
-                    <li><a href="#">Profiles</a></li>
-                    <li><a href="#">Subscriptions</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </div>
-            <div class="main-content">
-                <h2>Dashboard Overview</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>Total Users</h3>
-                        <p>12,548</p>
+                <div class="main-content">
+                    <h2>Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Users</h3>
+                            <p>12,548</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Active Today</h3>
+                            <p>3,214</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>New This Week</h3>
+                            <p>1,876</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Premium Members</h3>
+                            <p>4,592</p>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <h3>Active Today</h3>
-                        <p>3,214</p>
+                    <h3 style="margin-bottom: 20px;">Recent Signups</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Signup Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#12547</td>
+                                    <td>John Smith</td>
+                                    <td>john.smith@example.com</td>
+                                    <td>2023-05-15</td>
+                                    <td>Active</td>
+                                    <td>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#12546</td>
+                                    <td>Emily Johnson</td>
+                                    <td>emily.j@example.com</td>
+                                    <td>2023-05-15</td>
+                                    <td>Active</td>
+                                    <td>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#12545</td>
+                                    <td>Michael Brown</td>
+                                    <td>michael.b@example.com</td>
+                                    <td>2023-05-14</td>
+                                    <td>Pending</td>
+                                    <td>
+                                        <button class="action-btn edit-btn">Edit</button>
+                                        <button class="action-btn delete-btn">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="stat-card">
-                        <h3>New This Week</h3>
-                        <p>1,876</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Premium Members</h3>
-                        <p>4,592</p>
-                    </div>
-                </div>
-                <h3 style="margin-bottom: 20px;">Recent Signups</h3>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Signup Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#12547</td>
-                                <td>John Smith</td>
-                                <td>john.smith@example.com</td>
-                                <td>2023-05-15</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12546</td>
-                                <td>Emily Johnson</td>
-                                <td>emily.j@example.com</td>
-                                <td>2023-05-15</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12545</td>
-                                <td>Michael Brown</td>
-                                <td>michael.b@example.com</td>
-                                <td>2023-05-14</td>
-                                <td>Pending</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12544</td>
-                                <td>Sarah Wilson</td>
-                                <td>sarah.w@example.com</td>
-                                <td>2023-05-14</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#12543</td>
-                                <td>David Lee</td>
-                                <td>david.lee@example.com</td>
-                                <td>2023-05-13</td>
-                                <td>Suspended</td>
-                                <td>
-                                    <button class="action-btn edit-btn">Edit</button>
-                                    <button class="action-btn delete-btn">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (same for all pages) -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1767,21 +1558,21 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Categories</h3>
                     <ul class="footer-links">
-                        <li><a href="dating.html">Dating</a></li>
-                        <li><a href="marriage.html">Marriage</a></li>
-                        <li><a href="friendship.html">Friendship</a></li>
-                        <li><a href="international.html">International</a></li>
-                        <li><a href="business.html">Business</a></li>
+                        <li><a href="#dating">Dating</a></li>
+                        <li><a href="#marriage">Marriage</a></li>
+                        <li><a href="#friendship">Friendship</a></li>
+                        <li><a href="#international">International</a></li>
+                        <li><a href="#business">Business</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1800,7 +1591,7 @@
         </div>
     </footer>
 
-    <!-- Login Modal -->
+    <!-- Login Modal for Admin -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1849,23 +1640,13 @@
             themeToggle.textContent = isDark ? '🌞' : '🌓';
         });
 
-        // Page Routing Simulation
+        // Page Routing
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the current "page" from the URL hash
+            // Get the current page from URL hash
             const hash = window.location.hash.substring(1) || 'home';
             
-            // Hide all pages
-            document.querySelectorAll('main').forEach(page => {
-                page.style.display = 'none';
-            });
-            
-            // Show the current page
-            const currentPage = document.getElementById(`${hash}Page`);
-            if (currentPage) {
-                currentPage.style.display = 'block';
-            } else {
-                document.getElementById('homePage').style.display = 'block';
-            }
+            // Show the appropriate page
+            showPage(hash);
             
             // Handle navigation clicks
             document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -1873,63 +1654,43 @@
                     e.preventDefault();
                     const pageId = this.getAttribute('href').substring(1);
                     
-                    // Hide all pages
-                    document.querySelectorAll('main').forEach(page => {
-                        page.style.display = 'none';
-                    });
+                    // Special case for admin link
+                    if (pageId === 'admin-dashboard') {
+                        document.getElementById('loginModal').style.display = 'flex';
+                        return;
+                    }
                     
                     // Show the selected page
-                    const selectedPage = document.getElementById(`${pageId}Page`);
-                    if (selectedPage) {
-                        selectedPage.style.display = 'block';
-                        window.location.hash = pageId;
-                    }
-                });
-            });
-            
-            // Admin Login Simulation
-            const adminLoginForm = document.getElementById('adminLoginForm');
-            const loginModal = document.getElementById('loginModal');
-            const closeModalButtons = document.querySelectorAll('.close-modal');
-            
-            // Show admin login modal when admin link is clicked
-            document.querySelectorAll('a[href="admin-dashboard.html"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    loginModal.style.display = 'flex';
+                    showPage(pageId);
+                    window.location.hash = pageId;
                 });
             });
             
             // Close modal when X or cancel is clicked
-            closeModalButtons.forEach(button => {
+            document.querySelectorAll('.close-modal').forEach(button => {
                 button.addEventListener('click', function() {
-                    loginModal.style.display = 'none';
+                    document.getElementById('loginModal').style.display = 'none';
                 });
             });
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
-                if (e.target === loginModal) {
-                    loginModal.style.display = 'none';
+                if (e.target === document.getElementById('loginModal')) {
+                    document.getElementById('loginModal').style.display = 'none';
                 }
             });
             
             // Admin login form submission
-            adminLoginForm.addEventListener('submit', function(e) {
+            document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const email = document.getElementById('adminEmail').value;
                 const password = document.getElementById('adminPassword').value;
                 
                 if (email === 'byusammartin@gmail.com' && password === 'Digital@12345') {
-                    // Hide all pages
-                    document.querySelectorAll('main').forEach(page => {
-                        page.style.display = 'none';
-                    });
-                    
-                    // Show admin dashboard
-                    document.getElementById('adminDashboardPage').style.display = 'block';
+                    // Hide login modal and show admin dashboard
+                    document.getElementById('loginModal').style.display = 'none';
+                    showPage('adminDashboard');
                     window.location.hash = 'admin-dashboard';
-                    loginModal.style.display = 'none';
                 } else {
                     alert('Invalid admin credentials');
                 }
@@ -1938,12 +1699,12 @@
             // Form submissions
             document.getElementById('loginForm')?.addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('Login functionality would be implemented here with backend connection');
+                alert('Login functionality would connect to backend');
             });
             
             document.getElementById('signupForm')?.addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('Signup functionality would be implemented here with backend connection');
+                alert('Signup functionality would connect to backend');
             });
             
             document.getElementById('contactForm')?.addEventListener('submit', function(e) {
@@ -1958,14 +1719,22 @@
             });
         });
 
-        // Floating cards animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.profile-card');
-            cards.forEach((card, index) => {
-                // Random delay for each card
-                card.style.animationDelay = `${index * 0.5}s`;
+        // Function to show specific page and hide others
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.style.display = 'none';
             });
-        });
+            
+            // Show the requested page
+            const pageToShow = document.getElementById(`${pageId}Page`);
+            if (pageToShow) {
+                pageToShow.style.display = 'block';
+            } else {
+                // Default to home if page not found
+                document.getElementById('homePage').style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>

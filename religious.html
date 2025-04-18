@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaDate - Find Your Perfect Match</title>
+    <title>MetaDate - Religious Connections</title>
     <style>
         /* Inherit all styles from the main CSS */
         :root {
@@ -154,7 +154,7 @@
             margin-left: 15px;
         }
 
-        /* Dating-specific styles */
+        /* Religious-specific styles */
         .page-header {
             padding: 120px 0 60px;
             text-align: center;
@@ -170,83 +170,37 @@
         .page-header p {
             color: var(--text-light);
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
         }
 
-        .cta-buttons {
+        .faith-filters {
             display: flex;
             justify-content: center;
-            gap: 15px;
             flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
         }
 
-        .features-section {
-            padding: 60px 0;
-            background-color: var(--bg-color);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
+        .faith-filter {
+            padding: 8px 20px;
+            border-radius: 20px;
             background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
             transition: all 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .profiles-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 32px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
+        .faith-filter:hover, .faith-filter.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
         }
 
         .profiles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
+            padding: 60px 0;
         }
 
         .profile-card {
@@ -255,7 +209,6 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s;
-            position: relative;
         }
 
         .profile-card:hover {
@@ -263,21 +216,9 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .profile-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
         .profile-card img {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
         }
 
@@ -288,6 +229,16 @@
         .profile-details h3 {
             font-size: 20px;
             margin-bottom: 5px;
+        }
+
+        .profile-details .faith {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 10px;
         }
 
         .profile-details .age-location {
@@ -302,14 +253,14 @@
             line-height: 1.5;
         }
 
-        .interests {
+        .faith-traits {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 15px;
         }
 
-        .interest {
+        .faith-trait {
             background-color: var(--bg-color);
             color: var(--text-color);
             padding: 4px 10px;
@@ -320,71 +271,6 @@
         .profile-actions {
             display: flex;
             justify-content: space-between;
-        }
-
-        .testimonials {
-            padding: 60px 0;
-            background-color: var(--bg-color);
-        }
-
-        .testimonial-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            margin: 0 auto;
-            max-width: 800px;
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .testimonial-content::before,
-        .testimonial-content::after {
-            content: '"';
-            font-size: 40px;
-            color: var(--primary-color);
-            opacity: 0.3;
-            position: absolute;
-        }
-
-        .testimonial-content::before {
-            top: -15px;
-            left: -10px;
-        }
-
-        .testimonial-content::after {
-            bottom: -30px;
-            right: -10px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .testimonial-author img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-
-        .author-info h4 {
-            margin: 0;
-            color: var(--text-color);
-        }
-
-        .author-info p {
-            margin: 5px 0 0;
-            color: var(--text-light);
-            font-size: 14px;
         }
 
         /* Footer styles */
@@ -498,11 +384,6 @@
                 font-size: 32px;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .profiles-grid {
                 grid-template-columns: 1fr;
             }
@@ -523,9 +404,9 @@
                     <span>MetaDate</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="dating.html" class="active">Dating</a></li>
+                    <li><a href="dating.html">Dating</a></li>
                     <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="religious.html" class="active">Religious</a></li>
                     <li><a href="friendship.html">Friendship</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
@@ -538,126 +419,138 @@
         </div>
     </header>
 
-    <!-- Dating Page Content -->
+    <!-- Religious Page Content -->
     <main>
         <section class="page-header">
             <div class="container">
-                <h1>Find Your Perfect Match</h1>
-                <p>Connect with compatible partners who share your interests and values through our advanced matching system</p>
-                <div class="cta-buttons">
-                    <a href="signup.html" class="btn btn-primary">Create Free Profile</a>
-                    <a href="#how-it-works" class="btn btn-outline">How It Works</a>
-                </div>
+                <h1>Religious Connections</h1>
+                <p>Find meaningful relationships with people who share your faith and spiritual values</p>
             </div>
         </section>
 
-        <section class="features-section" id="how-it-works">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Why Choose MetaDate</h2>
-                    <p>Our unique matching algorithm and features help you find meaningful connections</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">💘</div>
-                        <h3>Smart Matching</h3>
-                        <p>Our AI analyzes your personality, interests, and values to suggest highly compatible matches you might not find elsewhere.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>Verified Profiles</h3>
-                        <p>All profiles undergo verification to ensure authenticity and create a safe dating environment for everyone.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Advanced Filters</h3>
-                        <p>Narrow down your search with precise filters for interests, lifestyle, relationship goals, and more.</p>
-                    </div>
-                </div>
+        <section class="container">
+            <div class="faith-filters">
+                <div class="faith-filter active">All Faiths</div>
+                <div class="faith-filter">Christian</div>
+                <div class="faith-filter">Muslim</div>
+                <div class="faith-filter">Jewish</div>
+                <div class="faith-filter">Hindu</div>
+                <div class="faith-filter">Buddhist</div>
+                <div class="faith-filter">Spiritual</div>
+                <div class="faith-filter">Other</div>
             </div>
-        </section>
 
-        <section class="profiles-section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Featured Profiles</h2>
-                    <p>Meet some of our members looking for meaningful connections</p>
-                </div>
-                <div class="profiles-grid">
-                    <div class="profile-card">
-                        <div class="profile-badge">Online</div>
-                        <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sarah">
-                        <div class="profile-details">
-                            <h3>Sarah, 28</h3>
-                            <div class="age-location">New York, NY</div>
-                            <div class="bio">Art lover and coffee enthusiast looking for someone to explore museums and try new restaurants with.</div>
-                            <div class="interests">
-                                <span class="interest">Art</span>
-                                <span class="interest">Travel</span>
-                                <span class="interest">Foodie</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Like</button>
-                            </div>
+            <div class="profiles-grid">
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Rachel">
+                    <div class="profile-details">
+                        <h3>Rachel Cohen</h3>
+                        <span class="faith">Jewish</span>
+                        <div class="age-location">27 • Brooklyn, NY</div>
+                        <div class="bio">Jewish educator looking for a partner who shares my faith and commitment to community.</div>
+                        <div class="faith-traits">
+                            <span class="faith-trait">Shabbat Observant</span>
+                            <span class="faith-trait">Kosher</span>
+                            <span class="faith-trait">Community Focused</span>
                         </div>
-                    </div>
-
-                    <div class="profile-card">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="James">
-                        <div class="profile-details">
-                            <h3>James, 31</h3>
-                            <div class="age-location">Austin, TX</div>
-                            <div class="bio">Outdoorsy tech professional who enjoys hiking on weekends and game nights with friends.</div>
-                            <div class="interests">
-                                <span class="interest">Hiking</span>
-                                <span class="interest">Technology</span>
-                                <span class="interest">Games</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Like</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-card">
-                        <div class="profile-badge">New</div>
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Priya">
-                        <div class="profile-details">
-                            <h3>Priya, 26</h3>
-                            <div class="age-location">San Francisco, CA</div>
-                            <div class="bio">Doctor who loves dancing, trying new cuisines, and deep conversations about life.</div>
-                            <div class="interests">
-                                <span class="interest">Dancing</span>
-                                <span class="interest">Medicine</span>
-                                <span class="interest">Philosophy</span>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-outline">View Profile</button>
-                                <button class="btn btn-primary">Like</button>
-                            </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-outline">View Profile</button>
+                            <button class="btn btn-primary">Message</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="testimonials">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Success Stories</h2>
-                    <p>Hear from couples who found love through MetaDate</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        I was skeptical about online dating, but MetaDate's matching system really understood what I was looking for. After just a few weeks, I connected with Emily, and we've been inseparable ever since. We're planning our wedding for next summer!
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mohammed">
+                    <div class="profile-details">
+                        <h3>Mohammed Ali</h3>
+                        <span class="faith">Muslim</span>
+                        <div class="age-location">32 • Dearborn, MI</div>
+                        <div class="bio">Practicing Muslim seeking a partner for a halal relationship leading to marriage.</div>
+                        <div class="faith-traits">
+                            <span class="faith-trait">Prayer 5x Daily</span>
+                            <span class="faith-trait">Halal Lifestyle</span>
+                            <span class="faith-trait">Family Values</span>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-outline">View Profile</button>
+                            <button class="btn btn-primary">Message</button>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Michael">
-                        <div class="author-info">
-                            <h4>Michael & Emily</h4>
-                            <p>Matched on MetaDate in 2022</p>
+                </div>
+
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Grace">
+                    <div class="profile-details">
+                        <h3>Grace Williams</h3>
+                        <span class="faith">Christian</span>
+                        <div class="age-location">29 • Nashville, TN</div>
+                        <div class="bio">Devout Christian looking for a God-centered relationship. Active in my church community.</div>
+                        <div class="faith-traits">
+                            <span class="faith-trait">Church Volunteer</span>
+                            <span class="faith-trait">Bible Study</span>
+                            <span class="faith-trait">Mission Work</span>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-outline">View Profile</button>
+                            <button class="btn btn-primary">Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Priya">
+                    <div class="profile-details">
+                        <h3>Priya Patel</h3>
+                        <span class="faith">Hindu</span>
+                        <div class="age-location">31 • Edison, NJ</div>
+                        <div class="bio">Traditional Hindu woman seeking a partner who values our culture and spiritual practices.</div>
+                        <div class="faith-traits">
+                            <span class="faith-trait">Vegetarian</span>
+                            <span class="faith-trait">Temple Regular</span>
+                            <span class="faith-trait">Festival Celebrations</span>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-outline">View Profile</button>
+                            <button class="btn btn-primary">Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="David">
+                    <div class="profile-details">
+                        <h3>David Kim</h3>
+                        <span class="faith">Christian</span>
+                        <div class="age-location">35 • Chicago, IL</div>
+                        <div class="bio">Pastor looking for a partner to share in ministry and service. Values prayer and worship.</div>
+                        <div class="faith-traits">
+                            <span class="faith-trait">Worship Leader</span>
+                            <span class="faith-trait">Small Groups</span>
+                            <span class="faith-trait">Service Oriented</span>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-outline">View Profile</button>
+                            <button class="btn btn-primary">Message</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Aisha">
+                    <div class="profile-details">
+                        <h3>Aisha Khan</h3>
+                        <span class="faith">Muslim</span>
+                        <div class="age-location">26 • Houston, TX</div>
+                        <div class="bio">Medical student seeking a partner who shares my Islamic values and commitment to service.</div>
+                        <div class="faith-traits">
+                            <span class="faith-trait">Quran Study</span>
+                            <span class="faith-trait">Modest Lifestyle</span>
+                            <span class="faith-trait">Charity Work</span>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-outline">View Profile</button>
+                            <button class="btn btn-primary">Message</button>
                         </div>
                     </div>
                 </div>
@@ -674,7 +567,7 @@
                         <div class="logo-bubble" style="width: 30px; height: 30px; font-size: 14px; margin-right: 10px;">M</div>
                         <h3>MetaDate</h3>
                     </div>
-                    <p>Connecting souls through meaningful relationships with our advanced matching technology.</p>
+                    <p>Connecting souls through shared faith and spiritual values with our advanced matching technology.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -689,9 +582,9 @@
                 <div class="footer-column">
                     <h3>Categories</h3>
                     <ul class="footer-links">
-                        <li><a href="dating.html" style="color: var(--primary-color);">Dating</a></li>
+                        <li><a href="dating.html">Dating</a></li>
                         <li><a href="marriage.html">Marriage</a></li>
-                        <li><a href="religious.html">Religious</a></li>
+                        <li><a href="religious.html" style="color: var(--primary-color);">Religious</a></li>
                         <li><a href="international.html">International</a></li>
                         <li><a href="business.html">Business</a></li>
                     </ul>
@@ -740,18 +633,23 @@
             themeToggle.textContent = isDark ? '🌞' : '🌓';
         });
 
-        // Like button functionality
+        // Faith filter functionality
+        const faithFilters = document.querySelectorAll('.faith-filter');
+        faithFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                faithFilters.forEach(f => f.classList.remove('active'));
+                this.classList.add('active');
+                // In a real app, this would filter the profiles
+            });
+        });
+
+        // Make message buttons work
         document.querySelectorAll('.btn-primary').forEach(button => {
-            if (button.textContent.trim() === 'Like') {
+            if (button.textContent.trim() === 'Message') {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if (this.textContent === 'Like') {
-                        this.textContent = 'Liked!';
-                        this.style.backgroundColor = '#4CAF50'; // Green color for liked state
-                    } else {
-                        this.textContent = 'Like';
-                        this.style.backgroundColor = 'var(--primary-color)';
-                    }
+                    alert('This would open the messaging system to chat with this person');
+                    // In a real app, this would open the chat with the selected user
                 });
             }
         });

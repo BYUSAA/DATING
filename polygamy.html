@@ -3,65 +3,827 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polygamous Connections | MetaDate</title>
+    <title>Polygamy Connections | MetaDate</title>
     <style>
-        /* Base styles from previous pages */
         :root {
-            --primary-color: #6A0DAD; /* Purple */
+            --primary-color: #6A0DAD; /* Royal purple */
             --secondary-color: #4B0082; /* Indigo */
-            --accent-color: #FFD700; /* Gold */
-            --text-color: #333;
-            --bg-color: #F5F5F5;
-            --card-bg: #FFF;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --text-light: #666;
-            --border-color: #E0E0E0;
+            --accent-color: #D4AF37; /* Gold */
+            --text-color: #F8F8FF; /* Ghost white */
+            --bg-color: #1A0A2E; /* Deep purple */
+            --card-bg: #2A1050; /* Dark violet */
+            --nav-bg: rgba(42, 16, 80, 0.9);
+            --shadow: 0 4px 20px rgba(106, 13, 173, 0.3);
+            --text-light: #D8BFD8; /* Thistle */
+            --border-color: #6A0DAD;
         }
 
-        .dark-mode {
-            --primary-color: #4B0082;
+        /* Light mode */
+        .light-mode {
+            --primary-color: #9370DB; /* Medium purple */
             --secondary-color: #6A0DAD;
-            --accent-color: #FFC107;
-            --text-color: #F0F0F0;
-            --bg-color: #121212;
-            --card-bg: #1E1E1E;
-            --nav-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --text-light: #AAA;
-            --border-color: #333;
+            --accent-color: #D4AF37;
+            --text-color: #333;
+            --bg-color: #F5F0FF; /* Lavender mist */
+            --card-bg: #FFFFFF;
+            --nav-bg: rgba(245, 240, 255, 0.9);
+            --shadow: 0 4px 20px rgba(147, 112, 219, 0.2);
+            --text-light: #666;
+            --border-color: #D8BFD8;
         }
 
-        /* ... (include all other base styles from previous pages) ... */
-
-        .polygamy-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s, color 0.5s;
         }
 
-        .polygamy-type {
+        body {
+            font-family: 'Merriweather', 'Palatino', serif;
             background-color: var(--bg-color);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
         }
 
-        .polygamy-type h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px var(--primary-color);
+            }
+            to {
+                box-shadow: 0 0 20px var(--accent-color);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            text-shadow: 0 0 5px white;
+        }
+
+        .user-menu {
             display: flex;
             align-items: center;
         }
 
-        .polygamy-type h3 i {
-            margin-right: 10px;
-            font-size: 1.5rem;
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--accent-color);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(106, 13, 173, 0.3);
+            color: var(--accent-color);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--accent-color);
+            margin: 0.5rem 0;
+            opacity: 0.3;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--accent-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: linear-gradient(rgba(75, 0, 130, 0.8), rgba(26, 10, 46, 0.8));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 10px var(--accent-color);
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .page-content {
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .polygamy-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background-color: rgba(42, 16, 80, 0.7);
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow);
+        }
+
+        .polygamy-intro h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .polygamy-intro p {
+            font-family: 'Merriweather', serif;
+            line-height: 1.8;
+        }
+
+        .relationship-types {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .relationship-tab {
+            padding: 0.8rem 1.8rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .relationship-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .relationship-tab:hover::before {
+            left: 100%;
+        }
+
+        .relationship-tab.active, .relationship-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .relationship-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .relationship-content.active {
+            display: block;
+        }
+
+        .polygamy-profiles {
+            background-color: rgba(42, 16, 80, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .profile-card:hover::before {
+            opacity: 1;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.5);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            margin-right: 1.5rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .profile-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .relationship-icon {
+            margin-right: 8px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .profile-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-details p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Merriweather', serif;
+        }
+
+        .polygamy-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .polygamy-trait {
+            background-color: rgba(106, 13, 173, 0.3);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            border: 1px solid var(--border-color);
+        }
+
+        .polygamy-trait i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            text-shadow: 0 0 5px white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 13, 173, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(106, 13, 173, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .polygamy-form {
+            background-color: rgba(42, 16, 80, 0.8);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: rgba(26, 10, 46, 0.7);
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: 'Merriweather', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+
+        .relationship-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .relationship-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: rgba(26, 10, 46, 0.5);
+        }
+
+        .relationship-option:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .relationship-option.selected {
+            border-color: var(--accent-color);
+            background-color: rgba(106, 13, 173, 0.3);
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.5);
+        }
+
+        .relationship-option i {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        .relationship-option span {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+
+        footer {
+            background-color: rgba(26, 10, 46, 0.9);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(106, 13, 173, 0.2);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-bubble {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        .footer-logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-family: 'Merriweather', serif;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(106, 13, 173, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 13, 173, 0.5);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .contact-icon {
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            font-family: 'Cinzel', serif;
+            color: var(--text-light);
+        }
+
+        /* Relationship-themed animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1.5rem;
+            }
+
+            .page-header {
+                padding: 9rem 1rem 4rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .relationship-types {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .relationship-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -74,8 +836,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="dating.html">Dating</a></li>
                 <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="fantasy.html">Fantasy</a></li>
                 <li><a href="polygamy.html" class="active">Polygamy</a></li>
-                <li><a href="religious.html">Religious</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             <div class="user-menu">
@@ -93,144 +856,502 @@
         </nav>
     </header>
 
-    <section class="page-header" style="background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(106, 13, 173, 0.8)), url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+    <section class="page-header">
         <div class="container">
-            <h1>Polygamous Connections</h1>
-            <p>Find like-minded individuals interested in ethical non-monogamous relationships</p>
+            <h1 class="floating">Polygamy Connections</h1>
+            <p>Find harmony in multiple loving relationships with like-minded partners</p>
         </div>
     </section>
 
     <main class="page-content">
         <div class="container">
-            <div class="religious-intro">
-                <h2>Explore Consensual Non-Monogamy</h2>
-                <p>At MetaDate, we support all forms of ethical relationships. Whether you're interested in polyamory, polygyny, polyandry, or other forms of consensual non-monogamy, our platform helps you connect with compatible partners.</p>
+            <div class="polygamy-intro pulse">
+                <h2>Plural Love in Modern Times</h2>
+                <p>Discover a community that celebrates consensual, ethical non-monogamy. Whether you're seeking a sister-wife, exploring polyamory, or building a plural family, we connect individuals who believe love multiplies when shared.</p>
             </div>
 
-            <div class="polygamy-types">
-                <div class="polygamy-type">
-                    <h3><i class="fas fa-heart"></i> Polyamory</h3>
-                    <p>Multiple loving relationships with the knowledge and consent of everyone involved. Focused on emotional connections and openness.</p>
-                    <button class="btn btn-primary">Explore Polyamory</button>
+            <div class="relationship-types">
+                <div class="relationship-tab active" data-relationship="all">All Relationships</div>
+                <div class="relationship-tab" data-relationship="polygyny"><i class="fas fa-venus-double relationship-icon"></i> Polygyny</div>
+                <div class="relationship-tab" data-relationship="polyandry"><i class="fas fa-mars-double relationship-icon"></i> Polyandry</div>
+                <div class="relationship-tab" data-relationship="polyamory"><i class="fas fa-heart-circle-plus relationship-icon"></i> Polyamory</div>
+                <div class="relationship-tab" data-relationship="plural"><i class="fas fa-people-group relationship-icon"></i> Plural Families</div>
+            </div>
+
+            <div class="polygamy-profiles">
+                <h2 class="section-title">Harmonious Connections</h2>
+                
+                <!-- All Relationships Content -->
+                <div class="relationship-content active" id="all">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Amina">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Amina</h3>
+                                    <p><i class="fas fa-venus-double relationship-icon"></i> Seeking Sister-Wife • 32</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Muslim woman in a happy plural marriage, looking for a kind sister-wife to join our family. We value faith, kindness, and mutual respect above all.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-hands-praying"></i> Religious</span>
+                                    <span class="polygamy-trait"><i class="fas fa-child"></i> Children Welcome</span>
+                                    <span class="polygamy-trait"><i class="fas fa-book-quran"></i> Quranic Values</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="James">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>James & Sarah</h3>
+                                    <p><i class="fas fa-heart-circle-plus relationship-icon"></i> Polyamorous Couple • 28 & 29</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Ethically non-monogamous couple seeking meaningful connections with like-minded individuals. We believe in open communication and compersion.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-comments"></i> Communication</span>
+                                    <span class="polygamy-trait"><i class="fas fa-heart"></i> Compersion</span>
+                                    <span class="polygamy-trait"><i class="fas fa-ruler-combined"></i> Boundaries</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Lakshmi">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Lakshmi</h3>
+                                    <p><i class="fas fa-mars-double relationship-icon"></i> Polyandry Practitioner • 35</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>From a culture where polyandry is traditional, seeking additional husbands to share responsibilities and build a strong family unit together.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-globe-asia"></i> Cultural</span>
+                                    <span class="polygamy-trait"><i class="fas fa-home"></i> Family-Oriented</span>
+                                    <span class="polygamy-trait"><i class="fas fa-handshake"></i> Shared Duties</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="The Harmony Family">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Harmony Family</h3>
+                                    <p><i class="fas fa-people-group relationship-icon"></i> Plural Family • 3 Adults</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Established plural family of three seeking a fourth partner to join our loving home. We share finances, child-rearing, and a commitment to growth.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-home"></i> Shared Home</span>
+                                    <span class="polygamy-trait"><i class="fas fa-children"></i> 2 Children</span>
+                                    <span class="polygamy-trait"><i class="fas fa-hand-holding-heart"></i> Emotional Maturity</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="polygamy-type">
-                    <h3><i class="fas fa-venus-double"></i> Polygyny</h3>
-                    <p>One man with multiple wives. Often practiced in certain religious and cultural traditions with full consent.</p>
-                    <button class="btn btn-primary">Explore Polygyny</button>
+
+                <!-- Polygyny Content -->
+                <div class="relationship-content" id="polygyny">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Amina">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Amina</h3>
+                                    <p><i class="fas fa-venus-double relationship-icon"></i> Seeking Sister-Wife • 32</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Muslim woman in a happy plural marriage, looking for a kind sister-wife to join our family. We value faith, kindness, and mutual respect above all.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-hands-praying"></i> Religious</span>
+                                    <span class="polygamy-trait"><i class="fas fa-child"></i> Children Welcome</span>
+                                    <span class="polygamy-trait"><i class="fas fa-book-quran"></i> Quranic Values</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="The Johnson Family">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Johnson Family</h3>
+                                    <p><i class="fas fa-venus-double relationship-icon"></i> Established Polygynous Family • 5 Members</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Fundamentalist Mormon family seeking an additional wife to complete our family circle. We offer financial security, deep faith, and a loving community.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-church"></i> LDS Faith</span>
+                                    <span class="polygamy-trait"><i class="fas fa-home"></i> Compound Living</span>
+                                    <span class="polygamy-trait"><i class="fas fa-child"></i> 12 Children</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Fatima">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Fatima</h3>
+                                    <p><i class="fas fa-venus-double relationship-icon"></i> First Wife • 29</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Looking for a sister-wife to share household duties and build a strong Islamic family together. My husband is a kind provider who treats all wives equally.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-mosque"></i> Muslim</span>
+                                    <span class="polygamy-trait"><i class="fas fa-scale-balanced"></i> Equal Treatment</span>
+                                    <span class="polygamy-trait"><i class="fas fa-heart"></i> Emotional Support</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="polygamy-type">
-                    <h3><i class="fas fa-mars-double"></i> Polyandry</h3>
-                    <p>One woman with multiple husbands. A rarer but equally valid form of plural marriage.</p>
-                    <button class="btn btn-primary">Explore Polyandry</button>
+
+                <!-- Polyandry Content -->
+                <div class="relationship-content" id="polyandry">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Lakshmi">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Lakshmi</h3>
+                                    <p><i class="fas fa-mars-double relationship-icon"></i> Polyandry Practitioner • 35</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>From a culture where polyandry is traditional, seeking additional husbands to share responsibilities and build a strong family unit together.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-globe-asia"></i> Cultural</span>
+                                    <span class="polygamy-trait"><i class="fas fa-home"></i> Family-Oriented</span>
+                                    <span class="polygamy-trait"><i class="fas fa-handshake"></i> Shared Duties</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Tashi">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Tashi</h3>
+                                    <p><i class="fas fa-mars-double relationship-icon"></i> Fraternal Polyandry • 28</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Tibetan woman practicing fraternal polyandry with two brothers. Open to welcoming a third brother to our family to preserve our ancestral lands.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-mountain-sun"></i> Tibetan</span>
+                                    <span class="polygamy-trait"><i class="fas fa-people-arrows"></i> Brothers Only</span>
+                                    <span class="polygamy-trait"><i class="fas fa-tractor"></i> Agricultural Life</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Nalini">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Nalini</h3>
+                                    <p><i class="fas fa-mars-double relationship-icon"></i> Seeking Second Husband • 31</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Modern Indian woman in an open polyandrous marriage. My husband and I are seeking another partner who complements our personalities and shares our values.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-graduation-cap"></i> Educated</span>
+                                    <span class="polygamy-trait"><i class="fas fa-city"></i> Urban Lifestyle</span>
+                                    <span class="polygamy-trait"><i class="fas fa-heart"></i> Equal Love</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Polyamory Content -->
+                <div class="relationship-content" id="polyamory">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="James">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>James & Sarah</h3>
+                                    <p><i class="fas fa-heart-circle-plus relationship-icon"></i> Polyamorous Couple • 28 & 29</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Ethically non-monogamous couple seeking meaningful connections with like-minded individuals. We believe in open communication and compersion.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-comments"></i> Communication</span>
+                                    <span class="polygamy-trait"><i class="fas fa-heart"></i> Compersion</span>
+                                    <span class="polygamy-trait"><i class="fas fa-ruler-combined"></i> Boundaries</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Alex">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Alex</h3>
+                                    <p><i class="fas fa-heart-circle-plus relationship-icon"></i> Solo Poly • 34</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Solo polyamorist with two existing partners, looking to add another meaningful connection to my life. I practice relationship anarchy and radical honesty.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-flag"></i> RA</span>
+                                    <span class="polygamy-trait"><i class="fas fa-comment-dots"></i> Radical Honesty</span>
+                                    <span class="polygamy-trait"><i class="fas fa-heart-crack"></i> No Hierarchy</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="The Triad">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>The Triad</h3>
+                                    <p><i class="fas fa-heart-circle-plus relationship-icon"></i> Closed Triad • 30, 31, 32</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Established triad of three years looking for a fourth to form a quad. We value deep emotional connections, shared hobbies, and building a life together.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-heart"></i> Emotional Depth</span>
+                                    <span class="polygamy-trait"><i class="fas fa-gamepad"></i> Gamers</span>
+                                    <span class="polygamy-trait"><i class="fas fa-dog"></i> Pet-Friendly</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plural Families Content -->
+                <div class="relationship-content" id="plural">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="The Harmony Family">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Harmony Family</h3>
+                                    <p><i class="fas fa-people-group relationship-icon"></i> Plural Family • 3 Adults</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Established plural family of three seeking a fourth partner to join our loving home. We share finances, child-rearing, and a commitment to growth.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-home"></i> Shared Home</span>
+                                    <span class="polygamy-trait"><i class="fas fa-children"></i> 2 Children</span>
+                                    <span class="polygamy-trait"><i class="fas fa-hand-holding-heart"></i> Emotional Maturity</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="The Mountain Clan">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Mountain Clan</h3>
+                                    <p><i class="fas fa-people-group relationship-icon"></i> Intentional Community • 12 Adults</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Self-sufficient intentional community practicing group marriage. We're seeking new members who value sustainability, shared parenting, and spiritual growth.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-leaf"></i> Sustainable Living</span>
+                                    <span class="polygamy-trait"><i class="fas fa-child"></i> 18 Children</span>
+                                    <span class="polygamy-trait"><i class="fas fa-om"></i> Spiritual</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="The Urban Collective">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Urban Collective</h3>
+                                    <p><i class="fas fa-people-group relationship-icon"></i> Poly Family • 4 Adults</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>City-dwelling plural family with two husbands and two wives looking for a fifth partner. We share a large home, finances, and parenting responsibilities.</p>
+                                <div class="polygamy-traits">
+                                    <span class="polygamy-trait"><i class="fas fa-city"></i> Urban</span>
+                                    <span class="polygamy-trait"><i class="fas fa-briefcase"></i> Professionals</span>
+                                    <span class="polygamy-trait"><i class="fas fa-child"></i> Homeschooling</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="religious-profiles">
-                <h2 class="section-title">Featured Profiles</h2>
-                <div class="profiles-grid">
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophia">
-                            </div>
-                            <div class="profile-info">
-                                <h3>Sophia</h3>
-                                <p><i class="fas fa-heart"></i> Polyamorous • 29 years</p>
-                            </div>
-                        </div>
-                        <div class="profile-details">
-                            <p>Ethical non-monogamist seeking additional partners for my existing polycule. Must be comfortable with open communication and boundaries.</p>
-                            <div class="religious-values">
-                                <span class="value-tag"><i class="fas fa-comments"></i> Communication</span>
-                                <span class="value-tag"><i class="fas fa-hand-holding-heart"></i> Compersion</span>
-                                <span class="value-tag"><i class="fas fa-users"></i> Kitchen Table Poly</span>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
-                        </div>
-                    </div>
-
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="James">
-                            </div>
-                            <div class="profile-info">
-                                <h3>James</h3>
-                                <p><i class="fas fa-venus-double"></i> Polygynous • 35 years</p>
-                            </div>
-                        </div>
-                        <div class="profile-details">
-                            <p>Seeking a second wife to join our loving Muslim family. My current wife is supportive and looking for a sister-wife to share life with.</p>
-                            <div class="religious-values">
-                                <span class="value-tag"><i class="fas fa-mosque"></i> Muslim</span>
-                                <span class="value-tag"><i class="fas fa-home"></i> Family-oriented</span>
-                                <span class="value-tag"><i class="fas fa-quran"></i> Traditional</span>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
-                        </div>
-                    </div>
-
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Amina">
-                            </div>
-                            <div class="profile-info">
-                                <h3>Amina</h3>
-                                <p><i class="fas fa-users"></i> Polyandrous • 31 years</p>
-                            </div>
-                        </div>
-                        <div class="profile-details">
-                            <p>Independent woman interested in having multiple committed partners. Looking for emotionally mature men comfortable with this arrangement.</p>
-                            <div class="religious-values">
-                                <span class="value-tag"><i class="fas fa-female"></i> Feminist</span>
-                                <span class="value-tag"><i class="fas fa-balance-scale"></i> Equality</span>
-                                <span class="value-tag"><i class="fas fa-heartbeat"></i> Emotional Connection</span>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="religious-form">
-                <h2 class="section-title">Find Your Poly Match</h2>
+            <div class="polygamy-form">
+                <h2 class="section-title">Find Your Plural Match</h2>
                 <form>
                     <div class="form-group">
-                        <label for="polyType">Polygamy Type</label>
-                        <select id="polyType" class="form-control">
-                            <option value="">Any Type</option>
-                            <option value="polyamory">Polyamory</option>
-                            <option value="polygyny">Polygyny</option>
-                            <option value="polyandry">Polyandry</option>
-                            <option value="swinging">Swinging</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <label>Preferred Relationship Type</label>
+                        <div class="relationship-options">
+                            <div class="relationship-option selected" data-relationship="all">
+                                <i class="fas fa-heart"></i>
+                                <span>All Types</span>
+                            </div>
+                            <div class="relationship-option" data-relationship="polygyny">
+                                <i class="fas fa-venus-double"></i>
+                                <span>Polygyny</span>
+                            </div>
+                            <div class="relationship-option" data-relationship="polyandry">
+                                <i class="fas fa-mars-double"></i>
+                                <span>Polyandry</span>
+                            </div>
+                            <div class="relationship-option" data-relationship="polyamory">
+                                <i class="fas fa-heart-circle-plus"></i>
+                                <span>Polyamory</span>
+                            </div>
+                            <div class="relationship-option" data-relationship="plural">
+                                <i class="fas fa-people-group"></i>
+                                <span>Plural Family</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="polyRole">Your Role</label>
+                            <select id="polyRole" class="form-control">
+                                <option value="">Any Role</option>
+                                <option value="seeking">Seeking to Join</option>
+                                <option value="existing">Existing Member</option>
+                                <option value="couple">Couple Seeking</option>
+                                <option value="family">Family Seeking</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="polyFaith">Faith/Values</label>
+                            <select id="polyFaith" class="form-control">
+                                <option value="">Any</option>
+                                <option value="muslim">Muslim</option>
+                                <option value="mormon">LDS/Mormon</option>
+                                <option value="christian">Christian</option>
+                                <option value="spiritual">Spiritual</option>
+                                <option value="secular">Secular</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label for="polyExperience">Experience Level</label>
-                        <select id="polyExperience" class="form-control">
-                            <option value="">Any Level</option>
-                            <option value="new">New to Poly</option>
-                            <option value="experienced">Experienced</option>
-                            <option value="established">In Established Poly Relationship</option>
-                        </select>
+                        <label for="polyBio">Your Relationship Philosophy</label>
+                        <textarea id="polyBio" class="form-control" rows="5" placeholder="Tell us about your approach to plural relationships, what you're seeking, and what you can offer..."></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="polyValues">Important Values</label>
-                        <input type="text" id="polyValues" class="form-control" placeholder="e.g. compersion, hierarchy, communication">
-                    </div>
+
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                        <button type="submit" class="btn btn-primary">Find My Plural Match</button>
                     </div>
                 </form>
             </div>
@@ -238,11 +1359,95 @@
     </main>
 
     <footer>
-        <!-- Same footer as previous pages -->
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <div class="footer-logo-text">MetaDate</div>
+                </div>
+                <p>Where love multiplies in harmony. Our platform helps individuals and families find meaningful plural connections in an ethical, consensual framework.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="fantasy.html">Fantasy</a></li>
+                    <li><a href="polygamy.html">Polygamy</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Ethical Non-Monogamy</a></li>
+                    <li><a href="#">Polygamy Laws</a></li>
+                    <li><a href="#">Relationship Advice</a></li>
+                    <li><a href="#">Community Guidelines</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt contact-icon"></i> Harmony House, Plural Lane</p>
+                <p><i class="fas fa-envelope contact-icon"></i> love@metadate.plural</p>
+                <p><i class="fas fa-phone contact-icon"></i> 1-800-PLU-RAL1</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All relationships respected. Crafted with love for all family structures.</p>
+        </div>
     </footer>
 
     <script>
-        // Same JavaScript functionality as previous pages
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        // Relationship tabs functionality
+        const relationshipTabs = document.querySelectorAll('.relationship-tab');
+        const relationshipContents = document.querySelectorAll('.relationship-content');
+
+        relationshipTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                relationshipTabs.forEach(t => t.classList.remove('active'));
+                relationshipContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const relationshipId = tab.getAttribute('data-relationship');
+                document.getElementById(relationshipId).classList.add('active');
+            });
+        });
+
+        // Relationship options selection in form
+        const relationshipOptions = document.querySelectorAll('.relationship-option');
+        relationshipOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                relationshipOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
     </script>
 </body>
 </html>

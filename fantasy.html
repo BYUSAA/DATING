@@ -6,60 +6,824 @@
     <title>Fantasy Connections | MetaDate</title>
     <style>
         :root {
-            --primary-color: #9C27B0; /* Deep Purple */
-            --secondary-color: #7B1FA2; /* Purple */
-            --accent-color: #FFD700; /* Gold */
+            --primary-color: #2E8B57; /* Emerald green */
+            --secondary-color: #1E4D2B; /* Dark forest green */
+            --accent-color: #DAA520; /* Gold */
+            --text-color: #F8F8FF; /* Ghost white */
+            --bg-color: #0C1A12; /* Dark woodland */
+            --card-bg: #15261D; /* Deeper forest */
+            --nav-bg: rgba(21, 38, 29, 0.9);
+            --shadow: 0 4px 20px rgba(46, 139, 87, 0.3);
+            --text-light: #C0C0C0;
+            --border-color: #2E8B57;
+        }
+
+        /* Light mode for those who prefer less magic */
+        .light-mode {
+            --primary-color: #50C878; /* Emerald green light */
+            --secondary-color: #2E8B57;
+            --accent-color: #DAA520;
             --text-color: #333;
-            --bg-color: #F5F5F5;
-            --card-bg: #FFF;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --bg-color: #F0FFF0; /* Honeydew */
+            --card-bg: #FFFFFF;
+            --nav-bg: rgba(240, 255, 240, 0.9);
+            --shadow: 0 4px 20px rgba(80, 200, 120, 0.2);
             --text-light: #666;
-            --border-color: #E0E0E0;
+            --border-color: #C1E1C1;
         }
 
-        .dark-mode {
-            --primary-color: #7B1FA2;
-            --secondary-color: #9C27B0;
-            --accent-color: #FFC107;
-            --text-color: #F0F0F0;
-            --bg-color: #121212;
-            --card-bg: #1E1E1E;
-            --nav-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --text-light: #AAA;
-            --border-color: #333;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s, color 0.5s;
         }
 
-        /* ... (other base styles) ... */
-
-        .fantasy-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .fantasy-category {
+        body {
+            font-family: 'Merriweather', 'Palatino', serif;
             background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px var(--primary-color);
+            }
+            to {
+                box-shadow: 0 0 20px var(--accent-color);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            text-shadow: 0 0 5px white;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--accent-color);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(46, 139, 87, 0.3);
+            color: var(--accent-color);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--accent-color);
+            margin: 0.5rem 0;
+            opacity: 0.3;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--accent-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: linear-gradient(rgba(30, 77, 43, 0.8), rgba(12, 36, 18, 0.8));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 10px var(--accent-color);
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .page-content {
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fantasy-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background-color: rgba(21, 38, 29, 0.7);
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow);
+        }
+
+        .fantasy-intro h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .fantasy-intro p {
+            font-family: 'Merriweather', serif;
+            line-height: 1.8;
+        }
+
+        .realm-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .realm-tab {
+            padding: 0.8rem 1.8rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .realm-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .realm-tab:hover::before {
+            left: 100%;
+        }
+
+        .realm-tab.active, .realm-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .realm-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .realm-content.active {
+            display: block;
+        }
+
+        .fantasy-profiles {
+            background-color: rgba(21, 38, 29, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
             border-radius: 10px;
             padding: 1.5rem;
-            text-align: center;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .fantasy-category:hover {
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .profile-card:hover::before {
+            opacity: 1;
+        }
+
+        .profile-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.5);
         }
 
-        .fantasy-category i {
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            margin-right: 1.5rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .profile-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .realm-icon {
+            margin-right: 8px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .profile-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-details p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Merriweather', serif;
+        }
+
+        .fantasy-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .fantasy-trait {
+            background-color: rgba(46, 139, 87, 0.3);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            border: 1px solid var(--border-color);
+        }
+
+        .fantasy-trait i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            text-shadow: 0 0 5px white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(46, 139, 87, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.2);
+        }
+
+        .fantasy-form {
+            background-color: rgba(21, 38, 29, 0.8);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: rgba(12, 26, 18, 0.7);
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: 'Merriweather', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23DAA520' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+
+        .realm-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .realm-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: rgba(12, 26, 18, 0.5);
+        }
+
+        .realm-option:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .realm-option.selected {
+            border-color: var(--accent-color);
+            background-color: rgba(46, 139, 87, 0.3);
+            box-shadow: 0 0 15px rgba(46, 139, 87, 0.5);
+        }
+
+        .realm-option i {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        .realm-option span {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+
+        footer {
+            background-color: rgba(12, 26, 18, 0.9);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(46, 139, 87, 0.2);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-bubble {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        .footer-logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-family: 'Merriweather', serif;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(46, 139, 87, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
             margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .contact-icon {
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            font-family: 'Cinzel', serif;
+            color: var(--text-light);
+        }
+
+        /* Fantasy-themed animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1.5rem;
+            }
+
+            .page-header {
+                padding: 9rem 1rem 4rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .realm-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .realm-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -71,8 +835,9 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
                 <li><a href="fantasy.html" class="active">Fantasy</a></li>
-                <li><a href="pets.html">Pets</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             <div class="user-menu">
@@ -90,153 +855,187 @@
         </nav>
     </header>
 
-    <section class="page-header" style="background: linear-gradient(rgba(156, 39, 176, 0.8), rgba(156, 39, 176, 0.8)), url('https://images.unsplash.com/photo-1518709766631-a6a7f45921c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;">
+    <section class="page-header">
         <div class="container">
-            <h1>Fantasy Connections</h1>
-            <p>Explore roleplay, cosplay, and fantasy relationships in a safe, consensual environment</p>
+            <h1 class="floating">Fantasy Connections</h1>
+            <p>Find your enchanted match in realms of magic and wonder</p>
         </div>
     </section>
 
     <main class="page-content">
         <div class="container">
-            <div class="religious-intro">
-                <h2>Bring Your Fantasies to Life</h2>
-                <p>Whether you're into historical roleplay, fantasy scenarios, or cosplay dating, MetaDate helps you find partners who share your imaginative interests.</p>
+            <div class="fantasy-intro pulse">
+                <h2>Discover Mythical Connections</h2>
+                <p>Step into a world where fairy tales come to life. Whether you're a noble elf seeking your eternal partner, a brave knight looking for your royal match, or a mystical creature searching for understanding, our fantasy realm connects souls who believe in magic beyond the ordinary.</p>
             </div>
 
-            <div class="fantasy-categories">
-                <div class="fantasy-category">
-                    <i class="fas fa-crown"></i>
-                    <h3>Royalty Roleplay</h3>
-                    <p>Kings, queens, lords and ladies seeking their courtly matches</p>
-                    <button class="btn btn-primary">Explore</button>
-                </div>
-                <div class="fantasy-category">
-                    <i class="fas fa-dragon"></i>
-                    <h3>Fantasy Worlds</h3>
-                    <p>Elves, dwarves, wizards and other fantasy archetypes</p>
-                    <button class="btn btn-primary">Explore</button>
-                </div>
-                <div class="fantasy-category">
-                    <i class="fas fa-user-secret"></i>
-                    <h3>Secret Identity</h3>
-                    <p>Superheroes, villains, and alter egos</p>
-                    <button class="btn btn-primary">Explore</button>
-                </div>
-                <div class="fantasy-category">
-                    <i class="fas fa-theater-masks"></i>
-                    <h3>Historical RP</h3>
-                    <p>Victorian, Renaissance, or other historical periods</p>
-                    <button class="btn btn-primary">Explore</button>
-                </div>
+            <div class="realm-tabs">
+                <div class="realm-tab active" data-realm="all">All Realms</div>
+                <div class="realm-tab" data-realm="elves"><i class="fas fa-spa realm-icon"></i> Elven Kingdoms</div>
+                <div class="realm-tab" data-realm="dwarves"><i class="fas fa-mountain realm-icon"></i> Dwarven Holds</div>
+                <div class="realm-tab" data-realm="humans"><i class="fas fa-chess-queen realm-icon"></i> Human Kingdoms</div>
+                <div class="realm-tab" data-realm="fae"><i class="fas fa-feather-alt realm-icon"></i> Fae Courts</div>
+                <div class="realm-tab" data-realm="dragons"><i class="fas fa-dragon realm-icon"></i> Dragon Riders</div>
+                <div class="realm-tab" data-realm="mages"><i class="fas fa-hat-wizard realm-icon"></i> Mage Circles</div>
             </div>
 
-            <div class="religious-profiles">
-                <h2 class="section-title">Featured Fantasy Profiles</h2>
-                <div class="profiles-grid">
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Morgana">
+            <div class="fantasy-profiles">
+                <h2 class="section-title">Enchanted Profiles</h2>
+                
+                <div class="realm-content active" id="all">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Aelar">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Aelar</h3>
+                                    <p><i class="fas fa-spa realm-icon"></i> High Elf • 287 years</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <h3>Morgana</h3>
-                                <p><i class="fas fa-magic"></i> Sorceress • 28 years</p>
+                            <div class="profile-details">
+                                <p>Scholar of the ancient arts from the Silverwood Grove. Seeking a kindred spirit to share the beauty of elven poetry and the mysteries of arcane knowledge.</p>
+                                <div class="fantasy-traits">
+                                    <span class="fantasy-trait"><i class="fas fa-book"></i> Arcane Scholar</span>
+                                    <span class="fantasy-trait"><i class="fas fa-leaf"></i> Nature Bond</span>
+                                    <span class="fantasy-trait"><i class="fas fa-moon"></i> Moonlight Dancer</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Owl</button>
                             </div>
                         </div>
-                        <div class="profile-details">
-                            <p>Enchantress seeking her apprentice or fellow magic user for mystical roleplay and fantasy dating. Must appreciate candlelit rituals and arcane knowledge.</p>
-                            <div class="religious-values">
-                                <span class="value-tag"><i class="fas fa-book-spells"></i> Spellcasting</span>
-                                <span class="value-tag"><i class="fas fa-moon"></i> Night Court</span>
-                                <span class="value-tag"><i class="fas fa-crystal-ball"></i> Divination</span>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
-                        </div>
-                    </div>
 
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Victor">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Thrain">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Thrain</h3>
+                                    <p><i class="fas fa-mountain realm-icon"></i> Dwarven Smith • 142 years</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <h3>Victor</h3>
-                                <p><i class="fas fa-chess-king"></i> Vampire Lord • 35 years</p>
+                            <div class="profile-details">
+                                <p>Master smith from the Ironpeak Mountains. Looking for someone who appreciates fine craftsmanship and the warmth of a forge-hearth.</p>
+                                <div class="fantasy-traits">
+                                    <span class="fantasy-trait"><i class="fas fa-hammer"></i> Master Smith</span>
+                                    <span class="fantasy-trait"><i class="fas fa-gem"></i> Gem Enthusiast</span>
+                                    <span class="fantasy-trait"><i class="fas fa-beer"></i> Ale Connoisseur</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Owl</button>
                             </div>
                         </div>
-                        <div class="profile-details">
-                            <p>Ancient vampire seeking companion for eternal night. Must appreciate fine wine, Gothic architecture, and philosophical debates about mortality.</p>
-                            <div class="religious-values">
-                                <span class="value-tag"><i class="fas fa-moon"></i> Nocturnal</span>
-                                <span class="value-tag"><i class="fas fa-gem"></i> Refined Taste</span>
-                                <span class="value-tag"><i class="fas fa-book-dead"></i> Gothic Romance</span>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
-                        </div>
-                    </div>
 
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Aria">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Seraphina">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Seraphina</h3>
+                                    <p><i class="fas fa-hat-wizard realm-icon"></i> Archmage • 89 years</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <h3>Aria</h3>
-                                <p><i class="fas fa-mask"></i> Cosplayer • 25 years</p>
+                            <div class="profile-details">
+                                <p>Headmistress of the Celestial Academy. Seeking an apprentice or equal to share forbidden knowledge and cosmic mysteries.</p>
+                                <div class="fantasy-traits">
+                                    <span class="fantasy-trait"><i class="fas fa-star"></i> Astromancy</span>
+                                    <span class="fantasy-trait"><i class="fas fa-scroll"></i> Forbidden Lore</span>
+                                    <span class="fantasy-trait"><i class="fas fa-cat"></i> Familiar: Void Cat</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="profile-details">
-                            <p>Professional cosplayer looking for a partner to attend conventions with and create amazing couples cosplays. Anime, games, and comics welcome!</p>
-                            <div class="religious-values">
-                                <span class="value-tag"><i class="fas fa-camera"></i> Photogenic</span>
-                                <span class="value-tag"><i class="fas fa-tshirt"></i> Crafting</span>
-                                <span class="value-tag"><i class="fas fa-gamepad"></i> Geek Culture</span>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Owl</button>
                             </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Other realm content sections would be here -->
+                <div class="realm-content" id="elves">
+                    <!-- Elven kingdom profiles -->
+                </div>
+                <div class="realm-content" id="dwarves">
+                    <!-- Dwarven hold profiles -->
+                </div>
+                <!-- And so on for other realms -->
             </div>
 
-            <div class="religious-form">
+            <div class="fantasy-form">
                 <h2 class="section-title">Find Your Fantasy Match</h2>
                 <form>
                     <div class="form-group">
-                        <label for="fantasyType">Fantasy Type</label>
-                        <select id="fantasyType" class="form-control">
-                            <option value="">Any Type</option>
-                            <option value="medieval">Medieval/Royalty</option>
-                            <option value="fantasy">High Fantasy</option>
-                            <option value="scifi">Sci-Fi</option>
-                            <option value="horror">Gothic/Horror</option>
-                            <option value="cosplay">Cosplay</option>
-                        </select>
+                        <label>Preferred Realms</label>
+                        <div class="realm-options">
+                            <div class="realm-option selected">
+                                <i class="fas fa-spa"></i>
+                                <span>Elven</span>
+                            </div>
+                            <div class="realm-option">
+                                <i class="fas fa-mountain"></i>
+                                <span>Dwarven</span>
+                            </div>
+                            <div class="realm-option">
+                                <i class="fas fa-chess-queen"></i>
+                                <span>Human</span>
+                            </div>
+                            <div class="realm-option">
+                                <i class="fas fa-feather-alt"></i>
+                                <span>Fae</span>
+                            </div>
+                            <div class="realm-option">
+                                <i class="fas fa-dragon"></i>
+                                <span>Dragons</span>
+                            </div>
+                            <div class="realm-option">
+                                <i class="fas fa-hat-wizard"></i>
+                                <span>Mages</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fantasyRace">Your Race</label>
+                            <select id="fantasyRace" class="form-control">
+                                <option value="">Any Race</option>
+                                <option value="elf">Elf</option>
+                                <option value="dwarf">Dwarf</option>
+                                <option value="human">Human</option>
+                                <option value="fae">Fae</option>
+                                <option value="dragonkin">Dragonkin</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fantasyRole">Your Role</label>
+                            <select id="fantasyRole" class="form-control">
+                                <option value="">Any Role</option>
+                                <option value="warrior">Warrior</option>
+                                <option value="mage">Mage</option>
+                                <option value="rogue">Rogue</option>
+                                <option value="healer">Healer</option>
+                                <option value="noble">Noble</option>
+                                <option value="artisan">Artisan</option>
+                                <option value="scholar">Scholar</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label for="roleplayLevel">Roleplay Commitment</label>
-                        <select id="roleplayLevel" class="form-control">
-                            <option value="">Any Level</option>
-                            <option value="casual">Casual/Events Only</option>
-                            <option value="partial">Partial Lifestyle</option>
-                            <option value="full">Full Immersion</option>
-                        </select>
+                        <label for="fantasyBio">Your Enchanted Biography</label>
+                        <textarea id="fantasyBio" class="form-control" rows="5" placeholder="Tell the realm about your magical qualities, adventures, and what you seek in a connection..."></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="fantasyInterests">Specific Interests</label>
-                        <input type="text" id="fantasyInterests" class="form-control" placeholder="e.g. vampire, steampunk, anime">
-                    </div>
+
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                        <button type="submit" class="btn btn-primary">Cast Matching Spell</button>
                     </div>
                 </form>
             </div>
@@ -244,11 +1043,94 @@
     </main>
 
     <footer>
-        <!-- Same footer as previous pages -->
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <div class="footer-logo-text">MetaDate</div>
+                </div>
+                <p>Where magical connections are forged across realms. Our platform helps mythical beings find companionship, love, and adventure in a world of wonder.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="fantasy.html">Fantasy</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Realms</h3>
+                <ul>
+                    <li><a href="#">Elven Kingdoms</a></li>
+                    <li><a href="#">Dwarven Holds</a></li>
+                    <li><a href="#">Human Kingdoms</a></li>
+                    <li><a href="#">Fae Courts</a></li>
+                    <li><a href="#">Dragon Riders</a></li>
+                    <li><a href="#">Mage Circles</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt contact-icon"></i> The Enchanted Forest, Realm of Evermore</p>
+                <p><i class="fas fa-envelope contact-icon"></i> owlpost@metadate.fantasy</p>
+                <p><i class="fas fa-phone contact-icon"></i> Crystal Ball: 1-800-MAGIC-LOVE</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All spells reserved. Crafted with magic in the Realm of Evermore.</p>
+        </div>
     </footer>
 
     <script>
-        // Same JavaScript functionality as previous pages
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        // Realm tabs functionality
+        const realmTabs = document.querySelectorAll('.realm-tab');
+        const realmContents = document.querySelectorAll('.realm-content');
+
+        realmTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                realmTabs.forEach(t => t.classList.remove('active'));
+                realmContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const realmId = tab.getAttribute('data-realm');
+                document.getElementById(realmId).classList.add('active');
+            });
+        });
+
+        // Realm options selection
+        const realmOptions = document.querySelectorAll('.realm-option');
+        realmOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                realmOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
     </script>
 </body>
 </html>

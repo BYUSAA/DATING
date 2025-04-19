@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Lovers Connections | MetaDate</title>
+    <style>
+        :root {
+            --primary-color: #6D4C41; /* Brown */
+            --secondary-color: #8D6E63; /* Lighter brown */
+            --accent-color: #FFD700; /* Gold (consistent with other pages) */
+            --text-color: #333;
+            --bg-color: #F5F5F5;
+            --card-bg: #FFF;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --text-light: #666;
+            --border-color: #E0E0E0;
+        }
+
+        .dark-mode {
+            --primary-color: #5D4037;
+            --secondary-color: #6D4C41;
+            --accent-color: #FFC107;
+            --text-color: #F0F0F0;
+            --bg-color: #121212;
+            --card-bg: #1E1E1E;
+            --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --text-light: #AAA;
+            --border-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(109, 76, 65, 0.1);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(rgba(109, 76, 65, 0.8), rgba(109, 76, 65, 0.8)), url('https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .page-content {
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pets-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .pets-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .pet-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .pet-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .pet-tab.active, .pet-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pet-content {
+            display: none;
+        }
+
+        .pet-content.active {
+            display: block;
+        }
+
+        .pet-profiles {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 1rem;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .pet-icon {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+
+        .pet-photos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pet-photo {
+            aspect-ratio: 1/1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .pet-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-details p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .pet-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pet-detail {
+            background-color: rgba(109, 76, 65, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .pet-detail i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(109, 76, 65, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .pet-form {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(109, 76, 65, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .pet-type-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pet-type-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pet-type-option:hover {
+            border-color: var(--primary-color);
+        }
+
+        .pet-type-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(109, 76, 65, 0.1);
+        }
+
+        .pet-type-option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-bubble {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(109, 76, 65, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1rem;
+            }
+
+            .page-header {
+                padding: 8rem 1rem 3rem;
+            }
+
+            .pet-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .pet-photos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">M</div>
+                <span>MetaDate</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dating.html">Dating</a></li>
+                <li><a href="marriage.html">Marriage</a></li>
+                <li><a href="friendship.html">Friendship</a></li>
+                <li><a href="religious.html">Religious</a></li>
+                <li><a href="pets.html" class="active">Pets</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <div class="user-dropdown">
+                        <div class="dropdown-item">My Profile</div>
+                        <div class="dropdown-item">Messages</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Pet Lovers Connections</h1>
+            <p>Find meaningful relationships with fellow pet lovers who understand your furry family members</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="pets-intro">
+                <h2>Connect Through Shared Love of Pets</h2>
+                <p>At MetaDate, we know pets are family. Whether you're looking for someone who shares your passion for animals or just wants to meet your four-legged friends, our pet lovers community helps you find the perfect match.</p>
+            </div>
+
+            <div class="pet-tabs">
+                <div class="pet-tab active" data-pet="all">All Pets</div>
+                <div class="pet-tab" data-pet="dogs"><i class="fas fa-dog pet-icon"></i> Dogs</div>
+                <div class="pet-tab" data-pet="cats"><i class="fas fa-cat pet-icon"></i> Cats</div>
+                <div class="pet-tab" data-pet="birds"><i class="fas fa-dove pet-icon"></i> Birds</div>
+                <div class="pet-tab" data-pet="fish"><i class="fas fa-fish pet-icon"></i> Fish</div>
+                <div class="pet-tab" data-pet="reptiles"><i class="fas fa-dragon pet-icon"></i> Reptiles</div>
+                <div class="pet-tab" data-pet="small"><i class="fas fa-paw pet-icon"></i> Small Animals</div>
+            </div>
+
+            <div class="pet-profiles">
+                <h2 class="section-title">Featured Pet Lovers</h2>
+                
+                <div class="pet-content active" id="all">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sarah">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Sarah</h3>
+                                    <p><i class="fas fa-dog pet-icon"></i> Dog Lover • 28 years</p>
+                                </div>
+                            </div>
+                            <div class="pet-photos">
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Golden Retriever">
+                                </div>
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Sarah with dog">
+                                </div>
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Dog at park">
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Dog mom to a golden retriever named Max. We love hiking, beach trips, and dog-friendly cafes.</p>
+                                <div class="pet-details">
+                                    <span class="pet-detail"><i class="fas fa-paw"></i> 1 Dog</span>
+                                    <span class="pet-detail"><i class="fas fa-home"></i> Pet-friendly home</span>
+                                    <span class="pet-detail"><i class="fas fa-heart"></i> Adoption advocate</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Michael">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Michael</h3>
+                                    <p><i class="fas fa-cat pet-icon"></i> Cat Enthusiast • 32 years</p>
+                                </div>
+                            </div>
+                            <div class="pet-photos">
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Siamese cat">
+                                </div>
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Michael with cat">
+                                </div>
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1491485880348-85d48a9e5312?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Cat playing">
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Proud cat dad to Luna and Oliver. We enjoy lazy Sundays and building elaborate cat trees.</p>
+                                <div class="pet-details">
+                                    <span class="pet-detail"><i class="fas fa-paw"></i> 2 Cats</span>
+                                    <span class="pet-detail"><i class="fas fa-seedling"></i> Indoor only</span>
+                                    <span class="pet-detail"><i class="fas fa-hand-holding-heart"></i> Foster volunteer</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Jamie">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Jamie</h3>
+                                    <p><i class="fas fa-dragon pet-icon"></i> Reptile Keeper • 25 years</p>
+                                </div>
+                            </div>
+                            <div class="pet-photos">
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1559253664-ca249d4608c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Bearded dragon">
+                                </div>
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Snake">
+                                </div>
+                                <div class="pet-photo">
+                                    <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Turtle">
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Reptile enthusiast with a bearded dragon, ball python, and tortoise. Looking for someone who appreciates cold-blooded companions.</p>
+                                <div class="pet-details">
+                                    <span class="pet-detail"><i class="fas fa-paw"></i> 3 Reptiles</span>
+                                    <span class="pet-detail"><i class="fas fa-temperature-high"></i> Custom habitats</span>
+                                    <span class="pet-detail"><i class="fas fa-graduation-cap"></i> Reptile educator</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other pet content sections would be here -->
+                <div class="pet-content" id="dogs">
+                    <!-- Dog lover profiles -->
+                </div>
+                <div class="pet-content" id="cats">
+                    <!-- Cat lover profiles -->
+                </div>
+                <!-- And so on for other pet types -->
+            </div>
+
+            <div class="pet-form">
+                <h2 class="section-title">Find Your Pet-Loving Match</h2>
+                <form>
+                    <div class="form-group">
+                        <label>Pet Types You're Interested In</label>
+                        <div class="pet-type-options">
+                            <div class="pet-type-option selected">
+                                <i class="fas fa-dog"></i>
+                                <span>Dogs</span>
+                            </div>
+                            <div class="pet-type-option">
+                                <i class="fas fa-cat"></i>
+                                <span>Cats</span>
+                            </div>
+                            <div class="pet-type-option">
+                                <i class="fas fa-dove"></i>
+                                <span>Birds</span>
+                            </div>
+                            <div class="pet-type-option">
+                                <i class="fas fa-fish"></i>
+                                <span>Fish</span>
+                            </div>
+                            <div class="pet-type-option">
+                                <i class="fas fa-dragon"></i>
+                                <span>Reptiles</span>
+                            </div>
+                            <div class="pet-type-option">
+                                <i class="fas fa-paw"></i>
+                                <span>Small Pets</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="petOwnership">Pet Ownership</label>
+                            <select id="petOwnership" class="form-control">
+                                <option value="">Any</option>
+                                <option value="has-pets">Has pets</option>
+                                <option value="wants-pets">Wants pets</option>
+                                <option value="open">Open to pets</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="petAllergies">Pet Allergies</label>
+                            <select id="petAllergies" class="form-control">
+                                <option value="">Any</option>
+                                <option value="none">No pet allergies</option>
+                                <option value="some">Some pet allergies</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="petActivities">Preferred Pet Activities</label>
+                        <input type="text" id="petActivities" class="form-control" placeholder="e.g. dog parks, cat cafes, reptile expos">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="petValues">Important Pet Values</label>
+                        <input type="text" id="petValues" class="form-control" placeholder="e.g. adoption, rescue, purebred, vegan pet food">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate</span>
+                </div>
+                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon"><i class="fas fa-envelope"></i></span> support@metadate.com</p>
+                <p><span class="contact-icon"><i class="fas fa-phone"></i></span> +1 (555) 123-4567</p>
+                <p><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> 123 Pet-Friendly Avenue, Animal City</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        });
+
+        // User dropdown functionality
+        const userAvatar = document.querySelector('.user-avatar');
+        
+        userAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.user-dropdown').style.opacity = '1';
+            document.querySelector('.user-dropdown').style.visibility = 'visible';
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelector('.user-dropdown').style.opacity = '0';
+            document.querySelector('.user-dropdown').style.visibility = 'hidden';
+        });
+
+        // Pet tabs functionality
+        const petTabs = document.querySelectorAll('.pet-tab');
+        const petContents = document.querySelectorAll('.pet-content');
+
+        petTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const pet = tab.getAttribute('data-pet');
+                
+                // Remove active class from all tabs and contents
+                petTabs.forEach(t => t.classList.remove('active'));
+                petContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(pet).classList.add('active');
+            });
+        });
+
+        // Pet type selection
+        const petTypeOptions = document.querySelectorAll('.pet-type-option');
+        petTypeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                option.classList.toggle('selected');
+            });
+        });
+
+        // Form submission
+        document.querySelector('.pet-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pet matching functionality would be implemented here with backend connection');
+        });
+
+        // Connect buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            if (button.textContent === 'Connect') {
+                button.addEventListener('click', function() {
+                    const profileName = this.closest('.profile-card').querySelector('h3').textContent;
+                    alert(`Connection request sent to ${profileName}!`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

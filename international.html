@@ -3,34 +3,653 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>International Dating - MetaDate</title>
+    <title>International Connections | MetaDate</title>
     <style>
-        /* Same CSS as dating.html with minor adjustments */
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #4776e6;
+            --primary-color: #1565C0; /* Deep blue */
+            --secondary-color: #0D47A1; /* Darker blue */
+            --accent-color: #FFD700; /* Gold (consistent with other pages) */
             --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #fff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --bg-color: #F5F5F5;
+            --card-bg: #FFF;
             --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --text-light: #666;
+            --border-color: #E0E0E0;
         }
 
         .dark-mode {
-            --primary-color: #7b2cbf;
-            --secondary-color: #9d4edd;
-            --accent-color: #5a189a;
-            --text-color: #f0f0f0;
+            --primary-color: #0D47A1;
+            --secondary-color: #1565C0;
+            --accent-color: #FFC107;
+            --text-color: #F0F0F0;
             --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --card-bg: #1E1E1E;
             --nav-bg: rgba(30, 30, 30, 0.9);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --text-light: #AAA;
+            --border-color: #333;
         }
 
-        /* Reuse all the same styles from dating.html */
-        /* Only changing the header background image and some text */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(21, 101, 192, 0.1);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: linear-gradient(rgba(21, 101, 192, 0.8), rgba(21, 101, 192, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .page-content {
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .international-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .international-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .region-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .region-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .region-tab.active, .region-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .region-content {
+            display: none;
+        }
+
+        .region-content.active {
+            display: block;
+        }
+
+        .international-profiles {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 1rem;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .country-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-details p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .international-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .international-tag {
+            background-color: rgba(21, 101, 192, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .international-tag i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(21, 101, 192, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .international-form {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .region-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .region-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .region-option:hover {
+            border-color: var(--primary-color);
+        }
+
+        .region-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(21, 101, 192, 0.1);
+        }
+
+        .region-option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-bubble {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(21, 101, 192, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1rem;
+            }
+
+            .page-header {
+                padding: 8rem 1rem 3rem;
+            }
+
+            .region-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .region-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -44,136 +663,341 @@
                 <li><a href="dating.html">Dating</a></li>
                 <li><a href="marriage.html">Marriage</a></li>
                 <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="religious.html">Religious</a></li>
+                <li><a href="pets.html">Pets</a></li>
+                <li><a href="international.html" class="active">International</a></li>
             </ul>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+            <div class="user-menu">
                 <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <div class="user-dropdown">
+                        <div class="dropdown-item">My Profile</div>
+                        <div class="dropdown-item">Messages</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">Logout</div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
-    <section class="page-header" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; color: white;">
-        <h1>Connect Across Borders</h1>
-        <p>Find your perfect match from anywhere in the world. Love knows no boundaries.</p>
-    </section>
-
-    <section class="filter-section">
-        <h2 class="filter-title">Find International Partners</h2>
-        <div class="filter-grid">
-            <div class="filter-group">
-                <label for="country">Country</label>
-                <select id="country">
-                    <option value="any">Any country</option>
-                    <option value="usa">United States</option>
-                    <option value="uk">United Kingdom</option>
-                    <option value="canada">Canada</option>
-                    <option value="australia">Australia</option>
-                    <option value="germany">Germany</option>
-                    <option value="france">France</option>
-                    <option value="japan">Japan</option>
-                    <option value="brazil">Brazil</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="language">Language</label>
-                <select id="language">
-                    <option value="any">Any language</option>
-                    <option value="english">English</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="french">French</option>
-                    <option value="german">German</option>
-                    <option value="japanese">Japanese</option>
-                    <option value="portuguese">Portuguese</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="visa">Open to Relocation</label>
-                <select id="visa">
-                    <option value="any">Doesn't matter</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="culture">Cultural Interest</label>
-                <select id="culture">
-                    <option value="any">Any culture</option>
-                    <option value="western">Western</option>
-                    <option value="eastern">Eastern</option>
-                    <option value="latin">Latin</option>
-                    <option value="african">African</option>
-                </select>
-            </div>
-        </div>
-        <div class="filter-buttons">
-            <button class="filter-btn filter-reset">Reset</button>
-            <button class="filter-btn filter-apply">Find Matches</button>
+    <section class="page-header">
+        <div class="container">
+            <h1>International Connections</h1>
+            <p>Find meaningful relationships across borders and cultures</p>
         </div>
     </section>
 
-    <section class="profiles-section">
-        <h2 class="section-title">International Members</h2>
-        <div class="profile-grid">
-            <!-- Profile cards with international members -->
-            <div class="profile-card">
-                <div class="profile-img" style="background-image: url('https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
-                    <span class="profile-badge">🇫🇷 France</span>
-                </div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Sophie</h3>
-                    <div class="profile-age">27 years</div>
-                    <div class="profile-location">
-                        <span class="location-icon">📍</span> Paris, France
+    <main class="page-content">
+        <div class="container">
+            <div class="international-intro">
+                <h2>Connect Across Cultures</h2>
+                <p>At MetaDate, we believe love knows no borders. Whether you're looking for someone from your home culture, interested in international dating, or seeking to connect with people worldwide, our platform helps you build meaningful relationships across the globe.</p>
+            </div>
+
+            <div class="region-tabs">
+                <div class="region-tab active" data-region="all">All Regions</div>
+                <div class="region-tab" data-region="europe"><i class="fas fa-globe-europe"></i> Europe</div>
+                <div class="region-tab" data-region="asia"><i class="fas fa-globe-asia"></i> Asia</div>
+                <div class="region-tab" data-region="africa"><i class="fas fa-globe-africa"></i> Africa</div>
+                <div class="region-tab" data-region="americas"><i class="fas fa-globe-americas"></i> Americas</div>
+                <div class="region-tab" data-region="oceania"><i class="fas fa-globe-oceania"></i> Oceania</div>
+                <div class="region-tab" data-region="middle-east"><i class="fas fa-mosque"></i> Middle East</div>
+            </div>
+
+            <div class="international-profiles">
+                <h2 class="section-title">Featured Profiles</h2>
+                
+                <div class="region-content active" id="all">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophie">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Sophie</h3>
+                                    <p>
+                                        <img src="https://flagcdn.com/w20/fr.png" class="country-flag" alt="France">
+                                        France • 29 years
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>French artist looking to connect with international creatives. I speak French, English, and Spanish. Love traveling and cultural exchange.</p>
+                                <div class="international-details">
+                                    <span class="international-tag"><i class="fas fa-language"></i> French, English, Spanish</span>
+                                    <span class="international-tag"><i class="fas fa-plane"></i> Willing to travel</span>
+                                    <span class="international-tag"><i class="fas fa-utensils"></i> Food enthusiast</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Raj">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Raj</h3>
+                                    <p>
+                                        <img src="https://flagcdn.com/w20/in.png" class="country-flag" alt="India">
+                                        India • 32 years
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Software engineer from Mumbai interested in meeting people from different cultures. Passionate about technology, philosophy, and cricket.</p>
+                                <div class="international-details">
+                                    <span class="international-tag"><i class="fas fa-language"></i> Hindi, English</span>
+                                    <span class="international-tag"><i class="fas fa-heart"></i> Open to relocation</span>
+                                    <span class="international-tag"><i class="fas fa-book"></i> Cultural exchange</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Maria">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Maria</h3>
+                                    <p>
+                                        <img src="https://flagcdn.com/w20/br.png" class="country-flag" alt="Brazil">
+                                        Brazil • 27 years
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Environmental scientist from Rio looking for meaningful connections worldwide. Love nature, dancing, and learning about different cultures.</p>
+                                <div class="international-details">
+                                    <span class="international-tag"><i class="fas fa-language"></i> Portuguese, English, Spanish</span>
+                                    <span class="international-tag"><i class="fas fa-leaf"></i> Nature lover</span>
+                                    <span class="international-tag"><i class="fas fa-music"></i> Samba dancer</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Connect</button>
+                            </div>
+                        </div>
                     </div>
-                    <p class="profile-bio">Art lover and pastry chef looking to connect with someone from a different culture.</p>
-                    <div class="profile-interests">
-                        <span class="interest-tag">Art</span>
-                        <span class="interest-tag">Cooking</span>
-                        <span class="interest-tag">Travel</span>
-                    </div>
-                    <div class="profile-actions">
-                        <button class="action-btn btn-like">❤️ Like</button>
-                        <button class="action-btn btn-message">💌 Message</button>
-                    </div>
                 </div>
-            </div>
-            <!-- More international profiles... -->
-        </div>
-    </section>
 
-    <section class="features" style="background-color: var(--card-bg); padding: 4rem 2rem;">
-        <div class="features-container" style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="section-title">Why Date Internationally?</h2>
-            <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div class="feature-card" style="text-align: center; padding: 2rem;">
-                    <div class="feature-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;">🌍</div>
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Cultural Exchange</h3>
-                    <p>Learn about new cultures, traditions, and perspectives from around the world.</p>
+                <!-- Other region content sections would be here -->
+                <div class="region-content" id="europe">
+                    <!-- European profiles -->
                 </div>
-                <div class="feature-card" style="text-align: center; padding: 2rem;">
-                    <div class="feature-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;">🗣️</div>
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Language Learning</h3>
-                    <p>Practice and improve your language skills with native speakers.</p>
+                <div class="region-content" id="asia">
+                    <!-- Asian profiles -->
                 </div>
-                <div class="feature-card" style="text-align: center; padding: 2rem;">
-                    <div class="feature-icon" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1.5rem;">✈️</div>
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Travel Opportunities</h3>
-                    <p>Discover new places to visit with someone who knows them best.</p>
-                </div>
+                <!-- And so on for other regions -->
+            </div>
+
+            <div class="international-form">
+                <h2 class="section-title">Find Your International Match</h2>
+                <form>
+                    <div class="form-group">
+                        <label>Regions of Interest</label>
+                        <div class="region-options">
+                            <div class="region-option selected">
+                                <i class="fas fa-globe-europe"></i>
+                                <span>Europe</span>
+                            </div>
+                            <div class="region-option">
+                                <i class="fas fa-globe-asia"></i>
+                                <span>Asia</span>
+                            </div>
+                            <div class="region-option">
+                                <i class="fas fa-globe-africa"></i>
+                                <span>Africa</span>
+                            </div>
+                            <div class="region-option">
+                                <i class="fas fa-globe-americas"></i>
+                                <span>Americas</span>
+                            </div>
+                            <div class="region-option">
+                                <i class="fas fa-globe-oceania"></i>
+                                <span>Oceania</span>
+                            </div>
+                            <div class="region-option">
+                                <i class="fas fa-mosque"></i>
+                                <span>Middle East</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country">Specific Country (optional)</label>
+                            <input type="text" id="country" class="form-control" placeholder="e.g. Japan, Germany, Brazil">
+                        </div>
+                        <div class="form-group">
+                            <label for="language">Language Preference</label>
+                            <select id="language" class="form-control">
+                                <option value="">Any language</option>
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="mandarin">Mandarin</option>
+                                <option value="arabic">Arabic</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="relocation">Relocation Willingness</label>
+                        <select id="relocation" class="form-control">
+                            <option value="">Any</option>
+                            <option value="willing">Willing to relocate</option>
+                            <option value="open">Open to relocation</option>
+                            <option value="not-willing">Not willing to relocate</option>
+                            <option value="unsure">Unsure</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cultural-interests">Cultural Interests</label>
+                        <input type="text" id="cultural-interests" class="form-control" placeholder="e.g. cuisine, traditions, festivals, language exchange">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Same footer as index.html -->
     <footer>
-        <!-- Footer content from index.html -->
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate</span>
+                </div>
+                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="international.html">International</a></li>
+                    <li><a href="religious.html">Religious</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon"><i class="fas fa-envelope"></i></span> support@metadate.com</p>
+                <p><span class="contact-icon"><i class="fas fa-phone"></i></span> +1 (555) 123-4567</p>
+                <p><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> 123 Global Avenue, International City</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 MetaDate. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // Same JavaScript as dating.html
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
+        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+        });
+
+        // User dropdown functionality
+        const userAvatar = document.querySelector('.user-avatar');
+        
+        userAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.user-dropdown').style.opacity = '1';
+            document.querySelector('.user-dropdown').style.visibility = 'visible';
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelector('.user-dropdown').style.opacity = '0';
+            document.querySelector('.user-dropdown').style.visibility = 'hidden';
+        });
+
+        // Region tabs functionality
+        const regionTabs = document.querySelectorAll('.region-tab');
+        const regionContents = document.querySelectorAll('.region-content');
+
+        regionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const region = tab.getAttribute('data-region');
+                
+                // Remove active class from all tabs and contents
+                regionTabs.forEach(t => t.classList.remove('active'));
+                regionContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(region).classList.add('active');
+            });
+        });
+
+        // Region selection
+        const regionOptions = document.querySelectorAll('.region-option');
+        regionOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                option.classList.toggle('selected');
+            });
+        });
+
+        // Form submission
+        document.querySelector('.international-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('International matching functionality would be implemented here with backend connection');
+        });
+
+        // Connect buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            if (button.textContent === 'Connect') {
+                button.addEventListener('click', function() {
+                    const profileName = this.closest('.profile-card').querySelector('h3').textContent;
+                    alert(`Connection request sent to ${profileName}!`);
+                });
+            }
+        });
     </script>
 </body>
 </html>

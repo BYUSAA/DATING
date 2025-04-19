@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penpal Connections | MetaDate</title>
+    <title>Prison Penpal Connections | InsideOut</title>
     <style>
         :root {
-            --primary-color: #2E8B57; /* Sea green */
-            --secondary-color: #556B2F; /* Dark olive green */
-            --accent-color: #D2691E; /* Chocolate */
+            --primary-color: #4169E1; /* Royal blue - symbolizing hope */
+            --secondary-color: #4682B4; /* Steel blue - stability */
+            --accent-color: #FFA500; /* Orange - energy and positivity */
             --text-color: #F8F8FF; /* Ghost white */
             --bg-color: #2F4F4F; /* Dark slate gray */
             --card-bg: #3A5F5F; /* Deeper slate */
             --nav-bg: rgba(58, 95, 95, 0.9);
-            --shadow: 0 4px 20px rgba(46, 139, 87, 0.3);
+            --shadow: 0 4px 20px rgba(65, 105, 225, 0.3);
             --text-light: #D3D3D3; /* Light gray */
-            --border-color: #2E8B57;
+            --border-color: #4169E1;
             --paper-bg: #FFF8DC; /* Cornsilk for paper effect */
-            --ink-color: #3D2B1F; /* Bistre for ink */
+            --ink-color: #321414; /* Bistre for ink */
+            --success-color: #32CD32; /* Lime green - positive outcomes */
         }
 
         /* Light mode */
         .light-mode {
-            --primary-color: #3CB371; /* Medium sea green */
-            --secondary-color: #6B8E23; /* Olive drab */
-            --accent-color: #CD853F; /* Peru */
+            --primary-color: #6495ED; /* Cornflower blue */
+            --secondary-color: #87CEEB; /* Sky blue */
+            --accent-color: #FF8C00; /* Dark orange */
             --text-color: #333;
             --bg-color: #F5F5F5; /* White smoke */
             --card-bg: #FFFFFF;
             --nav-bg: rgba(245, 245, 245, 0.9);
-            --shadow: 0 4px 20px rgba(60, 179, 113, 0.2);
+            --shadow: 0 4px 20px rgba(100, 149, 237, 0.2);
             --text-light: #666;
-            --border-color: #6B8E23;
+            --border-color: #4682B4;
             --paper-bg: #FFFFF0; /* Ivory */
             --ink-color: #321414; /* Darker ink */
         }
@@ -48,7 +49,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-attachment: fixed;
             background-size: cover;
             background-blend-mode: overlay;
@@ -105,7 +106,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-color);
+            color: white;
             font-weight: bold;
             animation: glow 2s infinite alternate;
         }
@@ -158,7 +159,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-color);
+            color: white;
             font-weight: bold;
             cursor: pointer;
             position: relative;
@@ -193,7 +194,7 @@
         }
 
         .dropdown-item:hover {
-            background-color: rgba(46, 139, 87, 0.3);
+            background-color: rgba(65, 105, 225, 0.3);
             color: var(--accent-color);
         }
 
@@ -216,7 +217,7 @@
         .page-header {
             padding: 150px 0 80px;
             text-align: center;
-            background: linear-gradient(rgba(85, 107, 47, 0.8), rgba(47, 79, 79, 0.8));
+            background: linear-gradient(rgba(70, 130, 180, 0.8), rgba(47, 79, 79, 0.8));
             color: white;
             position: relative;
             overflow: hidden;
@@ -229,7 +230,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             z-index: -1;
             opacity: 0.3;
         }
@@ -308,7 +309,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(210, 105, 30, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.3), transparent);
             transition: 0.5s;
         }
 
@@ -405,7 +406,7 @@
 
         .profile-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.5);
+            box-shadow: 0 10px 25px rgba(65, 105, 225, 0.5);
         }
 
         .profile-header {
@@ -473,7 +474,7 @@
         }
 
         .penpal-trait {
-            background-color: rgba(46, 139, 87, 0.3);
+            background-color: rgba(65, 105, 225, 0.3);
             color: var(--accent-color);
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -523,13 +524,13 @@
         .btn-primary:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5);
+            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.5);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(46, 139, 87, 0.2);
+            background-color: rgba(65, 105, 225, 0.2);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.2);
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.2);
         }
 
         .penpal-form {
@@ -570,12 +571,12 @@
         .form-control:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.3);
+            box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.3);
         }
 
         select.form-control {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D2691E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFA500' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -613,8 +614,8 @@
 
         .penpal-option.selected {
             border-color: var(--accent-color);
-            background-color: rgba(46, 139, 87, 0.3);
-            box-shadow: 0 0 15px rgba(46, 139, 87, 0.5);
+            background-color: rgba(65, 105, 225, 0.3);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.5);
         }
 
         .penpal-option i {
@@ -651,10 +652,47 @@
             pointer-events: none;
         }
 
+        .prison-rules {
+            background-color: rgba(255, 165, 0, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .prison-rules h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .prison-rules ul {
+            padding-left: 1.5rem;
+        }
+
+        .prison-rules li {
+            margin-bottom: 0.8rem;
+            font-family: 'Merriweather', serif;
+        }
+
+        .success-story {
+            background-color: rgba(50, 205, 50, 0.1);
+            border: 1px solid var(--success-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .success-story h3 {
+            color: var(--success-color);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
         footer {
             background-color: rgba(47, 79, 79, 0.9);
             padding: 3rem 2rem;
-            box-shadow: 0 -5px 20px rgba(46, 139, 87, 0.2);
+            box-shadow: 0 -5px 20px rgba(65, 105, 225, 0.2);
             border-top: 1px solid var(--border-color);
         }
 
@@ -681,7 +719,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-color);
+            color: white;
             font-weight: bold;
             font-size: 0.9rem;
             border: 1px solid var(--accent-color);
@@ -710,7 +748,7 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background-color: rgba(46, 139, 87, 0.3);
+            background-color: rgba(65, 105, 225, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -723,7 +761,7 @@
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5);
+            box-shadow: 0 5px 15px rgba(65, 105, 225, 0.5);
         }
 
         .footer-links h3 {
@@ -870,23 +908,20 @@
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">
-                <div class="logo-bubble">M</div>
-                <span>MetaDate</span>
+                <div class="logo-bubble">I</div>
+                <span>InsideOut</span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="dating.html">Dating</a></li>
-                <li><a href="marriage.html">Marriage</a></li>
-                <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="fantasy.html">Fantasy</a></li>
-                <li><a href="polygamy.html">Polygamy</a></li>
                 <li><a href="penpal.html" class="active">Penpals</a></li>
+                <li><a href="success.html">Success Stories</a></li>
+                <li><a href="resources.html">Resources</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             <div class="user-menu">
                 <button class="theme-toggle" id="themeToggle">🌓</button>
                 <div class="user-avatar">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <span>JD</span>
                     <div class="user-dropdown">
                         <div class="dropdown-item">My Profile</div>
                         <div class="dropdown-item">Messages</div>
@@ -900,24 +935,35 @@
 
     <section class="page-header">
         <div class="container">
-            <h1 class="floating">Penpal Connections</h1>
-            <p>Discover meaningful friendships across borders through the timeless art of letter writing</p>
+            <h1 class="floating">Prison Penpal Connections</h1>
+            <p>Building bridges of friendship and support through the power of written words</p>
         </div>
     </section>
 
     <main class="page-content">
         <div class="container">
             <div class="penpal-intro pulse">
-                <h2>Global Friendships, One Letter at a Time</h2>
-                <p>In our digital age, rediscover the joy of handwritten letters and deep, thoughtful connections. Whether you're seeking cultural exchange, language practice, or simply a kindred spirit to share life's stories, our penpal community bridges distances with every stamp.</p>
+                <h2>Connect With Understanding Friends</h2>
+                <p>InsideOut provides a safe, monitored platform for incarcerated individuals to form meaningful penpal relationships. Whether you're looking for friendship, emotional support, or simply someone to share your thoughts with, our community understands your situation.</p>
+                
+                <div class="prison-rules">
+                    <h3><i class="fas fa-shield-alt"></i> Safe Correspondence Guidelines</h3>
+                    <ul>
+                        <li>All letters are monitored for security and safety</li>
+                        <li>No exchange of personal contact information</li>
+                        <li>Respectful communication only</li>
+                        <li>No discussion of criminal activity</li>
+                        <li>Financial transactions are strictly prohibited</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="penpal-types">
                 <div class="penpal-tab active" data-penpal="all">All Penpals</div>
-                <div class="penpal-tab" data-penpal="international"><i class="fas fa-globe penpal-icon"></i> International</div>
-                <div class="penpal-tab" data-penpal="language"><i class="fas fa-language penpal-icon"></i> Language Exchange</div>
-                <div class="penpal-tab" data-penpal="thematic"><i class="fas fa-pen-fancy penpal-icon"></i> Thematic</div>
-                <div class="penpal-tab" data-penpal="vintage"><i class="fas fa-feather penpal-icon"></i> Vintage Correspondence</div>
+                <div class="penpal-tab" data-penpal="understanding"><i class="fas fa-hands-helping penpal-icon"></i> Understanding Friends</div>
+                <div class="penpal-tab" data-penpal="mentors"><i class="fas fa-user-graduate penpal-icon"></i> Mentors</div>
+                <div class="penpal-tab" data-penpal="creative"><i class="fas fa-paint-brush penpal-icon"></i> Creative Souls</div>
+                <div class="penpal-tab" data-penpal="spiritual"><i class="fas fa-pray penpal-icon"></i> Spiritual Support</div>
             </div>
 
             <div class="penpal-profiles">
@@ -929,19 +975,274 @@
                         <div class="profile-card">
                             <div class="profile-header">
                                 <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophie">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sarah">
                                 </div>
                                 <div class="profile-info">
-                                    <h3>Sophie</h3>
-                                    <p><i class="fas fa-globe penpal-icon"></i> France • 28</p>
+                                    <h3>Sarah</h3>
+                                    <p><i class="fas fa-hands-helping penpal-icon"></i> Volunteer • 5 years experience</p>
                                 </div>
                             </div>
                             <div class="profile-details">
-                                <p>Parisian artist seeking penpals to exchange handmade postcards and stories about local art scenes. I include small sketches with every letter!</p>
+                                <p>Former social worker who believes in redemption and personal growth. I enjoy exchanging letters about books, personal development, and sharing encouragement.</p>
                                 <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-palette"></i> Artist</span>
-                                    <span class="penpal-trait"><i class="fas fa-book-open"></i> Literature</span>
-                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Postcards</span>
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Book Lover</span>
+                                    <span class="penpal-trait"><i class="fas fa-heart"></i> Supportive</span>
+                                    <span class="penpal-trait"><i class="fas fa-seedling"></i> Growth Mindset</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Michael">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Michael</h3>
+                                    <p><i class="fas fa-user-graduate penpal-icon"></i> Formerly Incarcerated • Mentor</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Served 12 years, now helping others navigate reentry challenges. I offer honest advice, resources, and hope for life after incarceration through regular correspondence.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-road"></i> Reentry Guidance</span>
+                                    <span class="penpal-trait"><i class="fas fa-fist-raised"></i> Resilience</span>
+                                    <span class="penpal-trait"><i class="fas fa-hands-helping"></i> Peer Support</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Jamila">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Jamila</h3>
+                                    <p><i class="fas fa-paint-brush penpal-icon"></i> Art Therapist • Creative Correspondent</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>I exchange letters about art, poetry, and creative expression as tools for healing. Willing to discuss your creative projects and send occasional art prompts.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-palette"></i> Art Therapy</span>
+                                    <span class="penpal-trait"><i class="fas fa-pen-nib"></i> Writing</span>
+                                    <span class="penpal-trait"><i class="fas fa-brain"></i> Mental Wellness</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="David">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>David</h3>
+                                    <p><i class="fas fa-pray penpal-icon"></i> Chaplain • Spiritual Support</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Prison chaplain offering non-denominational spiritual support through letters. Happy to discuss faith, philosophy, or simply be a listening ear without judgment.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-hands-praying"></i> Faith-Based</span>
+                                    <span class="penpal-trait"><i class="fas fa-ear-listen"></i> Good Listener</span>
+                                    <span class="penpal-trait"><i class="fas fa-scale-balanced"></i> Non-Judgmental</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Understanding Friends Content -->
+                <div class="penpal-content" id="understanding">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sarah">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Sarah</h3>
+                                    <p><i class="fas fa-hands-helping penpal-icon"></i> Volunteer • 5 years experience</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Former social worker who believes in redemption and personal growth. I enjoy exchanging letters about books, personal development, and sharing encouragement.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Book Lover</span>
+                                    <span class="penpal-trait"><i class="fas fa-heart"></i> Supportive</span>
+                                    <span class="penpal-trait"><i class="fas fa-seedling"></i> Growth Mindset</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Linda">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Linda</h3>
+                                    <p><i class="fas fa-hands-helping penpal-icon"></i> Family Member of Incarcerated</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>My brother served 8 years, so I understand the challenges. I offer compassionate listening and practical advice for maintaining family connections.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-family"></i> Family Perspective</span>
+                                    <span class="penpal-trait"><i class="fas fa-heartbeat"></i> Emotional Support</span>
+                                    <span class="penpal-trait"><i class="fas fa-lightbulb"></i> Practical Advice</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Thomas">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Thomas</h3>
+                                    <p><i class="fas fa-hands-helping penpal-icon"></i> Retired Teacher • 10 years corresponding</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Believe in the power of education to transform lives. I enjoy discussing literature, history, and helping with educational goals through correspondence.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-graduation-cap"></i> Education</span>
+                                    <span class="penpal-trait"><i class="fas fa-history"></i> History Buff</span>
+                                    <span class="penpal-trait"><i class="fas fa-hand-holding-heart"></i> Patient Listener</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentors Content -->
+                <div class="penpal-content" id="mentors">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Michael">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Michael</h3>
+                                    <p><i class="fas fa-user-graduate penpal-icon"></i> Formerly Incarcerated • Mentor</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Served 12 years, now helping others navigate reentry challenges. I offer honest advice, resources, and hope for life after incarceration through regular correspondence.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-road"></i> Reentry Guidance</span>
+                                    <span class="penpal-trait"><i class="fas fa-fist-raised"></i> Resilience</span>
+                                    <span class="penpal-trait"><i class="fas fa-hands-helping"></i> Peer Support</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Rebecca">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Rebecca</h3>
+                                    <p><i class="fas fa-user-graduate penpal-icon"></i> Reentry Program Director</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>I help prepare incarcerated individuals for successful reentry through letter correspondence, sharing job resources, housing tips, and personal development strategies.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-briefcase"></i> Job Resources</span>
+                                    <span class="penpal-trait"><i class="fas fa-home"></i> Housing Advice</span>
+                                    <span class="penpal-trait"><i class="fas fa-clipboard-list"></i> Planning</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="James">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>James</h3>
+                                    <p><i class="fas fa-user-graduate penpal-icon"></i> Business Owner • Hires Returning Citizens</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>I run a small business that actively hires formerly incarcerated individuals. Through letters, I offer career advice, resume tips, and mentorship for post-release success.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-business-time"></i> Business Owner</span>
+                                    <span class="penpal-trait"><i class="fas fa-handshake"></i> Second Chances</span>
+                                    <span class="penpal-trait"><i class="fas fa-file-alt"></i> Resume Help</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Souls Content -->
+                <div class="penpal-content" id="creative">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Jamila">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Jamila</h3>
+                                    <p><i class="fas fa-paint-brush penpal-icon"></i> Art Therapist • Creative Correspondent</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>I exchange letters about art, poetry, and creative expression as tools for healing. Willing to discuss your creative projects and send occasional art prompts.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-palette"></i> Art Therapy</span>
+                                    <span class="penpal-trait"><i class="fas fa-pen-nib"></i> Writing</span>
+                                    <span class="penpal-trait"><i class="fas fa-brain"></i> Mental Wellness</span>
                                 </div>
                             </div>
                             <div class="profile-actions">
@@ -957,15 +1258,15 @@
                                 </div>
                                 <div class="profile-info">
                                     <h3>Carlos</h3>
-                                    <p><i class="fas fa-language penpal-icon"></i> Mexico • 35</p>
+                                    <p><i class="fas fa-music penpal-icon"></i> Musician • Songwriting Partner</p>
                                 </div>
                             </div>
                             <div class="profile-details">
-                                <p>Looking for English speakers to practice with while helping you learn Spanish. I specialize in exchanging letters about local folklore and traditions.</p>
+                                <p>Professional musician offering to collaborate on song lyrics through letters. I can help structure your poems into songs and share music theory basics if interested.</p>
                                 <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
-                                    <span class="penpal-trait"><i class="fas fa-mountain"></i> Folklore</span>
-                                    <span class="penpal-trait"><i class="fas fa-pepper-hot"></i> Cooking</span>
+                                    <span class="penpal-trait"><i class="fas fa-guitar"></i> Music</span>
+                                    <span class="penpal-trait"><i class="fas fa-pen-fancy"></i> Lyrics</span>
+                                    <span class="penpal-trait"><i class="fas fa-users"></i> Collaboration</span>
                                 </div>
                             </div>
                             <div class="profile-actions">
@@ -981,39 +1282,15 @@
                                 </div>
                                 <div class="profile-info">
                                     <h3>Aiko</h3>
-                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> Japan • 42</p>
+                                    <p><i class="fas fa-book-open penpal-icon"></i> Published Author • Writing Mentor</p>
                                 </div>
                             </div>
                             <div class="profile-details">
-                                <p>Stationery enthusiast seeking fellow writers for thematic letter exchanges (seasonal, literary, philosophical). I include washi tape samples and tea bags!</p>
+                                <p>I provide constructive feedback on writing projects and share publishing advice. Let's exchange short stories, poems, or work on developing your memoir.</p>
                                 <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-tape"></i> Stationery</span>
-                                    <span class="penpal-trait"><i class="fas fa-leaf"></i> Tea Culture</span>
-                                    <span class="penpal-trait"><i class="fas fa-moon"></i> Thematic</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Eleanor">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Eleanor</h3>
-                                    <p><i class="fas fa-feather penpal-icon"></i> UK • 67</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Retired librarian practicing the nearly lost art of fountain pen correspondence. Seeking fellow vintage enthusiasts for proper letter-writing etiquette.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-feather-alt"></i> Fountain Pens</span>
-                                    <span class="penpal-trait"><i class="fas fa-history"></i> Vintage</span>
-                                    <span class="penpal-trait"><i class="fas fa-book"></i> Literature</span>
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Writing Coach</span>
+                                    <span class="penpal-trait"><i class="fas fa-star"></i> Feedback</span>
+                                    <span class="penpal-trait"><i class="fas fa-feather"></i> Creative Process</span>
                                 </div>
                             </div>
                             <div class="profile-actions">
@@ -1024,25 +1301,25 @@
                     </div>
                 </div>
 
-                <!-- International Penpals Content -->
-                <div class="penpal-content" id="international">
+                <!-- Spiritual Support Content -->
+                <div class="penpal-content" id="spiritual">
                     <div class="profiles-grid">
                         <div class="profile-card">
                             <div class="profile-header">
                                 <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophie">
+                                    <img src="https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="David">
                                 </div>
                                 <div class="profile-info">
-                                    <h3>Sophie</h3>
-                                    <p><i class="fas fa-globe penpal-icon"></i> France • 28</p>
+                                    <h3>David</h3>
+                                    <p><i class="fas fa-pray penpal-icon"></i> Chaplain • Spiritual Support</p>
                                 </div>
                             </div>
                             <div class="profile-details">
-                                <p>Parisian artist seeking penpals to exchange handmade postcards and stories about local art scenes. I include small sketches with every letter!</p>
+                                <p>Prison chaplain offering non-denominational spiritual support through letters. Happy to discuss faith, philosophy, or simply be a listening ear without judgment.</p>
                                 <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-palette"></i> Artist</span>
-                                    <span class="penpal-trait"><i class="fas fa-book-open"></i> Literature</span>
-                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Postcards</span>
+                                    <span class="penpal-trait"><i class="fas fa-hands-praying"></i> Faith-Based</span>
+                                    <span class="penpal-trait"><i class="fas fa-ear-listen"></i> Good Listener</span>
+                                    <span class="penpal-trait"><i class="fas fa-scale-balanced"></i> Non-Judgmental</span>
                                 </div>
                             </div>
                             <div class="profile-actions">
@@ -1054,19 +1331,19 @@
                         <div class="profile-card">
                             <div class="profile-header">
                                 <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Raj">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sister Maria">
                                 </div>
                                 <div class="profile-info">
-                                    <h3>Raj</h3>
-                                    <p><i class="fas fa-globe penpal-icon"></i> India • 31</p>
+                                    <h3>Sister Maria</h3>
+                                    <p><i class="fas fa-pray penpal-icon"></i> Nun • 20 years ministry</p>
                                 </div>
                             </div>
                             <div class="profile-details">
-                                <p>Software engineer by day, amateur photographer by night. I exchange letters about daily life in Mumbai along with my latest film photography prints.</p>
+                                <p>Offering Catholic spiritual guidance through letters. I can send prayers, devotional materials, and discuss finding peace in challenging circumstances.</p>
                                 <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-camera"></i> Photography</span>
-                                    <span class="penpal-trait"><i class="fas fa-utensils"></i> Food Culture</span>
-                                    <span class="penpal-trait"><i class="fas fa-train"></i> Urban Life</span>
+                                    <span class="penpal-trait"><i class="fas fa-cross"></i> Catholic</span>
+                                    <span class="penpal-trait"><i class="fas fa-peace"></i> Contemplative</span>
+                                    <span class="penpal-trait"><i class="fas fa-book-bible"></i> Scripture Study</span>
                                 </div>
                             </div>
                             <div class="profile-actions">
@@ -1078,250 +1355,19 @@
                         <div class="profile-card">
                             <div class="profile-header">
                                 <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Ingrid">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Imam Hassan">
                                 </div>
                                 <div class="profile-info">
-                                    <h3>Ingrid</h3>
-                                    <p><i class="fas fa-globe penpal-icon"></i> Norway • 24</p>
+                                    <h3>Imam Hassan</h3>
+                                    <p><i class="fas fa-pray penpal-icon"></i> Muslim Chaplain</p>
                                 </div>
                             </div>
                             <div class="profile-details">
-                                <p>University student studying marine biology. I write about Nordic myths, fjord ecosystems, and include pressed flowers from my hikes in every letter.</p>
+                                <p>Providing Islamic spiritual support through letters. I can discuss Quranic teachings, share Ramadan greetings, and offer guidance on maintaining faith in difficult times.</p>
                                 <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-fish"></i> Marine Biology</span>
-                                    <span class="penpal-trait"><i class="fas fa-mountain"></i> Hiking</span>
-                                    <span class="penpal-trait"><i class="fas fa-book"></i> Mythology</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Language Exchange Content -->
-                <div class="penpal-content" id="language">
-                    <div class="profiles-grid">
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Carlos">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Carlos</h3>
-                                    <p><i class="fas fa-language penpal-icon"></i> Mexico • 35</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Looking for English speakers to practice with while helping you learn Spanish. I specialize in exchanging letters about local folklore and traditions.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
-                                    <span class="penpal-trait"><i class="fas fa-mountain"></i> Folklore</span>
-                                    <span class="penpal-trait"><i class="fas fa-pepper-hot"></i> Cooking</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Yuki">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Yuki</h3>
-                                    <p><i class="fas fa-language penpal-icon"></i> Japan • 22</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Japanese literature student offering to help with Japanese language practice in exchange for English conversation. I include manga recommendations!</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
-                                    <span class="penpal-trait"><i class="fas fa-book"></i> Literature</span>
-                                    <span class="penpal-trait"><i class="fas fa-gamepad"></i> Anime/Manga</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Klaus">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Klaus</h3>
-                                    <p><i class="fas fa-language penpal-icon"></i> Germany • 40</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>High school teacher offering German language practice. I correct letters carefully and enjoy discussing European history and classical music.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
-                                    <span class="penpal-trait"><i class="fas fa-landmark"></i> History</span>
-                                    <span class="penpal-trait"><i class="fas fa-music"></i> Classical Music</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Thematic Penpals Content -->
-                <div class="penpal-content" id="thematic">
-                    <div class="profiles-grid">
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Aiko">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Aiko</h3>
-                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> Japan • 42</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Stationery enthusiast seeking fellow writers for thematic letter exchanges (seasonal, literary, philosophical). I include washi tape samples and tea bags!</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-tape"></i> Stationery</span>
-                                    <span class="penpal-trait"><i class="fas fa-leaf"></i> Tea Culture</span>
-                                    <span class="penpal-trait"><i class="fas fa-moon"></i> Thematic</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Marcus">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Marcus</h3>
-                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> USA • 38</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Horror fiction writer looking for penpals to exchange letters in character as residents of a shared fictional town we build together through correspondence.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-book-dead"></i> Horror</span>
-                                    <span class="penpal-trait"><i class="fas fa-user-edit"></i> Roleplay</span>
-                                    <span class="penpal-trait"><i class="fas fa-quill"></i> Creative Writing</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Lena">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Lena</h3>
-                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> Russia • 29</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Exchange letters about Soviet-era science fiction books, complete with vintage postage stamps and photocopies of rare book covers from my collection.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-rocket"></i> Sci-Fi</span>
-                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Philately</span>
-                                    <span class="penpal-trait"><i class="fas fa-history"></i> Retro</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Vintage Correspondence Content -->
-                <div class="penpal-content" id="vintage">
-                    <div class="profiles-grid">
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Eleanor">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Eleanor</h3>
-                                    <p><i class="fas fa-feather penpal-icon"></i> UK • 67</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Retired librarian practicing the nearly lost art of fountain pen correspondence. Seeking fellow vintage enthusiasts for proper letter-writing etiquette.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-feather-alt"></i> Fountain Pens</span>
-                                    <span class="penpal-trait"><i class="fas fa-history"></i> Vintage</span>
-                                    <span class="penpal-trait"><i class="fas fa-book"></i> Literature</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Arthur">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Arthur</h3>
-                                    <p><i class="fas fa-feather penpal-icon"></i> USA • 72</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Former diplomat who still corresponds using wax seals and proper letter formatting. Enjoy discussing geopolitics, vintage typewriters, and jazz history.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-seal"></i> Wax Seals</span>
-                                    <span class="penpal-trait"><i class="fas fa-keyboard"></i> Typewriters</span>
-                                    <span class="penpal-trait"><i class="fas fa-landmark"></i> History</span>
-                                </div>
-                            </div>
-                            <div class="profile-actions">
-                                <button class="btn btn-secondary">View Profile</button>
-                                <button class="btn btn-primary">Send Letter</button>
-                            </div>
-                        </div>
-
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Margaret">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>Margaret</h3>
-                                    <p><i class="fas fa-feather penpal-icon"></i> Australia • 60</p>
-                                </div>
-                            </div>
-                            <div class="profile-details">
-                                <p>Collector of vintage postcards seeking correspondents to exchange pre-1950s style letters using reproduction stationery and period-appropriate language.</p>
-                                <div class="penpal-traits">
-                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Vintage Postcards</span>
-                                    <span class="penpal-trait"><i class="fas fa-history"></i> Historical Recreation</span>
-                                    <span class="penpal-trait"><i class="fas fa-language"></i> Period Language</span>
+                                    <span class="penpal-trait"><i class="fas fa-mosque"></i> Islamic</span>
+                                    <span class="penpal-trait"><i class="fas fa-quran"></i> Quran Study</span>
+                                    <span class="penpal-trait"><i class="fas fa-hands-helping"></i> Pastoral Care</span>
                                 </div>
                             </div>
                             <div class="profile-actions">
@@ -1333,46 +1379,49 @@
                 </div>
             </div>
 
+            <div class="success-story">
+                <h3><i class="fas fa-star"></i> Success Story: Mark's Journey</h3>
+                <p>"Through my InsideOut penpal, I connected with a mentor who helped me prepare for release. We corresponded for 3 years, and today I'm working at his auto shop, reunited with my family, and staying on the right path. Letters saved my life." - Mark, Texas</p>
+            </div>
+
             <div class="penpal-form">
                 <h2 class="section-title">Find Your Perfect Penpal</h2>
                 <form>
                     <div class="form-group">
-                        <label>Penpal Interests</label>
+                        <label>What type of connection are you seeking?</label>
                         <div class="penpal-options">
                             <div class="penpal-option selected" data-penpal="all">
                                 <i class="fas fa-globe"></i>
-                                <span>All Types</span>
+                                <span>Any Type</span>
                             </div>
-                            <div class="penpal-option" data-penpal="international">
-                                <i class="fas fa-passport"></i>
-                                <span>International</span>
+                            <div class="penpal-option" data-penpal="understanding">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Understanding Friend</span>
                             </div>
-                            <div class="penpal-option" data-penpal="language">
-                                <i class="fas fa-language"></i>
-                                <span>Language Exchange</span>
+                            <div class="penpal-option" data-penpal="mentors">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Mentor</span>
                             </div>
-                            <div class="penpal-option" data-penpal="thematic">
-                                <i class="fas fa-pen-fancy"></i>
-                                <span>Thematic</span>
+                            <div class="penpal-option" data-penpal="creative">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Creative Partner</span>
                             </div>
-                            <div class="penpal-option" data-penpal="vintage">
-                                <i class="fas fa-feather-alt"></i>
-                                <span>Vintage</span>
+                            <div class="penpal-option" data-penpal="spiritual">
+                                <i class="fas fa-pray"></i>
+                                <span>Spiritual Support</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="penpalAge">Age Preference</label>
-                            <select id="penpalAge" class="form-control">
-                                <option value="">Any Age</option>
-                                <option value="teens">Teens (13-19)</option>
-                                <option value="twenties">20s</option>
-                                <option value="thirties">30s</option>
-                                <option value="forties">40s</option>
-                                <option value="fifties">50s</option>
-                                <option value="sixties">60+</option>
+                            <label for="penpalGender">Preferred Gender</label>
+                            <select id="penpalGender" class="form-control">
+                                <option value="">Any Gender</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="nonbinary">Non-Binary</option>
+                                <option value="no-preference">No Preference</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1383,7 +1432,6 @@
                                 <option value="biweekly">Bi-weekly</option>
                                 <option value="monthly">Monthly</option>
                                 <option value="bimonthly">Every 2 Months</option>
-                                <option value="quarterly">Quarterly</option>
                             </select>
                         </div>
                     </div>
@@ -1392,8 +1440,8 @@
                         <label for="letterSample">Sample Letter</label>
                         <div class="letter-preview">
                             <p>Dear Future Penpal,</p>
-                            <p>I'm excited to begin our correspondence! Tell me about your daily life, your dreams, and what makes your corner of the world special.</p>
-                            <p>I'll share my stories too, along with little surprises in each envelope.</p>
+                            <p>I'm reaching out in hopes of finding someone to exchange letters with during my time here. I enjoy discussing [your interests], and I'm looking for [what you hope to gain from the correspondence].</p>
+                            <p>A little about me: [share some appropriate details about yourself]. I believe in [your values or outlook on life].</p>
                             <p>Looking forward to your reply,</p>
                             <p>[Your Name]</p>
                             <img src="https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" class="stamp" alt="Stamp">
@@ -1412,50 +1460,48 @@
         <div class="footer-container">
             <div class="footer-about">
                 <div class="footer-logo">
-                    <div class="footer-logo-bubble">M</div>
-                    <div class="footer-logo-text">MetaDate</div>
+                    <div class="footer-logo-bubble">I</div>
+                    <div class="footer-logo-text">InsideOut</div>
                 </div>
-                <p>Where handwritten connections bridge continents. Our platform revives the art of letter writing in a digital age, creating meaningful global friendships.</p>
+                <p>A safe, monitored platform for incarcerated individuals to form meaningful penpal relationships. Building bridges of understanding one letter at a time.</p>
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="fantasy.html">Fantasy</a></li>
-                    <li><a href="polygamy.html">Polygamy</a></li>
                     <li><a href="penpal.html">Penpals</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="safety.html">Safety Guidelines</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h3>Penpal Resources</h3>
+                <h3>Resources</h3>
                 <ul>
-                    <li><a href="#">Letter Writing Tips</a></li>
-                    <li><a href="#">International Postage Guide</a></li>
-                    <li><a href="#">Creative Envelope Ideas</a></li>
-                    <li><a href="#">Penpal Safety</a></li>
-                    <li><a href="#">Thematic Exchange Ideas</a></li>
-                    <li><a href="#">Vintage Correspondence</a></li>
+                    <li><a href="#">Writing Tips</a></li>
+                    <li><a href="#">Reentry Preparation</a></li>
+                    <li><a href="#">Educational Opportunities</a></li>
+                    <li><a href="#">Mental Health Support</a></li>
+                    <li><a href="#">Legal Resources</a></li>
+                    <li><a href="#">Family Connection Tips</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt contact-icon"></i> The Letter Exchange, Postal Lane</p>
-                <p><i class="fas fa-envelope contact-icon"></i> letters@metadate.penpal</p>
-                <p><i class="fas fa-phone contact-icon"></i> 1-800-PEN-PALS</p>
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt contact-icon"></i> PO Box 1234, Hope Center</p>
+                <p><i class="fas fa-envelope contact-icon"></i> letters@insideout.org</p>
+                <p><i class="fas fa-phone contact-icon"></i> 1-800-INSIDE-OUT</p>
+                <p><i class="fas fa-clock contact-icon"></i> Mon-Fri, 9am-5pm EST</p>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 MetaDate. All letters delivered with care. Stamped from our hearts to yours.</p>
+            <p>&copy; 2023 InsideOut Penpal Connections. All correspondence is monitored for safety and security.</p>
         </div>
     </footer>
 

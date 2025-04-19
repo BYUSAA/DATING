@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Connections | HeartLink</title>
+    <style>
+        :root {
+            --primary-color: #6A5ACD; /* Soft purple - compassion and understanding */
+            --secondary-color: #9370DB; /* Medium purple - warmth */
+            --accent-color: #FFA07A; /* Light salmon - gentle energy */
+            --text-color: #F8F8FF; /* Ghost white */
+            --bg-color: #483D8B; /* Dark slate blue */
+            --card-bg: #5D478B; /* Deeper purple */
+            --nav-bg: rgba(93, 71, 139, 0.9);
+            --shadow: 0 4px 20px rgba(106, 90, 205, 0.3);
+            --text-light: #D3D3D3; /* Light gray */
+            --border-color: #6A5ACD;
+            --paper-bg: #FFF8DC; /* Cornsilk for paper effect */
+            --ink-color: #321414; /* Bistre for ink */
+            --success-color: #98FB98; /* Pale green - positive outcomes */
+        }
+
+        /* Light mode */
+        .light-mode {
+            --primary-color: #9370DB; /* Medium purple */
+            --secondary-color: #B19CD9; /* Light purple */
+            --accent-color: #FF8C69; /* Slightly darker salmon */
+            --text-color: #333;
+            --bg-color: #F5F5F5; /* White smoke */
+            --card-bg: #FFFFFF;
+            --nav-bg: rgba(245, 245, 245, 0.9);
+            --shadow: 0 4px 20px rgba(147, 112, 219, 0.2);
+            --text-light: #666;
+            --border-color: #9370DB;
+            --paper-bg: #FFFFF0; /* Ivory */
+            --ink-color: #321414; /* Darker ink */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        body {
+            font-family: 'Merriweather', 'Palatino', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px var(--primary-color);
+            }
+            to {
+                box-shadow: 0 0 20px var(--accent-color);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            text-shadow: 0 0 5px white;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid var(--accent-color);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 200px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(106, 90, 205, 0.3);
+            color: var(--accent-color);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--accent-color);
+            margin: 0.5rem 0;
+            opacity: 0.3;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--accent-color);
+            margin-left: 1rem;
+        }
+
+        .page-header {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: linear-gradient(rgba(106, 90, 205, 0.8), rgba(72, 61, 139, 0.8));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 10px var(--accent-color);
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .page-content {
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .special-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background-color: rgba(93, 71, 139, 0.7);
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow);
+        }
+
+        .special-intro h2 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .special-intro p {
+            font-family: 'Merriweather', serif;
+            line-height: 1.8;
+        }
+
+        .accessibility-features {
+            background-color: rgba(255, 160, 122, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .accessibility-features h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .accessibility-features ul {
+            padding-left: 1.5rem;
+        }
+
+        .accessibility-features li {
+            margin-bottom: 0.8rem;
+            font-family: 'Merriweather', serif;
+        }
+
+        .special-types {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .special-tab {
+            padding: 0.8rem 1.8rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 160, 122, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .special-tab:hover::before {
+            left: 100%;
+        }
+
+        .special-tab.active, .special-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .special-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .special-content.active {
+            display: block;
+        }
+
+        .special-profiles {
+            background-color: rgba(93, 71, 139, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .profile-card:hover::before {
+            opacity: 1;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 90, 205, 0.5);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            margin-right: 1.5rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .profile-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .special-icon {
+            margin-right: 8px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .profile-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-details p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Merriweather', serif;
+        }
+
+        .special-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .special-trait {
+            background-color: rgba(106, 90, 205, 0.3);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            border: 1px solid var(--border-color);
+        }
+
+        .special-trait i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            text-shadow: 0 0 5px white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 90, 205, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(106, 90, 205, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 160, 122, 0.2);
+        }
+
+        .special-form {
+            background-color: rgba(93, 71, 139, 0.8);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: rgba(72, 61, 139, 0.7);
+            color: var(--text-color);
+            font-size: 1rem;
+            font-family: 'Merriweather', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(255, 160, 122, 0.3);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFA07A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+
+        .special-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .special-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: rgba(72, 61, 139, 0.5);
+        }
+
+        .special-option:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .special-option.selected {
+            border-color: var(--accent-color);
+            background-color: rgba(106, 90, 205, 0.3);
+            box-shadow: 0 0 15px rgba(106, 90, 205, 0.5);
+        }
+
+        .special-option i {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        .special-option span {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+
+        .letter-preview {
+            background-color: var(--paper-bg);
+            color: var(--ink-color);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .letter-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
+        }
+
+        .success-story {
+            background-color: rgba(152, 251, 152, 0.1);
+            border: 1px solid var(--success-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .success-story h3 {
+            color: var(--success-color);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        footer {
+            background-color: rgba(72, 61, 139, 0.9);
+            padding: 3rem 2rem;
+            box-shadow: 0 -5px 20px rgba(106, 90, 205, 0.2);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-bubble {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        .footer-logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-family: 'Merriweather', serif;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(106, 90, 205, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 90, 205, 0.5);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .contact-icon {
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            font-family: 'Cinzel', serif;
+            color: var(--text-light);
+        }
+
+        /* Special-themed animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes stamp {
+            0% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .stamp {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            opacity: 0.8;
+            animation: stamp 0.5s ease-out;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1.5rem;
+            }
+
+            .page-header {
+                padding: 9rem 1rem 4rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .special-types {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-actions {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .special-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-bubble">H</div>
+                <span>HeartLink</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="special.html" class="active">Special Connections</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="support.html">Support Groups</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-menu">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <div class="user-avatar">
+                    <span>Y</span>
+                    <div class="user-dropdown">
+                        <div class="dropdown-item">My Profile</div>
+                        <div class="dropdown-item">Messages</div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">Accessibility Settings</div>
+                        <div class="dropdown-item">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="floating">Special Connections</h1>
+            <p>Find understanding friends who truly get what you're going through</p>
+        </div>
+    </section>
+
+    <main class="page-content">
+        <div class="container">
+            <div class="special-intro pulse">
+                <h2>You're Not Alone</h2>
+                <p>HeartLink Special Connections is a safe space for individuals with special needs to find friendship, support, and understanding. Whether you're looking for someone who shares your experiences or just someone who will listen without judgment, our community is here for you.</p>
+                
+                <div class="accessibility-features">
+                    <h3><i class="fas fa-universal-access"></i> Accessibility Features</h3>
+                    <ul>
+                        <li>Screen reader compatible</li>
+                        <li>Adjustable text size and contrast</li>
+                        <li>Simplified navigation options</li>
+                        <li>ASL interpretation available for video profiles</li>
+                        <li>Text-to-speech for all messages</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="special-types">
+                <div class="special-tab active" data-special="all">All Connections</div>
+                <div class="special-tab" data-special="autism"><i class="fas fa-brain special-icon"></i> Autism Spectrum</div>
+                <div class="special-tab" data-special="mobility"><i class="fas fa-wheelchair special-icon"></i> Mobility Needs</div>
+                <div class="special-tab" data-special="sensory"><i class="fas fa-assistive-listening-systems special-icon"></i> Sensory Needs</div>
+                <div class="special-tab" data-special="cognitive"><i class="fas fa-memory special-icon"></i> Cognitive Differences</div>
+            </div>
+
+            <div class="special-profiles">
+                <h2 class="section-title">Featured Friends</h2>
+                
+                <!-- All Connections Content -->
+                <div class="special-content active" id="all">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Emma">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Emma</h3>
+                                    <p><i class="fas fa-brain special-icon"></i> Autism Spectrum • 24</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Looking for friends who understand sensory sensitivities and social anxiety. I love talking about special interests (currently marine biology and crochet) and exchanging long, thoughtful letters.</p>
+                                <div class="special-traits">
+                                    <span class="special-trait"><i class="fas fa-water"></i> Marine Life</span>
+                                    <span class="special-trait"><i class="fas fa-yarn"></i> Crochet</span>
+                                    <span class="special-trait"><i class="fas fa-book"></i> Detailed Writer</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Marcus">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Marcus</h3>
+                                    <p><i class="fas fa-wheelchair special-icon"></i> Spinal Cord Injury • 32</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Looking to connect with others who understand life with mobility challenges. I'm into adaptive sports, wheelchair basketball, and advocating for accessibility. Let's share experiences and support each other.</p>
+                                <div class="special-traits">
+                                    <span class="special-trait"><i class="fas fa-basketball-ball"></i> Sports</span>
+                                    <span class="special-trait"><i class="fas fa-universal-access"></i> Accessibility</span>
+                                    <span class="special-trait"><i class="fas fa-microphone"></i> Advocacy</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophia">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Sophia</h3>
+                                    <p><i class="fas fa-assistive-listening-systems special-icon"></i> Deaf Community • 28</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>ASL user looking to connect with both deaf and hearing friends who are comfortable with text-based communication. I love sharing deaf culture, memes, and discussions about accessibility in technology.</p>
+                                <div class="special-traits">
+                                    <span class="special-trait"><i class="fas fa-hands"></i> ASL</span>
+                                    <span class="special-trait"><i class="fas fa-laptop-code"></i> Tech</span>
+                                    <span class="special-trait"><i class="fas fa-smile"></i> Memes</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                            >

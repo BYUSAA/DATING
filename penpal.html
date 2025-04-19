@@ -3,47 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen Pal Connections | MetaDate</title>
+    <title>Penpal Connections | MetaDate</title>
     <style>
         :root {
-            --primary-color: #8B5A2B; /* Earthy brown */
-            --secondary-color: #A67C52; /* Lighter brown */
-            --accent-color: #556B2F; /* Olive green */
-            --text-color: #333;
-            --bg-color: #F5F5F0; /* Parchment-like background */
-            --card-bg: #FFF;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --text-light: #777;
-            --border-color: #D2B48C; /* Tan */
+            --primary-color: #2E8B57; /* Sea green */
+            --secondary-color: #556B2F; /* Dark olive green */
+            --accent-color: #D2691E; /* Chocolate */
+            --text-color: #F8F8FF; /* Ghost white */
+            --bg-color: #2F4F4F; /* Dark slate gray */
+            --card-bg: #3A5F5F; /* Deeper slate */
+            --nav-bg: rgba(58, 95, 95, 0.9);
+            --shadow: 0 4px 20px rgba(46, 139, 87, 0.3);
+            --text-light: #D3D3D3; /* Light gray */
+            --border-color: #2E8B57;
+            --paper-bg: #FFF8DC; /* Cornsilk for paper effect */
+            --ink-color: #3D2B1F; /* Bistre for ink */
         }
 
-        .dark-mode {
-            --primary-color: #A67C52;
-            --secondary-color: #8B5A2B;
-            --accent-color: #6B8E23;
-            --text-color: #F0F0F0;
-            --bg-color: #121212;
-            --card-bg: #1E1E1E;
-            --nav-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --text-light: #aaa;
-            --border-color: #333;
+        /* Light mode */
+        .light-mode {
+            --primary-color: #3CB371; /* Medium sea green */
+            --secondary-color: #6B8E23; /* Olive drab */
+            --accent-color: #CD853F; /* Peru */
+            --text-color: #333;
+            --bg-color: #F5F5F5; /* White smoke */
+            --card-bg: #FFFFFF;
+            --nav-bg: rgba(245, 245, 245, 0.9);
+            --shadow: 0 4px 20px rgba(60, 179, 113, 0.2);
+            --text-light: #666;
+            --border-color: #6B8E23;
+            --paper-bg: #FFFFF0; /* Ivory */
+            --ink-color: #321414; /* Darker ink */
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.5s, color 0.5s;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Merriweather', 'Palatino', serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--card-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
         }
 
         header {
@@ -70,8 +90,10 @@
             align-items: center;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--accent-color);
             text-decoration: none;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 5px var(--primary-color);
         }
 
         .logo-bubble {
@@ -83,14 +105,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--accent-color);
             font-weight: bold;
-            animation: bounce 2s infinite;
+            animation: glow 2s infinite alternate;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px var(--primary-color);
+            }
+            to {
+                box-shadow: 0 0 20px var(--accent-color);
+            }
         }
 
         .nav-links {
@@ -109,11 +135,13 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
         }
 
         .nav-links a:hover {
             background-color: var(--primary-color);
             color: white;
+            text-shadow: 0 0 5px white;
         }
 
         .user-menu {
@@ -130,10 +158,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--accent-color);
             font-weight: bold;
             cursor: pointer;
             position: relative;
+            border: 1px solid var(--accent-color);
         }
 
         .user-dropdown {
@@ -148,6 +177,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
         }
 
         .user-avatar:hover .user-dropdown {
@@ -159,16 +189,19 @@
             padding: 0.5rem 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
         }
 
         .dropdown-item:hover {
-            background-color: rgba(139, 90, 43, 0.1);
+            background-color: rgba(46, 139, 87, 0.3);
+            color: var(--accent-color);
         }
 
         .dropdown-divider {
             height: 1px;
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: var(--accent-color);
             margin: 0.5rem 0;
+            opacity: 0.3;
         }
 
         .theme-toggle {
@@ -176,26 +209,45 @@
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
-            color: var(--text-color);
+            color: var(--accent-color);
             margin-left: 1rem;
         }
 
         .page-header {
-            padding: 120px 0 60px;
+            padding: 150px 0 80px;
             text-align: center;
-            background: linear-gradient(rgba(139, 90, 43, 0.1), rgba(85, 107, 47, 0.1));
+            background: linear-gradient(rgba(85, 107, 47, 0.8), rgba(47, 79, 79, 0.8));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.3;
         }
 
         .page-header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 0 0 10px var(--accent-color);
+            letter-spacing: 2px;
         }
 
         .page-header p {
-            color: var(--text-light);
+            opacity: 0.9;
             max-width: 700px;
             margin: 0 auto;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
         }
 
         .page-content {
@@ -208,87 +260,171 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto 3rem;
+            padding: 2rem;
+            background-color: rgba(58, 95, 95, 0.7);
+            border-radius: 15px;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow);
         }
 
         .penpal-intro h2 {
-            color: var(--primary-color);
+            color: var(--accent-color);
             margin-bottom: 1rem;
+            font-size: 2.2rem;
+            font-family: 'Cinzel Decorative', cursive;
         }
 
-        .penpal-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .penpal-intro p {
+            font-family: 'Merriweather', serif;
+            line-height: 1.8;
         }
 
-        .feature-card {
+        .penpal-types {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .penpal-tab {
+            padding: 0.8rem 1.8rem;
             background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            text-align: center;
-            border-top: 5px solid var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        .penpal-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(210, 105, 30, 0.3), transparent);
+            transition: 0.5s;
         }
 
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
+        .penpal-tab:hover::before {
+            left: 100%;
+        }
+
+        .penpal-tab.active, .penpal-tab:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .penpal-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .penpal-content.active {
+            display: block;
         }
 
         .penpal-profiles {
-            background-color: var(--card-bg);
+            background-color: rgba(58, 95, 95, 0.8);
             border-radius: 15px;
             padding: 2rem;
             box-shadow: var(--shadow);
             margin-bottom: 3rem;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--primary-color);
+            color: var(--accent-color);
             text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
         }
 
         .profiles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .profile-card {
-            background-color: var(--bg-color);
+            background-color: var(--card-bg);
             border-radius: 10px;
             padding: 1.5rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .profile-card:hover::before {
+            opacity: 1;
         }
 
         .profile-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.5);
         }
 
         .profile-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .profile-avatar {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            background-color: var(--primary-color);
-            margin-right: 1rem;
+            background-color: var(--bg-color);
+            margin-right: 1.5rem;
             overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--primary-color);
         }
 
         .profile-avatar img {
@@ -298,13 +434,24 @@
         }
 
         .profile-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+            font-family: 'Cinzel', serif;
         }
 
         .profile-info p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        .penpal-icon {
+            margin-right: 8px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
         }
 
         .profile-details {
@@ -312,23 +459,34 @@
         }
 
         .profile-details p {
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Merriweather', serif;
         }
 
-        .interests {
+        .penpal-traits {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
         }
 
-        .interest-tag {
-            background-color: rgba(139, 90, 43, 0.1);
-            color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
+        .penpal-trait {
+            background-color: rgba(46, 139, 87, 0.3);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            border: 1px solid var(--border-color);
+        }
+
+        .penpal-trait i {
+            margin-right: 8px;
+            color: var(--accent-color);
         }
 
         .profile-actions {
@@ -337,7 +495,7 @@
         }
 
         .btn {
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
@@ -345,82 +503,159 @@
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
             color: white;
-            border: 2px solid var(--primary-color);
+            border: 1px solid var(--accent-color);
+            text-shadow: 0 0 5px white;
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
         }
 
         .btn-primary:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(139, 90, 43, 0.1);
+            background-color: rgba(46, 139, 87, 0.2);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.2);
         }
 
         .penpal-form {
-            background-color: var(--card-bg);
+            background-color: rgba(58, 95, 95, 0.8);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
             max-width: 800px;
             margin: 0 auto;
+            border: 1px solid var(--accent-color);
+            backdrop-filter: blur(5px);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
         }
 
         .form-control {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 1rem;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            background-color: var(--bg-color);
+            background-color: rgba(47, 79, 79, 0.7);
             color: var(--text-color);
             font-size: 1rem;
+            font-family: 'Merriweather', serif;
+            transition: all 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.3);
         }
 
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D2691E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
         }
 
         .form-actions {
             display: flex;
             justify-content: center;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .penpal-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .penpal-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: rgba(47, 79, 79, 0.5);
+        }
+
+        .penpal-option:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .penpal-option.selected {
+            border-color: var(--accent-color);
+            background-color: rgba(46, 139, 87, 0.3);
+            box-shadow: 0 0 15px rgba(46, 139, 87, 0.5);
+        }
+
+        .penpal-option i {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        .penpal-option span {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+        }
+
+        .letter-preview {
+            background-color: var(--paper-bg);
+            color: var(--ink-color);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .letter-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
         }
 
         footer {
-            background-color: var(--card-bg);
+            background-color: rgba(47, 79, 79, 0.9);
             padding: 3rem 2rem;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 -5px 20px rgba(46, 139, 87, 0.2);
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-container {
@@ -428,67 +663,74 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-logo-bubble {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--accent-color);
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
         }
 
         .footer-logo-text {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--accent-color);
+            font-family: 'Cinzel Decorative', cursive;
         }
 
         .footer-about p {
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-family: 'Merriweather', serif;
+            line-height: 1.7;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            background-color: rgba(139, 90, 43, 0.1);
+            background-color: rgba(46, 139, 87, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-color);
+            color: var(--accent-color);
             transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .social-link:hover {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.5);
         }
 
         .footer-links h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            font-family: 'Cinzel', serif;
         }
 
         .footer-links ul {
@@ -496,38 +738,80 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-light);
             transition: color 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: block;
+            padding: 0.3rem 0;
         }
 
         .footer-links a:hover {
-            color: var(--primary-color);
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
         }
 
         .footer-contact p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
+            font-family: 'Merriweather', serif;
         }
 
         .contact-icon {
-            margin-right: 10px;
-            color: var(--primary-color);
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
         }
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
+            font-family: 'Cinzel', serif;
+            color: var(--text-light);
         }
 
+        /* Penpal-themed animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes stamp {
+            0% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .stamp {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            opacity: 0.8;
+            animation: stamp 0.5s ease-out;
+        }
+
+        /* Responsive design */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -535,7 +819,7 @@
             }
 
             .nav-links {
-                margin-top: 1rem;
+                margin-top: 1.5rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -545,11 +829,20 @@
             }
 
             .user-menu {
-                margin-top: 1rem;
+                margin-top: 1.5rem;
             }
 
             .page-header {
-                padding: 8rem 1rem 3rem;
+                padding: 9rem 1rem 4rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .penpal-types {
+                flex-direction: column;
+                align-items: center;
             }
 
             .profiles-grid {
@@ -558,14 +851,20 @@
 
             .profile-actions {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.8rem;
             }
 
             .btn {
                 width: 100%;
             }
+
+            .penpal-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -579,13 +878,15 @@
                 <li><a href="dating.html">Dating</a></li>
                 <li><a href="marriage.html">Marriage</a></li>
                 <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="penpal.html" class="active">Pen Pal</a></li>
+                <li><a href="fantasy.html">Fantasy</a></li>
+                <li><a href="polygamy.html">Polygamy</a></li>
+                <li><a href="penpal.html" class="active">Penpals</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             <div class="user-menu">
                 <button class="theme-toggle" id="themeToggle">🌓</button>
                 <div class="user-avatar">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="User Avatar">
                     <div class="user-dropdown">
                         <div class="dropdown-item">My Profile</div>
                         <div class="dropdown-item">Messages</div>
@@ -599,150 +900,508 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Pen Pal Connections</h1>
-            <p>Find letter-writing partners from around the world and experience the joy of handwritten correspondence</p>
+            <h1 class="floating">Penpal Connections</h1>
+            <p>Discover meaningful friendships across borders through the timeless art of letter writing</p>
         </div>
     </section>
 
     <main class="page-content">
         <div class="container">
-            <div class="penpal-intro">
-                <h2>Rediscover the Art of Letter Writing</h2>
-                <p>In our digital age, there's something magical about receiving a handwritten letter. Connect with pen pals who share your interests and exchange thoughts, stories, and cultures through the timeless tradition of letter writing.</p>
+            <div class="penpal-intro pulse">
+                <h2>Global Friendships, One Letter at a Time</h2>
+                <p>In our digital age, rediscover the joy of handwritten letters and deep, thoughtful connections. Whether you're seeking cultural exchange, language practice, or simply a kindred spirit to share life's stories, our penpal community bridges distances with every stamp.</p>
             </div>
 
-            <div class="penpal-features">
-                <div class="feature-card">
-                    <div class="feature-icon">✉️</div>
-                    <h3>Authentic Connections</h3>
-                    <p>Build meaningful relationships through thoughtful, handwritten letters that you'll treasure.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Cultural Exchange</h3>
-                    <p>Learn about different cultures and perspectives from pen pals around the world.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Improve Writing</h3>
-                    <p>Enhance your writing skills and express yourself more thoughtfully through letters.</p>
-                </div>
+            <div class="penpal-types">
+                <div class="penpal-tab active" data-penpal="all">All Penpals</div>
+                <div class="penpal-tab" data-penpal="international"><i class="fas fa-globe penpal-icon"></i> International</div>
+                <div class="penpal-tab" data-penpal="language"><i class="fas fa-language penpal-icon"></i> Language Exchange</div>
+                <div class="penpal-tab" data-penpal="thematic"><i class="fas fa-pen-fancy penpal-icon"></i> Thematic</div>
+                <div class="penpal-tab" data-penpal="vintage"><i class="fas fa-feather penpal-icon"></i> Vintage Correspondence</div>
             </div>
 
             <div class="penpal-profiles">
-                <h2 class="section-title">Featured Pen Pals</h2>
-                <div class="profiles-grid">
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Thomas">
+                <h2 class="section-title">Featured Penpals</h2>
+                
+                <!-- All Penpals Content -->
+                <div class="penpal-content active" id="all">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophie">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Sophie</h3>
+                                    <p><i class="fas fa-globe penpal-icon"></i> France • 28</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <h3>Thomas</h3>
-                                <p>Oxford, UK • 45 years</p>
+                            <div class="profile-details">
+                                <p>Parisian artist seeking penpals to exchange handmade postcards and stories about local art scenes. I include small sketches with every letter!</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-palette"></i> Artist</span>
+                                    <span class="penpal-trait"><i class="fas fa-book-open"></i> Literature</span>
+                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Postcards</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
                             </div>
                         </div>
-                        <div class="profile-details">
-                            <p>Looking for pen pals to exchange handwritten letters about literature, history, and life experiences. I enjoy collecting stamps and vintage postcards.</p>
-                            <div class="interests">
-                                <span class="interest-tag">Literature</span>
-                                <span class="interest-tag">History</span>
-                                <span class="interest-tag">Philately</span>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Carlos">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Carlos</h3>
+                                    <p><i class="fas fa-language penpal-icon"></i> Mexico • 35</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Looking for English speakers to practice with while helping you learn Spanish. I specialize in exchanging letters about local folklore and traditions.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
+                                    <span class="penpal-trait"><i class="fas fa-mountain"></i> Folklore</span>
+                                    <span class="penpal-trait"><i class="fas fa-pepper-hot"></i> Cooking</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
                             </div>
                         </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Aiko">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Aiko</h3>
+                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> Japan • 42</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Stationery enthusiast seeking fellow writers for thematic letter exchanges (seasonal, literary, philosophical). I include washi tape samples and tea bags!</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-tape"></i> Stationery</span>
+                                    <span class="penpal-trait"><i class="fas fa-leaf"></i> Tea Culture</span>
+                                    <span class="penpal-trait"><i class="fas fa-moon"></i> Thematic</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Eleanor">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Eleanor</h3>
+                                    <p><i class="fas fa-feather penpal-icon"></i> UK • 67</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Retired librarian practicing the nearly lost art of fountain pen correspondence. Seeking fellow vintage enthusiasts for proper letter-writing etiquette.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-feather-alt"></i> Fountain Pens</span>
+                                    <span class="penpal-trait"><i class="fas fa-history"></i> Vintage</span>
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Literature</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Emma">
+                <!-- International Penpals Content -->
+                <div class="penpal-content" id="international">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sophie">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Sophie</h3>
+                                    <p><i class="fas fa-globe penpal-icon"></i> France • 28</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <h3>Emma</h3>
-                                <p>Melbourne, Australia • 28 years</p>
+                            <div class="profile-details">
+                                <p>Parisian artist seeking penpals to exchange handmade postcards and stories about local art scenes. I include small sketches with every letter!</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-palette"></i> Artist</span>
+                                    <span class="penpal-trait"><i class="fas fa-book-open"></i> Literature</span>
+                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Postcards</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
                             </div>
                         </div>
-                        <div class="profile-details">
-                            <p>Stationery enthusiast looking for international pen pals to exchange letters, local snacks, and creative writing. I decorate my letters with washi tape and stickers!</p>
-                            <div class="interests">
-                                <span class="interest-tag">Stationery</span>
-                                <span class="interest-tag">Creative Writing</span>
-                                <span class="interest-tag">Travel</span>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Raj">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Raj</h3>
+                                    <p><i class="fas fa-globe penpal-icon"></i> India • 31</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Software engineer by day, amateur photographer by night. I exchange letters about daily life in Mumbai along with my latest film photography prints.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-camera"></i> Photography</span>
+                                    <span class="penpal-trait"><i class="fas fa-utensils"></i> Food Culture</span>
+                                    <span class="penpal-trait"><i class="fas fa-train"></i> Urban Life</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
                             </div>
                         </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Ingrid">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Ingrid</h3>
+                                    <p><i class="fas fa-globe penpal-icon"></i> Norway • 24</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>University student studying marine biology. I write about Nordic myths, fjord ecosystems, and include pressed flowers from my hikes in every letter.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-fish"></i> Marine Biology</span>
+                                    <span class="penpal-trait"><i class="fas fa-mountain"></i> Hiking</span>
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Mythology</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Carlos">
+                <!-- Language Exchange Content -->
+                <div class="penpal-content" id="language">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Carlos">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Carlos</h3>
+                                    <p><i class="fas fa-language penpal-icon"></i> Mexico • 35</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
-                                <h3>Carlos</h3>
-                                <p>Buenos Aires, Argentina • 32 years</p>
+                            <div class="profile-details">
+                                <p>Looking for English speakers to practice with while helping you learn Spanish. I specialize in exchanging letters about local folklore and traditions.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
+                                    <span class="penpal-trait"><i class="fas fa-mountain"></i> Folklore</span>
+                                    <span class="penpal-trait"><i class="fas fa-pepper-hot"></i> Cooking</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
                             </div>
                         </div>
-                        <div class="profile-details">
-                            <p>Teacher interested in cultural exchange through letters. I'll share stories about Argentine traditions, food, and daily life. Looking for long-term pen friendships.</p>
-                            <div class="interests">
-                                <span class="interest-tag">Culture</span>
-                                <span class="interest-tag">Language</span>
-                                <span class="interest-tag">Photography</span>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Yuki">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Yuki</h3>
+                                    <p><i class="fas fa-language penpal-icon"></i> Japan • 22</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Japanese literature student offering to help with Japanese language practice in exchange for English conversation. I include manga recommendations!</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Literature</span>
+                                    <span class="penpal-trait"><i class="fas fa-gamepad"></i> Anime/Manga</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
                             </div>
                         </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-secondary">View Profile</button>
-                            <button class="btn btn-primary">Connect</button>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Klaus">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Klaus</h3>
+                                    <p><i class="fas fa-language penpal-icon"></i> Germany • 40</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>High school teacher offering German language practice. I correct letters carefully and enjoy discussing European history and classical music.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-exchange-alt"></i> Language Exchange</span>
+                                    <span class="penpal-trait"><i class="fas fa-landmark"></i> History</span>
+                                    <span class="penpal-trait"><i class="fas fa-music"></i> Classical Music</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thematic Penpals Content -->
+                <div class="penpal-content" id="thematic">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Aiko">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Aiko</h3>
+                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> Japan • 42</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Stationery enthusiast seeking fellow writers for thematic letter exchanges (seasonal, literary, philosophical). I include washi tape samples and tea bags!</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-tape"></i> Stationery</span>
+                                    <span class="penpal-trait"><i class="fas fa-leaf"></i> Tea Culture</span>
+                                    <span class="penpal-trait"><i class="fas fa-moon"></i> Thematic</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Marcus">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Marcus</h3>
+                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> USA • 38</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Horror fiction writer looking for penpals to exchange letters in character as residents of a shared fictional town we build together through correspondence.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-book-dead"></i> Horror</span>
+                                    <span class="penpal-trait"><i class="fas fa-user-edit"></i> Roleplay</span>
+                                    <span class="penpal-trait"><i class="fas fa-quill"></i> Creative Writing</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Lena">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Lena</h3>
+                                    <p><i class="fas fa-pen-fancy penpal-icon"></i> Russia • 29</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Exchange letters about Soviet-era science fiction books, complete with vintage postage stamps and photocopies of rare book covers from my collection.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-rocket"></i> Sci-Fi</span>
+                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Philately</span>
+                                    <span class="penpal-trait"><i class="fas fa-history"></i> Retro</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vintage Correspondence Content -->
+                <div class="penpal-content" id="vintage">
+                    <div class="profiles-grid">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Eleanor">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Eleanor</h3>
+                                    <p><i class="fas fa-feather penpal-icon"></i> UK • 67</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Retired librarian practicing the nearly lost art of fountain pen correspondence. Seeking fellow vintage enthusiasts for proper letter-writing etiquette.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-feather-alt"></i> Fountain Pens</span>
+                                    <span class="penpal-trait"><i class="fas fa-history"></i> Vintage</span>
+                                    <span class="penpal-trait"><i class="fas fa-book"></i> Literature</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Arthur">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Arthur</h3>
+                                    <p><i class="fas fa-feather penpal-icon"></i> USA • 72</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Former diplomat who still corresponds using wax seals and proper letter formatting. Enjoy discussing geopolitics, vintage typewriters, and jazz history.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-seal"></i> Wax Seals</span>
+                                    <span class="penpal-trait"><i class="fas fa-keyboard"></i> Typewriters</span>
+                                    <span class="penpal-trait"><i class="fas fa-landmark"></i> History</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Margaret">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Margaret</h3>
+                                    <p><i class="fas fa-feather penpal-icon"></i> Australia • 60</p>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <p>Collector of vintage postcards seeking correspondents to exchange pre-1950s style letters using reproduction stationery and period-appropriate language.</p>
+                                <div class="penpal-traits">
+                                    <span class="penpal-trait"><i class="fas fa-stamp"></i> Vintage Postcards</span>
+                                    <span class="penpal-trait"><i class="fas fa-history"></i> Historical Recreation</span>
+                                    <span class="penpal-trait"><i class="fas fa-language"></i> Period Language</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-secondary">View Profile</button>
+                                <button class="btn btn-primary">Send Letter</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="penpal-form">
-                <h2 class="section-title">Find Your Perfect Pen Pal</h2>
+                <h2 class="section-title">Find Your Perfect Penpal</h2>
                 <form>
                     <div class="form-group">
-                        <label for="interests">What topics interest you?</label>
-                        <input type="text" id="interests" class="form-control" placeholder="e.g. Literature, Travel, Cooking">
+                        <label>Penpal Interests</label>
+                        <div class="penpal-options">
+                            <div class="penpal-option selected" data-penpal="all">
+                                <i class="fas fa-globe"></i>
+                                <span>All Types</span>
+                            </div>
+                            <div class="penpal-option" data-penpal="international">
+                                <i class="fas fa-passport"></i>
+                                <span>International</span>
+                            </div>
+                            <div class="penpal-option" data-penpal="language">
+                                <i class="fas fa-language"></i>
+                                <span>Language Exchange</span>
+                            </div>
+                            <div class="penpal-option" data-penpal="thematic">
+                                <i class="fas fa-pen-fancy"></i>
+                                <span>Thematic</span>
+                            </div>
+                            <div class="penpal-option" data-penpal="vintage">
+                                <i class="fas fa-feather-alt"></i>
+                                <span>Vintage</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="penpalAge">Age Preference</label>
+                            <select id="penpalAge" class="form-control">
+                                <option value="">Any Age</option>
+                                <option value="teens">Teens (13-19)</option>
+                                <option value="twenties">20s</option>
+                                <option value="thirties">30s</option>
+                                <option value="forties">40s</option>
+                                <option value="fifties">50s</option>
+                                <option value="sixties">60+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="penpalFrequency">Letter Frequency</label>
+                            <select id="penpalFrequency" class="form-control">
+                                <option value="">Any Frequency</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="biweekly">Bi-weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="bimonthly">Every 2 Months</option>
+                                <option value="quarterly">Quarterly</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label for="countries">Preferred countries (optional)</label>
-                        <input type="text" id="countries" class="form-control" placeholder="Any specific countries you're interested in?">
+                        <label for="letterSample">Sample Letter</label>
+                        <div class="letter-preview">
+                            <p>Dear Future Penpal,</p>
+                            <p>I'm excited to begin our correspondence! Tell me about your daily life, your dreams, and what makes your corner of the world special.</p>
+                            <p>I'll share my stories too, along with little surprises in each envelope.</p>
+                            <p>Looking forward to your reply,</p>
+                            <p>[Your Name]</p>
+                            <img src="https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" class="stamp" alt="Stamp">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="age-range">Preferred age range</label>
-                        <select id="age-range" class="form-control">
-                            <option value="">Any age</option>
-                            <option value="18-25">18-25</option>
-                            <option value="26-35">26-35</option>
-                            <option value="36-50">36-50</option>
-                            <option value="50+">50+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="letter-frequency">How often would you like to exchange letters?</label>
-                        <select id="letter-frequency" class="form-control">
-                            <option value="">Any frequency</option>
-                            <option value="weekly">Weekly</option>
-                            <option value="biweekly">Every 2 weeks</option>
-                            <option value="monthly">Monthly</option>
-                            <option value="quarterly">Every few months</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="about-you">Tell potential pen pals about yourself</label>
-                        <textarea id="about-you" class="form-control" placeholder="Share your interests, hobbies, and what you're looking for in a pen pal"></textarea>
-                    </div>
+
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Find Pen Pals</button>
+                        <button type="submit" class="btn btn-primary">Find My Penpal</button>
                     </div>
                 </form>
             </div>
@@ -754,82 +1413,91 @@
             <div class="footer-about">
                 <div class="footer-logo">
                     <div class="footer-logo-bubble">M</div>
-                    <span class="footer-logo-text">MetaDate</span>
+                    <div class="footer-logo-text">MetaDate</div>
                 </div>
-                <p>MetaDate is a futuristic dating platform that helps people connect in meaningful ways across various relationship types and preferences.</p>
+                <p>Where handwritten connections bridge continents. Our platform revives the art of letter writing in a digital age, creating meaningful global friendships.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">t</a>
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">ig</a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="fantasy.html">Fantasy</a></li>
+                    <li><a href="polygamy.html">Polygamy</a></li>
+                    <li><a href="penpal.html">Penpals</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h3>Categories</h3>
+                <h3>Penpal Resources</h3>
                 <ul>
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="religious.html">Religious</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="penpal.html">Pen Pal</a></li>
+                    <li><a href="#">Letter Writing Tips</a></li>
+                    <li><a href="#">International Postage Guide</a></li>
+                    <li><a href="#">Creative Envelope Ideas</a></li>
+                    <li><a href="#">Penpal Safety</a></li>
+                    <li><a href="#">Thematic Exchange Ideas</a></li>
+                    <li><a href="#">Vintage Correspondence</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h3>Contact Info</h3>
-                <p><span class="contact-icon">📧</span> support@metadate.com</p>
-                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
-                <p><span class="contact-icon">🏢</span> 123 Connection Way, San Francisco, CA</p>
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt contact-icon"></i> The Letter Exchange, Postal Lane</p>
+                <p><i class="fas fa-envelope contact-icon"></i> letters@metadate.penpal</p>
+                <p><i class="fas fa-phone contact-icon"></i> 1-800-PEN-PALS</p>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 MetaDate. All rights reserved.</p>
+            <p>&copy; 2023 MetaDate. All letters delivered with care. Stamped from our hearts to yours.</p>
         </div>
     </footer>
 
     <script>
         // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-
-        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
-        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
-
         themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
         });
 
-        // User dropdown functionality
-        const userAvatar = document.querySelector('.user-avatar');
-        
-        userAvatar.addEventListener('click', (e) => {
-            e.stopPropagation();
-            document.querySelector('.user-dropdown').style.opacity = '1';
-            document.querySelector('.user-dropdown').style.visibility = 'visible';
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        // Penpal tabs functionality
+        const penpalTabs = document.querySelectorAll('.penpal-tab');
+        const penpalContents = document.querySelectorAll('.penpal-content');
+
+        penpalTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                penpalTabs.forEach(t => t.classList.remove('active'));
+                penpalContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const penpalId = tab.getAttribute('data-penpal');
+                document.getElementById(penpalId).classList.add('active');
+            });
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            document.querySelector('.user-dropdown').style.opacity = '0';
-            document.querySelector('.user-dropdown').style.visibility = 'hidden';
-        });
-
-        // Form submission
-        document.querySelector('.penpal-form form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Pen pal search functionality would be implemented here with backend connection');
+        // Penpal options selection in form
+        const penpalOptions = document.querySelectorAll('.penpal-option');
+        penpalOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                penpalOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
         });
     </script>
 </body>

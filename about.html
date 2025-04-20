@@ -3,89 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - MetaDate</title>
+    <title>About Us - MetaDate 3000</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --accent-color: #FF9800;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #fff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --nav-bg: rgba(255, 255, 255, 0.9);
+            --primary-color: #00f7ff;
+            --secondary-color: #7b2dff;
+            --accent-color: #ff2d7b;
+            --text-color: #e0e0e0;
+            --bg-color: #0a0a1a;
+            --card-bg: #15152b;
+            --nav-bg: rgba(21, 21, 43, 0.95);
+            --shadow: 0 4px 30px rgba(0, 247, 255, 0.15);
+            --text-light: #a0a0c0;
+            --border-color: #252545;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --pulse-animation: pulse 2s infinite;
+            --float-animation: float 6s ease-in-out infinite;
+            --glow-text: 0 0 10px rgba(0, 247, 255, 0.7);
+            --glow-box: 0 0 20px rgba(0, 247, 255, 0.5);
         }
 
-        .dark-mode {
-            --primary-color: #1565C0;
-            --secondary-color: #0D47A1;
-            --accent-color: #FFA726;
-            --text-color: #f0f0f0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --nav-bg: rgba(30, 30, 30, 0.9);
+        .light-mode {
+            --primary-color: #7b2dff;
+            --secondary-color: #00a8ff;
+            --accent-color: #ff2d7b;
+            --text-color: #333;
+            --bg-color: #f0f5ff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 30px rgba(123, 45, 255, 0.15);
+            --text-light: #666;
+            --border-color: #e0e0f0;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --glow-text: 0 0 5px rgba(123, 45, 255, 0.5);
+            --glow-box: 0 0 10px rgba(123, 45, 255, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(123, 45, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 247, 255, 0.1) 0%, transparent 20%);
+            overflow-x: hidden;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: var(--glow-text);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Futuristic Header Styles */
         header {
             background-color: var(--nav-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .navbar {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 15px 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
+            letter-spacing: 1px;
         }
 
         .logo-bubble {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            animation: bounce 2s infinite;
+            animation: var(--float-animation);
+            box-shadow: var(--glow-box);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .logo-bubble::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes neon {
+            0%, 100% { text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color); }
+            50% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .nav-links {
@@ -94,7 +168,8 @@
         }
 
         .nav-links li {
-            margin-left: 1.5rem;
+            margin-left: 2rem;
+            position: relative;
         }
 
         .nav-links a {
@@ -102,27 +177,81 @@
             color: var(--text-color);
             font-weight: 500;
             padding: 0.5rem 1rem;
-            border-radius: 20px;
+            border-radius: 30px;
             transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover {
             background-color: var(--primary-color);
-            color: white;
+            color: #000;
+            box-shadow: var(--glow-box);
         }
 
         .nav-links a.active {
             background-color: var(--primary-color);
-            color: white;
+            color: #000;
+            box-shadow: var(--glow-box);
         }
 
-        .auth-buttons .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 70%;
+            left: 15%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
             text-decoration: none;
-            font-weight: 500;
-            margin-left: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-login {
@@ -133,40 +262,67 @@
 
         .btn-signup {
             background-color: var(--primary-color);
-            color: white;
+            color: #000;
             border: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
         }
 
         .btn-login:hover {
             background-color: var(--primary-color);
-            color: white;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
         }
 
         .btn-signup:hover {
             background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.3);
             border-color: var(--secondary-color);
         }
 
         .theme-toggle {
             background: none;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-color);
-            margin-left: 1rem;
+            margin-left: 1.5rem;
+            transition: transform 0.3s;
         }
 
+        .theme-toggle:hover {
+            transform: rotate(30deg) scale(1.1);
+            color: var(--primary-color);
+        }
+
+        /* Page Header */
         .page-header {
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 2rem 6rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(25, 118, 210, 0.1));
             position: relative;
             overflow: hidden;
+            background: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
+                        url('https://media.giphy.com/media/3o7TKAZnIu4w31OqmA/giphy.gif') no-repeat center center/cover;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.3;
+            z-index: 0;
         }
 
         .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            animation: neon 3s infinite;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             background-clip: text;
@@ -174,115 +330,214 @@
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
+            font-size: 1.5rem;
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
         }
 
+        /* About Section */
         .about-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
+            padding: 6rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2rem;
+            margin-bottom: 5rem;
+            font-size: 3rem;
             color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         .about-text h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: var(--primary-color);
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
         }
 
         .about-image {
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            height: 500px;
         }
 
         .about-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 247, 255, 0.1) 0%,
+                rgba(123, 45, 255, 0.1) 50%,
+                rgba(255, 45, 123, 0.1) 100%
+            );
+            z-index: 1;
+        }
+
+        /* Mission & Values */
         .mission-values {
             background-color: var(--card-bg);
-            padding: 3rem;
-            border-radius: 15px;
+            padding: 4rem;
+            border-radius: 20px;
             box-shadow: var(--shadow);
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
         .value-card {
-            padding: 2rem;
+            padding: 2.5rem;
             background-color: var(--bg-color);
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
             text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.5s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 247, 255, 0.2);
         }
 
         .value-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            animation: var(--float-animation);
         }
 
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Team Section */
         .team-section {
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
         .team-card {
             background-color: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
             text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 247, 255, 0.2);
         }
 
         .team-image {
-            height: 250px;
+            height: 350px;
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+
+        .team-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 60%,
+                rgba(0, 0, 0, 0.7)
+            );
         }
 
         .team-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .team-name {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
         }
@@ -290,124 +545,177 @@
         .team-position {
             color: var(--accent-color);
             font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .team-bio {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            line-height: 1.7;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-link {
-            width: 35px;
-            height: 35px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background-color: rgba(33, 150, 243, 0.1);
+            background-color: rgba(0, 247, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
             transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            font-size: 1.2rem;
         }
 
         .social-link:hover {
             background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: var(--glow-box);
         }
 
+        /* CTA Section */
         .cta-section {
             text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(25, 118, 210, 0.1));
-            border-radius: 15px;
-            margin-bottom: 4rem;
+            padding: 5rem 3rem;
+            background: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
+                        url('https://media.giphy.com/media/3o7TKUM3IgJBX2as9O/giphy.gif') no-repeat center center/cover;
+            border-radius: 20px;
+            margin-bottom: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            animation: neon 3s infinite;
         }
 
         .cta-section p {
             max-width: 700px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
+            margin: 0 auto 3rem;
+            font-size: 1.3rem;
+            opacity: 0.9;
         }
 
         .btn-cta {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 1rem 3rem;
             background-color: var(--primary-color);
-            color: white;
+            color: #000;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: var(--glow-box);
+            border: 2px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-cta:hover {
             background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 247, 255, 0.3);
+            border-color: var(--secondary-color);
         }
 
+        /* Footer */
         footer {
             background-color: var(--card-bg);
-            padding: 3rem 2rem;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+            padding: 5rem 2rem 2rem;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-logo-bubble {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 1rem;
+            box-shadow: var(--glow-box);
         }
 
         .footer-logo-text {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
         }
 
         .footer-about p {
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-light);
         }
 
         .footer-links h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
             color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--gradient);
         }
 
         .footer-links ul {
@@ -415,46 +723,115 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-light);
             transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-contact p {
-            margin-bottom: 1rem;
             display: flex;
             align-items: center;
         }
 
-        .contact-icon {
+        .footer-links a i {
             margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links a:hover {
             color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .contact-icon {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            min-width: 20px;
         }
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Futuristic Elements */
+        .holographic-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holographic-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 247, 255, 0.1) 0%,
+                rgba(123, 45, 255, 0.1) 50%,
+                rgba(255, 45, 123, 0.1) 100%
+            );
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .cyber-border {
+            position: relative;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color)) 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                margin-bottom: 3rem;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
-            .navbar {
+            nav {
                 flex-direction: column;
                 padding: 1rem;
             }
 
             .nav-links {
-                margin-top: 1rem;
+                margin-top: 1.5rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -464,217 +841,305 @@
             }
 
             .auth-buttons {
-                margin-top: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .page-header {
+                padding: 8rem 1rem 4rem;
             }
 
             .page-header h1 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1.2rem;
             }
 
-            .about-content {
+            .mission-values {
+                padding: 3rem 2rem;
+            }
+            
+            .values-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+        }
 
-            .about-image {
-                order: -1;
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .value-card, .team-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .btn-cta {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <div class="logo-bubble">M</div>
-                <span>MetaDate</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="dating.html">Dating</a></li>
-                <li><a href="marriage.html">Marriage</a></li>
-                <li><a href="friendship.html">Friendship</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-login">Login</a>
-                <a href="signup.html" class="btn btn-signup">Sign Up</a>
-                <button class="theme-toggle" id="themeToggle">🌓</button>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-bubble">M</div>
+                    <span>MetaDate 3000</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dating.html">Dating</a></li>
+                    <li><a href="marriage.html">Marriage</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">
+                        <i class="fas fa-user-astronaut"></i> LOGIN
+                    </a>
+                    <a href="signup.html" class="btn btn-signup">
+                        <i class="fas fa-rocket"></i> SIGN UP
+                    </a>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-adjust"></i>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
 
     <section class="page-header">
-        <h1>Our Story</h1>
-        <p>Discover the people and values behind MetaDate - the platform revolutionizing how people connect.</p>
+        <h1>OUR QUANTUM STORY</h1>
+        <p>Discover the visionaries and quantum technology behind MetaDate 3000 - the platform revolutionizing connections across dimensions.</p>
     </section>
 
     <section class="about-section">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Who We Are</h2>
-                <p>MetaDate was founded in 2020 with a simple mission: to create meaningful connections in a digital world. What began as a small startup has grown into a global platform helping millions find love, friendship, and everything in between.</p>
-                <p>Our team of relationship experts, technologists, and designers work tirelessly to create an experience that feels both modern and human. We believe technology should enhance relationships, not replace the magic of real connection.</p>
-                <p>Unlike other platforms, we focus on quality over quantity, using smart matching algorithms and verified profiles to create safer, more meaningful interactions.</p>
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>WHO WE ARE</h2>
+                    <p>MetaDate 3000 was founded in 3025 with a radical vision: to transcend traditional dating boundaries using quantum entanglement technology. What began as a research project in the Martian Colonies has grown into the universe's most advanced connection platform.</p>
+                    <p>Our team of quantum physicists, neuroscientists, and AI specialists have developed proprietary technology that analyzes compatibility across 11 dimensions of human consciousness. We've moved beyond simple personality matching to create bonds that resonate at the quantum level.</p>
+                    <p>With over 47 million successful matches across parallel realities, we're redefining what it means to find your perfect entanglement.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://media.giphy.com/media/3o7TKAZnIu4w31OqmA/giphy.gif" alt="MetaDate 3000 quantum team">
+                </div>
             </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="MetaDate team working together">
-            </div>
-        </div>
 
-        <div class="mission-values">
-            <h2 class="section-title">Our Mission & Values</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">💖</div>
-                    <h3>Authentic Connections</h3>
-                    <p>We prioritize real, meaningful relationships over superficial interactions.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🔒</div>
-                    <h3>Trust & Safety</h3>
-                    <p>Your security is our top priority with robust verification and privacy controls.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌱</div>
-                    <h3>Continuous Innovation</h3>
-                    <p>We're always evolving to create better ways for people to connect.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌎</div>
-                    <h3>Inclusivity</h3>
-                    <p>Everyone deserves love and connection, regardless of background or identity.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="team-section">
-            <h2 class="section-title">Meet The Team</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <div class="team-info">
-                        <h3 class="team-name">Alex Johnson</h3>
-                        <div class="team-position">Founder & CEO</div>
-                        <p class="team-bio">Relationship expert with 15 years in the dating industry, passionate about creating technology that brings people together.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">in</a>
-                            <a href="#" class="social-link">t</a>
+            <div class="mission-values">
+                <h2 class="section-title">OUR QUANTUM MISSION</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <img src="https://media.giphy.com/media/LnU9yQkPfHZ3OqQNkA/giphy.gif" alt="Neural Matching" style="width: 60px; height: 60px; border-radius: 50%;">
                         </div>
+                        <h3>NEURAL ENTANGLEMENT</h3>
+                        <p>We create bonds that resonate at the quantum level, ensuring matches that transcend space and time.</p>
                     </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <div class="team-info">
-                        <h3 class="team-name">Sarah Chen</h3>
-                        <div class="team-position">Chief Technology Officer</div>
-                        <p class="team-bio">Tech visionary who believes algorithms should understand the human heart as well as they understand data.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">in</a>
-                            <a href="#" class="social-link">t</a>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <img src="https://media.giphy.com/media/J2awouDsf03RtO6QKc/giphy.gif" alt="Biometric" style="width: 60px; height: 60px; border-radius: 50%;">
                         </div>
+                        <h3>QUANTUM SECURITY</h3>
+                        <p>Your consciousness data is protected by unbreakable quantum encryption across all realities.</p>
                     </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <div class="team-info">
-                        <h3 class="team-name">Michael Rodriguez</h3>
-                        <div class="team-position">Head of Design</div>
-                        <p class="team-bio">Creates experiences that feel as warm and inviting as meeting someone special for the first time.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">in</a>
-                            <a href="#" class="social-link">t</a>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <img src="https://media.giphy.com/media/Yq5nsYQzHXz16/giphy.gif" alt="Innovation" style="width: 60px; height: 60px; border-radius: 50%;">
                         </div>
+                        <h3>TEMPORAL INNOVATION</h3>
+                        <p>We continuously evolve our algorithms by analyzing successful relationships from future timelines.</p>
                     </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
-                    <div class="team-info">
-                        <h3 class="team-name">Emma Wilson</h3>
-                        <div class="team-position">Community Manager</div>
-                        <p class="team-bio">Ensures every member feels welcomed, supported, and part of our growing community.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link">in</a>
-                            <a href="#" class="social-link">t</a>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <img src="https://media.giphy.com/media/3o7TKUM3IgJBX2as9O/giphy.gif" alt="Inclusivity" style="width: 60px; height: 60px; border-radius: 50%;">
                         </div>
+                        <h3>OMNIVERSAL INCLUSION</h3>
+                        <p>All sentient beings across dimensions deserve meaningful connection, regardless of form or origin.</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="cta-section">
-            <h2>Ready to Find Your Connection?</h2>
-            <p>Join millions of others who've found meaningful relationships through MetaDate.</p>
-            <a href="signup.html" class="btn-cta">Create Your Profile</a>
+            <div class="team-section">
+                <h2 class="section-title">QUANTUM CREATORS</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://media.giphy.com/media/3o7TKIPvY5sXhVvV7q/giphy.gif');"></div>
+                        <div class="team-info">
+                            <h3 class="team-name">ZX-742</h3>
+                            <div class="team-position">QUANTUM FOUNDER</div>
+                            <p class="team-bio">A being of pure energy from Dimension X-742 who first conceived of multidimensional matching while observing human mating rituals.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-galactic-republic"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-reddit-alien"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://media.giphy.com/media/3o7TKr2vF8VE8K5g5O/giphy.gif');"></div>
+                        <div class="team-info">
+                            <h3 class="team-name">NOVA-9</h3>
+                            <div class="team-position">CHIEF AI ARCHITECT</div>
+                            <p class="team-bio">Sentient quantum AI that evolved beyond its original programming to understand the poetry of human connection.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fas fa-robot"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-brain"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://media.giphy.com/media/3o7TKsQ8K2I9Qk5W3K/giphy.gif');"></div>
+                        <div class="team-info">
+                            <h3 class="team-name">DR. ORION</h3>
+                            <div class="team-position">TEMPORAL SCIENTIST</div>
+                            <p class="team-bio">Pioneer in chrono-compatibility theory who discovered how to measure relationship success across alternate futures.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fas fa-atom"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-clock"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://media.giphy.com/media/3o7TKsQ8RUL8qVYbYY/giphy.gif');"></div>
+                        <div class="team-info">
+                            <h3 class="team-name">LYRA</h3>
+                            <div class="team-position">CONNECTION AMBASSADOR</div>
+                            <p class="team-bio">Hybrid human-neural network interface who ensures every interaction feels authentically warm despite the advanced technology.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="social-link"><i class="fas fa-network-wired"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>READY FOR QUANTUM CONNECTION?</h2>
+                <p>Join millions of satisfied users across the multiverse who have found their perfect entanglement.</p>
+                <a href="signup.html" class="btn-cta">
+                    <i class="fas fa-user-astronaut"></i> ACTIVATE PROFILE
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <div class="footer-logo-bubble">M</div>
-                    <span class="footer-logo-text">MetaDate</span>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-bubble">M</div>
+                        <span class="footer-logo-text">MetaDate 3000</span>
+                    </div>
+                    <p>The future of relationships powered by quantum computing, neural networks, and interdimensional technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
                 </div>
-                <p>MetaDate is a premium dating platform that helps people find meaningful connections and lasting relationships.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">t</a>
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">ig</a>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="special-needs.html"><i class="fas fa-universal-access"></i> Special Needs</a></li>
+                        <li><a href="polygamy.html"><i class="fas fa-users"></i> Polygamy</a></li>
+                        <li><a href="pets.html"><i class="fas fa-paw"></i> Pet Companions</a></li>
+                        <li><a href="fantasy.html"><i class="fas fa-dragon"></i> Fantasy Realms</a></li>
+                        <li><a href="dating.html"><i class="fas fa-heart"></i> Quantum Dating</a></li>
+                        <li><a href="marriage.html"><i class="fas fa-ring"></i> Temporal Marriage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><span class="contact-icon"><i class="fas fa-envelope"></i></span> contact@metadate3000.com</p>
+                    <p><span class="contact-icon"><i class="fas fa-phone-alt"></i></span> +1 (555) 3000-2025</p>
+                    <p><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> Quantum Plaza, Mars Colony 1</p>
+                    <p><span class="contact-icon"><i class="fas fa-globe"></i></span> Earth-616, Andromeda Sector</p>
                 </div>
             </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="settings.html">Settings</a></li>
-                    <li><a href="subscription.html">Subscription</a></li>
-                </ul>
+            <div class="copyright">
+                <p>&copy; 3025 MetaDate 3000 Corporation. All rights reserved across all dimensions.</p>
             </div>
-            <div class="footer-links">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="religious.html">Religious</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="international.html">International</a></li>
-                    <li><a href="special.html">Special Needs</a></li>
-                    <li><a href="polygamy.html">Polygamy</a></li>
-                    <li><a href="pets.html">Pets</a></li>
-                    <li><a href="fantasy.html">Fantasy</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Info</h3>
-                <p><span class="contact-icon">📧</span> support@metadate.com</p>
-                <p><span class="contact-icon">📞</span> +1 (555) 123-4567</p>
-                <p><span class="contact-icon">🏢</span> 123 Connection St, Heart City, 10001</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 MetaDate. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
         // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
+        const currentTheme = localStorage.getItem('theme') || 'dark';
 
-        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
-        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
+        document.body.classList.toggle('light-mode', currentTheme === 'light');
+        themeToggle.innerHTML = currentTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
 
         themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            document.body.classList.toggle('light-mode');
+            const newTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
             localStorage.setItem('theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+            themeToggle.innerHTML = newTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Glow effect for interactive elements
+        document.querySelectorAll('.btn, .value-card, .team-card, .nav-links a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.boxShadow = `0 0 20px ${el.classList.contains('btn-primary') ? 'rgba(0, 247, 255, 0.7)' : 
+                                    el.classList.contains('btn-accent') ? 'rgba(255, 45, 123, 0.7)' : 
+                                    'rgba(123, 45, 255, 0.5)'}`;
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.boxShadow = '';
+            });
+        });
+
+        // AI voice greeting
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('AI Voice: Welcome to MetaDate 3000. Your perfect quantum match awaits.');
+            }, 2000);
         });
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaDate - Futuristic Dating Platform</title>
+    <title>MetaDate - Find Your Perfect Match in 3025</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
@@ -18,8 +18,8 @@
             --text-light: #777;
             --border-color: #eee;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --neon-glow: 0 0 10px rgba(110, 72, 170, 0.7), 0 0 20px rgba(157, 80, 187, 0.5);
-            --futuristic-font: 'Orbitron', 'Arial', sans-serif;
+            --neon-glow: 0 0 10px rgba(110, 72, 170, 0.8);
+            --hologram-opacity: 0.7;
         }
 
         .dark-mode {
@@ -33,10 +33,9 @@
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             --text-light: #aaa;
             --border-color: #333;
-            --neon-glow: 0 0 15px rgba(157, 80, 187, 0.8), 0 0 30px rgba(110, 72, 170, 0.6);
+            --neon-glow: 0 0 15px rgba(157, 80, 187, 0.9);
+            --hologram-opacity: 0.9;
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
 
         * {
             margin: 0;
@@ -45,17 +44,17 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            transition: background-color 1s ease, color 1s ease;
+            transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo, .btn {
-            font-family: var(--futuristic-font);
-            letter-spacing: 1px;
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
         }
 
         .container {
@@ -73,7 +72,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(110, 72, 170, 0.2);
+            border-bottom: 1px solid rgba(157, 80, 187, 0.3);
         }
 
         nav {
@@ -91,6 +90,11 @@
             color: var(--primary-color);
             text-decoration: none;
             text-shadow: var(--neon-glow);
+            transition: all 0.5s ease;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
         }
 
         .logo-bubble {
@@ -105,25 +109,23 @@
             color: white;
             font-weight: bold;
             animation: float 3s ease-in-out infinite, pulse 2s infinite;
-            box-shadow: var(--neon-glow);
+            box-shadow: 0 0 10px var(--primary-color);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: var(--neon-glow); }
-            50% { box-shadow: 0 0 20px rgba(110, 72, 170, 0.9), 0 0 40px rgba(157, 80, 187, 0.7); }
+            0%, 100% { box-shadow: 0 0 10px var(--primary-color); }
+            50% { box-shadow: 0 0 20px var(--primary-color); }
         }
 
         @keyframes hologram {
-            0% { opacity: 0.8; transform: translateY(0) scale(1); }
-            25% { opacity: 0.9; transform: translateY(-5px) scale(1.01); }
-            50% { opacity: 0.85; transform: translateY(0) scale(0.99); }
-            75% { opacity: 0.95; transform: translateY(5px) scale(1.02); }
-            100% { opacity: 0.8; transform: translateY(0) scale(1); }
+            0% { opacity: var(--hologram-opacity); }
+            50% { opacity: calc(var(--hologram-opacity) - 0.2); }
+            100% { opacity: var(--hologram-opacity); }
         }
 
         .nav-links {
@@ -164,7 +166,6 @@
 
         .nav-links a:hover {
             color: var(--primary-color);
-            text-shadow: 0 0 5px rgba(110, 72, 170, 0.5);
         }
 
         .user-menu {
@@ -185,13 +186,13 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
-            transition: transform 0.3s ease;
-            box-shadow: var(--neon-glow);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
         }
 
         .user-avatar:hover {
             transform: scale(1.1);
-            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px var(--primary-color);
         }
 
         .user-dropdown {
@@ -206,8 +207,8 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(110, 72, 170, 0.3);
-            z-index: 1001;
+            border: 1px solid rgba(157, 80, 187, 0.3);
+            backdrop-filter: blur(5px);
         }
 
         .user-avatar:hover .user-dropdown {
@@ -220,23 +221,16 @@
             padding: 0.5rem 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .dropdown-item i {
-            margin-right: 10px;
-            color: var(--primary-color);
         }
 
         .dropdown-item:hover {
             background-color: rgba(110, 72, 170, 0.1);
-            padding-left: 1.8rem;
+            color: var(--primary-color);
         }
 
         .dropdown-divider {
             height: 1px;
-            background-color: rgba(110, 72, 170, 0.2);
+            background-color: var(--border-color);
             margin: 0.5rem 0;
         }
 
@@ -247,21 +241,12 @@
             cursor: pointer;
             color: var(--text-color);
             margin-left: 1rem;
-            transition: transform 0.5s ease, text-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s ease;
+            text-shadow: var(--neon-glow);
         }
 
         .theme-toggle:hover {
-            transform: rotate(180deg) scale(1.1);
-            text-shadow: var(--neon-glow);
-            background: rgba(110, 72, 170, 0.1);
+            transform: rotate(30deg) scale(1.2);
         }
 
         .auth-buttons {
@@ -281,7 +266,6 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .btn::before {
@@ -301,7 +285,7 @@
             background-color: var(--primary-color);
             color: white;
             border: 2px solid var(--primary-color);
-            box-shadow: var(--neon-glow);
+            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
         }
 
         .btn-secondary {
@@ -314,12 +298,18 @@
             background-color: var(--accent-color);
             color: white;
             border: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-primary:hover::before, .btn-accent:hover::before {
+            opacity: 1;
         }
 
         .btn-primary:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), var(--neon-glow);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px var(--primary-color);
+            border-color: var(--secondary-color);
         }
 
         .btn-secondary:hover {
@@ -328,14 +318,11 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-secondary:hover::before {
-            opacity: 0.1;
-        }
-
         .btn-accent:hover {
             background-color: #ff5252;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent-color);
+            border-color: #ff5252;
         }
 
         /* Futuristic Hero Section */
@@ -344,7 +331,7 @@
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/l0HU7JI1AcvTXQNqo/giphy.gif') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif') no-repeat center center/cover;
             color: white;
             position: relative;
             text-align: center;
@@ -359,7 +346,7 @@
             width: 100%;
             height: 100%;
             background: var(--gradient);
-            opacity: 0.5;
+            opacity: 0.3;
             z-index: 1;
         }
 
@@ -370,36 +357,38 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif') center/cover;
-            opacity: 0.2;
-            z-index: 0;
+            background: url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') center/cover;
+            opacity: 0.1;
+            z-index: 2;
+            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             animation: fadeIn 1s ease, textGlow 2s infinite alternate;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         @keyframes textGlow {
-            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-            to { text-shadow: 0 0 20px rgba(157, 80, 187, 0.8), 0 0 30px rgba(255, 255, 255, 0.6); }
+            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+            to { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px var(--primary-color); }
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeIn 1.5s ease;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
         .hero-buttons {
@@ -421,7 +410,6 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            overflow: hidden;
         }
 
         .features::before {
@@ -431,8 +419,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif') center/cover;
-            opacity: 0.05;
+            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
+            opacity: 0.03;
             z-index: -1;
         }
 
@@ -456,6 +444,14 @@
             height: 3px;
             background: var(--gradient);
             border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .section-title:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .features-grid {
@@ -470,11 +466,10 @@
             padding: 2rem;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(110, 72, 170, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            border: 1px solid rgba(157, 80, 187, 0.2);
         }
 
         .feature-card::before {
@@ -484,19 +479,24 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(110, 72, 170, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-            transform: rotate(45deg);
-            z-index: -1;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(157, 80, 187, 0.1)
+            );
+            transform: rotate(30deg);
             transition: all 0.5s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), var(--neon-glow);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(157, 80, 187, 0.2);
         }
 
         .feature-card:hover::before {
-            transform: rotate(45deg) translate(-20px, 20px);
+            transform: rotate(30deg) translate(20%, 20%);
         }
 
         .feature-icon {
@@ -510,22 +510,28 @@
             margin: 0 auto 1.5rem;
             color: white;
             font-size: 2rem;
-            box-shadow: var(--neon-glow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
         }
 
         .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(15deg);
-            animation: pulse 1.5s infinite;
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 25px var(--primary-color);
         }
 
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
+            transition: all 0.3s ease;
         }
 
-        /* Testimonials Section */
+        .feature-card:hover .feature-title {
+            color: var(--secondary-color);
+            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
+        }
+
+        /* Futuristic Testimonials Section */
         .testimonials {
             padding: 5rem 2rem;
             background-color: var(--card-bg);
@@ -540,7 +546,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/l0HU20BZ6LbSEITza/giphy.gif') center/cover;
+            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
             opacity: 0.05;
             z-index: 0;
         }
@@ -563,13 +569,30 @@
             border-radius: 15px;
             padding: 2rem;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(110, 72, 170, 0.2);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(157, 80, 187, 0.2);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+            transition: all 0.3s ease;
         }
 
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card:hover::before {
+            width: 10px;
         }
 
         .testimonial-text {
@@ -600,23 +623,29 @@
             background-color: var(--primary-color);
             margin-right: 1rem;
             overflow: hidden;
+            transition: all 0.3s ease;
             box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+        }
+
+        .testimonial-card:hover .author-avatar {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--primary-color);
         }
 
         .author-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover .author-avatar img {
-            transform: scale(1.1);
         }
 
         .author-info h4 {
             color: var(--primary-color);
             margin-bottom: 0.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .author-info h4 {
+            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
         }
 
         .author-info p {
@@ -624,13 +653,12 @@
             font-size: 0.9rem;
         }
 
-        /* How It Works Section */
+        /* Futuristic How It Works Section */
         .how-it-works {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            overflow: hidden;
         }
 
         .how-it-works::before {
@@ -640,8 +668,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif') center/cover;
-            opacity: 0.05;
+            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
+            opacity: 0.03;
             z-index: -1;
         }
 
@@ -660,17 +688,11 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            padding: 2rem;
-            border-radius: 15px;
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(110, 72, 170, 0.2);
             transition: all 0.3s ease;
         }
 
         .step:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .step-number {
@@ -685,19 +707,24 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1.5rem;
-            box-shadow: var(--neon-glow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
         }
 
         .step:hover .step-number {
-            transform: scale(1.1) rotate(15deg);
-            animation: pulse 1.5s infinite;
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 25px var(--primary-color);
         }
 
         .step-title {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-title {
+            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
         }
 
         .steps::before {
@@ -709,14 +736,26 @@
             height: 3px;
             background: var(--gradient);
             z-index: 0;
-            opacity: 0.3;
+            transition: all 0.3s ease;
         }
 
-        /* CTA Section */
+        .steps:hover::before {
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+            background-size: 200% 100%;
+            animation: gradientFlow 2s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Futuristic CTA Section */
         .cta-section {
             padding: 5rem 2rem;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://media.giphy.com/media/l0HU7rTD04iQnskxy/giphy.gif') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif') no-repeat center center/cover;
             color: white;
             position: relative;
             overflow: hidden;
@@ -734,11 +773,25 @@
             z-index: 1;
         }
 
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') center/cover;
+            opacity: 0.1;
+            z-index: 2;
+            pointer-events: none;
+        }
+
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             position: relative;
-            z-index: 2;
+            z-index: 3;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             animation: textGlow 2s infinite alternate;
         }
 
@@ -748,14 +801,14 @@
             font-size: 1.1rem;
             opacity: 0.9;
             position: relative;
-            z-index: 2;
+            z-index: 3;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
-        /* Categories Section */
+        /* Futuristic Categories Section */
         .categories {
             padding: 80px 0;
             position: relative;
-            overflow: hidden;
         }
 
         .categories::before {
@@ -765,8 +818,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif') center/cover;
-            opacity: 0.05;
+            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
+            opacity: 0.03;
             z-index: -1;
         }
 
@@ -785,7 +838,7 @@
             text-decoration: none;
             color: var(--text-color);
             position: relative;
-            border: 1px solid rgba(110, 72, 170, 0.2);
+            border: 1px solid rgba(157, 80, 187, 0.2);
         }
 
         .category-card::before {
@@ -806,19 +859,19 @@
         }
 
         .category-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), var(--neon-glow);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .category-card img {
             width: 100%;
             height: 150px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: all 0.5s ease;
         }
 
         .category-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .category-info {
@@ -830,11 +883,11 @@
         .category-info h3 {
             margin-bottom: 10px;
             color: var(--primary-color);
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .category-card:hover .category-info h3 {
-            color: var(--secondary-color);
+            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
         }
 
         .category-info p {
@@ -849,7 +902,7 @@
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
-            border-top: 1px solid rgba(110, 72, 170, 0.2);
+            border-top: 1px solid rgba(157, 80, 187, 0.3);
         }
 
         footer::before {
@@ -859,8 +912,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif') center/cover;
-            opacity: 0.05;
+            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
+            opacity: 0.03;
             z-index: 0;
         }
 
@@ -892,7 +945,7 @@
             color: white;
             font-weight: bold;
             font-size: 0.8rem;
-            box-shadow: var(--neon-glow);
+            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
             animation: pulse 2s infinite;
         }
 
@@ -923,20 +976,58 @@
             justify-content: center;
             color: var(--primary-color);
             transition: all 0.3s ease;
-            border: 1px solid rgba(110, 72, 170, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
         .social-link:hover {
-            background-color: var(--primary-color);
+            background-color: transparent;
             color: white;
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: var(--neon-glow);
+            transform: translateY(-3px) rotate(10deg);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
         }
 
         .footer-links h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
             color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-links h3:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .footer-links ul {
@@ -945,27 +1036,32 @@
 
         .footer-links li {
             margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 15px;
-        }
-
-        .footer-links li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
         }
 
         .footer-links a {
             text-decoration: none;
             color: var(--text-color);
             transition: all 0.3s ease;
-            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
         }
 
         .footer-links a:hover {
             color: var(--primary-color);
-            transform: translateX(5px);
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .footer-contact p {
@@ -977,20 +1073,52 @@
         .contact-icon {
             margin-right: 10px;
             color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact p:hover .contact-icon {
+            transform: scale(1.2) rotate(10deg);
+            text-shadow: 0 0 5px var(--primary-color);
         }
 
         .copyright {
             text-align: center;
             margin-top: 3rem;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(110, 72, 170, 0.2);
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Futuristic Theme Transition */
-        .theme-transition {
+        /* Futuristic Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+        }
+
+        /* Futuristic Mode Transition */
+        .mode-transition {
             position: fixed;
             top: 0;
             left: 0;
@@ -998,13 +1126,11 @@
             height: 100%;
             background: var(--gradient);
             z-index: 9999;
-            opacity: 0;
+            transform: scale(0);
+            border-radius: 50%;
+            opacity: 0.9;
             pointer-events: none;
-            transition: opacity 0.8s ease;
-        }
-
-        .theme-transition.active {
-            opacity: 1;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Responsive Styles */
@@ -1053,45 +1179,14 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Futuristic Floating Elements */
-        .floating-element {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(110, 72, 170, 0.3);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* Futuristic Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-color);
-        }
     </style>
 </head>
 <body>
-    <!-- Theme Transition Overlay -->
-    <div class="theme-transition" id="themeTransition"></div>
+    <!-- Futuristic Mode Transition Overlay -->
+    <div class="mode-transition" id="modeTransition"></div>
 
-    <!-- Floating Elements -->
-    <div class="floating-element" style="top: 20%; left: 10%; width: 30px; height: 30px;"></div>
-    <div class="floating-element" style="top: 70%; left: 80%; width: 40px; height: 40px;"></div>
-    <div class="floating-element" style="top: 40%; left: 60%; width: 25px; height: 25px;"></div>
+    <!-- Futuristic Floating Particles -->
+    <div class="particles" id="particles"></div>
 
     <header>
         <div class="container">
@@ -1104,8 +1199,10 @@
                     <li><a href="dating.html">Dating</a></li>
                     <li><a href="marriage.html">Marriage</a></li>
                     <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="special.html">Special Needs</a></li>
+                    <li><a href="polygamy.html">Polygamy</a></li>
+                    <li><a href="pets.html">Pets</a></li>
+                    <li><a href="fantasy.html">Fantasy</a></li>
                 </ul>
                 <div class="auth-buttons">
                     <a href="login.html" class="btn btn-secondary">Login</a>
@@ -1119,7 +1216,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Find Your Perfect Match in 3025</h1>
-            <p>MetaDate connects you with compatible partners across time and space using quantum matching algorithms and neural compatibility scanning.</p>
+            <p>MetaDate connects you with compatible partners across dimensions using quantum matching algorithms and AI compatibility prediction.</p>
             <div class="hero-buttons">
                 <a href="signup.html" class="btn btn-primary">Begin Quantum Matching</a>
                 <a href="#how-it-works" class="btn btn-secondary">Explore Technology</a>
@@ -1131,19 +1228,19 @@
         <h2 class="section-title">Why Choose MetaDate</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">🚀</div>
+                <div class="feature-icon">💖</div>
                 <h3 class="feature-title">Quantum Matching</h3>
-                <p>Our quantum algorithm analyzes 10,000+ compatibility factors across multiple dimensions to find your perfect match.</p>
+                <p>Our quantum algorithm analyzes 10,000+ compatibility factors across multiple dimensions to find your ideal partner.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔮</div>
+                <div class="feature-icon">🔒</div>
                 <h3 class="feature-title">Neural Verification</h3>
-                <p>All profiles are verified through neural scanning to ensure 100% authenticity and eliminate catfishing.</p>
+                <p>All profiles are verified through our neural network to ensure 99.9% authenticity with zero fake accounts.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🌌</div>
-                <h3 class="feature-title">Interstellar Community</h3>
-                <p>Connect with singles from across the galaxy who share your values, whether they're on Earth or Mars colonies.</p>
+                <div class="feature-icon">🌐</div>
+                <h3 class="feature-title">Intergalactic Community</h3>
+                <p>Connect with beings from across the galaxy who share your quantum vibrational frequency.</p>
             </div>
         </div>
     </section>
@@ -1152,77 +1249,49 @@
         <div class="container">
             <div class="section-title">
                 <h2>Explore Connections</h2>
-                <p>Discover different ways to connect with beings across the universe through our specialized categories</p>
+                <p>Discover different ways to connect across the multiverse through our specialized dimensions</p>
             </div>
             <div class="category-grid">
                 <a href="dating.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7JI1AcvTXQNqo/giphy.gif" alt="Dating">
+                    <img src="https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif" alt="Dating">
                     <div class="category-info">
                         <h3>Dating</h3>
-                        <p>Find romantic connections with like-minded individuals across the cosmos</p>
+                        <p>Find romantic connections with like-minded individuals</p>
                     </div>
                 </a>
                 <a href="marriage.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU20BZ6LbSEITza/giphy.gif" alt="Marriage">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif" alt="Marriage">
                     <div class="category-info">
                         <h3>Marriage</h3>
-                        <p>Serious relationships leading to lifelong or multi-lifespan commitments</p>
-                    </div>
-                </a>
-                <a href="religious.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7rTD04iQnskxy/giphy.gif" alt="Religious">
-                    <div class="category-info">
-                        <h3>Religious</h3>
-                        <p>Connect with beings who share your spiritual beliefs across dimensions</p>
-                    </div>
-                </a>
-                <a href="friendship.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7tUsaZgw3H13a/giphy.gif" alt="Friendship">
-                    <div class="category-info">
-                        <h3>Friendship</h3>
-                        <p>Platonic connections and meaningful friendships across species</p>
-                    </div>
-                </a>
-                <a href="international.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7JI1AcvTXQNqo/giphy.gif" alt="International">
-                    <div class="category-info">
-                        <h3>Interplanetary</h3>
-                        <p>Connect with beings from different planets and cultures</p>
-                    </div>
-                </a>
-                <a href="business.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7tUsaZgw3H13a/giphy.gif" alt="Business">
-                    <div class="category-info">
-                        <h3>Business</h3>
-                        <p>Professional networking across star systems</p>
+                        <p>Serious relationships leading to lifelong commitment</p>
                     </div>
                 </a>
                 <a href="special.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7rTD04iQnskxy/giphy.gif" alt="Special Needs">
+                    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Special Needs">
                     <div class="category-info">
                         <h3>Special Needs</h3>
-                        <p>Inclusive connections for all abilities and lifeforms</p>
+                        <p>Inclusive connections for all abilities</p>
                     </div>
                 </a>
                 <a href="polygamy.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU20BZ6LbSEITza/giphy.gif" alt="Polygamy">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif" alt="Polygamy">
                     <div class="category-info">
                         <h3>Polygamy</h3>
-                        <p>Multiple partner relationships with advanced matching</p>
+                        <p>Multiple partner connections</p>
                     </div>
                 </a>
                 <a href="pets.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7JI1AcvTXQNqo/giphy.gif" alt="Pets">
+                    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Pets">
                     <div class="category-info">
                         <h3>Pets</h3>
-                        <p>Connect your bio-engineered companions</p>
+                        <p>Connect through your animal companions</p>
                     </div>
                 </a>
                 <a href="fantasy.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7tUsaZgw3H13a/giphy.gif" alt="Fantasy">
+                    <img src="https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif" alt="Fantasy">
                     <div class="category-info">
                         <h3>Fantasy</h3>
-                        <p>Roleplay and imaginative connections</p>
+                        <p>Imaginary and roleplay connections</p>
                     </div>
                 </a>
             </div>
@@ -1231,11 +1300,11 @@
 
     <section class="testimonials">
         <div class="testimonials-container">
-            <h2 class="section-title">Success Stories</h2>
+            <h2 class="section-title">Quantum Success Stories</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        MetaDate's quantum matching found my perfect partner when traditional methods failed. We're now happily cohabiting in Mars Colony 7!
+                        MetaDate's quantum algorithm matched me with my soulmate across parallel dimensions. We're getting married in the Andromeda galaxy next spring!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -1243,13 +1312,13 @@
                         </div>
                         <div class="author-info">
                             <h4>Sarah J.</h4>
-                            <p>Found love in 3023</p>
+                            <p>Found love in 3022</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        As a time-traveling historian, I needed someone who could understand my unique lifestyle. MetaDate's temporal matching was perfect!
+                        As a time-traveling professional, I didn't have time for dating. MetaDate's temporal matching saved me centuries of searching!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -1263,7 +1332,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        I made genuine trans-species friendships through MetaDate that have lasted light-years. Their compatibility algorithms work across all lifeforms.
+                        I made genuine friendships with beings from alternate realities through MetaDate that transcend space and time.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
@@ -1285,26 +1354,26 @@
             <div class="step">
                 <div class="step-number">1</div>
                 <h3 class="step-title">Neural Profile Scan</h3>
-                <p>Our quantum scanners create a complete profile of your personality, desires, and compatibility factors.</p>
+                <p>Our quantum interface scans your neural patterns to create a multidimensional profile.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h3 class="step-title">Multiverse Matching</h3>
-                <p>Our algorithm searches across dimensions and timelines to find your perfect matches.</p>
+                <h3 class="step-title">Temporal Matching</h3>
+                <p>Our algorithm searches across timelines to find your perfect match in this or alternate realities.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <h3 class="step-title">Holographic Connection</h3>
-                <p>Meet your matches in our immersive holographic dating environments before deciding to meet in person.</p>
+                <p>Initiate contact through our full-sensory holographic interface.</p>
             </div>
         </div>
     </section>
 
     <section class="cta-section">
         <h2>Ready to Find Your Quantum Match?</h2>
-        <p>Join millions of happy beings across the galaxy who found their perfect connections through MetaDate.</p>
+        <p>Join millions of happy beings across dimensions who found connection through MetaDate.</p>
         <div class="hero-buttons">
-            <a href="signup.html" class="btn btn-primary">Begin Neural Scan</a>
+            <a href="signup.html" class="btn btn-primary">Activate Profile</a>
             <a href="about.html" class="btn btn-secondary">Explore Technology</a>
         </div>
     </section>
@@ -1316,12 +1385,12 @@
                     <div class="footer-logo-bubble">M</div>
                     <span class="footer-logo-text">MetaDate</span>
                 </div>
-                <p>MetaDate is a 31st century dating platform that uses quantum computing and neural scanning to create perfect matches across space and time.</p>
+                <p>MetaDate is a quantum dating platform that helps beings connect across dimensions, timelines, and realities.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
                 </div>
             </div>
             <div class="footer-links">
@@ -1332,64 +1401,97 @@
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="terms.html">Terms of Service</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="settings.html">Neural Settings</a></li>
+                    <li><a href="settings.html">Settings</a></li>
                     <li><a href="subscription.html">Quantum Subscription</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h3>Categories</h3>
+                <h3>Dimensions</h3>
                 <ul>
                     <li><a href="dating.html">Dating</a></li>
                     <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="religious.html">Religious</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="international.html">Interplanetary</a></li>
                     <li><a href="special.html">Special Needs</a></li>
                     <li><a href="polygamy.html">Polygamy</a></li>
                     <li><a href="pets.html">Pets</a></li>
                     <li><a href="fantasy.html">Fantasy</a></li>
+                    <li><a href="friendship.html">Friendship</a></li>
+                    <li><a href="international.html">Intergalactic</a></li>
+                    <li><a href="business.html">Quantum Business</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h3>Contact Info</h3>
-                <p><span class="contact-icon">📧</span> quantum-support@metadate.com</p>
-                <p><span class="contact-icon">📞</span> +1 (555) QNT-4567</p>
-                <p><span class="contact-icon">🏢</span> Orbital Station Alpha, Earth-Moon L1</p>
+                <h3>Contact Across Dimensions</h3>
+                <p><span class="contact-icon">📧</span> quantum@metadate.com</p>
+                <p><span class="contact-icon">📞</span> +1 (555) QNT-UM-01</p>
+                <p><span class="contact-icon">🏢</span> 123 Quantum St, Dimension X-137, 10001</p>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 3025 MetaDate Quantum Connections. All rights reserved across all timelines.</p>
+            <p>&copy; 3025 MetaDate. All rights reserved across all timelines.</p>
         </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
-        // Futuristic Theme Toggle with Transition
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.bottom = `-10px`;
+                
+                // Random animation duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                // Random color variation
+                const hue = Math.random() * 20 + 260; // Purple hues
+                particle.style.background = `hsl(${hue}, 70%, 60%)`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Theme toggle functionality with futuristic transition
         const themeToggle = document.getElementById('themeToggle');
-        const themeTransition = document.getElementById('themeTransition');
+        const modeTransition = document.getElementById('modeTransition');
         const currentTheme = localStorage.getItem('theme') || 'light';
-
+        
         document.body.classList.toggle('dark-mode', currentTheme === 'dark');
         themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
-
+        
         themeToggle.addEventListener('click', () => {
-            // Activate transition overlay
-            themeTransition.classList.add('active');
+            // Start the transition animation
+            modeTransition.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            modeTransition.style.transform = 'scale(1)';
             
-            // After a delay, toggle the theme
+            // Change theme after a delay to allow animation to play
             setTimeout(() => {
                 document.body.classList.toggle('dark-mode');
                 const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
                 localStorage.setItem('theme', newTheme);
                 themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
                 
-                // Fade out transition
+                // Reverse the transition animation
                 setTimeout(() => {
-                    themeTransition.classList.remove('active');
-                }, 800);
-            }, 100);
+                    modeTransition.style.transform = 'scale(0)';
+                }, 50);
+            }, 400);
         });
-
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1399,87 +1501,29 @@
                 });
             });
         });
-
-        // Animate floating elements
-        const floatingElements = document.querySelectorAll('.floating-element');
-        floatingElements.forEach(el => {
-            // Random movement parameters
-            const duration = Math.random() * 20 + 10;
-            const delay = Math.random() * 5;
-            const xMovement = Math.random() * 100 - 50;
-            const yMovement = Math.random() * 100 - 50;
-            
-            // Apply animation
-            el.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
-            el.style.transform = `translate(${xMovement}px, ${yMovement}px)`;
-            
-            // Random size and opacity
-            const size = Math.random() * 30 + 10;
-            const opacity = Math.random() * 0.3 + 0.1;
-            el.style.width = `${size}px`;
-            el.style.height = `${size}px`;
-            el.style.opacity = opacity;
-            
-            // Random blur effect
-            const blur = Math.random() * 5;
-            el.style.filter = `blur(${blur}px)`;
-        });
-
-        // Hologram effect for cards on hover
-        const cards = document.querySelectorAll('.feature-card, .testimonial-card, .category-card, .step');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.animation = 'hologram 3s ease-in-out infinite';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.animation = '';
-            });
-        });
-
-        // Futuristic sound effects
-        themeToggle.addEventListener('mouseenter', () => {
-            // Play a futuristic sound on hover
-            const sound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-positive-interface-beep-158.mp3');
-            sound.volume = 0.2;
-            sound.play();
-        });
-
-        // Add futuristic cursor effect
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (cursor) {
-                cursor.style.left = `${e.clientX}px`;
-                cursor.style.top = `${e.clientY}px`;
-            }
-        });
-
-        // Add particles on click
-        document.addEventListener('click', (e) => {
-            const particles = document.createElement('div');
-            particles.style.position = 'fixed';
-            particles.style.width = '10px';
-            particles.style.height = '10px';
-            particles.style.backgroundColor = `hsl(${Math.random() * 60 + 270}, 100%, 70%)`;
-            particles.style.borderRadius = '50%';
-            particles.style.left = `${e.clientX}px`;
-            particles.style.top = `${e.clientY}px`;
-            particles.style.pointerEvents = 'none';
-            particles.style.zIndex = '9999';
-            particles.style.boxShadow = '0 0 10px currentColor';
-            document.body.appendChild(particles);
-            
-            // Animate particle
-            const animation = particles.animate([
-                { transform: 'scale(1)', opacity: 1 },
-                { transform: 'scale(3)', opacity: 0 }
-            ], {
-                duration: 500,
-                easing: 'ease-out'
+        
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+        
+        // Add hover effect to all elements with data-hover-effect
+        document.querySelectorAll('[data-hover-effect]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.transform = 'translateY(-5px)';
+                el.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
             });
             
-            animation.onfinish = () => {
-                particles.remove();
-            };
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+                el.style.boxShadow = '';
+            });
+        });
+        
+        // Add futuristic sound effects
+        document.querySelectorAll('button, a[href], .nav-links a').forEach(el => {
+            el.addEventListener('click', () => {
+                // In a real implementation, you would play a sound here
+                // For example: new Audio('futuristic-sound.mp3').play();
+            });
         });
     </script>
 </body>

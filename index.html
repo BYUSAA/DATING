@@ -3,76 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaDate - Find Your Perfect Match in 3025</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>MetaDate 3000 - Next-Gen Dating Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6e48aa;
-            --secondary-color: #9d50bb;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #fff;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --text-light: #777;
-            --border-color: #eee;
+            --primary-color: #00f7ff;
+            --secondary-color: #7b2dff;
+            --accent-color: #ff2d7b;
+            --text-color: #e0e0e0;
+            --bg-color: #0a0a1a;
+            --card-bg: #15152b;
+            --nav-bg: rgba(21, 21, 43, 0.95);
+            --shadow: 0 4px 30px rgba(0, 247, 255, 0.15);
+            --text-light: #a0a0c0;
+            --border-color: #252545;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --neon-glow: 0 0 10px rgba(110, 72, 170, 0.8);
-            --hologram-opacity: 0.7;
+            --pulse-animation: pulse 2s infinite;
+            --float-animation: float 6s ease-in-out infinite;
+            --glow-text: 0 0 10px rgba(0, 247, 255, 0.7);
+            --glow-box: 0 0 20px rgba(0, 247, 255, 0.5);
         }
 
-        .dark-mode {
-            --primary-color: #9d50bb;
-            --secondary-color: #6e48aa;
-            --accent-color: #ff5252;
-            --text-color: #f0f0f0;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --nav-bg: rgba(30, 30, 30, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --text-light: #aaa;
-            --border-color: #333;
-            --neon-glow: 0 0 15px rgba(157, 80, 187, 0.9);
-            --hologram-opacity: 0.9;
+        .light-mode {
+            --primary-color: #7b2dff;
+            --secondary-color: #00a8ff;
+            --accent-color: #ff2d7b;
+            --text-color: #333;
+            --bg-color: #f0f5ff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 30px rgba(123, 45, 255, 0.15);
+            --text-light: #666;
+            --border-color: #e0e0f0;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --glow-text: 0 0 5px rgba(123, 45, 255, 0.5);
+            --glow-box: 0 0 10px rgba(123, 45, 255, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
 
         body {
-            font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
-            transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(123, 45, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 247, 255, 0.1) 0%, transparent 20%);
             overflow-x: hidden;
         }
 
-        @font-face {
-            font-family: 'Orbitron';
-            src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: var(--glow-text);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
         /* Futuristic Header Styles */
         header {
             background-color: var(--nav-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(157, 80, 187, 0.3);
+            border-bottom: 1px solid var(--border-color);
         }
 
         nav {
@@ -85,47 +93,73 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
-            text-shadow: var(--neon-glow);
-            transition: all 0.5s ease;
-        }
-
-        .logo:hover {
-            text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+            letter-spacing: 1px;
         }
 
         .logo-bubble {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: var(--gradient);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            animation: float 3s ease-in-out infinite, pulse 2s infinite;
-            box-shadow: 0 0 10px var(--primary-color);
+            animation: var(--float-animation);
+            box-shadow: var(--glow-box);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-bubble::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 10px var(--primary-color); }
-            50% { box-shadow: 0 0 20px var(--primary-color); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
-        @keyframes hologram {
-            0% { opacity: var(--hologram-opacity); }
-            50% { opacity: calc(var(--hologram-opacity) - 0.2); }
-            100% { opacity: var(--hologram-opacity); }
+        @keyframes neon {
+            0%, 100% { text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color); }
+            50% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .nav-links {
@@ -134,7 +168,7 @@
         }
 
         .nav-links li {
-            margin-left: 1.5rem;
+            margin-left: 2rem;
             position: relative;
         }
 
@@ -143,29 +177,34 @@
             color: var(--text-color);
             font-weight: 500;
             padding: 0.5rem 1rem;
-            border-radius: 20px;
+            border-radius: 30px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            width: 100%;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover {
-            color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: #000;
+            box-shadow: var(--glow-box);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 70%;
+            left: 15%;
         }
 
         .user-menu {
@@ -174,11 +213,11 @@
         }
 
         .user-avatar {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background-color: var(--primary-color);
-            margin-left: 1rem;
+            background: var(--gradient);
+            margin-left: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -186,29 +225,39 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+            box-shadow: var(--glow-box);
+            overflow: hidden;
         }
 
-        .user-avatar:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--primary-color);
+        .user-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
         }
 
         .user-dropdown {
             position: absolute;
-            top: 50px;
+            top: 60px;
             right: 0;
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            width: 200px;
+            width: 220px;
             padding: 1rem 0;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(157, 80, 187, 0.3);
-            backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
+            z-index: 1001;
         }
 
         .user-avatar:hover .user-dropdown {
@@ -218,13 +267,22 @@
         }
 
         .dropdown-item {
-            padding: 0.5rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
         }
 
         .dropdown-item:hover {
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(0, 247, 255, 0.1);
             color: var(--primary-color);
         }
 
@@ -240,13 +298,13 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-color);
-            margin-left: 1rem;
-            transition: all 0.3s ease;
-            text-shadow: var(--neon-glow);
+            margin-left: 1.5rem;
+            transition: transform 0.3s;
         }
 
         .theme-toggle:hover {
-            transform: rotate(30deg) scale(1.2);
+            transform: rotate(30deg) scale(1.1);
+            color: var(--primary-color);
         }
 
         .auth-buttons {
@@ -255,7 +313,7 @@
         }
 
         .btn {
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
@@ -263,29 +321,38 @@
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            text-transform: uppercase;
         }
 
         .btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
             background-color: var(--primary-color);
-            color: white;
+            color: #000;
             border: 2px solid var(--primary-color);
-            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
         }
 
         .btn-secondary {
@@ -298,31 +365,26 @@
             background-color: var(--accent-color);
             color: white;
             border: 2px solid var(--accent-color);
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-        }
-
-        .btn-primary:hover::before, .btn-accent:hover::before {
-            opacity: 1;
+            box-shadow: 0 0 15px rgba(255, 45, 123, 0.5);
         }
 
         .btn-primary:hover {
             background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.3);
             border-color: var(--secondary-color);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(110, 72, 170, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 247, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.2);
         }
 
         .btn-accent:hover {
-            background-color: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent-color);
-            border-color: #ff5252;
+            background-color: #ff1a6b;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 45, 123, 0.3);
         }
 
         /* Futuristic Hero Section */
@@ -331,8 +393,6 @@
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif') no-repeat center center/cover;
-            color: white;
             position: relative;
             text-align: center;
             overflow: hidden;
@@ -345,42 +405,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            opacity: 0.3;
+            background: linear-gradient(135deg, rgba(123, 45, 255, 0.2), rgba(0, 247, 255, 0.2));
             z-index: 1;
         }
 
-        .hero::after {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') center/cover;
-            opacity: 0.1;
-            z-index: 2;
-            pointer-events: none;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.7;
         }
 
         .hero-content {
             position: relative;
-            z-index: 3;
-            max-width: 800px;
+            z-index: 2;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            animation: fadeIn 1s ease, textGlow 2s infinite alternate;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        @keyframes textGlow {
-            from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
-            to { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px var(--primary-color); }
+            animation: fadeIn 1s ease, neon 3s infinite;
+            line-height: 1.2;
         }
 
         .hero p {
@@ -388,46 +440,60 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeIn 1.5s ease;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 2rem;
+            margin-top: 3rem;
             animation: fadeIn 2s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Futuristic Features Section */
-        .features {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .features::before {
-            content: '';
+        .particles {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
-            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(123, 45, 255, 0.05) 0%, transparent 70%);
             z-index: -1;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 3rem;
+            margin-bottom: 5rem;
             color: var(--primary-color);
             position: relative;
             display: inline-block;
@@ -438,102 +504,149 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 0;
             width: 100%;
             height: 3px;
             background: var(--gradient);
             border-radius: 3px;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s ease;
-        }
-
-        .section-title:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .feature-card {
             background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 3rem 2rem;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.5s ease;
+            border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(157, 80, 187, 0.2);
         }
 
         .feature-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent,
-                transparent,
-                transparent,
-                rgba(157, 80, 187, 0.1)
-            );
-            transform: rotate(30deg);
-            transition: all 0.5s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(157, 80, 187, 0.2);
-        }
-
-        .feature-card:hover::before {
-            transform: rotate(30deg) translate(20%, 20%);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(0, 247, 255, 0.2);
         }
 
         .feature-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2rem;
             color: white;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: rotate(360deg) scale(1.1);
-            box-shadow: 0 0 25px var(--primary-color);
+            font-size: 2.5rem;
+            box-shadow: var(--glow-box);
+            animation: var(--float-animation);
         }
 
         .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
-            transition: all 0.3s ease;
         }
 
-        .feature-card:hover .feature-title {
-            color: var(--secondary-color);
-            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
 
-        /* Futuristic Testimonials Section */
+        /* Categories Section */
+        .categories {
+            padding: 8rem 2rem;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(123, 45, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 247, 255, 0.1) 0%, transparent 30%);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s;
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(0, 247, 255, 0.2);
+            z-index: 2;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-info h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .category-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7));
+            z-index: 0;
+        }
+
+        /* Testimonials Section */
         .testimonials {
-            padding: 5rem 2rem;
+            padding: 8rem 2rem;
             background-color: var(--card-bg);
             position: relative;
             overflow: hidden;
@@ -546,13 +659,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
+            background-image: url('https://media.giphy.com/media/X91fI4OEpzDFX9Qw7n/giphy.gif');
+            background-size: cover;
             opacity: 0.05;
             z-index: 0;
         }
 
         .testimonials-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -560,19 +674,18 @@
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .testimonial-card {
             background-color: var(--bg-color);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(157, 80, 187, 0.2);
         }
 
         .testimonial-card::before {
@@ -580,35 +693,28 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
-            height: 100%;
+            width: 100%;
+            height: 5px;
             background: var(--gradient);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-card:hover::before {
-            width: 10px;
         }
 
         .testimonial-text {
             font-style: italic;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             position: relative;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         .testimonial-text::before {
             content: '"';
-            font-size: 4rem;
+            font-size: 5rem;
             position: absolute;
-            top: -20px;
-            left: -10px;
+            top: -30px;
+            left: -15px;
             opacity: 0.1;
             color: var(--primary-color);
+            font-family: serif;
         }
 
         .testimonial-author {
@@ -617,19 +723,14 @@
         }
 
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background-color: var(--primary-color);
-            margin-right: 1rem;
+            margin-right: 1.5rem;
             overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
-        }
-
-        .testimonial-card:hover .author-avatar {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--primary-color);
+            border: 3px solid var(--primary-color);
+            box-shadow: var(--glow-box);
         }
 
         .author-avatar img {
@@ -640,12 +741,8 @@
 
         .author-info h4 {
             color: var(--primary-color);
-            margin-bottom: 0.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover .author-info h4 {
-            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .author-info p {
@@ -653,10 +750,10 @@
             font-size: 0.9rem;
         }
 
-        /* Futuristic How It Works Section */
+        /* How It Works Section */
         .how-it-works {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+            padding: 8rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
         }
@@ -668,94 +765,97 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
-            opacity: 0.03;
-            z-index: -1;
+            background-image: url('https://media.giphy.com/media/3o7TKUM3IgJBX2as9O/giphy.gif');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .how-it-works .section-title {
+            margin-bottom: 6rem;
         }
 
         .steps {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 3rem;
+            margin-top: 4rem;
             position: relative;
+            z-index: 1;
         }
 
         .step {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
             text-align: center;
             position: relative;
             z-index: 1;
-            transition: all 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateY(-10px);
         }
 
         .step-number {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: bold;
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
+            margin: 0 auto 2rem;
+            box-shadow: var(--glow-box);
+            position: relative;
+            animation: var(--float-animation);
         }
 
-        .step:hover .step-number {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 0 25px var(--primary-color);
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px dashed var(--primary-color);
+            animation: rotate 10s linear infinite;
         }
 
         .step-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
-            transition: all 0.3s ease;
         }
 
-        .step:hover .step-title {
-            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
+        .step p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 300px;
+            margin: 0 auto;
         }
 
         .steps::before {
             content: '';
             position: absolute;
-            top: 30px;
+            top: 40px;
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--gradient);
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary-color) 20%, 
+                var(--secondary-color) 80%, 
+                transparent 100%);
             z-index: 0;
-            transition: all 0.3s ease;
         }
 
-        .steps:hover::before {
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            background-size: 200% 100%;
-            animation: gradientFlow 2s linear infinite;
-        }
-
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-
-        /* Futuristic CTA Section */
+        /* CTA Section */
         .cta-section {
-            padding: 5rem 2rem;
+            padding: 8rem 2rem;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif') no-repeat center center/cover;
+            background: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
+                        url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') no-repeat center center/cover;
             color: white;
             position: relative;
             overflow: hidden;
@@ -770,243 +870,181 @@
             height: 100%;
             background: var(--gradient);
             opacity: 0.3;
-            z-index: 1;
-        }
-
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') center/cover;
-            opacity: 0.1;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 3;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            animation: textGlow 2s infinite alternate;
-        }
-
-        .cta-section p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 3;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Futuristic Categories Section */
-        .categories {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .categories::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
-            opacity: 0.03;
-            z-index: -1;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            text-decoration: none;
-            color: var(--text-color);
-            position: relative;
-            border: 1px solid rgba(157, 80, 187, 0.2);
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .category-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
-
-        .category-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .category-info {
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .category-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .category-card:hover .category-info h3 {
-            text-shadow: 0 0 5px rgba(157, 80, 187, 0.3);
-        }
-
-        .category-info p {
-            color: var(--text-light);
-            font-size: 14px;
-        }
-
-        /* Futuristic Footer */
-        footer {
-            background-color: var(--card-bg);
-            padding: 3rem 2rem;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid rgba(157, 80, 187, 0.3);
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif') center/cover;
-            opacity: 0.03;
             z-index: 0;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+        .cta-content {
             position: relative;
             z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            animation: neon 3s infinite;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* AI Matchmaker Section */
+        .ai-matchmaker {
+            padding: 8rem 2rem;
+            background-color: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-content {
+            flex: 1;
+        }
+
+        .ai-image {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .ai-robot {
+            width: 100%;
+            height: auto;
+            animation: var(--float-animation);
+        }
+
+        .ai-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px dashed var(--primary-color);
+            animation: rotate 20s linear infinite;
+        }
+
+        .ai-circle-1 {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            opacity: 0.3;
+        }
+
+        .ai-circle-2 {
+            width: 140%;
+            height: 140%;
+            top: -20%;
+            left: -20%;
+            opacity: 0.2;
+            animation-direction: reverse;
+        }
+
+        .ai-circle-3 {
+            width: 160%;
+            height: 160%;
+            top: -30%;
+            left: -30%;
+            opacity: 0.1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 5rem 2rem 2rem;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-logo-bubble {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background: var(--gradient);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 0.8rem;
-            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
-            animation: pulse 2s infinite;
+            font-size: 1rem;
+            box-shadow: var(--glow-box);
         }
 
         .footer-logo-text {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
-            text-shadow: var(--neon-glow);
         }
 
         .footer-about p {
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-light);
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: rgba(110, 72, 170, 0.1);
+            background-color: rgba(0, 247, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
+            font-size: 1.2rem;
+            border: 1px solid var(--border-color);
         }
 
         .social-link:hover {
-            background-color: transparent;
-            color: white;
-            transform: translateY(-3px) rotate(10deg);
-            box-shadow: 0 0 15px var(--primary-color);
-        }
-
-        .social-link:hover::before {
-            opacity: 1;
+            background-color: var(--primary-color);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: var(--glow-box);
         }
 
         .footer-links h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
             color: var(--primary-color);
             position: relative;
             display: inline-block;
@@ -1015,19 +1053,11 @@
         .footer-links h3::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -10px;
             left: 0;
-            width: 100%;
+            width: 50%;
             height: 2px;
             background: var(--gradient);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-
-        .footer-links h3:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
         }
 
         .footer-links ul {
@@ -1035,113 +1065,119 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
             text-decoration: none;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .footer-links a::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-links a:hover::before {
-            width: 100%;
-        }
-
-        .footer-contact p {
-            margin-bottom: 1rem;
+            color: var(--text-light);
+            transition: color 0.3s ease;
             display: flex;
             align-items: center;
         }
 
-        .contact-icon {
+        .footer-links a i {
             margin-right: 10px;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
+            width: 20px;
+            text-align: center;
         }
 
-        .footer-contact p:hover .contact-icon {
-            transform: scale(1.2) rotate(10deg);
-            text-shadow: 0 0 5px var(--primary-color);
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .contact-icon {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            min-width: 20px;
         }
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
+            margin-top: 5rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Futuristic Elements */
+        .holographic-effect {
             position: relative;
-            z-index: 1;
+            overflow: hidden;
         }
 
-        /* Futuristic Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
+        .holographic-effect::before {
+            content: '';
             position: absolute;
-            background: var(--primary-color);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: floatParticle linear infinite;
-        }
-
-        @keyframes floatParticle {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
-        }
-
-        /* Futuristic Mode Transition */
-        .mode-transition {
-            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
-            z-index: 9999;
-            transform: scale(0);
-            border-radius: 50%;
-            opacity: 0.9;
-            pointer-events: none;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(
+                45deg,
+                rgba(0, 247, 255, 0.1) 0%,
+                rgba(123, 45, 255, 0.1) 50%,
+                rgba(255, 45, 123, 0.1) 100%
+            );
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .cyber-border {
+            position: relative;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color)) 1;
         }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .ai-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .ai-image {
+                order: -1;
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 3rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .navbar {
+            nav {
                 flex-direction: column;
                 padding: 1rem;
             }
 
             .nav-links {
-                margin-top: 1rem;
+                margin-top: 1.5rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -1151,41 +1187,66 @@
             }
 
             .user-menu {
-                margin-top: 1rem;
+                margin-top: 1.5rem;
             }
 
             .hero {
-                padding: 8rem 1rem 4rem;
+                padding: 10rem 1rem 5rem;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
             }
 
             .hero-buttons, .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
-
-            .steps::before {
-                display: none;
-            }
-
-            .step {
-                margin-bottom: 2rem;
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
             }
 
             .features-grid, .testimonials-grid, .category-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card, .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Futuristic Mode Transition Overlay -->
-    <div class="mode-transition" id="modeTransition"></div>
-
-    <!-- Futuristic Floating Particles -->
+    <!-- Animated Background Particles -->
     <div class="particles" id="particles"></div>
 
     <header>
@@ -1193,154 +1254,201 @@
             <nav>
                 <a href="index.html" class="logo">
                     <div class="logo-bubble">M</div>
-                    <span>MetaDate</span>
+                    <span>MetaDate 3000</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="special.html">Special Needs</a></li>
-                    <li><a href="polygamy.html">Polygamy</a></li>
-                    <li><a href="pets.html">Pets</a></li>
-                    <li><a href="fantasy.html">Fantasy</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#ai">AI Matchmaker</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
                 </ul>
                 <div class="auth-buttons">
                     <a href="login.html" class="btn btn-secondary">Login</a>
                     <a href="signup.html" class="btn btn-primary">Sign Up</a>
-                    <button class="theme-toggle" id="themeToggle">🌓</button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-adjust"></i>
+                    </button>
                 </div>
             </nav>
         </div>
     </header>
 
     <section class="hero">
+        <video autoplay muted loop class="hero-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-interface-with-holographic-dna-sequence-31539-large.mp4" type="video/mp4">
+        </video>
         <div class="hero-content">
-            <h1>Find Your Perfect Match in 3025</h1>
-            <p>MetaDate connects you with compatible partners across dimensions using quantum matching algorithms and AI compatibility prediction.</p>
+            <h1>FIND YOUR QUANTUM MATCH</h1>
+            <p>Powered by advanced AI and neural compatibility algorithms, MetaDate 3000 connects you with your perfect multidimensional partner across space and time.</p>
             <div class="hero-buttons">
-                <a href="signup.html" class="btn btn-primary">Begin Quantum Matching</a>
-                <a href="#how-it-works" class="btn btn-secondary">Explore Technology</a>
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> LAUNCH MATCHMAKER
+                </a>
+                <a href="#how-it-works" class="btn btn-secondary">
+                    <i class="fas fa-question-circle"></i> HOW IT WORKS
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <h2 class="section-title">Why Choose MetaDate</h2>
+    <section class="features" id="features">
+        <h2 class="section-title">WHY METADATE 3000</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">💖</div>
-                <h3 class="feature-title">Quantum Matching</h3>
-                <p>Our quantum algorithm analyzes 10,000+ compatibility factors across multiple dimensions to find your ideal partner.</p>
+                <div class="feature-icon">
+                    <img src="https://media.giphy.com/media/LnU9yQkPfHZ3OqQNkA/giphy.gif" alt="AI Matching" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h3 class="feature-title">NEURAL LINK MATCHING</h3>
+                <p>Our quantum AI analyzes 10,000+ compatibility factors including brainwave patterns, emotional resonance, and future potential.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Neural Verification</h3>
-                <p>All profiles are verified through our neural network to ensure 99.9% authenticity with zero fake accounts.</p>
+                <div class="feature-icon">
+                    <img src="https://media.giphy.com/media/J2awouDsf03RtO6QKc/giphy.gif" alt="Verified" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h3 class="feature-title">BIOMETRIC VERIFICATION</h3>
+                <p>All profiles undergo DNA authentication and retinal scanning to ensure 100% human authenticity.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3 class="feature-title">Intergalactic Community</h3>
-                <p>Connect with beings from across the galaxy who share your quantum vibrational frequency.</p>
+                <div class="feature-icon">
+                    <img src="https://media.giphy.com/media/Yq5nsYQzHXz16/giphy.gif" alt="Global" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h3 class="feature-title">INTERDIMENSIONAL NETWORK</h3>
+                <p>Connect with compatible partners across parallel universes and alternate timelines through our quantum entanglement technology.</p>
             </div>
         </div>
     </section>
 
-    <section class="categories">
+    <section class="categories" id="categories">
         <div class="container">
-            <div class="section-title">
-                <h2>Explore Connections</h2>
-                <p>Discover different ways to connect across the multiverse through our specialized dimensions</p>
-            </div>
+            <h2 class="section-title">EXPLORE CONNECTION TYPES</h2>
+            <p class="section-subtitle">Discover specialized relationship dimensions tailored to your unique needs</p>
             <div class="category-grid">
-                <a href="dating.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif" alt="Dating">
+                <a href="special-needs.html" class="category-card">
+                    <img src="https://media.giphy.com/media/l0HU7JJJkEXkWs7Y4/giphy.gif" alt="Special Needs">
                     <div class="category-info">
-                        <h3>Dating</h3>
-                        <p>Find romantic connections with like-minded individuals</p>
-                    </div>
-                </a>
-                <a href="marriage.html" class="category-card">
-                    <img src="https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif" alt="Marriage">
-                    <div class="category-info">
-                        <h3>Marriage</h3>
-                        <p>Serious relationships leading to lifelong commitment</p>
-                    </div>
-                </a>
-                <a href="special.html" class="category-card">
-                    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Special Needs">
-                    <div class="category-info">
-                        <h3>Special Needs</h3>
-                        <p>Inclusive connections for all abilities</p>
+                        <h3>SPECIAL NEEDS</h3>
+                        <p>Accessible connections with adaptive interfaces for all abilities</p>
                     </div>
                 </a>
                 <a href="polygamy.html" class="category-card">
-                    <img src="https://media.giphy.com/media/3o7TKsQ8gqVrXhqXk4/giphy.gif" alt="Polygamy">
+                    <img src="https://media.giphy.com/media/3o7TKAZnIu4w31OqmA/giphy.gif" alt="Polygamy">
                     <div class="category-info">
-                        <h3>Polygamy</h3>
-                        <p>Multiple partner connections</p>
+                        <h3>POLYGAMY</h3>
+                        <p>Ethical non-monogamy and plural relationship matching</p>
                     </div>
                 </a>
                 <a href="pets.html" class="category-card">
-                    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Pets">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8RUL8qVYbYY/giphy.gif" alt="Pets">
                     <div class="category-info">
-                        <h3>Pets</h3>
-                        <p>Connect through your animal companions</p>
+                        <h3>PET COMPANIONS</h3>
+                        <p>Find partners who share your love for animal companions</p>
                     </div>
                 </a>
                 <a href="fantasy.html" class="category-card">
-                    <img src="https://media.giphy.com/media/l0HU7JI5QhnXyLk5W/giphy.gif" alt="Fantasy">
+                    <img src="https://media.giphy.com/media/3o7TKIPvY5sXhVvV7q/giphy.gif" alt="Fantasy">
                     <div class="category-info">
-                        <h3>Fantasy</h3>
-                        <p>Imaginary and roleplay connections</p>
+                        <h3>FANTASY REALMS</h3>
+                        <p>Roleplay and imaginative relationship connections</p>
+                    </div>
+                </a>
+                <a href="dating.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKr2vF8VE8K5g5O/giphy.gif" alt="Dating">
+                    <div class="category-info">
+                        <h3>QUANTUM DATING</h3>
+                        <p>Romantic connections with multidimensional compatibility</p>
+                    </div>
+                </a>
+                <a href="marriage.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8K2I9Qk5W3K/giphy.gif" alt="Marriage">
+                    <div class="category-info">
+                        <h3>TEMPORAL MARRIAGE</h3>
+                        <p>Lifelong commitments across multiple timelines</p>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <section class="ai-matchmaker" id="ai">
+        <div class="ai-container">
+            <div class="ai-content">
+                <h2 class="section-title">QUANTUM AI MATCHMAKER</h2>
+                <p>Our advanced quantum neural network analyzes your personality, emotions, and future potential across multiple dimensions to find your perfect match with 99.9% accuracy.</p>
+                <ul style="margin-top: 2rem; list-style-type: none;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-brain" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Emotional resonance mapping</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-dna" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Genetic compatibility analysis</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-atom" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Quantum entanglement matching</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-clock" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Temporal relationship forecasting</span>
+                    </li>
+                </ul>
+                <a href="ai-matchmaker.html" class="btn btn-accent" style="margin-top: 2rem;">
+                    <i class="fas fa-robot"></i> TRY AI MATCHMAKER
+                </a>
+            </div>
+            <div class="ai-image">
+                <img src="https://media.giphy.com/media/L7VJhE5JQv1lK/giphy.gif" alt="AI Matchmaker" class="ai-robot">
+                <div class="ai-circle ai-circle-1"></div>
+                <div class="ai-circle ai-circle-2"></div>
+                <div class="ai-circle ai-circle-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
         <div class="testimonials-container">
-            <h2 class="section-title">Quantum Success Stories</h2>
+            <h2 class="section-title">QUANTUM LOVE STORIES</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        MetaDate's quantum algorithm matched me with my soulmate across parallel dimensions. We're getting married in the Andromeda galaxy next spring!
+                        The neural matching system found my perfect partner in an alternate dimension. We're now happily entangled across two realities!
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Sarah J.">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J.">
                         </div>
                         <div class="author-info">
-                            <h4>Sarah J.</h4>
-                            <p>Found love in 3022</p>
+                            <h4>Sarah-742</h4>
+                            <p>Dimension X-742</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        As a time-traveling professional, I didn't have time for dating. MetaDate's temporal matching saved me centuries of searching!
+                        As a cyborg-human hybrid, I never thought I'd find love. MetaDate 3000's compatibility algorithms matched me with the perfect augmented partner.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Michael T.">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T.">
                         </div>
                         <div class="author-info">
-                            <h4>Michael T.</h4>
-                            <p>Matched in 3025</p>
+                            <h4>Michael-9</h4>
+                            <p>Cybernetic Division</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        I made genuine friendships with beings from alternate realities through MetaDate that transcend space and time.
+                        Our quantum marriage ceremony was spectacular! We're now bonded across three timelines with a 98.7% happiness probability.
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Emma L.">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma L.">
                         </div>
                         <div class="author-info">
-                            <h4>Emma L.</h4>
-                            <p>Member since 3021</p>
+                            <h4>Emma & Zyx</h4>
+                            <p>Temporal Union 3025</p>
                         </div>
                     </div>
                 </div>
@@ -1349,32 +1457,38 @@
     </section>
 
     <section class="how-it-works" id="how-it-works">
-        <h2 class="section-title">How MetaDate Works</h2>
+        <h2 class="section-title">HOW IT WORKS</h2>
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
-                <h3 class="step-title">Neural Profile Scan</h3>
-                <p>Our quantum interface scans your neural patterns to create a multidimensional profile.</p>
+                <h3 class="step-title">NEURAL SCAN</h3>
+                <p>Complete our 10-second quantum personality scan using our brainwave interface.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h3 class="step-title">Temporal Matching</h3>
-                <p>Our algorithm searches across timelines to find your perfect match in this or alternate realities.</p>
+                <h3 class="step-title">DIMENSIONAL ANALYSIS</h3>
+                <p>Our AI evaluates your compatibility across 11 dimensions and 47 parallel realities.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3 class="step-title">Holographic Connection</h3>
-                <p>Initiate contact through our full-sensory holographic interface.</p>
+                <h3 class="step-title">HOLOGRAM CONNECTION</h3>
+                <p>Meet your matches in our immersive holographic dating environment.</p>
             </div>
         </div>
     </section>
 
     <section class="cta-section">
-        <h2>Ready to Find Your Quantum Match?</h2>
-        <p>Join millions of happy beings across dimensions who found connection through MetaDate.</p>
-        <div class="hero-buttons">
-            <a href="signup.html" class="btn btn-primary">Activate Profile</a>
-            <a href="about.html" class="btn btn-secondary">Explore Technology</a>
+        <div class="cta-content">
+            <h2>READY FOR QUANTUM LOVE?</h2>
+            <p>Join millions of satisfied users across the multiverse who have found their perfect entanglement.</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-user-astronaut"></i> CREATE ACCOUNT
+                </a>
+                <a href="demo.html" class="btn btn-secondary">
+                    <i class="fas fa-vr-cardboard"></i> HOLO DEMO
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1383,115 +1497,66 @@
             <div class="footer-about">
                 <div class="footer-logo">
                     <div class="footer-logo-bubble">M</div>
-                    <span class="footer-logo-text">MetaDate</span>
+                    <span class="footer-logo-text">MetaDate 3000</span>
                 </div>
-                <p>MetaDate is a quantum dating platform that helps beings connect across dimensions, timelines, and realities.</p>
+                <p>The future of relationships powered by quantum computing, neural networks, and interdimensional technology.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">t</a>
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">ig</a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="settings.html">Settings</a></li>
-                    <li><a href="subscription.html">Quantum Subscription</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                    <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h3>Dimensions</h3>
+                <h3>Categories</h3>
                 <ul>
-                    <li><a href="dating.html">Dating</a></li>
-                    <li><a href="marriage.html">Marriage</a></li>
-                    <li><a href="special.html">Special Needs</a></li>
-                    <li><a href="polygamy.html">Polygamy</a></li>
-                    <li><a href="pets.html">Pets</a></li>
-                    <li><a href="fantasy.html">Fantasy</a></li>
-                    <li><a href="friendship.html">Friendship</a></li>
-                    <li><a href="international.html">Intergalactic</a></li>
-                    <li><a href="business.html">Quantum Business</a></li>
+                    <li><a href="special-needs.html"><i class="fas fa-universal-access"></i> Special Needs</a></li>
+                    <li><a href="polygamy.html"><i class="fas fa-users"></i> Polygamy</a></li>
+                    <li><a href="pets.html"><i class="fas fa-paw"></i> Pet Companions</a></li>
+                    <li><a href="fantasy.html"><i class="fas fa-dragon"></i> Fantasy Realms</a></li>
+                    <li><a href="dating.html"><i class="fas fa-heart"></i> Quantum Dating</a></li>
+                    <li><a href="marriage.html"><i class="fas fa-ring"></i> Temporal Marriage</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h3>Contact Across Dimensions</h3>
-                <p><span class="contact-icon">📧</span> quantum@metadate.com</p>
-                <p><span class="contact-icon">📞</span> +1 (555) QNT-UM-01</p>
-                <p><span class="contact-icon">🏢</span> 123 Quantum St, Dimension X-137, 10001</p>
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon"><i class="fas fa-envelope"></i></span> contact@metadate3000.com</p>
+                <p><span class="contact-icon"><i class="fas fa-phone-alt"></i></span> +1 (555) 3000-2025</p>
+                <p><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> Quantum Plaza, Mars Colony 1</p>
+                <p><span class="contact-icon"><i class="fas fa-globe"></i></span> Earth-616, Andromeda Sector</p>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 3025 MetaDate. All rights reserved across all timelines.</p>
+            <p>&copy; 3025 MetaDate 3000 Corporation. All rights reserved across all dimensions.</p>
         </div>
     </footer>
 
     <script>
-        // Create floating particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 2px and 6px
-                const size = Math.random() * 4 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.bottom = `-10px`;
-                
-                // Random animation duration between 10s and 20s
-                const duration = Math.random() * 10 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Random delay
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                
-                // Random color variation
-                const hue = Math.random() * 20 + 260; // Purple hues
-                particle.style.background = `hsl(${hue}, 70%, 60%)`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Theme toggle functionality with futuristic transition
+        // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
-        const modeTransition = document.getElementById('modeTransition');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        
-        document.body.classList.toggle('dark-mode', currentTheme === 'dark');
-        themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
-        
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+
+        document.body.classList.toggle('light-mode', currentTheme === 'light');
+        themeToggle.innerHTML = currentTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+
         themeToggle.addEventListener('click', () => {
-            // Start the transition animation
-            modeTransition.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-            modeTransition.style.transform = 'scale(1)';
-            
-            // Change theme after a delay to allow animation to play
-            setTimeout(() => {
-                document.body.classList.toggle('dark-mode');
-                const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-                localStorage.setItem('theme', newTheme);
-                themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
-                
-                // Reverse the transition animation
-                setTimeout(() => {
-                    modeTransition.style.transform = 'scale(0)';
-                }, 50);
-            }, 400);
+            document.body.classList.toggle('light-mode');
+            const newTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
         });
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1501,29 +1566,79 @@
                 });
             });
         });
-        
-        // Initialize particles when page loads
-        window.addEventListener('load', createParticles);
-        
-        // Add hover effect to all elements with data-hover-effect
-        document.querySelectorAll('[data-hover-effect]').forEach(el => {
+
+        // Particle animation
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random properties
+            const size = Math.random() * 5 + 1;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 10 + 10;
+            const opacity = Math.random() * 0.5 + 0.1;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.opacity = opacity;
+            particle.style.backgroundColor = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+            
+            particlesContainer.appendChild(particle);
+        }
+
+        // Floating animation for particles
+        document.querySelectorAll('.particle').forEach(particle => {
+            const keyframes = `
+                @keyframes float-${Math.random().toString(36).substr(2, 9)} {
+                    0%, 100% { transform: translate(0, 0); }
+                    25% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
+                    50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
+                    75% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
+                }
+            `;
+            
+            const style = document.createElement('style');
+            style.innerHTML = keyframes;
+            document.head.appendChild(style);
+            
+            particle.style.animation = `float-${style.sheet.rules[0].name.substr(7)} ${Math.random() * 20 + 10}s infinite linear`;
+        });
+
+        // Glow effect for interactive elements
+        document.querySelectorAll('.btn, .feature-card, .category-card, .nav-links a').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                el.style.transform = 'translateY(-5px)';
-                el.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+                el.style.boxShadow = `0 0 20px ${el.classList.contains('btn-primary') ? 'rgba(0, 247, 255, 0.7)' : 
+                                    el.classList.contains('btn-accent') ? 'rgba(255, 45, 123, 0.7)' : 
+                                    'rgba(123, 45, 255, 0.5)'}`;
             });
             
             el.addEventListener('mouseleave', () => {
-                el.style.transform = '';
                 el.style.boxShadow = '';
             });
         });
-        
-        // Add futuristic sound effects
-        document.querySelectorAll('button, a[href], .nav-links a').forEach(el => {
+
+        // Futuristic sound effects
+        document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('click', () => {
-                // In a real implementation, you would play a sound here
-                // For example: new Audio('futuristic-sound.mp3').play();
+                // In a real implementation, you would play a sound effect here
+                console.log('Playing futuristic sound effect');
             });
+        });
+
+        // AI voice greeting
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('AI Voice: Welcome to MetaDate 3000. Your perfect quantum match awaits.');
+            }, 2000);
         });
     </script>
 </body>

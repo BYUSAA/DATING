@@ -17,6 +17,7 @@
             --text-light: #777;
             --border-color: #eee;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --hologram-opacity: 0;
         }
 
         .dark-mode {
@@ -30,13 +31,13 @@
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             --text-light: #aaa;
             --border-color: #333;
+            --hologram-opacity: 0.7;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
@@ -44,12 +45,80 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            transition: background-color 1s ease, color 1s ease;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Futuristic Theme Transition */
+        .theme-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            animation: themePulse 1.5s ease-out;
+            transform: scale(0);
+        }
+
+        @keyframes themePulse {
+            0% {
+                opacity: 0.8;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.5);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(3);
+            }
+        }
+
+        /* Holographic Effects */
+        .holographic {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holographic::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 30%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0.1) 80%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            opacity: var(--hologram-opacity);
+            animation: hologramScan 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hologramScan {
+            0% {
+                transform: translateY(-100%) rotate(30deg);
+            }
+            100% {
+                transform: translateY(100%) rotate(30deg);
+            }
         }
 
         /* Header Styles */
@@ -61,6 +130,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(110, 72, 170, 0.2);
         }
 
         nav {
@@ -90,12 +160,19 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            animation: bounce 2s infinite;
+            animation: bounce 2s infinite, float 6s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            75% { transform: translateX(5px) rotate(5deg); }
         }
 
         .nav-links {
@@ -105,6 +182,7 @@
 
         .nav-links li {
             margin-left: 1.5rem;
+            position: relative;
         }
 
         .nav-links a {
@@ -114,11 +192,27 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
+            color: var(--primary-color);
         }
 
         .user-menu {
@@ -139,6 +233,12 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
+            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
         }
 
         .user-dropdown {
@@ -153,6 +253,8 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            border: 1px solid rgba(110, 72, 170, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .user-avatar:hover .user-dropdown {
@@ -183,6 +285,21 @@
             cursor: pointer;
             color: var(--text-color);
             margin-left: 1rem;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(110, 72, 170, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            background: var(--gradient);
+            color: white;
         }
 
         .auth-buttons {
@@ -199,6 +316,26 @@
             cursor: pointer;
             border: none;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover::before {
+            opacity: 1;
         }
 
         .btn-primary {
@@ -213,6 +350,10 @@
             border: 2px solid var(--primary-color);
         }
 
+        .btn-secondary:hover {
+            color: white;
+        }
+
         .btn-accent {
             background-color: var(--accent-color);
             color: white;
@@ -222,7 +363,7 @@
         .btn-primary:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary:hover {
@@ -234,7 +375,7 @@
         .btn-accent:hover {
             background-color: #ff5252;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Hero Section */
@@ -243,10 +384,11 @@
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif') no-repeat center center/cover;
             color: white;
             position: relative;
             text-align: center;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -273,6 +415,7 @@
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             animation: fadeIn 1s ease;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
@@ -280,6 +423,7 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: fadeIn 1.5s ease;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
         .hero-buttons {
@@ -300,6 +444,19 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3V6dWJqY3R0dG5xZ3V5d2V3dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abKhK8ewV0QzcNO/giphy.gif') center/cover;
+            opacity: 0.05;
+            z-index: -1;
         }
 
         .section-title {
@@ -307,6 +464,21 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
         }
 
         .features-grid {
@@ -322,10 +494,32 @@
             box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s ease;
+            border: 1px solid rgba(110, 72, 170, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient);
+            z-index: -1;
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.3;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .feature-icon {
@@ -339,6 +533,12 @@
             margin: 0 auto 1.5rem;
             color: white;
             font-size: 2rem;
+            box-shadow: 0 0 20px rgba(110, 72, 170, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(10deg);
         }
 
         .feature-title {
@@ -351,11 +551,26 @@
         .testimonials {
             padding: 5rem 2rem;
             background-color: var(--card-bg);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3V6dWJqY3R0dG5xZ3V5d2V3dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abKhK8ewV0QzcNO/giphy.gif') center/cover;
+            opacity: 0.05;
+            z-index: 0;
         }
 
         .testimonials-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .testimonials-grid {
@@ -369,6 +584,19 @@
             border-radius: 15px;
             padding: 2rem;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(110, 72, 170, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
 
         .testimonial-text {
@@ -399,6 +627,12 @@
             background-color: var(--primary-color);
             margin-right: 1rem;
             overflow: hidden;
+            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover .author-avatar {
+            transform: scale(1.1);
         }
 
         .author-avatar img {
@@ -422,6 +656,19 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3V6dWJqY3R0dG5xZ3V5d2V3dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abKhK8ewV0QzcNO/giphy.gif') center/cover;
+            opacity: 0.05;
+            z-index: -1;
         }
 
         .steps {
@@ -453,6 +700,12 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0 auto 1.5rem;
+            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(10deg);
         }
 
         .step-title {
@@ -476,13 +729,29 @@
         .cta-section {
             padding: 5rem 2rem;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif') no-repeat center center/cover;
             color: white;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.7;
+            z-index: 1;
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .cta-section p {
@@ -490,11 +759,27 @@
             margin: 0 auto 2rem;
             font-size: 1.1rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
         /* Categories Section */
         .categories {
             padding: 80px 0;
+            position: relative;
+        }
+
+        .categories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3V6dWJqY3R0dG5xZ3V5d2V3dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7abKhK8ewV0QzcNO/giphy.gif') center/cover;
+            opacity: 0.05;
+            z-index: -1;
         }
 
         .category-grid {
@@ -511,6 +796,25 @@
             transition: all 0.3s;
             text-decoration: none;
             color: var(--text-color);
+            position: relative;
+            border: 1px solid rgba(110, 72, 170, 0.1);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .category-card:hover::before {
+            opacity: 0.1;
         }
 
         .category-card:hover {
@@ -522,10 +826,17 @@
             width: 100%;
             height: 150px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
         }
 
         .category-info {
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .category-info h3 {
@@ -543,6 +854,8 @@
             background-color: var(--card-bg);
             padding: 3rem 2rem;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border-top: 1px solid rgba(110, 72, 170, 0.1);
         }
 
         .footer-container {
@@ -571,6 +884,8 @@
             color: white;
             font-weight: bold;
             font-size: 0.8rem;
+            box-shadow: 0 0 10px rgba(110, 72, 170, 0.5);
+            animation: float 6s ease-in-out infinite;
         }
 
         .footer-logo-text {
@@ -604,7 +919,8 @@
         .social-link:hover {
             background-color: var(--primary-color);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 0 15px rgba(110, 72, 170, 0.5);
         }
 
         .footer-links h3 {
@@ -625,6 +941,22 @@
             text-decoration: none;
             color: var(--text-color);
             transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .footer-links a:hover {
@@ -648,6 +980,44 @@
             padding-top: 1.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             font-size: 0.9rem;
+        }
+
+        /* Futuristic Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
         }
 
         /* Responsive Styles */
@@ -699,7 +1069,13 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Theme Transition Element -->
+    <div class="theme-transition" id="themeTransition"></div>
+
+    <!-- Futuristic Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <header class="holographic">
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">
@@ -762,45 +1138,73 @@
             </div>
             <div class="category-grid">
                 <a href="dating.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dating">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Dating">
                     <div class="category-info">
                         <h3>Dating</h3>
                         <p>Find romantic connections with like-minded individuals</p>
                     </div>
                 </a>
                 <a href="marriage.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Marriage">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Marriage">
                     <div class="category-info">
                         <h3>Marriage</h3>
                         <p>Serious relationships leading to lifelong commitment</p>
                     </div>
                 </a>
                 <a href="religious.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1454923634634-bd1614719a7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Religious">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Religious">
                     <div class="category-info">
                         <h3>Religious</h3>
                         <p>Connect with people who share your faith and values</p>
                     </div>
                 </a>
                 <a href="friendship.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Friendship">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Friendship">
                     <div class="category-info">
                         <h3>Friendship</h3>
                         <p>Platonic connections and meaningful friendships</p>
                     </div>
                 </a>
                 <a href="international.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="International">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="International">
                     <div class="category-info">
                         <h3>International</h3>
                         <p>Connect with people from different cultures</p>
                     </div>
                 </a>
                 <a href="business.html" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Business">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Business">
                     <div class="category-info">
                         <h3>Business</h3>
                         <p>Professional networking and connections</p>
+                    </div>
+                </a>
+                <a href="special.html" class="category-card">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Special Needs">
+                    <div class="category-info">
+                        <h3>Special Needs</h3>
+                        <p>Inclusive dating for people with disabilities</p>
+                    </div>
+                </a>
+                <a href="polygamy.html" class="category-card">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Polygamy">
+                    <div class="category-info">
+                        <h3>Polygamy</h3>
+                        <p>For those interested in plural relationships</p>
+                    </div>
+                </a>
+                <a href="pets.html" class="category-card">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Pets">
+                    <div class="category-info">
+                        <h3>Pets</h3>
+                        <p>Connect with fellow pet lovers</p>
+                    </div>
+                </a>
+                <a href="fantasy.html" class="category-card">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjNtY2J2c3JhY2R3d3RwY3V4dGZ3eGJ6bG9pZzJ5dGJpZzR6dGx5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Fantasy">
+                    <div class="category-info">
+                        <h3>Fantasy</h3>
+                        <p>For those with imaginative romantic ideals</p>
                     </div>
                 </a>
             </div>
@@ -887,7 +1291,7 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="holographic">
         <div class="footer-container">
             <div class="footer-about">
                 <div class="footer-logo">
@@ -922,6 +1326,7 @@
                     <li><a href="religious.html">Religious</a></li>
                     <li><a href="friendship.html">Friendship</a></li>
                     <li><a href="international.html">International</a></li>
+                    <li><a href="business.html">Business</a></li>
                     <li><a href="special.html">Special Needs</a></li>
                     <li><a href="polygamy.html">Polygamy</a></li>
                     <li><a href="pets.html">Pets</a></li>
@@ -941,19 +1346,68 @@
     </footer>
 
     <script>
-        // Theme toggle functionality
+        // Theme toggle functionality with futuristic transition
         const themeToggle = document.getElementById('themeToggle');
+        const themeTransition = document.getElementById('themeTransition');
         const currentTheme = localStorage.getItem('theme') || 'light';
 
         document.body.classList.toggle('dark-mode', currentTheme === 'dark');
         themeToggle.textContent = currentTheme === 'dark' ? '🌞' : '🌙';
 
         themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+            // Create transition effect
+            themeTransition.style.display = 'block';
+            themeTransition.style.opacity = '0.8';
+            
+            // Start the pulse animation
+            setTimeout(() => {
+                themeTransition.style.animation = 'themePulse 1.5s ease-out';
+                
+                // Toggle theme after animation starts
+                setTimeout(() => {
+                    document.body.classList.toggle('dark-mode');
+                    const newTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+                    localStorage.setItem('theme', newTheme);
+                    themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌙';
+                    
+                    // Reset transition for next click
+                    setTimeout(() => {
+                        themeTransition.style.animation = 'none';
+                        themeTransition.style.opacity = '0';
+                        setTimeout(() => {
+                            themeTransition.style.display = 'none';
+                        }, 300);
+                    }, 1500);
+                }, 50);
+            }, 10);
         });
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            // Random size
+            const size = Math.random() * 3 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random animation duration
+            const duration = Math.random() * 20 + 10;
+            particle.style.animationDuration = `${duration}s`;
+            
+            // Random delay
+            particle.style.animationDelay = `${Math.random() * 10}s`;
+            
+            particlesContainer.appendChild(particle);
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -962,6 +1416,19 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Add hover effect to all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
             });
         });
     </script>

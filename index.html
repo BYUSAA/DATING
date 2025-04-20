@@ -7,18 +7,1639 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* [Previous CSS styles remain exactly the same] */
+        :root {
+            --primary-color: #00f7ff;
+            --secondary-color: #7b2dff;
+            --accent-color: #ff2d7b;
+            --text-color: #e0e0e0;
+            --bg-color: #0a0a1a;
+            --card-bg: #15152b;
+            --nav-bg: rgba(21, 21, 43, 0.95);
+            --shadow: 0 4px 30px rgba(0, 247, 255, 0.15);
+            --text-light: #a0a0c0;
+            --border-color: #252545;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --pulse-animation: pulse 2s infinite;
+            --float-animation: float 6s ease-in-out infinite;
+            --glow-text: 0 0 10px rgba(0, 247, 255, 0.7);
+            --glow-box: 0 0 20px rgba(0, 247, 255, 0.5);
+        }
+
+        .light-mode {
+            --primary-color: #7b2dff;
+            --secondary-color: #00a8ff;
+            --accent-color: #ff2d7b;
+            --text-color: #333;
+            --bg-color: #f0f5ff;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 30px rgba(123, 45, 255, 0.15);
+            --text-light: #666;
+            --border-color: #e0e0f0;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --glow-text: 0 0 5px rgba(123, 45, 255, 0.5);
+            --glow-box: 0 0 10px rgba(123, 45, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(123, 45, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 247, 255, 0.1) 0%, transparent 20%);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: var(--glow-text);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Futuristic Header Styles */
+        header {
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo-bubble {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: var(--float-animation);
+            box-shadow: var(--glow-box);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-bubble::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes neon {
+            0%, 100% { text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color); }
+            50% { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            box-shadow: var(--glow-box);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 70%;
+            left: 15%;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient);
+            margin-left: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            box-shadow: var(--glow-box);
+            overflow: hidden;
+        }
+
+        .user-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            width: 220px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            z-index: 1001;
+        }
+
+        .user-avatar:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(5px);
+        }
+
+        .dropdown-item {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 247, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 0.5rem 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg) scale(1.1);
+            color: var(--primary-color);
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #000;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(255, 45, 123, 0.5);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.3);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 247, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.2);
+        }
+
+        .btn-accent:hover {
+            background-color: #ff1a6b;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 45, 123, 0.3);
+        }
+
+        /* Futuristic Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(123, 45, 255, 0.2), rgba(0, 247, 255, 0.2));
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease, neon 3s infinite;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeIn 1.5s ease;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            animation: fadeIn 2s ease;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(123, 45, 255, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.5s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(0, 247, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: var(--glow-box);
+            animation: var(--float-animation);
+        }
+
+        .feature-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 8rem 2rem;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(123, 45, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 247, 255, 0.1) 0%, transparent 30%);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s;
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(0, 247, 255, 0.2);
+            z-index: 2;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-info h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .category-info p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7));
+            z-index: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 8rem 2rem;
+            background-color: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://media.giphy.com/media/X91fI4OEpzDFX9Qw7n/giphy.gif');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: -30px;
+            left: -15px;
+            opacity: 0.1;
+            color: var(--primary-color);
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--primary-color);
+            box-shadow: var(--glow-box);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://media.giphy.com/media/3o7TKUM3IgJBX2as9O/giphy.gif');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .how-it-works .section-title {
+            margin-bottom: 6rem;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 2rem;
+            box-shadow: var(--glow-box);
+            position: relative;
+            animation: var(--float-animation);
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px dashed var(--primary-color);
+            animation: rotate 10s linear infinite;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary-color) 20%, 
+                var(--secondary-color) 80%, 
+                transparent 100%);
+            z-index: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
+                        url('https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif') no-repeat center center/cover;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            animation: neon 3s infinite;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* AI Matchmaker Section */
+        .ai-matchmaker {
+            padding: 8rem 2rem;
+            background-color: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-content {
+            flex: 1;
+        }
+
+        .ai-image {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .ai-robot {
+            width: 100%;
+            height: auto;
+            animation: var(--float-animation);
+        }
+
+        .ai-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px dashed var(--primary-color);
+            animation: rotate 20s linear infinite;
+        }
+
+        .ai-circle-1 {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            opacity: 0.3;
+        }
+
+        .ai-circle-2 {
+            width: 140%;
+            height: 140%;
+            top: -20%;
+            left: -20%;
+            opacity: 0.2;
+            animation-direction: reverse;
+        }
+
+        .ai-circle-3 {
+            width: 160%;
+            height: 160%;
+            top: -30%;
+            left: -30%;
+            opacity: 0.1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 5rem 2rem 2rem;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-bubble {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: var(--glow-box);
+        }
+
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(0, 247, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: var(--glow-box);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--gradient);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .contact-icon {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Futuristic Elements */
+        .holographic-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holographic-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 247, 255, 0.1) 0%,
+                rgba(123, 45, 255, 0.1) 50%,
+                rgba(255, 45, 123, 0.1) 100%
+            );
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .cyber-border {
+            position: relative;
+            border: 1px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color)) 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .ai-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .ai-image {
+                order: -1;
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .user-menu {
+                margin-top: 1.5rem;
+            }
+
+            .hero {
+                padding: 10rem 1rem 5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons, .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .features-grid, .testimonials-grid, .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card, .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- [Previous header and hero section remain exactly the same] -->
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
 
-    
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <div class="logo-bubble">M</div>
+                    <span>MetaDate 3000</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#ai">AI Matchmaker</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-adjust"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <!-- [Rest of the sections remain exactly the same until footer] -->
+    <section class="hero">
+        <video autoplay muted loop class="hero-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-interface-with-holographic-dna-sequence-31539-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>FIND YOUR QUANTUM MATCH</h1>
+            <p>Powered by advanced AI and neural compatibility algorithms, MetaDate 3000 connects you with your perfect multidimensional partner across space and time.</p>
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> LAUNCH MATCHMAKER
+                </a>
+                <a href="#how-it-works" class="btn btn-secondary">
+                    <i class="fas fa-question-circle"></i> HOW IT WORKS
+                </a>
+            </div>
+        </div>
+    </section>
 
-    
+    <section class="features" id="features">
+        <h2 class="section-title">WHY METADATE 3000</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://media.giphy.com/media/LnU9yQkPfHZ3OqQNkA/giphy.gif" alt="AI Matching" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h3 class="feature-title">NEURAL LINK MATCHING</h3>
+                <p>Our quantum AI analyzes 10,000+ compatibility factors including brainwave patterns, emotional resonance, and future potential.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://media.giphy.com/media/J2awouDsf03RtO6QKc/giphy.gif" alt="Verified" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h3 class="feature-title">BIOMETRIC VERIFICATION</h3>
+                <p>All profiles undergo DNA authentication and retinal scanning to ensure 100% human authenticity.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://media.giphy.com/media/Yq5nsYQzHXz16/giphy.gif" alt="Global" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                </div>
+                <h3 class="feature-title">INTERDIMENSIONAL NETWORK</h3>
+                <p>Connect with compatible partners across parallel universes and alternate timelines through our quantum entanglement technology.</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- [Rest of the script remains exactly the same] -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">EXPLORE CONNECTION TYPES</h2>
+            <p class="section-subtitle">Discover specialized relationship dimensions tailored to your unique needs</p>
+            <div class="category-grid">
+                <a href="special-needs.html" class="category-card">
+                    <img src="https://media.giphy.com/media/l0HU7JJJkEXkWs7Y4/giphy.gif" alt="Special Needs">
+                    <div class="category-info">
+                        <h3>SPECIAL NEEDS</h3>
+                        <p>Accessible connections with adaptive interfaces for all abilities</p>
+                    </div>
+                </a>
+                <a href="polygamy.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKAZnIu4w31OqmA/giphy.gif" alt="Polygamy">
+                    <div class="category-info">
+                        <h3>POLYGAMY</h3>
+                        <p>Ethical non-monogamy and plural relationship matching</p>
+                    </div>
+                </a>
+                <a href="pets.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8RUL8qVYbYY/giphy.gif" alt="Pets">
+                    <div class="category-info">
+                        <h3>PET COMPANIONS</h3>
+                        <p>Find partners who share your love for animal companions</p>
+                    </div>
+                </a>
+                <a href="fantasy.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKIPvY5sXhVvV7q/giphy.gif" alt="Fantasy">
+                    <div class="category-info">
+                        <h3>FANTASY REALMS</h3>
+                        <p>Roleplay and imaginative relationship connections</p>
+                    </div>
+                </a>
+                <a href="dating.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKr2vF8VE8K5g5O/giphy.gif" alt="Dating">
+                    <div class="category-info">
+                        <h3>QUANTUM DATING</h3>
+                        <p>Romantic connections with multidimensional compatibility</p>
+                    </div>
+                </a>
+                <a href="marriage.html" class="category-card">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8K2I9Qk5W3K/giphy.gif" alt="Marriage">
+                    <div class="category-info">
+                        <h3>TEMPORAL MARRIAGE</h3>
+                        <p>Lifelong commitments across multiple timelines</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ai-matchmaker" id="ai">
+        <div class="ai-container">
+            <div class="ai-content">
+                <h2 class="section-title">QUANTUM AI MATCHMAKER</h2>
+                <p>Our advanced quantum neural network analyzes your personality, emotions, and future potential across multiple dimensions to find your perfect match with 99.9% accuracy.</p>
+                <ul style="margin-top: 2rem; list-style-type: none;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-brain" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Emotional resonance mapping</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-dna" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Genetic compatibility analysis</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-atom" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Quantum entanglement matching</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center;">
+                        <i class="fas fa-clock" style="color: var(--primary-color); margin-right: 10px; font-size: 1.2rem;"></i>
+                        <span>Temporal relationship forecasting</span>
+                    </li>
+                </ul>
+                <a href="ai-matchmaker.html" class="btn btn-accent" style="margin-top: 2rem;">
+                    <i class="fas fa-robot"></i> TRY AI MATCHMAKER
+                </a>
+            </div>
+            <div class="ai-image">
+                <img src="https://media.giphy.com/media/L7VJhE5JQv1lK/giphy.gif" alt="AI Matchmaker" class="ai-robot">
+                <div class="ai-circle ai-circle-1"></div>
+                <div class="ai-circle ai-circle-2"></div>
+                <div class="ai-circle ai-circle-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">QUANTUM LOVE STORIES</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The neural matching system found my perfect partner in an alternate dimension. We're now happily entangled across two realities!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah-742</h4>
+                            <p>Dimension X-742</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        As a cyborg-human hybrid, I never thought I'd find love. MetaDate 3000's compatibility algorithms matched me with the perfect augmented partner.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael-9</h4>
+                            <p>Cybernetic Division</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Our quantum marriage ceremony was spectacular! We're now bonded across three timelines with a 98.7% happiness probability.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma L.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emma & Zyx</h4>
+                            <p>Temporal Union 3025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">HOW IT WORKS</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">NEURAL SCAN</h3>
+                <p>Complete our 10-second quantum personality scan using our brainwave interface.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">DIMENSIONAL ANALYSIS</h3>
+                <p>Our AI evaluates your compatibility across 11 dimensions and 47 parallel realities.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">HOLOGRAM CONNECTION</h3>
+                <p>Meet your matches in our immersive holographic dating environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>READY FOR QUANTUM LOVE?</h2>
+            <p>Join millions of satisfied users across the multiverse who have found their perfect entanglement.</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-user-astronaut"></i> CREATE ACCOUNT
+                </a>
+                <a href="demo.html" class="btn btn-secondary">
+                    <i class="fas fa-vr-cardboard"></i> HOLO DEMO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-bubble">M</div>
+                    <span class="footer-logo-text">MetaDate 3000</span>
+                </div>
+                <p>The future of relationships powered by quantum computing, neural networks, and interdimensional technology.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                    <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="special-needs.html"><i class="fas fa-universal-access"></i> Special Needs</a></li>
+                    <li><a href="polygamy.html"><i class="fas fa-users"></i> Polygamy</a></li>
+                    <li><a href="pets.html"><i class="fas fa-paw"></i> Pet Companions</a></li>
+                    <li><a href="fantasy.html"><i class="fas fa-dragon"></i> Fantasy Realms</a></li>
+                    <li><a href="dating.html"><i class="fas fa-heart"></i> Quantum Dating</a></li>
+                    <li><a href="marriage.html"><i class="fas fa-ring"></i> Temporal Marriage</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Info</h3>
+                <p><span class="contact-icon"><i class="fas fa-envelope"></i></span> contact@metadate3000.com</p>
+                <p><span class="contact-icon"><i class="fas fa-phone-alt"></i></span> +1 (555) 3000-2025</p>
+                <p><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> Quantum Plaza, Mars Colony 1</p>
+                <p><span class="contact-icon"><i class="fas fa-globe"></i></span> Earth-616, Andromeda Sector</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 3025 MetaDate 3000 Corporation. All rights reserved across all dimensions.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+
+        document.body.classList.toggle('light-mode', currentTheme === 'light');
+        themeToggle.innerHTML = currentTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const newTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Particle animation
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random properties
+            const size = Math.random() * 5 + 1;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 10 + 10;
+            const opacity = Math.random() * 0.5 + 0.1;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.opacity = opacity;
+            particle.style.backgroundColor = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
+            
+            particlesContainer.appendChild(particle);
+        }
+
+        // Floating animation for particles
+        document.querySelectorAll('.particle').forEach(particle => {
+            const keyframes = `
+                @keyframes float-${Math.random().toString(36).substr(2, 9)} {
+                    0%, 100% { transform: translate(0, 0); }
+                    25% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
+                    50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
+                    75% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px); }
+                }
+            `;
+            
+            const style = document.createElement('style');
+            style.innerHTML = keyframes;
+            document.head.appendChild(style);
+            
+            particle.style.animation = `float-${style.sheet.rules[0].name.substr(7)} ${Math.random() * 20 + 10}s infinite linear`;
+        });
+
+        // Glow effect for interactive elements
+        document.querySelectorAll('.btn, .feature-card, .category-card, .nav-links a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.boxShadow = `0 0 20px ${el.classList.contains('btn-primary') ? 'rgba(0, 247, 255, 0.7)' : 
+                                    el.classList.contains('btn-accent') ? 'rgba(255, 45, 123, 0.7)' : 
+                                    'rgba(123, 45, 255, 0.5)'}`;
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.boxShadow = '';
+            });
+        });
+
+        // Futuristic sound effects
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', () => {
+                // In a real implementation, you would play a sound effect here
+                console.log('Playing futuristic sound effect');
+            });
+        });
+
+        // AI voice greeting
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('AI Voice: Welcome to MetaDate 3000. Your perfect quantum match awaits.');
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
